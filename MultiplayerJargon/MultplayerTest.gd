@@ -14,7 +14,7 @@ var ip
 func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
 
-func _on_host_pressed():
+func _on_host_pressed(): #64.8.134.2
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(PORT)
 	multiplayer.multiplayer_peer = peer
