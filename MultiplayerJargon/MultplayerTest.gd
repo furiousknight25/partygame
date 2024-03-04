@@ -9,6 +9,8 @@ var choice = {0:'Chris', 1:'Jesse', 2:'Aria', 3:'Travis'}
 	
 var players_loaded = 0
 
+var ip 
+@onready var text_type = $ui/Menu/Main/Control/TextEdit
 func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
 
@@ -23,7 +25,8 @@ func _on_host_pressed():
 	
 func _on_join_pressed():
 	var peer = ENetMultiplayerPeer.new()
-	peer.create_client('localhost', PORT) #may have to switch to ip of the host
+	ip = text_type.text
+	peer.create_client(ip, PORT) #may have to switch to ip of the host
 	multiplayer.multiplayer_peer = peer
 	
 func _add_player(id = 1): #starts lobby code
