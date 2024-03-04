@@ -59,6 +59,172 @@ position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
+[node name="testfloor5" type="StaticBody2D" parent="."]
+position = Vector2(-43, 614)
+scale = Vector2(0.234562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor5"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor5"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor6" type="StaticBody2D" parent="."]
+position = Vector2(164, 539)
+scale = Vector2(0.234562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor6"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor6"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor7" type="StaticBody2D" parent="."]
+position = Vector2(374, 484)
+scale = Vector2(0.234562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor7"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor7"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor8" type="StaticBody2D" parent="."]
+position = Vector2(638, 484)
+scale = Vector2(0.234562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor8"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor8"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor9" type="StaticBody2D" parent="."]
+position = Vector2(904, 476)
+scale = Vector2(0.234562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor9"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor9"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor10" type="StaticBody2D" parent="."]
+position = Vector2(1086, 556)
+scale = Vector2(0.234562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor10"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor10"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor11" type="StaticBody2D" parent="."]
+position = Vector2(1261, 594)
+scale = Vector2(0.234562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor11"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor11"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor12" type="StaticBody2D" parent="."]
+position = Vector2(1134, 435)
+scale = Vector2(0.234562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor12"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor12"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor13" type="StaticBody2D" parent="."]
+position = Vector2(1266, 354)
+scale = Vector2(0.234562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor13"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor13"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor14" type="StaticBody2D" parent="."]
+position = Vector2(958, 268)
+scale = Vector2(0.754562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor14"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor14"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor15" type="StaticBody2D" parent="."]
+position = Vector2(-197, 411)
+rotation = 0.314435
+scale = Vector2(0.754562, 1.54572)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor15"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor15"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
 [node name="testfloor4" type="StaticBody2D" parent="."]
 position = Vector2(1274, 314)
 rotation = 1.5708

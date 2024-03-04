@@ -4,6 +4,7 @@ extends Node2D
 @export var rock_scene: PackedScene
 @export var container: PackedScene
 
+const PORT = 4433
 var choice = {0:'Chris', 1:'Jesse', 2:'Aria', 3:'Travis'}
 	
 var players_loaded = 0
@@ -13,7 +14,7 @@ func _ready():
 
 func _on_host_pressed():
 	var peer = ENetMultiplayerPeer.new()
-	peer.create_server(4)
+	peer.create_server(PORT)
 	multiplayer.multiplayer_peer = peer
 	
 	multiplayer.peer_connected.connect(_add_player) #right track
@@ -22,7 +23,7 @@ func _on_host_pressed():
 	
 func _on_join_pressed():
 	var peer = ENetMultiplayerPeer.new()
-	peer.create_client('localhost', 4)
+	peer.create_client('localhost', PORT) #may have to switch to ip of the host
 	multiplayer.multiplayer_peer = peer
 	
 func _add_player(id = 1): #starts lobby code
