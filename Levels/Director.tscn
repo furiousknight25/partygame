@@ -1,0 +1,183 @@
+[gd_scene load_steps=14 format=3 uid="uid://i7mvbsy1s34q"]
+
+[ext_resource type="Texture2D" uid="uid://dn3hd76xaf2wx" path="res://Randomjunk/Sprite-0001.png" id="2_j7jb4"]
+[ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
+[ext_resource type="Texture2D" uid="uid://d0lb1k4pma1vy" path="res://Randomjunk/spear.png" id="3_x818a"]
+[ext_resource type="PackedScene" uid="uid://dgm0ri1lo1qb7" path="res://tools/physics_arrows_package.tscn" id="4_46b81"]
+[ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="5_bexga"]
+[ext_resource type="PackedScene" uid="uid://bujc3kdcq2v58" path="res://UI/Character_block.tscn" id="5_n7qw0"]
+[ext_resource type="PackedScene" uid="uid://uog53iqxp4f3" path="res://UI/menu.tscn" id="5_pu61s"]
+
+[sub_resource type="GDScript" id="GDScript_jppq5"]
+script/source = "extends CharacterBody2D
+
+@export var jump_strength : int
+@export var speed : int
+@export var gravity = 980
+@onready var sprite = $Sprite2D
+
+@export var health = 100
+var walk_animation_speed = 0
+
+
+func _enter_tree():
+	set_multiplayer_authority(name.to_int())
+	##Engine.set_time_scale(.1)
+	#global_position = Vector2(100,50)
+
+func _process(delta):
+	if Input.is_action_just_pressed(\"debug\"):
+		pass
+	if is_multiplayer_authority():
+	#region debug keybinds
+		if Input.is_action_just_pressed(\"exit\"):
+			get_tree().quit()
+		if Input.is_action_just_pressed(\"fullscreen\"):
+			if DisplayServer.window_get_mode() != 3:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			else:
+				DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		if Input.is_action_just_pressed('restart'):
+			get_tree().reload_current_scene()
+	#endregion
+		var direction = Input.get_axis('left', \"right\")
+		if direction:
+			velocity.x = lerp(velocity.x, speed * direction, 12 * delta) #add jump buffer later
+		if is_on_floor():
+			velocity.x = lerp(velocity.x, 0.0, 12*delta)
+			walk_animation_speed += velocity.x * .0005
+			sprite.position.y = abs(sin(walk_animation_speed) * 3)
+			if abs(sin(walk_animation_speed) * 3) <= .8:
+				sprite.scale.x = .9
+				sprite.scale.y = 1.1
+		
+		if Input.is_action_just_pressed('up') and is_on_floor():
+			velocity.y -= jump_strength
+			sprite.scale.y += .3
+			sprite.scale.x -= .3
+		velocity.y += gravity * delta
+		
+		sprite.scale.x = lerp(sprite.scale.x, 1.0, 12* delta) #messing around with squshing you can delete
+		sprite.scale.y = lerp(sprite.scale.y, 1.0, 12* delta)
+		sprite.rotation = lerp_angle(sprite.rotation, 0.0, 8*delta)
+		
+		
+	move_and_slide()
+
+@rpc(\"any_peer\")
+func hurt(direction, damage_percent):
+	#print(direction, \" \", damage_percent)
+	sprite.scale.x += .2
+	sprite.scale.y -= .1
+	velocity += direction
+	
+	var push_direction = 1
+	if is_on_floor():
+		push_direction = 1
+	else:
+		push_direction = -1
+	sprite.rotate(sign((get_global_mouse_position().x-global_position.x)) * .8 * push_direction)
+	
+	health -= damage_percent
+	if health <= 0:
+		queue_free()
+	
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7taij"]
+radius = 14.0
+height = 28.0
+
+[sub_resource type="GDScript" id="GDScript_d21gw"]
+script/source = "extends Area2D
+
+var mouse_position 
+var press = true
+var tween
+
+signal clicked 
+
+func _enter_tree():
+	set_multiplayer_authority(get_parent().name.to_int())
+
+func _physics_process(delta):
+	
+	if is_multiplayer_authority():
+		mouse_position = get_global_mouse_position()
+		rotation = lerp_angle(rotation, atan2(mouse_position.y - global_position.y, mouse_position.x - global_position.x), 20 * delta)
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and press:
+			emit_signal('clicked', Vector2(cos(rotation), sin(rotation)) * 200, 0)
+			press = false
+			for i in 10:
+				move_local_x(2.0)
+			#global_position = global_position.move_toward(mouse_position, 22)
+			for a in get_overlapping_bodies():
+				if a.has_method('hurt') and a != get_parent():
+					#a.hurt(Vector2(cos(rotation), sin(rotation) - 1.002) * 500, 10)
+					a.hurt.rpc( Vector2(cos(rotation), sin(rotation) - 1.002) * 500, 10)
+		elif !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			press = true
+		position = lerp(position, Vector2(3,0), 5 * delta)
+	
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnr8k"]
+size = Vector2(226.596, 13.5571)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fobmg"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("weapon:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Sprite2D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Sprite2D:scale")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[sub_resource type="PackedScene" id="PackedScene_dvap4"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(3, 0, 23, 22, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Aria", "collision_mask", "script", "jump_strength", "speed", "gravity", "CharacterBody2D", "Sprite2D", "modulate", "texture_filter", "texture", "CollisionShape2D", "shape", "weapon", "position", "scale", "collision_layer", "Area2D", "PhysicsArrowsPackage", "body_to_observe", "MultiplayerSynchronizer", "replication_config", "hurt", "clicked"),
+"node_count": 8,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 6, 0, -1, 5, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 0, 0, 0, 7, 7, -1, 3, 8, 5, 9, 6, 10, 7, 0, 0, 0, 11, 11, -1, 1, 12, 8, 0, 0, 0, 17, 13, -1, 5, 14, 9, 15, 10, 16, 11, 1, 12, 2, 13, 0, 3, 0, 7, 7, -1, 5, 8, 14, 9, 6, 14, 15, 15, 16, 10, 17, 0, 3, 0, 11, 11, -1, 2, 14, 18, 12, 19, 0, 0, 0, 2147483647, 18, 20, 1, 1073741843, 21, 0, 0, 0, 20, 20, -1, 1, 21, 22, 0),
+"variants": [3, SubResource("GDScript_jppq5"), 450, 400, 2000, Color(1, 1, 0.756863, 1), 1, ExtResource("2_j7jb4"), SubResource("CapsuleShape2D_7taij"), Vector2(3, 0), Vector2(0.427419, 0.590095), 6, 7, SubResource("GDScript_d21gw"), Color(1, 1, 0, 1), Vector2(93.5849, 9.05991e-06), Vector2(2.10122, 0.793578), ExtResource("3_x818a"), Vector2(108.966, 0), SubResource("RectangleShape2D_cnr8k"), ExtResource("4_46b81"), NodePath(".."), SubResource("SceneReplicationConfig_fobmg")],
+"version": 3
+}
+
+[node name="Director" type="Node2D"]
+
+[node name="Multplayer" type="Node2D" parent="."]
+script = ExtResource("3_o2mgw")
+player_scene = SubResource("PackedScene_dvap4")
+rock_scene = ExtResource("5_bexga")
+container = ExtResource("5_n7qw0")
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="Multplayer"]
+_spawnable_scenes = PackedStringArray("res://Levels/level_test.tscn")
+spawn_path = NodePath("../Level")
+
+[node name="ui" type="MultiplayerSpawner" parent="Multplayer"]
+_spawnable_scenes = PackedStringArray("res://UI/Character_block.tscn")
+spawn_path = NodePath("Menu/select/HBoxContainer")
+
+[node name="Menu" parent="Multplayer/ui" instance=ExtResource("5_pu61s")]
+
+[node name="Control" parent="Multplayer/ui/Menu/Main" index="0"]
+offset_left = -323.0
+offset_top = -395.0
+offset_right = -323.0
+offset_bottom = -395.0
+
+[node name="Level" type="Node2D" parent="Multplayer"]
+
+[connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Join" to="Multplayer/ui/Menu" method="set_character" binds= ["join"]]
+
+[editable path="Multplayer/ui/Menu"]

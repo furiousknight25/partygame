@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1krtiy6vaela"]
+
+[ext_resource type="Script" path="res://Players/Aria/Aria.gd" id="1_3b23j"]
+[ext_resource type="Texture2D" uid="uid://dn3hd76xaf2wx" path="res://Randomjunk/Sprite-0001.png" id="2_hqwcc"]
+[ext_resource type="Script" path="res://Players/Aria/weapon.gd" id="3_aod5q"]
+[ext_resource type="Texture2D" uid="uid://d0lb1k4pma1vy" path="res://Randomjunk/spear.png" id="4_ipwe0"]
+[ext_resource type="PackedScene" uid="uid://dgm0ri1lo1qb7" path="res://tools/physics_arrows_package.tscn" id="5_ek4ce"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7taij"]
+radius = 14.0
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnr8k"]
+size = Vector2(226.596, 13.5571)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_olqou"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="Chris" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_3b23j")
+jump_strength = 450
+speed = 400
+gravity = 2000
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.756863, 1)
+texture_filter = 1
+texture = ExtResource("2_hqwcc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7taij")
+
+[node name="weapon" type="Area2D" parent="."]
+position = Vector2(3, 0)
+scale = Vector2(0.427419, 0.590095)
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("3_aod5q")
+
+[node name="Sprite2D" type="Sprite2D" parent="weapon"]
+modulate = Color(1, 1, 0, 1)
+texture_filter = 1
+position = Vector2(93.5849, 9.05991e-06)
+scale = Vector2(2.10122, 0.793578)
+texture = ExtResource("4_ipwe0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon"]
+position = Vector2(108.966, 0)
+shape = SubResource("RectangleShape2D_cnr8k")
+
+[node name="PhysicsArrowsPackage" parent="." node_paths=PackedStringArray("body_to_observe") instance=ExtResource("5_ek4ce")]
+body_to_observe = NodePath("..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_olqou")
+
+[connection signal="clicked" from="weapon" to="." method="hurt"]

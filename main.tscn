@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpy3vcgufx6t5"]
+
+[ext_resource type="PackedScene" uid="uid://bdsggacivoyca" path="res://tools/CurveTween.tscn" id="1_tl5qk"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -674.0
+offset_right = -674.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 283.0
+offset_right = 48.0
+offset_bottom = 314.0
+scale = Vector2(2.26744, 1.03704)
+text = "Start"
+
+[node name="CurveTween" parent="Start" instance=ExtResource("1_tl5qk")]

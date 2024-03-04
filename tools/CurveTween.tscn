@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdsggacivoyca"]
+
+[ext_resource type="Script" path="res://Randomjunk/CurveTween.gd" id="1_gf3lp"]
+
+[sub_resource type="Curve" id="Curve_7nccr"]
+_data = [Vector2(0, 0), 0.0, -0.0614261, 0, 0, Vector2(1, 1), -3.07221, 0.0, 0, 0]
+point_count = 2
+
+[node name="CurveTween" type="Node"]
+script = ExtResource("1_gf3lp")
+curve = SubResource("Curve_7nccr")

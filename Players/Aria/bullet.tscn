@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq76elsmx3doi"]
+
+[ext_resource type="Script" path="res://Players/Aria/bullet.gd" id="2_kbi8j"]
+[ext_resource type="Texture2D" uid="uid://dyor8xh7ao7ws" path="res://Players/Aria/fireball.png" id="2_sbck4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkwiu"]
+radius = 40.1527
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d78xc"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["bullets"]]
+top_level = true
+position = Vector2(264, 232)
+scale = Vector2(0.424366, 0.424366)
+collision_layer = 0
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("2_kbi8j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6.10352e-05, 0)
+rotation = -3.14159
+texture = ExtResource("2_sbck4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.000244141, 0)
+shape = SubResource("CircleShape2D_mkwiu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_d78xc")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

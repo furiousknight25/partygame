@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxylv50enx4tb"]
+
+[ext_resource type="Script" path="res://Players/Jesse/playerjesse.gd" id="1_w2pg1"]
+[ext_resource type="PackedScene" uid="uid://bmjkc1l0qdpx" path="res://Players/Jesse/rock.tscn" id="2_2fa4w"]
+[ext_resource type="Texture2D" uid="uid://dn3hd76xaf2wx" path="res://Randomjunk/Sprite-0001.png" id="2_q5lbh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5m48"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4vtx"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5ve0h"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("rock:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Sprite2D:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("rock:linear_velocity")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="playerjes" type="CharacterBody2D"]
+collision_mask = 11
+script = ExtResource("1_w2pg1")
+
+[node name="KickTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("2_q5lbh")
+
+[node name="rock" parent="." instance=ExtResource("2_2fa4w")]
+collision_mask = 11
+mass = 5.0
+gravity_scale = 0.45
+max_contacts_reported = 1
+contact_monitor = true
+
+[node name="TeleportToHand" type="Timer" parent="rock"]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v5m48")
+
+[node name="state" type="RichTextLabel" parent="."]
+modulate = Color(0.533333, 1, 0.47451, 1)
+texture_filter = 1
+offset_left = -64.0
+offset_top = -74.0
+offset_right = 250.0
+offset_bottom = -49.0
+scale = Vector2(0.914467, 0.914467)
+text = "Accel: "
+
+[node name="MouseArea" type="Area2D" parent="."]
+top_level = true
+collision_mask = 9
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MouseArea"]
+shape = SubResource("RectangleShape2D_q4vtx")
+
+[node name="TeleportCooldown" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_5ve0h")
+
+[connection signal="timeout" from="rock/TeleportToHand" to="rock" method="_on_timer_timeout"]

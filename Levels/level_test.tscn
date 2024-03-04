@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://h7ejc17c4yq6"]
+
+[ext_resource type="Script" path="res://Levels/level.gd" id="1_5o0k3"]
+[ext_resource type="Texture2D" uid="uid://bnawcjyuuebtn" path="res://Randomjunk/godot.svg" id="1_r1txc"]
+[ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_xvac1"]
+[ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_uehue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v7ue"]
+size = Vector2(636, 27)
+
+[node name="Level_Test" type="Node2D"]
+script = ExtResource("1_5o0k3")
+aria_scene = ExtResource("2_xvac1")
+jesse_scene = ExtResource("3_uehue")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="0" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(814, 159)
+
+[node name="2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(998, 77)
+
+[node name="3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(491, 55)
+
+[node name="4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(285, 132)
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="testfloor" type="StaticBody2D" parent="."]
+position = Vector2(552, 700)
+scale = Vector2(2.32, 1)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor"]
+position = Vector2(20, -0.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor2" type="StaticBody2D" parent="."]
+position = Vector2(586, -39)
+scale = Vector2(2.8, 2.8)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor2"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor2"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor4" type="StaticBody2D" parent="."]
+position = Vector2(1274, 314)
+rotation = 1.5708
+scale = Vector2(1.19345, 1.0634)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor4"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor4"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="testfloor3" type="StaticBody2D" parent="."]
+position = Vector2(-106, 232)
+rotation = 1.5708
+scale = Vector2(1.45731, 1.04411)
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor3"]
+position = Vector2(20, 1.5)
+shape = SubResource("RectangleShape2D_5v7ue")
+
+[node name="Sprite2D" type="Sprite2D" parent="testfloor3"]
+position = Vector2(19, 2)
+scale = Vector2(4.98438, 0.203125)
+texture = ExtResource("1_r1txc")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Players/Aria/Aria.tscn", "res://Players/Jesse/playerjesse.tscn")
+spawn_path = NodePath("../SpawnPoints")
+spawn_limit = 4

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmjkc1l0qdpx"]
+
+[ext_resource type="Script" path="res://Players/Jesse/rock.gd" id="1_h504p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpekc"]
+radius = 9.87164
+
+[node name="rock" type="RigidBody2D"]
+top_level = true
+position = Vector2(16, -3)
+collision_layer = 4
+collision_mask = 2
+freeze_mode = 1
+script = ExtResource("1_h504p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.417672, 0.417672)
+shape = SubResource("CircleShape2D_mpekc")
+disabled = true

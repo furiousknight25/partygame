@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgm0ri1lo1qb7"]
+
+[ext_resource type="Script" path="res://Randomjunk/PhysicsArrowsPackage.gd" id="1_bbc4m"]
+
+[node name="PhysicsArrowsPackage" type="Node2D"]
+modulate = Color(1, 1, 1, 0.831373)
+top_level = true
+script = ExtResource("1_bbc4m")
+
+[node name="velocity" type="RayCast2D" parent="."]
+modulate = Color(0.305882, 0.2, 0.690196, 1)
+target_position = Vector2(99, 0)
+collide_with_bodies = false
+
+[node name="acceleration" type="RayCast2D" parent="."]
+modulate = Color(0.772549, 1, 0.0392157, 1)
+target_position = Vector2(48, 0)
+collide_with_bodies = false
+
+[node name="velocity_text" type="RichTextLabel" parent="."]
+modulate = Color(0.306964, 0.134909, 0.936745, 1)
+texture_filter = 1
+offset_left = -69.0
+offset_top = -57.0
+offset_right = 187.0
+offset_bottom = -34.0
+scale = Vector2(1.01355, 1.01355)
+text = "Velocity:"
+
+[node name="acceleration_text" type="RichTextLabel" parent="."]
+modulate = Color(0.533333, 1, 0.47451, 1)
+texture_filter = 1
+offset_left = -60.0
+offset_top = -36.0
+offset_right = 254.0
+offset_bottom = -11.0
+scale = Vector2(0.914467, 0.914467)
+text = "Accel: "

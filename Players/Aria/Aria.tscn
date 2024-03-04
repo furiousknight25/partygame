@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://dh8ehuq4bkge3"]
+
+[ext_resource type="Script" path="res://Players/Aria/Aria.gd" id="1_hexfs"]
+[ext_resource type="Texture2D" uid="uid://dn3hd76xaf2wx" path="res://Randomjunk/Sprite-0001.png" id="2_j6lob"]
+[ext_resource type="Script" path="res://Players/Aria/gun.gd" id="3_vyghg"]
+[ext_resource type="Texture2D" uid="uid://vpljs6gjkple" path="res://Players/Aria/pixil-frame-0.png" id="4_2kfkk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7taij"]
+radius = 14.0
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnr8k"]
+size = Vector2(72.5283, 15.2518)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_bfkeo"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Sprite2D:scale")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Sprite2D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("weapon:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="Aria" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_hexfs")
+jump_strength = 450
+speed = 400
+gravity = 2000
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0.756863, 1)
+texture_filter = 1
+texture = ExtResource("2_j6lob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_7taij")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -15.0
+offset_top = -35.0
+offset_right = 25.0
+offset_bottom = 5.0
+text = "100"
+
+[node name="weapon" type="Area2D" parent="."]
+position = Vector2(3, 0)
+scale = Vector2(0.427419, 0.590095)
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("3_vyghg")
+
+[node name="Sprite2D" type="Sprite2D" parent="weapon"]
+texture_filter = 1
+position = Vector2(56.151, 1.04904e-05)
+scale = Vector2(0.13, 0.1)
+texture = ExtResource("4_2kfkk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="weapon"]
+position = Vector2(56.151, -3.38929)
+shape = SubResource("RectangleShape2D_cnr8k")
+
+[node name="Area2D" type="Node2D" parent="weapon"]
+position = Vector2(180.151, 9.53674e-07)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Players/Aria/bullet.tscn")
+spawn_path = NodePath("../weapon/Area2D")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_bfkeo")
+
+[connection signal="clicked" from="weapon" to="." method="hurt"]
+[connection signal="timeout" from="Timer" to="weapon" method="_on_timer_timeout"]

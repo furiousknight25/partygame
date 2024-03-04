@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bq7b58cx77drk"]
+
+[ext_resource type="Script" path="res://Randomjunk/slinky.gd" id="1_o2fkj"]
+[ext_resource type="Texture2D" uid="uid://d31b386vvi0no" path="res://Randomjunk/bag.png" id="2_l3olm"]
+[ext_resource type="PackedScene" uid="uid://dgm0ri1lo1qb7" path="res://tools/physics_arrows_package.tscn" id="3_xjlbn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5k6ra"]
+radius = 11.3525
+height = 25.436
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vg1ac"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="slinky" type="CharacterBody2D"]
+position = Vector2(421, 233)
+collision_mask = 3
+script = ExtResource("1_o2fkj")
+bounce = 0.4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, 0)
+texture = ExtResource("2_l3olm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.880865, 0.943545)
+shape = SubResource("CapsuleShape2D_5k6ra")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(1, 0.733333, 0.94902, 1)
+texture_filter = 3
+offset_left = -15.0
+offset_top = -37.0
+offset_right = 14.0
+offset_bottom = -14.0
+pivot_offset = Vector2(15, 12)
+bbcode_enabled = true
+text = "100"
+scroll_active = false
+
+[node name="PhysicsArrowsPackage" parent="." node_paths=PackedStringArray("body_to_observe") instance=ExtResource("3_xjlbn")]
+body_to_observe = NodePath("..")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vg1ac")
