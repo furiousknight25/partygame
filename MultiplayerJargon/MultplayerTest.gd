@@ -10,9 +10,10 @@ var choice = {0:'Chris', 1:'Jesse', 2:'Aria', 3:'Travis'}
 var players_loaded = 0
 
 var ip 
-@onready var text_type = $ui/Menu/Main/Control/TextEdit
+
 func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
+	#upnp_setup()
 
 func _on_host_pressed(): #64.8.134.2
 	var peer = ENetMultiplayerPeer.new()
@@ -24,6 +25,7 @@ func _on_host_pressed(): #64.8.134.2
 	send_player_info('host', multiplayer.get_unique_id())
 	
 func _on_join_pressed():
+	var text_type = $ui/Menu/Main/Control/TextEdit
 	var peer = ENetMultiplayerPeer.new()
 	ip = text_type.text
 	peer.create_client(ip, PORT) #may have to switch to ip of the host
@@ -66,18 +68,18 @@ func change_level(scene: PackedScene):
 	level.add_child(scene.instantiate())
 #endregion
 
-func upnp_setup():
-	var upnp = UPNP.new()
-	
-	var discover_result = upnp.discover()
-	assert(discover_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Discover Failed! Error %s" % discover_result)
-
-	assert(upnp.get_gateway() and upnp.get_gateway().is_valid_gateway(), \
-		"UPNP Invalid Gateway!")
-
-	var map_result = upnp.add_port_mapping(PORT)
-	assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
-		"UPNP Port Mapping Failed! Error %s" % map_result)
-	
-	print("Success! Join Address: %s" % upnp.query_external_address())
+#func upnp_setup():
+	#var upnp = UPNP.new()
+	#
+	#var discover_result = upnp.discover()
+	#assert(discover_re sult == UPNP.UPNP_RESULT_SUCCESS, \
+		#"UPNP Discover Failed! Error %s" % discover_result)
+#
+	#assert(upnp.get_gateway() and upnp.get_gateway().is_valid_gateway(), \
+		#"UPNP Invalid Gateway!")
+#
+	#var map_result = upnp.add_port_mapping(PORT)
+	#assert(map_result == UPNP.UPNP_RESULT_SUCCESS, \
+		#"UPNP Port Mapping Failed! Error %s" % map_result)
+	#
+	#print("Success! Join Address: %s" % upnp.query_external_address())
