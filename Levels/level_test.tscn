@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://h7ejc17c4yq6"]
+[gd_scene load_steps=7 format=3 uid="uid://h7ejc17c4yq6"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_5o0k3"]
 [ext_resource type="Texture2D" uid="uid://bnawcjyuuebtn" path="res://Randomjunk/godot.svg" id="1_r1txc"]
 [ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_xvac1"]
 [ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_uehue"]
+[ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_n2tpp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5v7ue"]
 size = Vector2(636, 27)
@@ -12,8 +13,11 @@ size = Vector2(636, 27)
 script = ExtResource("1_5o0k3")
 aria_scene = ExtResource("2_xvac1")
 jesse_scene = ExtResource("3_uehue")
+travis_scene = ExtResource("5_n2tpp")
+chris_scene = ExtResource("5_n2tpp")
 
 [node name="SpawnPoints" type="Node2D" parent="."]
+position = Vector2(103, 25)
 
 [node name="0" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(814, 159)
@@ -29,235 +33,237 @@ position = Vector2(285, 132)
 
 [node name="Players" type="Node2D" parent="."]
 
-[node name="testfloor" type="StaticBody2D" parent="."]
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Players/Aria/Aria.tscn", "res://Players/Jesse/playerjesse.tscn")
+spawn_path = NodePath("../SpawnPoints")
+spawn_limit = 4
+
+[node name="level" type="Node" parent="."]
+
+[node name="testfloor" type="StaticBody2D" parent="level"]
 position = Vector2(552, 700)
 scale = Vector2(2.32, 1)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor"]
 position = Vector2(20, -0.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor2" type="StaticBody2D" parent="."]
-position = Vector2(586, -39)
+[node name="testfloor2" type="StaticBody2D" parent="level"]
+position = Vector2(608, -21)
 scale = Vector2(2.8, 2.8)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor2"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor2"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor2"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor5" type="StaticBody2D" parent="."]
+[node name="testfloor5" type="StaticBody2D" parent="level"]
 position = Vector2(-43, 614)
 scale = Vector2(0.234562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor5"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor5"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor5"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor6" type="StaticBody2D" parent="."]
+[node name="testfloor6" type="StaticBody2D" parent="level"]
 position = Vector2(164, 539)
 scale = Vector2(0.234562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor6"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor6"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor6"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor7" type="StaticBody2D" parent="."]
+[node name="testfloor7" type="StaticBody2D" parent="level"]
 position = Vector2(374, 484)
 scale = Vector2(0.234562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor7"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor7"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor7"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor8" type="StaticBody2D" parent="."]
+[node name="testfloor8" type="StaticBody2D" parent="level"]
 position = Vector2(638, 484)
 scale = Vector2(0.234562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor8"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor8"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor8"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor9" type="StaticBody2D" parent="."]
+[node name="testfloor9" type="StaticBody2D" parent="level"]
 position = Vector2(904, 476)
 scale = Vector2(0.234562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor9"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor9"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor9"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor10" type="StaticBody2D" parent="."]
+[node name="testfloor10" type="StaticBody2D" parent="level"]
 position = Vector2(1086, 556)
 scale = Vector2(0.234562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor10"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor10"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor10"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor11" type="StaticBody2D" parent="."]
+[node name="testfloor11" type="StaticBody2D" parent="level"]
 position = Vector2(1261, 594)
 scale = Vector2(0.234562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor11"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor11"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor11"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor11"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor12" type="StaticBody2D" parent="."]
+[node name="testfloor12" type="StaticBody2D" parent="level"]
 position = Vector2(1134, 435)
 scale = Vector2(0.234562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor12"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor12"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor12"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor12"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor13" type="StaticBody2D" parent="."]
+[node name="testfloor13" type="StaticBody2D" parent="level"]
 position = Vector2(1266, 354)
 scale = Vector2(0.234562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor13"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor13"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor13"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor13"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor14" type="StaticBody2D" parent="."]
+[node name="testfloor14" type="StaticBody2D" parent="level"]
 position = Vector2(958, 268)
 scale = Vector2(0.754562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor14"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor14"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor14"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor14"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor15" type="StaticBody2D" parent="."]
+[node name="testfloor15" type="StaticBody2D" parent="level"]
 position = Vector2(-197, 411)
 rotation = 0.314435
 scale = Vector2(0.754562, 1.54572)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor15"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor15"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor15"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor15"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor4" type="StaticBody2D" parent="."]
+[node name="testfloor4" type="StaticBody2D" parent="level"]
 position = Vector2(1274, 314)
 rotation = 1.5708
 scale = Vector2(1.19345, 1.0634)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor4"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor4"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor4"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
-[node name="testfloor3" type="StaticBody2D" parent="."]
+[node name="testfloor3" type="StaticBody2D" parent="level"]
 position = Vector2(-106, 232)
 rotation = 1.5708
 scale = Vector2(1.45731, 1.04411)
 collision_layer = 2
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="testfloor3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level/testfloor3"]
 position = Vector2(20, 1.5)
 shape = SubResource("RectangleShape2D_5v7ue")
 
-[node name="Sprite2D" type="Sprite2D" parent="testfloor3"]
+[node name="Sprite2D" type="Sprite2D" parent="level/testfloor3"]
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Players/Aria/Aria.tscn", "res://Players/Jesse/playerjesse.tscn")
-spawn_path = NodePath("../SpawnPoints")
-spawn_limit = 4

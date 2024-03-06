@@ -49,8 +49,7 @@ func _on_timer_timeout():
 
 func shoot():
 	var b = bullet.instantiate()
-	b.name = str(multiplayer.get_unique_id())
-	$Area2D.add_child(b)
+	$Area2D.add_child(b, true)
 	#b.add_to_group("bullets")
 	b.global_position = $Area2D.global_position
 		

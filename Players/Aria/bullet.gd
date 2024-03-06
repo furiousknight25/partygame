@@ -7,7 +7,7 @@ var bullet_speed = 650
 var mouse_position
 
 func _enter_tree():
-	set_multiplayer_authority(name.to_int())
+	set_multiplayer_authority(get_parent().get_parent().get_parent().name.to_int())
 
 func _ready():
 	var timer = $Timer

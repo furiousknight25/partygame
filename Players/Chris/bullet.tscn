@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw8fnuye33ot8"]
+
+[ext_resource type="Script" path="res://Players/Chris/bullet.gd" id="1_mfext"]
+[ext_resource type="Texture2D" uid="uid://hv18ng4p4lax" path="res://Players/Chris/sr236f51b5b7baws3.webp" id="2_hbd4r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_caids"]
+size = Vector2(8, 4)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_6a8wj"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="bullet" type="CharacterBody2D"]
+top_level = true
+collision_mask = 3
+script = ExtResource("1_mfext")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_caids")
+
+[node name="biden blast" type="Sprite2D" parent="."]
+position = Vector2(-5, 0.250002)
+scale = Vector2(0.0378289, 0.0419408)
+texture = ExtResource("2_hbd4r")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_6a8wj")

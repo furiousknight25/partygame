@@ -15,19 +15,24 @@ func _ready():
 	for i in Director.players:
 		print(Director.players)
 		#return
-		var choice = Director.players[i]['choice']
-		#var choice = 2
+		var choice
+		#if Director.players[i]['choice']: #OHHOHHHH, error exists because 0 is false, why dindt 4 work
+		choice = Director.players[i]['choice']
+		#else:
+			#choice = 2
 		var current_player
 		match choice:
 			0:
-				print('chris')
+				current_player = chris_scene.instantiate()
+				print('christ')
 			1:
 				current_player = jesse_scene.instantiate()
 			2:
 				current_player = aria_scene.instantiate()
 			3:
-				print('Travis')
+				current_player = travis_scene.instantiate()
 				
+		
 		current_player.name = str(Director.players[i].id)
 		add_child(current_player)
 		for spawn in spawnpoints:
