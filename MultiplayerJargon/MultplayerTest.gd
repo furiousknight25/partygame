@@ -24,7 +24,7 @@ func _on_host_pressed(): #64.8.134.2
 	_add_player(multiplayer.get_unique_id())
 	send_player_info('host', multiplayer.get_unique_id())
 
-
+#just added some text
 func _on_join_pressed():
 	var text_type = $ui/Menu/Main/Control/TextEdit
 	var peer = ENetMultiplayerPeer.new()
