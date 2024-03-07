@@ -131,6 +131,15 @@ offset_bottom = 220.344
 scale = Vector2(6.34402, 2.9015)
 text = "Host"
 
+[node name="Host2" type="Button" parent="Main/Control"]
+layout_mode = 0
+offset_left = 54.9676
+offset_top = 32.5848
+offset_right = 146.968
+offset_bottom = 63.5848
+scale = Vector2(6.34402, 2.9015)
+text = "Host ONLY"
+
 [node name="Join" type="Button" parent="Main/Control"]
 layout_mode = 0
 offset_left = 362.379

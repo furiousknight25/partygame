@@ -26,14 +26,12 @@ func _process(delta):
 		STATES.CHARACTER:
 			character(delta)
 
-
 func menu(delta):
 #region blinking
 	$Start/Button.modulate.a = 0 if Engine.get_frames_drawn() % 40 >= 20 else 1.0 
 	#$Main/Control.position.y = (sin(delta * Engine.get_frames_drawn()) * .1) + old_y
 	#@onready var old_y = $Main/Control.position.y
 #endregion
-	
 func character(delta):
 	pass
 
