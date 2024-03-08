@@ -11,7 +11,7 @@ var ip
 
 func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
-	upnp_setup()
+	#upnp_setup()
 
 #192.168.1.24
 #192.168.74.193 hotspot
@@ -19,17 +19,18 @@ func _on_host_pressed(): #64.8.134.2
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(PORT)
 	multiplayer.multiplayer_peer = peer
-	
+
 	multiplayer.peer_connected.connect(_add_player) #right track
 	_add_player(multiplayer.get_unique_id())
 	send_player_info('host', multiplayer.get_unique_id())
 
-#just added some text
 func _on_join_pressed():
+	print('attempted')
 	var text_type = $ui/Menu/Main/Control/TextEdit
 	var peer = ENetMultiplayerPeer.new()
 	ip = text_type.text
-	peer.create_client("66.242.81.85", PORT) #may have to switch to ip of the host
+	ip = 'localhost'
+	peer.create_client(ip, PORT) #may have to switch to ip of the host
 	multiplayer.multiplayer_peer = peer
 	
 func _add_player(id = 1): #starts lobby code
@@ -85,12 +86,3 @@ func upnp_setup(): #internet connection
 	
 	print("Success! Join Address: %s" % upnp.query_external_address())
 
-
-func _on_host_2_pressed():
-	var peer = ENetMultiplayerPeer.new()
-	peer.create_server(PORT)
-	multiplayer.multiplayer_peer = peer
-	
-	multiplayer.peer_connected.connect(_add_player) #right track
-	_add_player(multiplayer.get_unique_id())
-	send_player_info('host', multiplayer.get_unique_id())

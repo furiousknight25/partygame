@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://h7ejc17c4yq6"]
+[gd_scene load_steps=8 format=3 uid="uid://h7ejc17c4yq6"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_5o0k3"]
 [ext_resource type="Texture2D" uid="uid://bnawcjyuuebtn" path="res://Randomjunk/godot.svg" id="1_r1txc"]
 [ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_xvac1"]
 [ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_uehue"]
 [ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_n2tpp"]
+[ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="6_a2qrr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5v7ue"]
 size = Vector2(636, 27)
@@ -13,7 +14,7 @@ size = Vector2(636, 27)
 script = ExtResource("1_5o0k3")
 aria_scene = ExtResource("2_xvac1")
 jesse_scene = ExtResource("3_uehue")
-travis_scene = ExtResource("5_n2tpp")
+travis_scene = ExtResource("6_a2qrr")
 chris_scene = ExtResource("5_n2tpp")
 
 [node name="SpawnPoints" type="Node2D" parent="."]

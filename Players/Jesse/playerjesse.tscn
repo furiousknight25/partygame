@@ -24,6 +24,9 @@ properties/3/replication_mode = 1
 properties/4/path = NodePath("Sprite2D:rotation")
 properties/4/spawn = true
 properties/4/replication_mode = 1
+properties/5/path = NodePath("HealthText:text")
+properties/5/spawn = true
+properties/5/replication_mode = 1
 
 [node name="playerjes" type="CharacterBody2D"]
 collision_mask = 11
@@ -58,6 +61,18 @@ offset_right = 250.0
 offset_bottom = -49.0
 scale = Vector2(0.914467, 0.914467)
 text = "Accel: "
+
+[node name="HealthText" type="RichTextLabel" parent="."]
+modulate = Color(1, 0.733333, 0.94902, 1)
+texture_filter = 3
+offset_left = -15.0
+offset_top = -37.0
+offset_right = 14.0
+offset_bottom = -14.0
+pivot_offset = Vector2(15, 12)
+bbcode_enabled = true
+text = "100"
+scroll_active = false
 
 [node name="MouseArea" type="Area2D" parent="."]
 top_level = true

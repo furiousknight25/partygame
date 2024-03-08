@@ -52,6 +52,4 @@ text = "text"
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_geurj")
 
-[node name="Node2D" type="Node2D" parent="MultiplayerSynchronizer"]
-
 [connection signal="item_selected" from="PanelContainer/Select/OptionButton" to="." method="_on_option_button_item_selected"]

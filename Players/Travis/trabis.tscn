@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://canqomfe3wsj0"]
+
+[ext_resource type="Script" path="res://Players/Travis/trabis.gd" id="1_0a8f0"]
+[ext_resource type="Texture2D" uid="uid://2238kevtrmp6" path="res://Players/Travis/pixil-frame-0 (1).png" id="2_syvtv"]
+[ext_resource type="Texture2D" uid="uid://iv8akcip6y3g" path="res://Players/Travis/shape_star_20.png" id="3_uw8kn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ud6a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwimv"]
+size = Vector2(11, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q50yx"]
+custom_solver_bias = 0.299
+size = Vector2(128, 47)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_f7yqv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Magnet:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Magnet/CPUParticles2D:emitting")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("HealthText:text")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+
+[node name="Character" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_0a8f0")
+
+[node name="Character hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3ud6a")
+
+[node name="Magnet" type="Area2D" parent="."]
+
+[node name="Magnet Body" type="CollisionShape2D" parent="Magnet"]
+position = Vector2(8.5, -1)
+shape = SubResource("RectangleShape2D_gwimv")
+
+[node name="Magnet Sprite" type="Sprite2D" parent="Magnet/Magnet Body"]
+texture_filter = 1
+position = Vector2(2.5, 0.5)
+texture = ExtResource("2_syvtv")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Magnet"]
+texture_filter = 1
+position = Vector2(13, 0)
+emitting = false
+amount = 100
+lifetime = 0.2
+speed_scale = 0.65
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+fixed_fps = 144
+texture = ExtResource("3_uw8kn")
+direction = Vector2(1.535, 0)
+initial_velocity_min = 619.91
+initial_velocity_max = 751.23
+angular_velocity_min = -142.23
+angular_velocity_max = 585.04
+linear_accel_min = -466.65
+linear_accel_max = 29.29
+radial_accel_min = -7.07
+radial_accel_max = -7.07
+tangential_accel_min = -26.0
+tangential_accel_max = -26.0
+angle_min = 58.2
+angle_max = 58.2
+scale_amount_min = 0.01
+scale_amount_max = 0.01
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null
+color = Color(0.776471, 0.792157, 0.784314, 1)
+hue_variation_min = -0.01
+hue_variation_max = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet"]
+position = Vector2(65, -1)
+shape = SubResource("RectangleShape2D_q50yx")
+one_way_collision_margin = 0.0
+
+[node name="HealthText" type="RichTextLabel" parent="."]
+modulate = Color(1, 0.733333, 0.94902, 1)
+texture_filter = 3
+offset_left = -15.0
+offset_top = -37.0
+offset_right = 14.0
+offset_bottom = -14.0
+pivot_offset = Vector2(15, 12)
+bbcode_enabled = true
+text = "100"
+scroll_active = false
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_f7yqv")

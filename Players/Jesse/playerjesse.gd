@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var kick_timer = $KickTimer
 @onready var mouse_area = $MouseArea
 @onready var TeleportCooldown = $TeleportCooldown
+@onready var text = $HealthText
+
 var gravity = 10
 var strength = 15
 var states = ['hold', 'thrown']
@@ -26,6 +28,7 @@ func _ready():
 func _process(delta):
 	#print(kick_timer.time_left)
 	if not is_multiplayer_authority(): return
+	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
 	var mouse_position = get_global_mouse_position()
 	$state.text = current_state
 	match current_state:
@@ -148,4 +151,5 @@ func hurt(direction, damage_percent):
 	
 	health -= damage_percent
 	if health <= 0:
-		queue_free()
+		print('dead')
+		#queue_free()
