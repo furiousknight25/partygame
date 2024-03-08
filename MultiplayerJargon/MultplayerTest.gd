@@ -11,7 +11,7 @@ var ip
 
 func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
-	#upnp_setup()
+	upnp_setup()
 
 #192.168.1.24
 #192.168.74.193 hotspot
@@ -29,7 +29,7 @@ func _on_join_pressed():
 	var text_type = $ui/Menu/Main/Control/TextEdit
 	var peer = ENetMultiplayerPeer.new()
 	ip = text_type.text
-	ip = 'localhost'
+	#ip = 'localhost'
 	peer.create_client(ip, PORT) #may have to switch to ip of the host
 	multiplayer.multiplayer_peer = peer
 	
