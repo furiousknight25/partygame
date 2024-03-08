@@ -268,3 +268,6 @@ shape = SubResource("RectangleShape2D_5v7ue")
 position = Vector2(19, 2)
 scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
+
+[node name="la criatura" parent="." instance=ExtResource("5_n2tpp")]
+position = Vector2(405, 315)

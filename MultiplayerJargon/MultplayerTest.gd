@@ -25,7 +25,7 @@ func _on_host_pressed(): #64.8.134.2
 	send_player_info('host', multiplayer.get_unique_id())
 
 func _on_join_pressed():
-	print('attempted')
+	#print('attempted')
 	var text_type = $ui/Menu/Main/Control/TextEdit
 	var peer = ENetMultiplayerPeer.new()
 	ip = text_type.text
