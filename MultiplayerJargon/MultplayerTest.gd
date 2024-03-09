@@ -11,7 +11,7 @@ var ip
 
 func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
-	upnp_setup()
+	#upnp_setup()
 
 #192.168.1.24
 #192.168.74.193 hotspot

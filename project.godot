@@ -18,8 +18,9 @@ config/icon="res://icon.jpg"
 [autoload]
 
 Global="*res://tools/global.gd"
-MultiplayerTest="res://MultiplayerJargon/MultplayerTest.gd"
+MultiplayerTest="*res://MultiplayerJargon/MultplayerTest.gd"
 Director="*res://Levels/Director.gd"
+Camera="*res://tools/camera.gd"
 
 [display]
 

@@ -23,7 +23,7 @@ func get_input():
 		velocity.y = clamp(velocity.y, -max_speed, max_speed)
 
 func _physics_process(delta):
-	if not is_multiplayer_authority(): return
+	#if not is_multiplayer_authority(): return
 	get_input()
 	rotation += rotation_direction * rotation_speed * delta
 	velocity = lerp(velocity, Vector2(0,0), 0.02)
@@ -35,6 +35,7 @@ func _physics_process(delta):
 func blast():
 	if Input.is_action_just_pressed('z'):
 		var b = bullet.instantiate()
+		Camera.add_trauma(.3)
 		#b.name = str(multiplayer.get_unique_id())
 		$Spawn_marker.add_child(b, true)
 		#b.add_to_group("bullets")

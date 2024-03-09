@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://h7ejc17c4yq6"]
+[gd_scene load_steps=9 format=3 uid="uid://h7ejc17c4yq6"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_5o0k3"]
 [ext_resource type="Texture2D" uid="uid://bnawcjyuuebtn" path="res://Randomjunk/godot.svg" id="1_r1txc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_uehue"]
 [ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_n2tpp"]
 [ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="6_a2qrr"]
+[ext_resource type="Script" path="res://tools/camera.gd" id="7_rteg3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5v7ue"]
 size = Vector2(636, 27)
@@ -271,3 +272,9 @@ texture = ExtResource("1_r1txc")
 
 [node name="la criatura" parent="." instance=ExtResource("5_n2tpp")]
 position = Vector2(405, 315)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+position = Vector2(641, 360)
+ignore_rotation = false
+script = ExtResource("7_rteg3")
