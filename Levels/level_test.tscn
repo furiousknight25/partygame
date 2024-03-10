@@ -34,6 +34,7 @@ position = Vector2(491, 55)
 position = Vector2(285, 132)
 
 [node name="Players" type="Node2D" parent="."]
+position = Vector2(226, 109)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Players/Aria/Aria.tscn", "res://Players/Jesse/playerjesse.tscn")
@@ -255,7 +256,7 @@ scale = Vector2(4.98438, 0.203125)
 texture = ExtResource("1_r1txc")
 
 [node name="testfloor3" type="StaticBody2D" parent="level"]
-position = Vector2(-106, 232)
+position = Vector2(-4, 246)
 rotation = 1.5708
 scale = Vector2(1.45731, 1.04411)
 collision_layer = 2

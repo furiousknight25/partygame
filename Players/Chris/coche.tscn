@@ -47,7 +47,7 @@ texture = ExtResource("2_ghgna")
 autostart = true
 
 [node name="Spawn_marker" type="Marker2D" parent="."]
-position = Vector2(53, 0)
+position = Vector2(32, 1)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Players/Chris/bullet.tscn")

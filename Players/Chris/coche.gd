@@ -34,8 +34,9 @@ func _physics_process(delta):
 
 func blast():
 	if Input.is_action_just_pressed('z'):
+		Camera.add_trauma(.3, transform.x)
+		velocity -= transform.x * 20
 		var b = bullet.instantiate()
-		Camera.add_trauma(.3)
 		#b.name = str(multiplayer.get_unique_id())
 		$Spawn_marker.add_child(b, true)
 		#b.add_to_group("bullets")
