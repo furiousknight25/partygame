@@ -86,4 +86,8 @@ func hurt(direction, damage_percent):
 	sprite.rotate(sign((get_global_mouse_position().x-global_position.x)) * .8 * push_direction)
 	
 	health -= damage_percent
-	
+
+@rpc("any_peer")
+func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
+	global_position = pos
+	velocity = vel

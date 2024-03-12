@@ -15,11 +15,9 @@ func _ready():
 	for i in Director.players:
 		print(Director.players)
 		#return
-		var choice
+		var choice = 2
 		#if Director.players[i]['choice']: #OHHOHHHH, error exists because 0 is false, why dindt 4 work
 		choice = Director.players[i]['choice']
-		#else:
-			#choice = 2
 		var current_player
 		match choice:
 			0:

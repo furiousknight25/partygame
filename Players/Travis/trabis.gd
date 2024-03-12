@@ -54,3 +54,8 @@ func _physics_process(delta):
 func hurt(direction, damage_percent):
 	velocity += direction
 	health -= damage_percent
+
+@rpc("any_peer")
+func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
+	global_position = pos
+	velocity = vel

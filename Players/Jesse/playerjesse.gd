@@ -44,7 +44,6 @@ func _process(delta):
 	velocity.x += Input.get_axis('left','right') * 50
 	#print(current_state, ' ', teleported)
 	if Input.is_action_just_pressed('RightM'):
-		
 		if current_state == "thrown" and teleported == false:
 				#rock.set_linear_velocity(Vector2(0,0))
 			var player_old_position = global_position
@@ -66,7 +65,6 @@ func _process(delta):
 		$Sprite2D.flip_h = get_local_mouse_position().x > 180
 		flipped = true
 	if get_last_slide_collision():
-		
 		velocity += get_last_slide_collision().get_normal() * (bounce * get_real_velocity().length())
 		velocity = lerp(velocity, Vector2.ZERO, delta * 3)
 		#Thrower_sprite.scale.x = velocity.length() * .003 + 1
@@ -118,6 +116,7 @@ func mouse_process_stuff(delta):
 	mouse_area.global_position = get_global_mouse_position()
 	if Input.is_action_just_pressed('LeftM') and TeleportCooldown.is_stopped() == true:
 		for i in mouse_area.get_overlapping_bodies():
+			if !i.has_method('set_stuff'): return
 			$CollisionShape2D.disabled = true
 			var enemy_old_position_LMB = i.global_position
 			var enemy_old_velocity_LMB = i.velocity
@@ -125,21 +124,18 @@ func mouse_process_stuff(delta):
 			var player_old_velocity_LMB = velocity
 			global_position = enemy_old_position_LMB + Vector2(0,0)
 			velocity = enemy_old_velocity_LMB
-			i.velocity = player_old_velocity_LMB
+			i.set_stuff.rpc(i.global_position, player_old_velocity_LMB)
 			if flipped == false:
-				i.global_position = player_old_position_LMB + Vector2(-i.scale.x/2 - 5, -i.scale.y/2 - 5)
+				i.set_stuff.rpc(player_old_position_LMB + Vector2(-i.scale.x/2 - 5, -i.scale.y/2 - 5), i.velocity)
 			else:
-				i.global_position = player_old_position_LMB + Vector2(i.scale.x/2 + 5, -i.scale.y/2 - 5)
+				i.set_stuff.rpc(player_old_position_LMB + Vector2(i.scale.x/2 - 5, -i.scale.y/2 - 5), i.velocity)
 			await get_tree().create_timer(.01).timeout
 			$CollisionShape2D.disabled = false
 			TeleportCooldown.start()
-func _on_collision_timer_timeout():
-		pass
 
 @rpc("any_peer")
 func hurt(direction, damage_percent):
 	#print(direction, " ", damage_percent)
-
 	velocity += direction
 	print('asd')
 	

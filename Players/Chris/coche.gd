@@ -23,7 +23,7 @@ func get_input():
 		velocity.y = clamp(velocity.y, -max_speed, max_speed)
 
 func _physics_process(delta):
-	#if not is_multiplayer_authority(): return
+	if not is_multiplayer_authority(): return
 	get_input()
 	rotation += rotation_direction * rotation_speed * delta
 	velocity = lerp(velocity, Vector2(0,0), 0.02)
@@ -48,3 +48,8 @@ func blast():
 func hurt(direction, damage_percent):
 	velocity += direction
 	health -= damage_percent
+
+@rpc("any_peer")
+func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
+	global_position = pos
+	velocity = vel
