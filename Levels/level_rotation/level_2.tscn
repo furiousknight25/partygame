@@ -34,6 +34,7 @@ position = Vector2(1142, 138)
 [node name="StaticBody2D" type="StaticBody2D" parent="Level"]
 position = Vector2(648, 695)
 scale = Vector2(69.3268, 0.908468)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
 shape = SubResource("RectangleShape2D_ldcgv")
@@ -41,6 +42,7 @@ shape = SubResource("RectangleShape2D_ldcgv")
 [node name="StaticBody2D2" type="StaticBody2D" parent="Level"]
 position = Vector2(641, 1.00006)
 scale = Vector2(69.3268, 0.908468)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D2"]
 shape = SubResource("RectangleShape2D_ldcgv")
@@ -49,6 +51,7 @@ shape = SubResource("RectangleShape2D_ldcgv")
 position = Vector2(24, 405)
 rotation = 1.5708
 scale = Vector2(69.3268, 0.908468)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D3"]
 shape = SubResource("RectangleShape2D_ldcgv")
@@ -57,6 +60,7 @@ shape = SubResource("RectangleShape2D_ldcgv")
 position = Vector2(1263, 436)
 rotation = 1.5708
 scale = Vector2(69.3268, 0.908468)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D4"]
 shape = SubResource("RectangleShape2D_ldcgv")

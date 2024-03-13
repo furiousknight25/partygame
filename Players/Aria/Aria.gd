@@ -1,4 +1,4 @@
-extends player
+extends CharacterBody2D
 
 @export var jump_strength : int
 @export var speed : int
@@ -62,8 +62,6 @@ func _process(delta):
 	text.modulate = text.modulate.lerp(Color('ffbbf2'), 5 * delta)
 	text.scale = lerp(text.scale, Vector2.ONE, 15 * delta)
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
-	if health <= 0:
-		health = 100
 
 
 @rpc("any_peer")
@@ -82,6 +80,7 @@ func hurt(direction, damage_percent):
 	health -= damage_percent
 	if health <= 0:
 		change_stocks(0)
+
 @rpc("any_peer")
 func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
 	global_position = pos
@@ -89,17 +88,11 @@ func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
 
 @rpc("any_peer")
 func change_stocks(stock):
-	Director.players[multiplayer.get_unique_id()]['stocks'] = stock
-	
+	Director.players[name.to_int()]['stocks'] = stock
 	if !multiplayer.is_server():
-		for i in Director.players:
-			if i != multiplayer.get_unique_id():
-				set_stocks.rpc_id(i, multiplayer.get_unique_id(), stock)
-	if multiplayer.is_server():
-		for i in Director.players:
-			if i != 1:
-				set_stocks.rpc_id(i, 1, stock)
-				
-@rpc("any_peer")
+		set_stocks.rpc_id(1, name.to_int(), stock)
+	
+@rpc("any_peer", "reliable")
 func set_stocks(id, stock):
+	#print(id)
 	Director.players[id]['stocks'] = stock

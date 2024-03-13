@@ -13,19 +13,19 @@ func _ready():
 	#upnp_setup()
 
 func  _process(delta):
-	if multiplayer.is_server():
-		if Input.is_action_just_pressed('ui_home'):
-			change_level.call_deferred(load("res://Levels/level_test.tscn"))
-		#check for stocks, if only one person has stocks then switch stage
-		#check if game started
-		var total_stocks = 0
-		for i in Director.players:
-			total_stocks += Director.players[i]['stocks']
-		#print(total_stocks)
-		if state == 'start':
-			pass
-			#if total_stocks <= 1:
-				#change_level(load("res://Levels/level_test.tscn"))
+	if not multiplayer.is_server(): return
+	if Input.is_action_just_pressed('ui_home'):
+		change_level(load("res://Levels/level_test.tscn"))
+	#check for stocks, if only one person has stocks then switch stage
+	#check if game started
+	var total_stocks = 0
+	for i in Director.players:
+		total_stocks += Director.players[i]['stocks']
+	#print(total_stocks)
+	if state == 'start':
+		#return
+		if total_stocks <= 1:
+			change_level(load("res://Levels/level_test.tscn"))
 func _on_port_forward_pressed():
 	upnp_setup()
 	$ui/Menu/Main/Control/TextEdit.text = var_to_str(ip) + ' I have your ip'
@@ -84,6 +84,7 @@ func start_game():
 		state = 'start'
 func change_level(scene: PackedScene):
 	# Remove old level if any.
+	if not multiplayer.is_server(): return
 	var level = $Level
 	if level:
 		for c in level.get_children():

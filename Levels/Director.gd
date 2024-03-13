@@ -6,6 +6,6 @@ var players = {}
 func _process(delta):
 	pass
 	if multiplayer.is_server():
-		print(players)
-		await 500
+		await get_tree().create_timer(2).timeout
+		#print(players)
 

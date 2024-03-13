@@ -11,16 +11,17 @@ func _process(delta):
 	if not is_multiplayer_authority(): return
 	if get_colliding_bodies() and player.current_state == 'thrown':
 		#print(get_colliding_bodies()[0].collision_layer)
+		print( get_colliding_bodies()[0].collision_layer)
 		if get_colliding_bodies()[0].has_method('hurt') and can_hit == true and player.current_state == 'thrown': #layer 8 for enemy
-			get_colliding_bodies()[0].hurt.rpc(linear_velocity/2 * 5 + Vector2(0,-10), 10)
+			get_colliding_bodies()[0].hurt.rpc(linear_velocity * 5 + Vector2(0,-20), 10)
 			can_hit = false
-			print('jude')
 			linear_velocity = (-linear_velocity + player.velocity) * .75
 			timer.start()
-		elif get_colliding_bodies()[0].collision_layer==2 and freeze == false:
+		elif get_colliding_bodies()[0].collision_layer==3 and freeze == false:
 			freeze = true
 			$CollisionShape2D.disabled = true
 			timer.start()
+			
 		#player.set_hold_process()
 		#print(get_colliding_bodies())
 func throw(strength):

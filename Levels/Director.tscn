@@ -21,12 +21,6 @@ spawn_path = NodePath("Menu/select/HBoxContainer")
 
 [node name="Menu" parent="Multplayer/ui" instance=ExtResource("5_pu61s")]
 
-[node name="Control" parent="Multplayer/ui/Menu/Main" index="0"]
-offset_left = -323.0
-offset_top = -395.0
-offset_right = -323.0
-offset_bottom = -395.0
-
 [node name="TextEdit" type="TextEdit" parent="Multplayer/ui/Menu/Main/Control" index="2"]
 layout_mode = 0
 offset_right = 306.0
@@ -43,6 +37,7 @@ scale = Vector2(4.26597, 1.95108)
 text = "PortForward(if you can)"
 
 [node name="Level" type="Node2D" parent="Multplayer"]
+unique_name_in_owner = true
 script = ExtResource("4_wtmqh")
 
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Join" to="Multplayer/ui/Menu" method="set_character" binds= ["join"]]
