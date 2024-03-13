@@ -27,8 +27,6 @@ func _on_option_button_item_selected(index):
 			if i != multiplayer.get_unique_id():
 				set_choice.rpc_id(i, index, multiplayer.get_unique_id())
 	if multiplayer.is_server():
-		#var new_list = Director.players
-		#new_list.erase(1)
 		for i in Director.players:
 			if i != 1:
 				set_choice.rpc_id(i, index, 1)

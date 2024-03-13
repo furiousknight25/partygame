@@ -20,14 +20,37 @@ var health = 100
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
+	change_stocks(1)
 
+@rpc("any_peer")
+func change_stocks(stock):
+	Director.players[multiplayer.get_unique_id()]['stocks'] = stock
+	
+	if !multiplayer.is_server():
+		for i in Director.players:
+			if i != multiplayer.get_unique_id():
+				set_stocks.rpc_id(i, multiplayer.get_unique_id(), stock)
+	if multiplayer.is_server():
+		for i in Director.players:
+			if i != 1:
+				set_stocks.rpc_id(i, 1, stock)
+				
+@rpc("any_peer")
+func set_stocks(id, stock):
+	Director.players[id]['stocks'] = stock
 	
 func _ready():
 	#Engine.set_time_scale(.1)
+	
 	set_hold_process()
 func _process(delta):
 	#print(kick_timer.time_left)
+
+	if health <= 0: return
 	if not is_multiplayer_authority(): return
+	
+	if Input.is_action_just_pressed('kill'):
+		change_stocks(0)
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
 	var mouse_position = get_global_mouse_position()
 	$state.text = current_state
@@ -45,7 +68,7 @@ func _process(delta):
 	#print(current_state, ' ', teleported)
 	if Input.is_action_just_pressed('RightM'):
 		if current_state == "thrown" and teleported == false:
-				#rock.set_linear_velocity(Vector2(0,0))
+			#rock.set_linear_velocity(Vector2(0,0))
 			var player_old_position = global_position
 			var rock_old_position = rock.global_position
 			var player_old_velocity = velocity
@@ -116,7 +139,7 @@ func mouse_process_stuff(delta):
 	mouse_area.global_position = get_global_mouse_position()
 	if Input.is_action_just_pressed('LeftM') and TeleportCooldown.is_stopped() == true:
 		for i in mouse_area.get_overlapping_bodies():
-			if !i.has_method('set_stuff'): return
+			if !i.has_method('set_stuff') or i == self: return
 			$CollisionShape2D.disabled = true
 			var enemy_old_position_LMB = i.global_position
 			var enemy_old_velocity_LMB = i.velocity
@@ -133,11 +156,11 @@ func mouse_process_stuff(delta):
 			$CollisionShape2D.disabled = false
 			TeleportCooldown.start()
 
+
 @rpc("any_peer")
 func hurt(direction, damage_percent):
 	#print(direction, " ", damage_percent)
 	velocity += direction
-	print('asd')
 	
 	var push_direction = 1
 	if is_on_floor():
@@ -147,5 +170,9 @@ func hurt(direction, damage_percent):
 	
 	health -= damage_percent
 	if health <= 0:
-		print('dead')
-		#queue_free()
+		change_stocks(0)
+
+@rpc("any_peer")
+func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
+	global_position = pos
+	velocity = vel

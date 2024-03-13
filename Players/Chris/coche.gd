@@ -14,6 +14,8 @@ var health := 100
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
+	change_stocks(1)
+	
 
 func get_input():
 	rotation_direction = Input.get_axis("left", "right")
@@ -48,8 +50,26 @@ func blast():
 func hurt(direction, damage_percent):
 	velocity += direction
 	health -= damage_percent
-
+	if health <= 0:
+		change_stocks(0)
 @rpc("any_peer")
 func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
 	global_position = pos
 	velocity = vel
+
+@rpc("any_peer")
+func change_stocks(stock):
+	Director.players[multiplayer.get_unique_id()]['stocks'] = stock
+	
+	if !multiplayer.is_server():
+		for i in Director.players:
+			if i != multiplayer.get_unique_id():
+				set_stocks.rpc_id(i, multiplayer.get_unique_id(), stock)
+	if multiplayer.is_server():
+		for i in Director.players:
+			if i != 1:
+				set_stocks.rpc_id(i, 1, stock)
+				
+@rpc("any_peer")
+func set_stocks(id, stock):
+	Director.players[id]['stocks'] = stock

@@ -141,6 +141,16 @@ scale = Vector2(6.82762, 3.12268)
 text = "Join
 "
 
+[node name="PortForward" type="Button" parent="Main/Control"]
+layout_mode = 0
+offset_left = 362.379
+offset_top = 189.344
+offset_right = 408.379
+offset_bottom = 220.344
+scale = Vector2(6.82762, 3.12268)
+text = "PortForward(if you can)
+"
+
 [node name="Start" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15

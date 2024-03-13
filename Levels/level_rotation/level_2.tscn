@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://6nwhdxncshpc"]
+
+[ext_resource type="Script" path="res://Levels/level.gd" id="1_5q3s7"]
+[ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_uqi14"]
+[ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_bbcjt"]
+[ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="4_tqfs1"]
+[ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_5jfpe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldcgv"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_5q3s7")
+aria_scene = ExtResource("2_uqi14")
+jesse_scene = ExtResource("3_bbcjt")
+travis_scene = ExtResource("4_tqfs1")
+chris_scene = ExtResource("5_5jfpe")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="0" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(170, 72)
+
+[node name="1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(602, 93)
+
+[node name="2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(877, 85)
+
+[node name="3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(1142, 138)
+
+[node name="Level" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Level"]
+position = Vector2(648, 695)
+scale = Vector2(69.3268, 0.908468)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ldcgv")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Level"]
+position = Vector2(641, 1.00006)
+scale = Vector2(69.3268, 0.908468)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_ldcgv")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Level"]
+position = Vector2(24, 405)
+rotation = 1.5708
+scale = Vector2(69.3268, 0.908468)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D3"]
+shape = SubResource("RectangleShape2D_ldcgv")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Level"]
+position = Vector2(1263, 436)
+rotation = 1.5708
+scale = Vector2(69.3268, 0.908468)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D4"]
+shape = SubResource("RectangleShape2D_ldcgv")
+
+[node name="Players" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+spawn_limit = 4

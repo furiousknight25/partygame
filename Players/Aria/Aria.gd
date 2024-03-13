@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends player
 
 @export var jump_strength : int
 @export var speed : int
@@ -13,21 +13,15 @@ var mouse_position
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
+	change_stocks(1)
 	
 func _process(delta):
 #region debug keybinds
 	if not is_multiplayer_authority(): return
-	if Input.is_action_just_pressed("exit"):
-		get_tree().quit()
-	if Input.is_action_just_pressed("fullscreen"):
-		if DisplayServer.window_get_mode() != 3:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		else:
-			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-	if Input.is_action_just_pressed('restart'):
-		get_tree().reload_current_scene()
-#endregion
 	
+#endregion
+	if Input.is_action_just_pressed('kill'):
+		queue_free()
 	mouse_position = get_global_mouse_position()
 	var direction = Input.get_axis('left', "right")
 	
@@ -86,8 +80,26 @@ func hurt(direction, damage_percent):
 	sprite.rotate(sign((get_global_mouse_position().x-global_position.x)) * .8 * push_direction)
 	
 	health -= damage_percent
-
+	if health <= 0:
+		change_stocks(0)
 @rpc("any_peer")
 func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
 	global_position = pos
 	velocity = vel
+
+@rpc("any_peer")
+func change_stocks(stock):
+	Director.players[multiplayer.get_unique_id()]['stocks'] = stock
+	
+	if !multiplayer.is_server():
+		for i in Director.players:
+			if i != multiplayer.get_unique_id():
+				set_stocks.rpc_id(i, multiplayer.get_unique_id(), stock)
+	if multiplayer.is_server():
+		for i in Director.players:
+			if i != 1:
+				set_stocks.rpc_id(i, 1, stock)
+				
+@rpc("any_peer")
+func set_stocks(id, stock):
+	Director.players[id]['stocks'] = stock
