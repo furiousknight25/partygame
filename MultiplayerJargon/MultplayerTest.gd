@@ -15,7 +15,7 @@ func _ready():
 func  _process(delta):
 	if not multiplayer.is_server(): return
 	if Input.is_action_just_pressed('ui_home'):
-		change_level(load("res://Levels/level_test.tscn"))
+		change_level.call_deferred(load("res://Levels/level_test.tscn"))
 	#check for stocks, if only one person has stocks then switch stage
 	#check if game started
 	var total_stocks = 0

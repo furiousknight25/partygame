@@ -66,29 +66,28 @@ func _process(delta):
 		elif current_state == "hold":
 			set_throw_process()
 	if get_global_mouse_position() > self.global_position:
-		$Sprite2D.flip_h = get_local_mouse_position().x > 0
+		#$Sprite2D.flip_h = get_local_mouse_position().x < 0
+		$Sprite2D.scale.x = 1.5
 		flipped = false
 	else:
-		$Sprite2D.flip_h = get_local_mouse_position().x > 180
+		#$Sprite2D.flip_h = get_local_mouse_position().x < 180
+		$Sprite2D.scale.x = -1.5
 		flipped = true
 	if get_last_slide_collision():
 		velocity += get_last_slide_collision().get_normal() * (bounce * get_real_velocity().length())
 		velocity = lerp(velocity, Vector2.ZERO, delta * 3)
-		#Thrower_sprite.scale.x = velocity.length() * .003 + 1
-		#Thrower_sprite.scale.y = velocity.length() * -.003 + 1
-		#if get_last_slide_collision().get_collider().collision_layer == 8 and velocity.length() >= 500 and kick_timer.time_left == 0:
-			#get_last_slide_collision().get_collider().hurt(velocity * .5,1)
-			#
-			#kick_timer.stop()
-			#kick_timer.start()
+		if get_last_slide_collision().get_collider().collision_layer == 1 and velocity.length() >= 500 and kick_timer.time_left == 0:
+			get_last_slide_collision().get_collider().hurt.rpc(velocity * .5,1)
+			kick_timer.stop()
+			kick_timer.start()
 	if !get_floor_normal():
 		var forward_rotation = atan2(get_real_velocity().y, get_real_velocity().x) - PI/2
 	if get_real_velocity().length() >= stand_threshold:
 		Thrower.rotation = lerp_angle(Thrower.rotation, atan2(get_real_velocity().y, get_real_velocity().x) - PI/2, 25*delta)
 	else:
 		Thrower.rotation = lerp_angle(Thrower.rotation, 0, 12*delta)
-	Thrower_sprite.scale.x = lerp(Thrower_sprite.scale.x, 1.0, delta * 8)
-	Thrower_sprite.scale.y = lerp(Thrower_sprite.scale.y, 1.0, delta * 2)
+	#Thrower_sprite.scale.x = lerp(Thrower_sprite.scale.x, 1.5, delta * 8)
+	Thrower_sprite.scale.y = lerp(Thrower_sprite.scale.y, 1.5, delta * 2)
 	Thrower.rotation = lerp_angle(Thrower.rotation, 0.0, 8 * delta)
 	#print(kick_timer.time_left)
 	mouse_process_stuff(delta)
@@ -106,9 +105,9 @@ func set_hold_process():
 	
 func hold_process():
 	if flipped == false:
-		rock.global_position = global_position + Vector2(20,0)
+		rock.global_position = $Sprite2D/RockInitial.global_position
 	elif flipped == true:
-		rock.global_position = global_position + Vector2(-20,0)
+		rock.global_position = $Sprite2D/RockInitial.global_position
 		
 func set_throw_process():
 	rock.throw(strength)
@@ -130,13 +129,13 @@ func mouse_process_stuff(delta):
 			var enemy_old_velocity_LMB = i.velocity
 			var player_old_position_LMB = global_position
 			var player_old_velocity_LMB = velocity
-			global_position = enemy_old_position_LMB + Vector2(0,0)
+			global_position = enemy_old_position_LMB + Vector2(20,0)
 			velocity = enemy_old_velocity_LMB
 			i.set_stuff.rpc(i.global_position, player_old_velocity_LMB)
 			if flipped == false:
-				i.set_stuff.rpc(player_old_position_LMB + Vector2(-i.scale.x/2 - 5, -i.scale.y/2 - 5), i.velocity)
+				i.set_stuff.rpc(player_old_position_LMB + Vector2(-i.scale.x/2 - 5, -i.scale.y/2 - 32), i.velocity)
 			else:
-				i.set_stuff.rpc(player_old_position_LMB + Vector2(i.scale.x/2 - 5, -i.scale.y/2 - 5), i.velocity)
+				i.set_stuff.rpc(player_old_position_LMB + Vector2(i.scale.x/2 - 5, -i.scale.y/2 - 32), i.velocity)
 			await get_tree().create_timer(.01).timeout
 			$CollisionShape2D.disabled = false
 			TeleportCooldown.start()

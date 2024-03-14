@@ -25,13 +25,15 @@ func _process(delta):
 		#player.set_hold_process()
 		#print(get_colliding_bodies())
 func throw(strength):
+	global_position = $"../Sprite2D/RockFinal".global_position
 	freeze = false
 	#global_position = player.global_position + Vector2(20,0)
 	#print(global_position, player.global_position)
 	apply_central_impulse(Vector2(get_global_mouse_position().x - global_position.x, get_global_mouse_position().y - global_position.y) * strength)
 
 func _on_timer_timeout():
-	self.to_global(player.global_position + Vector2(5,0))
+	self.to_global($"../Sprite2D/RockInitial".position)
+	global_position = $"../Sprite2D/RockInitial".global_position
 	player.set_hold_process()
 	#print('timeout')
 	timer.stop()

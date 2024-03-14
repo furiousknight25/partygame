@@ -2,11 +2,13 @@
 
 [ext_resource type="Script" path="res://Players/Jesse/playerjesse.gd" id="1_w2pg1"]
 [ext_resource type="PackedScene" uid="uid://bmjkc1l0qdpx" path="res://Players/Jesse/rock.tscn" id="2_2fa4w"]
-[ext_resource type="Texture2D" uid="uid://dn3hd76xaf2wx" path="res://Randomjunk/Sprite-0001.png" id="2_q5lbh"]
+[ext_resource type="Texture2D" uid="uid://dqce47oo1o0t1" path="res://Players/Jesse/pixil-frame-0.png" id="2_4awxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5m48"]
+size = Vector2(45, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4vtx"]
+size = Vector2(45, 52)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5ve0h"]
 properties/0/path = NodePath(".:position")
@@ -35,11 +37,8 @@ script = ExtResource("1_w2pg1")
 [node name="KickTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.64, 0.64)
-texture = ExtResource("2_q5lbh")
-
 [node name="rock" parent="." instance=ExtResource("2_2fa4w")]
+position = Vector2(17, -4)
 collision_mask = 11
 mass = 5.0
 gravity_scale = 0.45
@@ -78,9 +77,11 @@ scroll_active = false
 
 [node name="MouseArea" type="Area2D" parent="."]
 top_level = true
+position = Vector2(7, -6)
 collision_mask = 9
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(-6, 7)
 shape = SubResource("RectangleShape2D_q4vtx")
 
 [node name="TeleportCooldown" type="Timer" parent="."]
@@ -89,5 +90,21 @@ one_shot = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5ve0h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.0343857, -0.219398)
+rotation = -3.14159
+scale = Vector2(1.5, -1.5)
+texture = ExtResource("2_4awxi")
+offset = Vector2(7.3104, 0.146267)
+
+[node name="RockInitial" type="Marker2D" parent="Sprite2D"]
+position = Vector2(-11.3563, -2.5204)
+rotation = -3.14159
+scale = Vector2(0.666667, -0.666667)
+
+[node name="RockFinal" type="Marker2D" parent="Sprite2D"]
+position = Vector2(21.3104, -8.5204)
 
 [connection signal="timeout" from="rock/TeleportToHand" to="rock" method="_on_timer_timeout"]
