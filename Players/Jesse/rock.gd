@@ -11,7 +11,6 @@ func _process(delta):
 	if not is_multiplayer_authority(): return
 	if get_colliding_bodies() and player.current_state == 'thrown':
 		#print(get_colliding_bodies()[0].collision_layer)
-		print( get_colliding_bodies()[0].collision_layer)
 		if get_colliding_bodies()[0].has_method('hurt') and can_hit == true and player.current_state == 'thrown': #layer 8 for enemy
 			get_colliding_bodies()[0].hurt.rpc(linear_velocity * 5 + Vector2(0,-20), 10)
 			can_hit = false

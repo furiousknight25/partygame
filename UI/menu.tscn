@@ -78,8 +78,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 654.0
-offset_right = 654.0
+offset_left = 1279.0
+offset_top = -2.0
+offset_right = 1279.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -98,6 +100,17 @@ offset_top = 644.0
 offset_right = 760.0
 offset_bottom = 675.0
 text = "START GAME"
+
+[node name="OptionButton" type="OptionButton" parent="select"]
+layout_mode = 0
+offset_left = 654.0
+offset_top = 680.0
+offset_right = 785.0
+offset_bottom = 711.0
+item_count = 1
+selected = 0
+popup/item_0/text = "select level"
+popup/item_0/id = 0
 
 [node name="Main" type="Control" parent="."]
 layout_mode = 1
@@ -156,10 +169,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1.0
-offset_top = 769.0
-offset_right = -1.0
-offset_bottom = 769.0
+offset_top = 753.0
+offset_bottom = 753.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
@@ -184,4 +195,5 @@ text = "Press Any Button to Start"
 replication_config = SubResource("SceneReplicationConfig_o1fnw")
 
 [connection signal="pressed" from="select/Button" to="." method="_start_game"]
+[connection signal="item_selected" from="select/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Main/Control/Host" to="." method="set_character" binds= ["host"]]

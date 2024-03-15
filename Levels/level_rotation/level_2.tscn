@@ -8,7 +8,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldcgv"]
 
-[node name="Level1" type="Node2D"]
+[node name="Level2" type="Node2D"]
 script = ExtResource("1_5q3s7")
 aria_scene = ExtResource("2_uqi14")
 jesse_scene = ExtResource("3_bbcjt")

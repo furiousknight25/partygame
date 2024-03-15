@@ -20,7 +20,6 @@ func _ready():
 		match choice:
 			0:
 				current_player = chris_scene.instantiate()
-				print('christ')
 			1:
 				current_player = jesse_scene.instantiate()
 			2:
@@ -52,8 +51,6 @@ func _process(delta):
 		#get_parent().change_level()
 		#change_level.call_deferred()
 		#print(players.get_child_count())
-
-
 
 
 func remove_player(peer_id):

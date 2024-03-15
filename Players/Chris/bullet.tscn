@@ -16,7 +16,8 @@ properties/1/replication_mode = 1
 
 [node name="bullet" type="CharacterBody2D"]
 top_level = true
-collision_mask = 3
+collision_layer = 0
+collision_mask = 7
 script = ExtResource("1_mfext")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

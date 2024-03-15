@@ -1,12 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl5m3av27sfj"]
+[gd_scene load_steps=12 format=3 uid="uid://cl5m3av27sfj"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_it0v5"]
 [ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_cpka6"]
 [ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_6mxfl"]
 [ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="4_3u616"]
 [ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_t3s5q"]
+[ext_resource type="PackedScene" uid="uid://cdn40np5q0sje" path="res://Levels/level_creation_tools/physicsfloor.tscn" id="6_ahci5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldcgv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt80n"]
+size = Vector2(53.5, 282)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_53ab7"]
+size = Vector2(26, 1083)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prvty"]
+size = Vector2(94.7585, 114.185)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2acuk"]
+radius = 17.0
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_it0v5")
@@ -39,6 +52,56 @@ collision_layer = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
 shape = SubResource("RectangleShape2D_ldcgv")
 
+[node name="Physicsfloor" parent="Level" instance=ExtResource("6_ahci5")]
+position = Vector2(130, 539)
+mass = 0.2
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor" index="0"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_dt80n")
+
+[node name="Physicsfloor5" parent="Level" instance=ExtResource("6_ahci5")]
+position = Vector2(1128, 539)
+mass = 0.2
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor5" index="0"]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_dt80n")
+
+[node name="Physicsfloor6" parent="Level" instance=ExtResource("6_ahci5")]
+position = Vector2(815, 381)
+rotation = -1.5708
+mass = 0.2
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor6" index="0"]
+position = Vector2(5, -179.5)
+shape = SubResource("RectangleShape2D_53ab7")
+
+[node name="Physicsfloor2" parent="Level" instance=ExtResource("6_ahci5")]
+position = Vector2(5, 557)
+rotation = -0.328062
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor2" index="0"]
+position = Vector2(-3.18206, 3.14232)
+shape = SubResource("RectangleShape2D_prvty")
+
+[node name="Physicsfloor3" parent="Level" instance=ExtResource("6_ahci5")]
+position = Vector2(672, 322)
+mass = 0.3
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor3" index="0"]
+shape = SubResource("CircleShape2D_2acuk")
+
+[node name="Physicsfloor4" parent="Level" instance=ExtResource("6_ahci5")]
+position = Vector2(542, 247)
+
 [node name="Players" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")
 spawn_limit = 4
+
+[editable path="Level/Physicsfloor"]
+[editable path="Level/Physicsfloor5"]
+[editable path="Level/Physicsfloor6"]
+[editable path="Level/Physicsfloor2"]
+[editable path="Level/Physicsfloor3"]
+[editable path="Level/Physicsfloor4"]

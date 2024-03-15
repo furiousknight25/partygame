@@ -4,6 +4,7 @@ extends Control
 @onready var animation_t = $AnimationTree
 @onready var select = $select
 @onready var main = $Main
+@onready var level_select = $select/OptionButton
 
 @export var container : PackedScene
 
@@ -11,7 +12,9 @@ extends Control
 enum STATES {START, MENU, CHARACTER}
 var cur_state = STATES.START
 
-
+func _ready():
+	for i in DirAccess.open("res://Levels/level_rotation/").get_files():
+		level_select.add_item(i, i.find(i))
 func _process(delta):
 	match cur_state:
 		STATES.START:
@@ -56,3 +59,8 @@ func set_character(client):
 func _start_game():
 	position = position + Vector2(100000,1000000)
 	multiplayer_manager.start_game()
+
+@rpc("authority")
+func _on_option_button_item_selected(index):
+	position = position + Vector2(100000,1000000)
+	multiplayer_manager._on_option_button_item_selected(index)

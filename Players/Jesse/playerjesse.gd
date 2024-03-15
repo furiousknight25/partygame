@@ -61,7 +61,7 @@ func _process(delta):
 			rock.linear_velocity = player_old_velocity
 			velocity = rock_old_velocity
 			global_position = rock_old_position + Vector2(20,0)
-			rock.global_position = player_old_position + Vector2(20,0)
+			rock.global_position = player_old_position + Vector2(-30,0)
 			teleported = true
 		elif current_state == "hold":
 			set_throw_process()
@@ -96,7 +96,9 @@ func _process(delta):
 		change_stocks(0)
 	move_and_slide()
 	
+
 func set_hold_process():
+	print(current_state)
 	rock.freeze = true
 	rock.get_child(0).disabled = true
 	current_state = 'hold'
@@ -104,6 +106,7 @@ func set_hold_process():
 	teleported = false
 	
 func hold_process():
+	
 	if flipped == false:
 		rock.global_position = $Sprite2D/RockInitial.global_position
 	elif flipped == true:
