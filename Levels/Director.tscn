@@ -1,9 +1,64 @@
-[gd_scene load_steps=5 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=10 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
+[ext_resource type="Script" path="res://UI/Transition.gd" id="4_d5tsa"]
 [ext_resource type="Script" path="res://Levels/Level_swap.gd" id="4_wtmqh"]
 [ext_resource type="PackedScene" uid="uid://bujc3kdcq2v58" path="res://UI/Character_block.tscn" id="5_n7qw0"]
 [ext_resource type="PackedScene" uid="uid://uog53iqxp4f3" path="res://UI/menu.tscn" id="5_pu61s"]
+
+[sub_resource type="Animation" id="Animation_pnpsn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2y5jp"]
+resource_name = "close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.594604, 0.63728),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_d2klf"]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(3.13834, 3.13834),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h45ca"]
+_data = {
+"RESET": SubResource("Animation_pnpsn"),
+"close": SubResource("Animation_2y5jp"),
+"open": SubResource("Animation_d2klf")
+}
 
 [node name="Director" type="Node2D"]
 
@@ -21,6 +76,12 @@ spawn_path = NodePath("Menu/select/HBoxContainer")
 
 [node name="Menu" parent="Multplayer/ui" instance=ExtResource("5_pu61s")]
 
+[node name="Control" parent="Multplayer/ui/Menu/Main" index="0"]
+offset_left = -323.0
+offset_top = -395.0
+offset_right = -323.0
+offset_bottom = -395.0
+
 [node name="TextEdit" type="TextEdit" parent="Multplayer/ui/Menu/Main/Control" index="2"]
 layout_mode = 0
 offset_right = 306.0
@@ -35,6 +96,36 @@ offset_right = 150.301
 offset_bottom = 138.442
 scale = Vector2(4.26597, 1.95108)
 text = "PortForward(if you can)"
+
+[node name="Transition" type="Control" parent="Multplayer/ui"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_d5tsa")
+
+[node name="ColorRect" type="ColorRect" parent="Multplayer/ui/Transition"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 360)
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Animation_Transition" type="AnimationPlayer" parent="Multplayer/ui/Transition"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_h45ca")
+}
+autoplay = "close"
 
 [node name="Level" type="Node2D" parent="Multplayer"]
 unique_name_in_owner = true

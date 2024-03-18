@@ -13,6 +13,7 @@ func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
 	#upnp_setup()
 
+var transition_time = false
 func  _process(delta):
 	if not multiplayer.is_server(): return
 	if Input.is_action_just_pressed('ui_home'):
@@ -24,7 +25,11 @@ func  _process(delta):
 		total_stocks += Director.players[i]['stocks']
 	if state == 'start':
 		#return
-		if total_stocks <= 1:
+		if total_stocks <= 1 and !transition_time:
+			#Engine.set_time_scale(.3)
+			transition_time = true
+			await get_tree().create_timer(1).timeout
+			#Engine.set_time_scale(1)
 			change_level(load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1]))
 func _on_port_forward_pressed():
 	upnp_setup()
@@ -82,7 +87,13 @@ func start_game():
 		state = 'start'
 func change_level(scene: PackedScene):
 	# Remove old level if any.
+	%Animation_Transition.play('open')
+	for i in Director.players:
+		if i != 1:
+			play_trans.rpc_id(i, 'open')
+	await %Animation_Transition.animation_finished
 	if not multiplayer.is_server(): return
+	
 	var level = $Level
 	if level:
 		for c in level.get_children():
@@ -90,8 +101,15 @@ func change_level(scene: PackedScene):
 			c.queue_free()
 	# Add new level.
 		level.add_child(scene.instantiate()) #chunker to make
+	%Animation_Transition.play('close')
+	for i in Director.players:
+		if i != 1:
+			play_trans.rpc_id(i, 'close')
+	transition_time = false
 #endregion
-
+@rpc('any_peer')
+func play_trans(anim):
+	%Animation_Transition.play(anim)
 func _on_option_button_item_selected(index):
 	if multiplayer.is_server():
 		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[index - 1]))

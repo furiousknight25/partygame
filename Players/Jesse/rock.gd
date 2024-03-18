@@ -9,6 +9,7 @@ func _enter_tree():
 func _process(delta):
 	#print(freeze)
 	if not is_multiplayer_authority(): return
+	if player.health <= 0: return
 	if get_colliding_bodies() and player.current_state == 'thrown':
 		#print(get_colliding_bodies()[0].collision_layer)
 		if get_colliding_bodies()[0].has_method('hurt') and can_hit == true and player.current_state == 'thrown': #layer 8 for enemy

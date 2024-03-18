@@ -1,25 +1,25 @@
-[gd_scene load_steps=12 format=3 uid="uid://cl5m3av27sfj"]
+[gd_scene load_steps=14 format=3 uid="uid://cl5m3av27sfj"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_it0v5"]
 [ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_cpka6"]
 [ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_6mxfl"]
 [ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="4_3u616"]
 [ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_t3s5q"]
+[ext_resource type="Texture2D" uid="uid://bxbcedddhfda5" path="res://raw_assets/basicfloor.png" id="6_0rcio"]
 [ext_resource type="PackedScene" uid="uid://cdn40np5q0sje" path="res://Levels/level_creation_tools/physicsfloor.tscn" id="6_ahci5"]
+[ext_resource type="PackedScene" uid="uid://c5n1lpquy2h6h" path="res://Levels/level_creation_tools/physicsball.tscn" id="8_78daj"]
+[ext_resource type="PackedScene" uid="uid://dh1x1cjbvqj57" path="res://Levels/level_creation_tools/hinge_door.tscn" id="9_gq00p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldcgv"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oim6n"]
+size = Vector2(1.16838, 15.4106)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dt80n"]
-size = Vector2(53.5, 282)
+size = Vector2(151.75, 282)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53ab7"]
 size = Vector2(26, 1083)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_prvty"]
-size = Vector2(94.7585, 114.185)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2acuk"]
-radius = 17.0
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_it0v5")
@@ -29,6 +29,7 @@ travis_scene = ExtResource("4_3u616")
 chris_scene = ExtResource("5_t3s5q")
 
 [node name="SpawnPoints" type="Node2D" parent="."]
+position = Vector2(3, 126)
 
 [node name="0" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(170, 72)
@@ -52,56 +53,106 @@ collision_layer = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
 shape = SubResource("RectangleShape2D_ldcgv")
 
+[node name="Sprite2D" type="Sprite2D" parent="Level/StaticBody2D"]
+texture = ExtResource("6_0rcio")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Level"]
+position = Vector2(524, 65)
+rotation = -1.57079
+scale = Vector2(69.3268, 0.908468)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D2"]
+position = Vector2(0.346187, 13.2089)
+scale = Vector2(1, 0.999999)
+shape = SubResource("RectangleShape2D_oim6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/StaticBody2D2"]
+position = Vector2(0.346888, 12.5328)
+scale = Vector2(0.0396717, 0.713066)
+texture = ExtResource("6_0rcio")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Level/StaticBody2D2"]
+position = Vector2(0.317354, 199.236)
+scale = Vector2(0.0396717, 0.713066)
+texture = ExtResource("6_0rcio")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Level"]
+position = Vector2(714, 65)
+rotation = -1.57079
+scale = Vector2(69.3268, 0.908468)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D3"]
+position = Vector2(0.317337, -11.0077)
+scale = Vector2(1, 0.999999)
+shape = SubResource("RectangleShape2D_oim6n")
+
 [node name="Physicsfloor" parent="Level" instance=ExtResource("6_ahci5")]
-position = Vector2(130, 539)
-mass = 0.2
+position = Vector2(130, 526)
 
 [node name="CollisionShape2D" parent="Level/Physicsfloor" index="0"]
-position = Vector2(-1, 2)
+position = Vector2(48.125, 2)
 shape = SubResource("RectangleShape2D_dt80n")
 
+[node name="Sprite2D" parent="Level/Physicsfloor" index="2"]
+position = Vector2(48.5, 2.99997)
+scale = Vector2(4.84375, 8.875)
+
 [node name="Physicsfloor5" parent="Level" instance=ExtResource("6_ahci5")]
-position = Vector2(1128, 539)
-mass = 0.2
+position = Vector2(1128, 528)
 
 [node name="CollisionShape2D" parent="Level/Physicsfloor5" index="0"]
 position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_dt80n")
 
+[node name="Sprite2D" parent="Level/Physicsfloor5" index="2"]
+position = Vector2(-1.00005, 2.49999)
+scale = Vector2(4.6875, 9.15625)
+
 [node name="Physicsfloor6" parent="Level" instance=ExtResource("6_ahci5")]
-position = Vector2(815, 381)
+position = Vector2(628, 362)
 rotation = -1.5708
-mass = 0.2
 
 [node name="CollisionShape2D" parent="Level/Physicsfloor6" index="0"]
-position = Vector2(5, -179.5)
+position = Vector2(1.99998, 2.99998)
 shape = SubResource("RectangleShape2D_53ab7")
 
-[node name="Physicsfloor2" parent="Level" instance=ExtResource("6_ahci5")]
-position = Vector2(5, 557)
-rotation = -0.328062
+[node name="Sprite2D" parent="Level/Physicsfloor6" index="2"]
+position = Vector2(0.749135, 4.75674)
+scale = Vector2(0.884728, 33.53)
 
-[node name="CollisionShape2D" parent="Level/Physicsfloor2" index="0"]
-position = Vector2(-3.18206, 3.14232)
-shape = SubResource("RectangleShape2D_prvty")
+[node name="Physicsball" parent="Level" instance=ExtResource("8_78daj")]
+position = Vector2(560, 20)
 
-[node name="Physicsfloor3" parent="Level" instance=ExtResource("6_ahci5")]
-position = Vector2(672, 322)
-mass = 0.3
+[node name="Physicsball2" parent="Level" instance=ExtResource("8_78daj")]
+position = Vector2(601, 16)
 
-[node name="CollisionShape2D" parent="Level/Physicsfloor3" index="0"]
-shape = SubResource("CircleShape2D_2acuk")
+[node name="Physicsball3" parent="Level" instance=ExtResource("8_78daj")]
+position = Vector2(645, 13)
 
-[node name="Physicsfloor4" parent="Level" instance=ExtResource("6_ahci5")]
-position = Vector2(542, 247)
+[node name="Physicsball4" parent="Level" instance=ExtResource("8_78daj")]
+position = Vector2(585, 40)
+
+[node name="Physicsball6" parent="Level" instance=ExtResource("8_78daj")]
+position = Vector2(613, 52)
+
+[node name="Physicsball7" parent="Level" instance=ExtResource("8_78daj")]
+position = Vector2(556, 62)
+
+[node name="Physicsball8" parent="Level" instance=ExtResource("8_78daj")]
+position = Vector2(659, 57)
+
+[node name="Physicsball9" parent="Level" instance=ExtResource("8_78daj")]
+position = Vector2(669, 32)
 
 [node name="Players" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")
 spawn_limit = 4
 
+[node name="Node2D" parent="." instance=ExtResource("9_gq00p")]
+position = Vector2(551, 94)
+
 [editable path="Level/Physicsfloor"]
 [editable path="Level/Physicsfloor5"]
 [editable path="Level/Physicsfloor6"]
-[editable path="Level/Physicsfloor2"]
-[editable path="Level/Physicsfloor3"]
-[editable path="Level/Physicsfloor4"]

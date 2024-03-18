@@ -16,29 +16,31 @@ func _enter_tree(): #multiplayer stuff
 	
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
-	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
-	
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	if health > 0:
+		text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
+		
+		if not is_on_floor():
+			velocity.y += gravity * delta
 
 
-	# Jump Func
-	if Input.is_action_just_pressed("up") and is_on_floor():
-		velocity += Vector2(JUMP_HORIZONTAL,JUMP_VELOCITY)
+		# Jump Func
+		if Input.is_action_just_pressed("up") and is_on_floor():
+			velocity += Vector2(JUMP_HORIZONTAL,JUMP_VELOCITY)
 
 
-	#left and right movement
-	var direction = Input.get_axis("left", "right")
-	if direction:
-		velocity.x = lerp(velocity.x, direction * SPEED, .3)
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		#left and right movement
+		var direction = Input.get_axis("left", "right")
+		if direction:
+			velocity.x = lerp(velocity.x, direction * SPEED, .3)
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 
 
-	#character flip
-	if get_global_mouse_position().x >= position.x:
-		pass
-	$Magnet.rotation = atan2(get_global_mouse_position().y - global_position.y, get_global_mouse_position().x - global_position.x)
+		#character flip
+		if get_global_mouse_position().x >= position.x:
+			pass
+		$Magnet.rotation = atan2(get_global_mouse_position().y - global_position.y, get_global_mouse_position().x - global_position.x)
+	else: velocity.y += 9.8
 	move_and_slide()
 
 	#Particles
@@ -51,12 +53,17 @@ func _physics_process(delta):
 	else: magnet_stuff.emitting = false
 	
 
+func death():
+	change_stocks(0)
+	$"Character hitbox".disabled = true
+	health = 0
+
 @rpc("any_peer")
 func hurt(direction, damage_percent):
 	velocity += direction
 	health -= damage_percent
 	if health <= 0:
-		change_stocks(0)
+		death()
 
 @rpc("any_peer")
 func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution

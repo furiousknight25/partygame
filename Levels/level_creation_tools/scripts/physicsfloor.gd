@@ -37,5 +37,5 @@ func hurt(direction, damage_percent):
 		#collision = get_colliding_bodies()[0].position
 	#apply_impulse(direction * Vector2(1,-1), collision)
 	linear_velocity += direction * Vector2(1,-1)
-	print(linear_velocity)
+	#print(linear_velocity)
 	#apply_central_impulse(direction * 1000)

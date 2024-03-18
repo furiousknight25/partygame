@@ -29,76 +29,81 @@ func _ready():
 	set_hold_process()
 func _process(delta):
 	#print(kick_timer.time_left)
-
+	
 	#if health < 0: return
 	if not is_multiplayer_authority(): return
-	
-	if Input.is_action_just_pressed('kill'):
-		change_stocks(0)
-	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
-	var mouse_position = get_global_mouse_position()
-	$state.text = current_state
-	match current_state:
-		'hold':
-			hold_process()
-		'thrown':
-			throw_process()
-	
-	#velocity = rock.linear_velocity
-	velocity.y += gravity
-	if  self.is_on_floor():
-		velocity.x = lerp(self.velocity.x,0.0,.6)
-	velocity.x += Input.get_axis('left','right') * 50
-	#print(current_state, ' ', teleported)
-	if Input.is_action_just_pressed('RightM'):
-		if current_state == "thrown" and teleported == false:
-			#rock.set_linear_velocity(Vector2(0,0))
-			var player_old_position = global_position
-			var rock_old_position = rock.global_position
-			var player_old_velocity = velocity
-			var rock_old_velocity = rock.linear_velocity
-			#print(rock_old_velocity)
-			rock.linear_velocity = player_old_velocity
-			velocity = rock_old_velocity
-			global_position = rock_old_position + Vector2(20,0)
-			rock.global_position = player_old_position + Vector2(-30,0)
-			teleported = true
-		elif current_state == "hold":
-			set_throw_process()
-	if get_global_mouse_position() > self.global_position:
-		#$Sprite2D.flip_h = get_local_mouse_position().x < 0
-		$Sprite2D.scale.x = 1.5
-		flipped = false
-	else:
-		#$Sprite2D.flip_h = get_local_mouse_position().x < 180
-		$Sprite2D.scale.x = -1.5
-		flipped = true
-	if get_last_slide_collision():
-		velocity += get_last_slide_collision().get_normal() * (bounce * get_real_velocity().length())
-		velocity = lerp(velocity, Vector2.ZERO, delta * 3)
-		if get_last_slide_collision().get_collider().collision_layer == 1 and velocity.length() >= 500 and kick_timer.time_left == 0:
-			get_last_slide_collision().get_collider().hurt.rpc(velocity * .5,1)
-			kick_timer.stop()
-			kick_timer.start()
-	if !get_floor_normal():
-		var forward_rotation = atan2(get_real_velocity().y, get_real_velocity().x) - PI/2
-	if get_real_velocity().length() >= stand_threshold:
-		Thrower.rotation = lerp_angle(Thrower.rotation, atan2(get_real_velocity().y, get_real_velocity().x) - PI/2, 25*delta)
-	else:
-		Thrower.rotation = lerp_angle(Thrower.rotation, 0, 12*delta)
-	#Thrower_sprite.scale.x = lerp(Thrower_sprite.scale.x, 1.5, delta * 8)
-	Thrower_sprite.scale.y = lerp(Thrower_sprite.scale.y, 1.5, delta * 2)
-	Thrower.rotation = lerp_angle(Thrower.rotation, 0.0, 8 * delta)
-	#print(kick_timer.time_left)
-	mouse_process_stuff(delta)
-	
-	if global_position.y >= 1200:
-		change_stocks(0)
+	if health > 0:
+		if Input.is_action_just_pressed('kill'):
+			hurt(Vector2.ZERO, 100)
+		text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
+		var mouse_position = get_global_mouse_position()
+		$state.text = current_state
+		match current_state:
+			'hold':
+				hold_process()
+			'thrown':
+				throw_process()
+		
+		#velocity = rock.linear_velocity
+		velocity.y += gravity
+		if  self.is_on_floor():
+			velocity.x = lerp(self.velocity.x,0.0,.6)
+		velocity.x += Input.get_axis('left','right') * 50
+		#print(current_state, ' ', teleported)
+		if Input.is_action_just_pressed('RightM'):
+			if current_state == "thrown" and teleported == false:
+				#rock.set_linear_velocity(Vector2(0,0))
+				var player_old_position = global_position
+				var rock_old_position = rock.global_position
+				var player_old_velocity = velocity
+				var rock_old_velocity = rock.linear_velocity
+				#print(rock_old_velocity)
+				rock.linear_velocity = player_old_velocity
+				velocity = rock_old_velocity
+				global_position = rock_old_position + Vector2(20,0)
+				rock.global_position = player_old_position + Vector2(-30,0)
+				teleported = true
+			elif current_state == "hold":
+				set_throw_process()
+		if get_global_mouse_position() > self.global_position:
+			#$Sprite2D.flip_h = get_local_mouse_position().x < 0
+			$Sprite2D.scale.x = 1.5
+			flipped = false
+		else:
+			#$Sprite2D.flip_h = get_local_mouse_position().x < 180
+			$Sprite2D.scale.x = -1.5
+			flipped = true
+		if get_last_slide_collision():
+			velocity += get_last_slide_collision().get_normal() * (bounce * get_real_velocity().length())
+			velocity = lerp(velocity, Vector2.ZERO, delta * 3)
+			if get_last_slide_collision().get_collider().collision_layer == 1 and velocity.length() >= 500 and kick_timer.time_left == 0:
+				get_last_slide_collision().get_collider().hurt.rpc(velocity * .5,1)
+				kick_timer.stop()
+				kick_timer.start()
+		if !get_floor_normal():
+			var forward_rotation = atan2(get_real_velocity().y, get_real_velocity().x) - PI/2
+		if get_real_velocity().length() >= stand_threshold:
+			Thrower.rotation = lerp_angle(Thrower.rotation, atan2(get_real_velocity().y, get_real_velocity().x) - PI/2, 25*delta)
+		else:
+			Thrower.rotation = lerp_angle(Thrower.rotation, 0, 12*delta)
+		#Thrower_sprite.scale.x = lerp(Thrower_sprite.scale.x, 1.5, delta * 8)
+		Thrower_sprite.scale.y = lerp(Thrower_sprite.scale.y, 1.5, delta * 2)
+		Thrower.rotation = lerp_angle(Thrower.rotation, 0.0, 8 * delta)
+		#print(kick_timer.time_left)
+		mouse_process_stuff(delta)
+		
+		if global_position.y >= 1200:
+			change_stocks(0)
+	else: velocity.y += 9.8
 	move_and_slide()
 	
 
+func death():
+	change_stocks(0)
+	$CollisionShape2D.disabled = true
+	health = 0
+	
 func set_hold_process():
-	print(current_state)
 	rock.freeze = true
 	rock.get_child(0).disabled = true
 	current_state = 'hold'
@@ -157,7 +162,7 @@ func hurt(direction, damage_percent):
 	
 	health -= damage_percent
 	if health <= 0:
-		change_stocks(0)
+		death()
 
 @rpc("any_peer")
 func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution

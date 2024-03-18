@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxylv50enx4tb"]
+[gd_scene load_steps=8 format=3 uid="uid://bxylv50enx4tb"]
 
 [ext_resource type="Script" path="res://Players/Jesse/playerjesse.gd" id="1_w2pg1"]
 [ext_resource type="PackedScene" uid="uid://bmjkc1l0qdpx" path="res://Players/Jesse/rock.tscn" id="2_2fa4w"]
 [ext_resource type="Texture2D" uid="uid://dqce47oo1o0t1" path="res://Players/Jesse/pixil-frame-0.png" id="2_4awxi"]
+[ext_resource type="Texture2D" uid="uid://re21y8djadvk" path="res://raw_assets/ball.png" id="3_344pe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5m48"]
 size = Vector2(45, 52)
@@ -29,6 +30,9 @@ properties/4/replication_mode = 1
 properties/5/path = NodePath("HealthText:text")
 properties/5/spawn = true
 properties/5/replication_mode = 1
+properties/6/path = NodePath("CollisionShape2D:disabled")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [node name="playerjes" type="CharacterBody2D"]
 collision_mask = 11
@@ -49,6 +53,11 @@ contact_monitor = true
 
 [node name="TeleportToHand" type="Timer" parent="rock"]
 one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="rock"]
+texture_filter = 1
+scale = Vector2(0.232544, 0.232544)
+texture = ExtResource("3_344pe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v5m48")

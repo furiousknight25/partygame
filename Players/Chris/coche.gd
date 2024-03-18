@@ -23,13 +23,17 @@ func get_input():
 		velocity += transform.x * Input.get_axis("down", "up") * speed
 		velocity.x = clamp(velocity.x, -max_speed, max_speed)
 		velocity.y = clamp(velocity.y, -max_speed, max_speed)
+	if Input.is_action_just_pressed('kill'):
+		death()
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
-	get_input()
-	rotation += rotation_direction * rotation_speed * delta
-	velocity = lerp(velocity, Vector2(0,0), 0.02)
-	blast()
+	if health > 0:
+		get_input()
+		rotation += rotation_direction * rotation_speed * delta
+		velocity = lerp(velocity, Vector2(0,0), 0.02)
+		blast()
+	else: velocity.y += 9.8#just adding gravity if you die for lols, u can delete
 	move_and_slide()
 	
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
@@ -45,7 +49,12 @@ func blast():
 		b.global_position = $Spawn_marker.global_position
 		b.rotation = $".".rotation
 		b.velocity = transform.x * 200
-
+	
+func death():
+	change_stocks(0)
+	$CollisionShape2D.disabled = true
+	health = 0
+	
 @rpc("any_peer")
 func hurt(direction, damage_percent):
 	velocity += direction

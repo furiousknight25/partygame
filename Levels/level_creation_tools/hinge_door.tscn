@@ -1,0 +1,122 @@
+[gd_scene load_steps=10 format=3 uid="uid://dh1x1cjbvqj57"]
+
+[ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/hinge_door.gd" id="1_nxb32"]
+[ext_resource type="Texture2D" uid="uid://dmpksgjanwchg" path="res://raw_assets/hingejoint.png" id="1_o4ums"]
+[ext_resource type="Texture2D" uid="uid://w6ro18avh8r" path="res://raw_assets/button.png" id="2_07o0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i0pfe"]
+size = Vector2(159, 20)
+
+[sub_resource type="Animation" id="Animation_1hog6"]
+resource_name = "open"
+length = 1.0001
+step = 1.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.112407, 2.06032, 3.37033, -0.115763, -0.106939, 0.156028, 0.0802045, 3.20966, -0.00507212, -0.0386131, 0.0510406, -0.106865, 3.14549, -0.0546851, -0.02299, 0.0700652, 0.0131369, 3.14781, -0.0389673, -0.00232506, 0.25, 0),
+"times": PackedFloat32Array(0, 0.340577, 0.515462, 0.736539, 0.953377)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.00427227, 0.0615207, 0.123439, 0.205069, 0.354598),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.497675, 0.497675), Vector2(0.828837, 1.23623), Vector2(1, 1), Vector2(0.913651, 1.08675), Vector2(1.02975, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y5dyu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ac3gk"]
+_data = {
+"RESET": SubResource("Animation_y5dyu"),
+"open": SubResource("Animation_1hog6")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_4drol"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("../AnimationPlayer:current_animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("../Sprite2D:scale")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i58ou"]
+size = Vector2(41, 39)
+
+[node name="hingedoor" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_nxb32")
+
+[node name="HingeDoor" type="AnimatableBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="HingeDoor"]
+texture_filter = 1
+position = Vector2(69.5, -0.5)
+scale = Vector2(1.76667, 0.65625)
+texture = ExtResource("1_o4ums")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HingeDoor"]
+position = Vector2(69.5, 0)
+shape = SubResource("RectangleShape2D_i0pfe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../HingeDoor")
+libraries = {
+"": SubResource("AnimationLibrary_ac3gk")
+}
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../HingeDoor")
+replication_config = SubResource("SceneReplicationConfig_4drol")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(127, 0)
+texture = ExtResource("2_07o0c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(126.5, 0.5)
+shape = SubResource("RectangleShape2D_i58ou")
