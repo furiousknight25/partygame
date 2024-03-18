@@ -35,7 +35,7 @@ properties/5/replication_mode = 1
 [node name="Aria" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_hexfs")
-jump_strength = 450
+jump_strength = 750
 speed = 400
 gravity = 2000
 

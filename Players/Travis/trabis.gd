@@ -31,9 +31,9 @@ func _physics_process(delta):
 		#left and right movement
 		var direction = Input.get_axis("left", "right")
 		if direction:
-			velocity.x = lerp(velocity.x, direction * SPEED, .3)
+			velocity.x = lerp(velocity.x, direction * SPEED, 10 * delta)
 		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, SPEED * delta * 5)
 
 
 		#character flip

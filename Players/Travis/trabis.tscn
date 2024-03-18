@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://canqomfe3wsj0"]
+[gd_scene load_steps=9 format=3 uid="uid://canqomfe3wsj0"]
 
 [ext_resource type="Script" path="res://Players/Travis/trabis.gd" id="1_0a8f0"]
 [ext_resource type="Texture2D" uid="uid://2238kevtrmp6" path="res://Players/Travis/pixil-frame-0 (1).png" id="2_syvtv"]
 [ext_resource type="Texture2D" uid="uid://iv8akcip6y3g" path="res://Players/Travis/shape_star_20.png" id="3_uw8kn"]
+[ext_resource type="VideoStream" path="res://raw_assets/recuperare.ogv" id="4_kdvm6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ud6a"]
 
@@ -104,3 +105,13 @@ scroll_active = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_f7yqv")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 390.0
+offset_bottom = 358.0
+scale = Vector2(0.0516597, 0.0516597)
+stream = ExtResource("4_kdvm6")
+autoplay = true
+loop = true

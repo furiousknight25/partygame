@@ -46,8 +46,8 @@ func _process(delta):
 		
 		#velocity = rock.linear_velocity
 		velocity.y += gravity
-		if  self.is_on_floor():
-			velocity.x = lerp(self.velocity.x,0.0,.6)
+		if self.is_on_floor():
+			velocity.x = lerp(velocity.x,0.0, 10 * delta)
 		velocity.x += Input.get_axis('left','right') * 50
 		#print(current_state, ' ', teleported)
 		if Input.is_action_just_pressed('RightM'):
@@ -57,7 +57,6 @@ func _process(delta):
 				var rock_old_position = rock.global_position
 				var player_old_velocity = velocity
 				var rock_old_velocity = rock.linear_velocity
-				#print(rock_old_velocity)
 				rock.linear_velocity = player_old_velocity
 				velocity = rock_old_velocity
 				global_position = rock_old_position + Vector2(20,0)
@@ -75,7 +74,7 @@ func _process(delta):
 			flipped = true
 		if get_last_slide_collision():
 			velocity += get_last_slide_collision().get_normal() * (bounce * get_real_velocity().length())
-			velocity = lerp(velocity, Vector2.ZERO, delta * 3)
+			#velocity = lerp(velocity, Vector2.ZERO, delta * 3)
 			if get_last_slide_collision().get_collider().collision_layer == 1 and velocity.length() >= 500 and kick_timer.time_left == 0:
 				get_last_slide_collision().get_collider().hurt.rpc(velocity * .5,1)
 				kick_timer.stop()
@@ -95,6 +94,7 @@ func _process(delta):
 		if global_position.y >= 1200:
 			change_stocks(0)
 	else: velocity.y += 9.8
+	
 	move_and_slide()
 	
 
