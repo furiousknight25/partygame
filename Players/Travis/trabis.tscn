@@ -113,6 +113,6 @@ offset_right = 390.0
 offset_bottom = 358.0
 scale = Vector2(0.0516597, 0.0516597)
 stream = ExtResource("4_kdvm6")
-volume_db = -80.0
+volume_db = -6.94
 autoplay = true
 loop = true

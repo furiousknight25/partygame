@@ -16,10 +16,8 @@ func _enter_tree():
 	change_stocks(1)
 	
 func _process(delta):
-#region debug keybinds
 	if not is_multiplayer_authority(): return
 	if health > 0:
-	#endregion
 		if Input.is_action_just_pressed('kill'):
 			death()
 		mouse_position = get_global_mouse_position()
@@ -34,7 +32,6 @@ func _process(delta):
 		if is_on_floor():
 			velocity.x = lerp(velocity.x, 0.0, 12*delta)
 			walk_animation_speed += velocity.x * .0005
-			sprite.position.y = abs(sin(walk_animation_speed) * 3)
 			if abs(sin(walk_animation_speed) * 3) <= .8:
 				sprite.scale.x = .9
 				sprite.scale.y = 1.1
@@ -43,12 +40,6 @@ func _process(delta):
 			velocity.y -= jump_strength
 			sprite.scale.y += .3
 			sprite.scale.x -= .3
-		
-		#sprite flip
-		if global_position.x - mouse_position.x < 0:
-			$Sprite2D.flip_h = false
-		else:
-			$Sprite2D.flip_h = true
 		
 		velocity.y += gravity * delta
 		

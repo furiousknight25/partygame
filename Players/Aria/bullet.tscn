@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq76elsmx3doi"]
+[gd_scene load_steps=4 format=3 uid="uid://cq76elsmx3doi"]
 
+[ext_resource type="Texture2D" uid="uid://330b0fc8uaop" path="res://Players/Aria/pixilart-drawing (1).png" id="2_iyoho"]
 [ext_resource type="Script" path="res://Players/Aria/bullet.gd" id="2_kbi8j"]
-[ext_resource type="Texture2D" uid="uid://dyor8xh7ao7ws" path="res://Players/Aria/fireball.png" id="2_sbck4"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mkwiu"]
-radius = 40.1527
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_d78xc"]
 properties/0/path = NodePath(".:rotation")
@@ -13,6 +10,9 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:position")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath(".:modulate")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["bullets"]]
 top_level = true
@@ -24,13 +24,14 @@ motion_mode = 1
 script = ExtResource("2_kbi8j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(-6.10352e-05, 0)
-rotation = -3.14159
-texture = ExtResource("2_sbck4")
+scale = Vector2(3.454, 3.454)
+texture = ExtResource("2_iyoho")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(0.000244141, 0)
-shape = SubResource("CircleShape2D_mkwiu")
+polygon = PackedVector2Array(2.35626, -16.4952, 28.2773, -16.4952, 51.8419, -2.35651, 51.8419, 7.06934, 28.2773, 18.8516, -2.35669, 18.8516, -49.4858, 4.71289, -49.4858, 0)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
