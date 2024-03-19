@@ -21,7 +21,7 @@ func _process(delta):
 	if health > 0:
 	#endregion
 		if Input.is_action_just_pressed('kill'):
-			queue_free()
+			death()
 		mouse_position = get_global_mouse_position()
 		var direction = Input.get_axis('left', "right")
 		
@@ -55,6 +55,8 @@ func _process(delta):
 		sprite.scale.x = lerp(sprite.scale.x, 1.0, 12 * delta) #messing around with squshing you can delete
 		sprite.scale.y = lerp(sprite.scale.y, 1.0, 12 * delta)
 		sprite.rotation = lerp_angle(sprite.rotation, 0.0, 8 * delta)
+		if global_position.length() >= 3000:
+			death()
 	else: velocity.y += 9.8
 	move_and_slide()
 	

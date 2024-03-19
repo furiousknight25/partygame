@@ -33,6 +33,8 @@ func _physics_process(delta):
 		rotation += rotation_direction * rotation_speed * delta
 		velocity = lerp(velocity, Vector2(0,0), 0.02)
 		blast()
+		if global_position.length() >= 3000:
+			death()
 	else: velocity.y += 9.8#just adding gravity if you die for lols, u can delete
 	move_and_slide()
 	

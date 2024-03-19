@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxylv50enx4tb"]
+[gd_scene load_steps=9 format=3 uid="uid://bxylv50enx4tb"]
 
 [ext_resource type="Script" path="res://Players/Jesse/playerjesse.gd" id="1_w2pg1"]
 [ext_resource type="PackedScene" uid="uid://bmjkc1l0qdpx" path="res://Players/Jesse/rock.tscn" id="2_2fa4w"]
 [ext_resource type="Texture2D" uid="uid://dqce47oo1o0t1" path="res://Players/Jesse/pixil-frame-0.png" id="2_4awxi"]
 [ext_resource type="Texture2D" uid="uid://re21y8djadvk" path="res://raw_assets/ball.png" id="3_344pe"]
+
+[sub_resource type="Curve" id="Curve_qpbn6"]
+_data = [Vector2(0, 0.287671), 0.0, 0.0, 0, 0, Vector2(1, 0.685737), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5m48"]
 size = Vector2(45, 52)
@@ -58,6 +62,14 @@ one_shot = true
 texture_filter = 1
 scale = Vector2(0.232544, 0.232544)
 texture = ExtResource("3_344pe")
+
+[node name="Line2D" type="Line2D" parent="rock"]
+top_level = true
+points = PackedVector2Array(0, 0, 0, 35.745)
+closed = true
+width = 4.305
+width_curve = SubResource("Curve_qpbn6")
+default_color = Color(0.705882, 0.286275, 0.305882, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_v5m48")
@@ -114,6 +126,6 @@ rotation = -3.14159
 scale = Vector2(0.666667, -0.666667)
 
 [node name="RockFinal" type="Marker2D" parent="Sprite2D"]
-position = Vector2(31.3104, -17.1871)
+position = Vector2(-8.68958, -4.52042)
 
 [connection signal="timeout" from="rock/TeleportToHand" to="rock" method="_on_timer_timeout"]

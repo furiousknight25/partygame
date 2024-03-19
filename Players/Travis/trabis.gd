@@ -25,7 +25,11 @@ func _physics_process(delta):
 
 		# Jump Func
 		if Input.is_action_just_pressed("up") and is_on_floor():
-			velocity += Vector2(JUMP_HORIZONTAL,JUMP_VELOCITY)
+			var jump_direction
+			if get_global_mouse_position() > global_position:
+				jump_direction = 1
+			else: jump_direction = -1
+			velocity += Vector2(JUMP_HORIZONTAL * jump_direction,JUMP_VELOCITY)
 
 
 		#left and right movement
@@ -35,29 +39,30 @@ func _physics_process(delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED * delta * 5)
 
-
+		if global_position.length() >= 3000:
+			death()
 		#character flip
 		if get_global_mouse_position().x >= position.x:
 			pass
 		$Magnet.rotation = atan2(get_global_mouse_position().y - global_position.y, get_global_mouse_position().x - global_position.x)
 	else: velocity.y += 9.8
 	move_and_slide()
-
+	
 	#Particles
 	if Input.is_action_pressed('RightM') or Input.is_action_pressed("LeftM"):
 		magnet_stuff.emitting = true
 		
 		for i in magnet.get_overlapping_bodies():
 			if i != self and i.has_method('hurt'):
-				i.hurt.rpc(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 100 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1), 1)
+				i.hurt.rpc(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 50 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1) * delta, 10 * delta)
 	else: magnet_stuff.emitting = false
 	
-
+	
 func death():
 	change_stocks(0)
 	$"Character hitbox".disabled = true
 	health = 0
-
+	
 @rpc("any_peer")
 func hurt(direction, damage_percent):
 	velocity += direction

@@ -6,8 +6,12 @@ func _enter_tree():
 
 func _ready():
 	set_text(name.to_int())
+	multiplayer.connected_to_server.connect(on_connected_to_server)
 	#change_color.rpc_id(name.to_int()) #from this line
 	#MultiplayerTest.player_loaded.rpc()
+
+func on_connected_to_server():
+	_on_option_button_item_selected($PanelContainer/Select/OptionButton.get_selected_id())
 
 @rpc("any_peer")
 func set_text(text):
@@ -19,7 +23,6 @@ func change_color():
 
 @rpc('any_peer')
 func _on_option_button_item_selected(index):
-	
 	Director.players[multiplayer.get_unique_id()]['choice'] = index
 	print(Director.players)
 	if !multiplayer.is_server():
@@ -34,4 +37,3 @@ func _on_option_button_item_selected(index):
 @rpc("any_peer")
 func set_choice(index, id):
 	Director.players[id]['choice'] = index
-

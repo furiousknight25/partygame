@@ -91,8 +91,8 @@ func _process(delta):
 		#print(kick_timer.time_left)
 		mouse_process_stuff(delta)
 		
-		if global_position.y >= 1200:
-			change_stocks(0)
+		if global_position.length() >= 3000:
+			death()
 	else: velocity.y += 9.8
 	
 	move_and_slide()
