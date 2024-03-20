@@ -60,6 +60,7 @@ func _add_player(id = 1): #starts lobby code
 
 func remove_player(peer_id):
 	var player = $ui/Menu/select/HBoxContainer.get_node_or_null(str(peer_id))
+	Director.players.erase(peer_id)
 	if player:
 		player.queue_free()
 

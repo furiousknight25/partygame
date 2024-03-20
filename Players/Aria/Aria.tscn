@@ -42,7 +42,7 @@ texture_filter = 1
 texture = ExtResource("2_i55cl")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 4.22574, 2.11287, 6.33861, 7.0429, 11.2686, 11.9729, 11, 15, -10, 15, -9.86006, 11.2686, -5.63432, 8.45148, -4.22574, 2.81716)
+polygon = PackedVector2Array(0, 0, 4.22574, 2.11287, 5.63432, 8.45148, 9.86006, 11.2686, 9.86006, 14.7901, -10, 15, -9.86006, 11.2686, -5.63432, 8.45148, -4.22574, 2.81716)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = -15.0
