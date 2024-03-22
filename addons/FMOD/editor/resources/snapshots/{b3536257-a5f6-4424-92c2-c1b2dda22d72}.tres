@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://cscga3u4pic0a"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/mus_lvl1_verbtransition"
+guid = "{b3536257-a5f6-4424-92c2-c1b2dda22d72}"
+name = "mus_lvl1_verbtransition"

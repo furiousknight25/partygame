@@ -9,8 +9,12 @@ var ip
 var state = 'menu'
 var dir = DirAccess.open("res://Levels/level_rotation/").get_files()
 
+const DEV_MODE = false
+
+
 func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
+
 	#upnp_setup()
 
 var transition_time = false
@@ -18,24 +22,22 @@ func  _process(delta):
 	if not multiplayer.is_server(): return
 	if Input.is_action_just_pressed('ui_home'):
 		change_level.call_deferred(load("res://Levels/level_test.tscn"))
-	#check for stocks, if only one person has stocks then switch stage
-	#check if game started
+	if DEV_MODE == true: return
 	var total_stocks = 0
 	for i in Director.players:
 		total_stocks += Director.players[i]['stocks']
+	
 	if state == 'start':
-		#return
+		MusicC.change_level(3)
 		if total_stocks <= 1 and !transition_time:
-			#Engine.set_time_scale(.3)
 			transition_time = true
 			await get_tree().create_timer(1).timeout
-			#Engine.set_time_scale(1)
 			change_level(load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1]))
 func _on_port_forward_pressed():
 	upnp_setup()
 	$ui/Menu/Main/Control/TextEdit.text = var_to_str(ip) + ' I have your ip'
 
-func _on_host_pressed(): #64.8.134.2
+func _on_host_pressed(): 
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(PORT)
 	multiplayer.multiplayer_peer = peer
@@ -44,20 +46,28 @@ func _on_host_pressed(): #64.8.134.2
 	multiplayer.peer_disconnected.connect(remove_player)
 	_add_player(multiplayer.get_unique_id())
 	send_player_info('host', multiplayer.get_unique_id())
+	
+	
 
 func _on_join_pressed():
 	var text_type = $ui/Menu/Main/Control/TextEdit
 	var peer = ENetMultiplayerPeer.new()
 	ip = text_type.text
-	#ip = 'localhost'
-	peer.create_client('66.242.81.85', PORT) #may have to switch to ip of the host
+	if DEV_MODE == true: ip = 'localhost'
+	peer.create_client(ip, PORT)
 	multiplayer.multiplayer_peer = peer
 	
-func _add_player(id = 1): #starts lobby code
+	
+	
+func _add_player(id = 1):
 	var c = container.instantiate()
 	c.name = str(id)
 	$ui/Menu/select/HBoxContainer.add_child(c)
-
+	c.multiplayer_test = self
+	
+	MusicC.start()
+	if id != 1: MusicC.mute()
+	
 func remove_player(peer_id):
 	var player = $ui/Menu/select/HBoxContainer.get_node_or_null(str(peer_id))
 	Director.players.erase(peer_id)
@@ -86,8 +96,18 @@ func start_game():
 	if multiplayer.is_server():
 		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1]))
 		state = 'start'
+		sync_server_to_peer()
+
+func sync_server_to_peer():
+	for i in Director.players:
+		if i != 1:
+			sync.rpc_id(i, Director.players)
+@rpc("any_peer")
+func sync(director_info):
+	print(director_info)
+	Director.players = director_info
+
 func change_level(scene: PackedScene):
-	# Remove old level if any.
 	%Animation_Transition.play('open')
 	for i in Director.players:
 		if i != 1:

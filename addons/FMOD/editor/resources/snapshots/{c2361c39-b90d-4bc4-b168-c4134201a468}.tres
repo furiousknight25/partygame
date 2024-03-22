@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://cf8tt2espov7g"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/dialogue_in_progress"
+guid = "{c2361c39-b90d-4bc4-b168-c4134201a468}"
+name = "dialogue_in_progress"

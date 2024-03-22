@@ -1,0 +1,45 @@
+[gd_resource type="EventAsset" load_steps=7 format=3 uid="uid://nxjlau73ab6m"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_8ylct"]
+data1 = 367015620
+data2 = 910902123
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_2rf7i"]
+name = "progress"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_8ylct")
+maximum = 3.0
+guid = "{28c04247-6281-4719-99f6-1badde7601bc}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_fx25c"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_2rf7i")
+path = "parameter:/music/dlc/part01/progress"
+guid = "{28c04247-6281-4719-99f6-1badde7601bc}"
+name = "progress"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_dnokl"]
+data1 = 3269231429
+data2 = 218405141
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_dpbih"]
+name = "fade"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_dnokl")
+maximum = 1.0
+default_value = 1.0
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_jvrwi"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_dpbih")
+path = "parameter:/shared/fade"
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+name = "fade"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{28c04247-6281-4719-99f6-1badde7601bc}": SubResource("ParameterAsset_fx25c"),
+"{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}": SubResource("ParameterAsset_jvrwi")
+}
+path = "event:/new_content/music/lvl10/part01"
+guid = "{f7e0cc43-4a57-49ee-a114-7d9d1e40b198}"
+name = "part01"

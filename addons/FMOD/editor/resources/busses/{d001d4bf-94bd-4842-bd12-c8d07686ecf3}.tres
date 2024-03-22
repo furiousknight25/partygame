@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://b03yk8t3h6dv2"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/general/yes_pause/secret_revealed"
+guid = "{d001d4bf-94bd-4842-bd12-c8d07686ecf3}"
+name = "secret_revealed"

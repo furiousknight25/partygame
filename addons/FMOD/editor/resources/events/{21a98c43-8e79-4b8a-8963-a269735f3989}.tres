@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://dahrtigxohjov"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/ui/world_map/whoosh/900ms_forward"
+guid = "{21a98c43-8e79-4b8a-8963-a269735f3989}"
+name = "900ms_forward"

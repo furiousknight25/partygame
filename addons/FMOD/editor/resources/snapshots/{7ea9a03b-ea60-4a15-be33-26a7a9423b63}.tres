@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://cuy56hny2kn1u"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_10_inside_cafe"
+guid = "{7ea9a03b-ea60-4a15-be33-26a7a9423b63}"
+name = "game_10_inside_cafe"

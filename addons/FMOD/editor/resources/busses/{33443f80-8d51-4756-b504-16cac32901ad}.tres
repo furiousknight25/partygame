@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://dntcne5re7ylc"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/03_resort/key_unlocks"
+guid = "{33443f80-8d51-4756-b504-16cac32901ad}"
+name = "key_unlocks"

@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://bb21u5r5hfsyp"]
+
+[resource]
+path = "bus:/gameplay_sfx/ambience/shared_local/campfire_loop"
+guid = "{8087939b-55de-4834-a7ec-2b62741a1099}"
+name = "campfire_loop"

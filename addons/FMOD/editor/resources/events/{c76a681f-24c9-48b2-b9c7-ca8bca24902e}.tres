@@ -1,0 +1,28 @@
+[gd_resource type="EventAsset" load_steps=4 format=3 uid="uid://c6mmebg68qbmm"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_t561g"]
+data1 = 3269231429
+data2 = 218405141
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_5ooap"]
+name = "fade"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_t561g")
+maximum = 1.0
+default_value = 1.0
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_ayc8a"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_5ooap")
+path = "parameter:/shared/fade"
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+name = "fade"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}": SubResource("ParameterAsset_ayc8a")
+}
+path = "event:/new_content/music/lvl10/golden_room"
+guid = "{c76a681f-24c9-48b2-b9c7-ca8bca24902e}"
+name = "golden_room"

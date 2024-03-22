@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://p8m5k8srdfjy"]
+
+[resource]
+path = "bus:/music/tunes/remix"
+guid = "{f81bdbae-62d5-467b-8f64-608c3c625282}"
+name = "remix"

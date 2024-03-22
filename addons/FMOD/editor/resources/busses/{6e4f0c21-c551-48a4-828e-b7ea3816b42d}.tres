@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://rb1pxx83e81o"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters"
+guid = "{6e4f0c21-c551-48a4-828e-b7ea3816b42d}"
+name = "chapters"

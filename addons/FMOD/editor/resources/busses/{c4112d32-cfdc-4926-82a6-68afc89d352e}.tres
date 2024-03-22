@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://duo0rmowc5uif"]
+
+[resource]
+path = "bus:/gameplay_sfx/char/oshiro"
+guid = "{c4112d32-cfdc-4926-82a6-68afc89d352e}"
+name = "oshiro"

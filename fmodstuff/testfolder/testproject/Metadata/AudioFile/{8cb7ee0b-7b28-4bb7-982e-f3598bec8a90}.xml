@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{8cb7ee0b-7b28-4bb7-982e-f3598bec8a90}">
+		<property name="assetPath">
+			<value>music/kuraine/mus_lvl9_part02_uplifting_synthbass.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>100</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1b523d45-c14a-4c7d-99b2-68b98cfb7cac}</destination>
+		</relationship>
+	</object>
+</objects>

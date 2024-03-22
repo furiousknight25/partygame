@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://bv5wfyhmdrej5"]
+
+[resource]
+path = "bus:/music/tunes/mains/lvl2/beginning_verb"
+guid = "{7f93dae5-d646-46a5-ae9d-561b4ea5b4d8}"
+name = "beginning_verb"

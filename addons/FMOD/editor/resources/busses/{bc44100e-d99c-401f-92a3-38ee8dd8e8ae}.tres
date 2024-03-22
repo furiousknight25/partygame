@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://cfokvpxgbsgej"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/03_resort/clutterswitch_presses"
+guid = "{bc44100e-d99c-401f-92a3-38ee8dd8e8ae}"
+name = "clutterswitch_presses"

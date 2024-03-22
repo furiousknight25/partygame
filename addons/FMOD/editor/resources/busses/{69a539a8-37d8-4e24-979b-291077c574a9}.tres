@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://bikev5s78bwcb"]
+
+[resource]
+path = "bus:/gameplay_sfx/ambience/00_prologue"
+guid = "{69a539a8-37d8-4e24-979b-291077c574a9}"
+name = "00_prologue"

@@ -1,0 +1,6 @@
+[gd_resource type="VCAAsset" format=3 uid="uid://7g06ko7wykyd"]
+
+[resource]
+path = "vca:/ui_sfx"
+guid = "{8d7cf364-00af-4b77-8298-c64b484c5ea4}"
+name = "ui_sfx"

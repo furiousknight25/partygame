@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://l317qxrnxvva"]
+
+[resource]
+path = "bus:/gameplay_sfx/char/badeline"
+guid = "{9b8177d0-ae29-4cb1-93e6-c584b54b3804}"
+name = "badeline"

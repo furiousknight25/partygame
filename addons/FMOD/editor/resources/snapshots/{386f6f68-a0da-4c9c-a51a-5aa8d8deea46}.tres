@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://c4itok0djugew"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_05_torch_arp"
+guid = "{386f6f68-a0da-4c9c-a51a-5aa8d8deea46}"
+name = "game_05_torch_arp"

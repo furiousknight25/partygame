@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://0gk0goak0ohh"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_03_oshirofreakout"
+guid = "{d8e12b32-0f5a-4897-8bde-7be2012a0924}"
+name = "game_03_oshirofreakout"

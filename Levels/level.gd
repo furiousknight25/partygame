@@ -44,10 +44,10 @@ func change_level():
 		var level = load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1])
 		add_child(level.instantiate()) #chunker to make
 
-func _process(delta):
-	if players.get_child_count() <= 1:
-		if not multiplayer.is_server(): return
-		get_parent().get_parent().change_level(load("res://Levels/level_test.tscn"))
+#func _process(delta):
+	#if players.get_child_count() <= 1:
+		#if not multiplayer.is_server(): return
+		#get_parent().get_parent().change_level(load("res://Levels/level_test.tscn"))
 		#get_parent().change_level()
 		#change_level.call_deferred()
 		#print(players.get_child_count())

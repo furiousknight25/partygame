@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://ddci157iyy6o7"]
+
+[resource]
+path = "bus:/music/tunes/mains/dlc/heartgroove"
+guid = "{598cd199-b5f0-49f5-ba6b-3a2f5ef1de25}"
+name = "heartgroove"

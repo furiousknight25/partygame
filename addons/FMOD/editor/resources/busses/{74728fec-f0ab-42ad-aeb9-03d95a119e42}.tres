@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://cw6hgqxhrbafo"]
+
+[resource]
+path = "bus:/gameplay_sfx/prologue_verb"
+guid = "{74728fec-f0ab-42ad-aeb9-03d95a119e42}"
+name = "prologue_verb"

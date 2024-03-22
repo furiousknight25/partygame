@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://mos1fmw7wacw"]
+
+[resource]
+path = "bus:/music/tunes/pico8_mus_verb"
+guid = "{8abc7179-c5ff-48ff-85fd-73ba46b14ed3}"
+name = "pico8_mus_verb"

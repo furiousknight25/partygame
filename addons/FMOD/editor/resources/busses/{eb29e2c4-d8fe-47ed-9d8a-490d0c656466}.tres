@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://dki5cy2yb0nje"]
+
+[resource]
+path = "bus:/gameplay_sfx/granny_clouds_dialogue"
+guid = "{eb29e2c4-d8fe-47ed-9d8a-490d0c656466}"
+name = "granny_clouds_dialogue"

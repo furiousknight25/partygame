@@ -1,0 +1,27 @@
+[gd_resource type="EventAsset" load_steps=4 format=3 uid="uid://c3njyc6l2b2fi"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_1ix8v"]
+data1 = 2637394985
+data2 = 4022461784
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_2yopl"]
+name = "progress"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_1ix8v")
+maximum = 3.0
+guid = "{022fd6a0-ab36-4b9e-8282-28c11134ca66}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_1x0nh"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_2yopl")
+path = "parameter:/music/dlc/part01/progress"
+guid = "{022fd6a0-ab36-4b9e-8282-28c11134ca66}"
+name = "progress"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{022fd6a0-ab36-4b9e-8282-28c11134ca66}": SubResource("ParameterAsset_1x0nh")
+}
+path = "event:/song"
+guid = "{58984cc6-f9ac-47c0-9d9d-57a3966d0b5b}"
+name = "song"

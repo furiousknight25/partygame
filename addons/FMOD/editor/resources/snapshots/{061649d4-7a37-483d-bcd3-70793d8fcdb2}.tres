@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://dry37ft1yb0tn"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/mus_cassette_amb_down"
+guid = "{061649d4-7a37-483d-bcd3-70793d8fcdb2}"
+name = "mus_cassette_amb_down"

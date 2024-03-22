@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://cvhgcrbi6y34h"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_10_in_space"
+guid = "{1829469a-4c2d-4f04-a2b6-8a528987e9a9}"
+name = "game_10_in_space"

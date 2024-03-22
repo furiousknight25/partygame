@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://cjlgphew8ex7g"]
+
+[resource]
+path = "bus:/gameplay_sfx/ambience/worldmap"
+guid = "{520daa59-6d74-4eef-8d67-5c50d55bebd8}"
+name = "worldmap"

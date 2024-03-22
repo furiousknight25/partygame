@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://d3obknvwoli7x"]
+
+[resource]
+path = "bus:/gameplay_sfx/ambience/10_farewell/electricity"
+guid = "{1394d383-dd5e-4772-abcd-5780e97a8ee3}"
+name = "electricity"

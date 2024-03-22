@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://diiqw7j7imlio"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/music_all_mute"
+guid = "{35a38d70-5255-4def-a24c-38d4b432bc7b}"
+name = "music_all_mute"

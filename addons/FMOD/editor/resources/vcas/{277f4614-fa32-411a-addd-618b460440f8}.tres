@@ -1,0 +1,6 @@
+[gd_resource type="VCAAsset" format=3 uid="uid://bf850nedjerid"]
+
+[resource]
+path = "vca:/music"
+guid = "{277f4614-fa32-411a-addd-618b460440f8}"
+name = "music"

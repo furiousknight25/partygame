@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://dwgj24d680k76"]
+
+[resource]
+path = "bus:/gameplay_sfx/ambience/10_farewell/kevinpc"
+guid = "{fab12ece-124b-4bca-98d5-6ad4320118b0}"
+name = "kevinpc"

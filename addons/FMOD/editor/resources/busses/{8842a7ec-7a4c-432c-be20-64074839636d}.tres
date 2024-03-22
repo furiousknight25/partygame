@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://e5mlv22xaaoh"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/general/yes_pause/crystalhearts/fakeheart"
+guid = "{8842a7ec-7a4c-432c-be20-64074839636d}"
+name = "fakeheart"

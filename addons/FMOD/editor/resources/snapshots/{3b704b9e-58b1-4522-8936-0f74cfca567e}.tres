@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://cm1gxl7ki3b6y"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_03_pico8room"
+guid = "{3b704b9e-58b1-4522-8936-0f74cfca567e}"
+name = "game_03_pico8room"

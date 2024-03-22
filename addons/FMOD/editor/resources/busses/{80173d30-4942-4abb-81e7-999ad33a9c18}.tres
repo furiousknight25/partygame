@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://bcjctm6kdsr3k"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/general/yes_pause"
+guid = "{80173d30-4942-4abb-81e7-999ad33a9c18}"
+name = "yes_pause"

@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://vpm5jysv08nl"]
+
+[resource]
+path = "bus:/gameplay_sfx/golden_room_flavour"
+guid = "{cf6c699a-44d0-402c-ae02-e2e0a46cb94a}"
+name = "golden_room_flavour"

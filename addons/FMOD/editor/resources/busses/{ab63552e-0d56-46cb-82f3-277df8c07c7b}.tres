@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://ch8qacu0qhbcp"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/glitches"
+guid = "{ab63552e-0d56-46cb-82f3-277df8c07c7b}"
+name = "glitches"

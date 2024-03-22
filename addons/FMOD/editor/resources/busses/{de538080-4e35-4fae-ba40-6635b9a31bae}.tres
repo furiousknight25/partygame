@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://dpepudnqmtqtj"]
+
+[resource]
+path = "bus:/Reverb_Dash_Assist"
+guid = "{de538080-4e35-4fae-ba40-6635b9a31bae}"
+name = "Reverb_Dash_Assist"

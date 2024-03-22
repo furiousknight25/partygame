@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://h2xvcfxgaxwl"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/variant_speed/variant_speed_120"
+guid = "{401f67f5-af7d-4b5d-a7fd-e7d30583a9a8}"
+name = "variant_speed_120"

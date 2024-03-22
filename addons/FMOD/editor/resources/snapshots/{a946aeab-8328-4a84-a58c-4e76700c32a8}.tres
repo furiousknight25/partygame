@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://cmnjtkcqdq3rx"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/env_worldmap_down"
+guid = "{a946aeab-8328-4a84-a58c-4e76700c32a8}"
+name = "env_worldmap_down"

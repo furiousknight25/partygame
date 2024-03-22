@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://dd21nxkd1h83s"]
+
+[resource]
+path = "bus:/music/tunes/side_rooms/ppt_content"
+guid = "{33116628-46c3-4bfd-9ca6-a4a152fb9ef2}"
+name = "ppt_content"

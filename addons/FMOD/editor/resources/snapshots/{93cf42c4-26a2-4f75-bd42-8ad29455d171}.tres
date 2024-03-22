@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://da1iei5rsfaoo"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/boss_pitch_sfx"
+guid = "{93cf42c4-26a2-4f75-bd42-8ad29455d171}"
+name = "boss_pitch_sfx"

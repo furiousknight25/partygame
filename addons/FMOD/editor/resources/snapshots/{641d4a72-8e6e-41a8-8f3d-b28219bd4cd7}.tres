@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://c4iecx7ctfx75"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/berry_cooperation/3000s_down"
+guid = "{641d4a72-8e6e-41a8-8f3d-b28219bd4cd7}"
+name = "3000s_down"

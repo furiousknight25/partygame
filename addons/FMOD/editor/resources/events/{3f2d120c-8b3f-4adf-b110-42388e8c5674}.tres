@@ -1,0 +1,29 @@
+[gd_resource type="EventAsset" load_steps=4 format=3 uid="uid://cxkwki8dyrdkl"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_v8uyi"]
+data1 = 3269231429
+data2 = 218405141
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_ulv5q"]
+name = "fade"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_v8uyi")
+maximum = 1.0
+default_value = 1.0
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_6awcw"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_ulv5q")
+path = "parameter:/shared/fade"
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+name = "fade"
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}": SubResource("ParameterAsset_6awcw")
+}
+path = "event:/new_content/music/lvl10/cinematic/bird_crash_first"
+guid = "{3f2d120c-8b3f-4adf-b110-42388e8c5674}"
+name = "bird_crash_first"

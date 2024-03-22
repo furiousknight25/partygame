@@ -1,0 +1,28 @@
+[gd_resource type="EventAsset" load_steps=4 format=3 uid="uid://bsxpwvtjmvk0m"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_40ina"]
+data1 = 3269231429
+data2 = 218405141
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_kb215"]
+name = "fade"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_40ina")
+maximum = 1.0
+default_value = 1.0
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_3lohx"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_kb215")
+path = "parameter:/shared/fade"
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+name = "fade"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}": SubResource("ParameterAsset_3lohx")
+}
+path = "event:/new_content/music/lvl10/reconciliation"
+guid = "{8023c811-1142-42b8-8789-cbf1221c5c81}"
+name = "reconciliation"

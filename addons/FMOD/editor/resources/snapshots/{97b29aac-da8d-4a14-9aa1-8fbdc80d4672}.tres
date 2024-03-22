@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://5qe60ptx2umu"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_gen_large_berry_get"
+guid = "{97b29aac-da8d-4a14-9aa1-8fbdc80d4672}"
+name = "game_gen_large_berry_get"

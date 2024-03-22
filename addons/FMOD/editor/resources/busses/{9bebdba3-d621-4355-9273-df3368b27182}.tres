@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://x5qdq0jmh637"]
+
+[resource]
+path = "bus:/gameplay_sfx/kevinpc_verb"
+guid = "{9bebdba3-d621-4355-9273-df3368b27182}"
+name = "kevinpc_verb"

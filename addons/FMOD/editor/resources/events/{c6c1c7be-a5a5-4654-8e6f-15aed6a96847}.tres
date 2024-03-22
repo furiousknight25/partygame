@@ -1,0 +1,45 @@
+[gd_resource type="EventAsset" load_steps=7 format=3 uid="uid://dmhd3mdgxjijm"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_4322h"]
+data1 = 3269231429
+data2 = 218405141
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_5vbp1"]
+name = "fade"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_4322h")
+maximum = 1.0
+default_value = 1.0
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_1gty7"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_5vbp1")
+path = "parameter:/shared/fade"
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+name = "fade"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_7jcr2"]
+data1 = 1665125591
+data2 = 4005052722
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_th5u1"]
+name = "end"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_7jcr2")
+maximum = 1.0
+guid = "{a6626265-3a28-466b-8c51-f210b64c31dd}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_1mq7h"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_th5u1")
+path = "parameter:/shared/end"
+guid = "{a6626265-3a28-466b-8c51-f210b64c31dd}"
+name = "end"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}": SubResource("ParameterAsset_1gty7"),
+"{a6626265-3a28-466b-8c51-f210b64c31dd}": SubResource("ParameterAsset_1mq7h")
+}
+path = "event:/new_content/music/lvl10/intermission_powerpoint"
+guid = "{c6c1c7be-a5a5-4654-8e6f-15aed6a96847}"
+name = "intermission_powerpoint"

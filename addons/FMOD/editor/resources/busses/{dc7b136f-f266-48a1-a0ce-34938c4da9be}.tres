@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://ce6eu87ktwjmg"]
+
+[resource]
+path = "bus:/music/tunes/mains/layer_verbcontrol"
+guid = "{dc7b136f-f266-48a1-a0ce-34938c4da9be}"
+name = "layer_verbcontrol"

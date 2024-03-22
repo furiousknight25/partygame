@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://c20yjdonc03j8"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/01_forsaken_city/console"
+guid = "{2ce9652c-a647-4e5d-b74a-b36ea60715d9}"
+name = "console"

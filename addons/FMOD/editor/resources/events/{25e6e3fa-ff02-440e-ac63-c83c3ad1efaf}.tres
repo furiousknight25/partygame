@@ -1,0 +1,9 @@
+[gd_resource type="EventAsset" format=3 uid="uid://4a7ly414cvdl"]
+
+[resource]
+is_oneshot = true
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/ui/world_map/whoosh/400ms_back"
+guid = "{25e6e3fa-ff02-440e-ac63-c83c3ad1efaf}"
+name = "400ms_back"

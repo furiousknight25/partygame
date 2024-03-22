@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://nwsacfrd0j11"]
+
+[resource]
+path = "bus:/gameplay_sfx/ambience/01_forsaken_city"
+guid = "{ca9f4472-47c9-4528-b4a7-0367eef8b734}"
+name = "01_forsaken_city"

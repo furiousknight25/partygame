@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://dnkgf5ssfp5jg"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_10_kevinpc_verbtransition"
+guid = "{3a534bf9-d4cd-43ce-b2f1-a63b24452b46}"
+name = "game_10_kevinpc_verbtransition"

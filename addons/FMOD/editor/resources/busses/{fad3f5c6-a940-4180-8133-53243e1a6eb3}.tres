@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://8slo02uslfl8"]
+
+[resource]
+path = "bus:/music/tunes/side_rooms/golden_room"
+guid = "{fad3f5c6-a940-4180-8133-53243e1a6eb3}"
+name = "golden_room"

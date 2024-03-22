@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://cgdtrhtq43a1d"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/04_cliffside/gondola_verb"
+guid = "{b62be6ff-22a2-4c54-986c-0734a819f8f1}"
+name = "gondola_verb"

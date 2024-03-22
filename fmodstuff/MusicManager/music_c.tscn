@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bot68tj8cqwek"]
+
+[ext_resource type="Script" path="res://fmodstuff/testfolder/StudioBankLoader.gd" id="1_giepo"]
+
+[sub_resource type="BankAsset" id="BankAsset_m3ewi"]
+file_path = "res://fmodstuff/testfolder/testproject/Build/Desktop/Master.bank"
+modified_time = 1711091537
+path = "bank:/Master"
+guid = "{baec9044-cb56-40c9-a9cd-fe6f058dceff}"
+name = "Master"
+
+[sub_resource type="BankAsset" id="BankAsset_iejd5"]
+file_path = "res://fmodstuff/testfolder/testproject/Build/Desktop/Master.strings.bank"
+modified_time = 1711091537
+path = "bank:/Master.strings"
+guid = "{22f1b090-ba2d-0c8b-2f84-7491f47ec867}"
+name = "Master.strings"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_1ix8v"]
+data1 = 2637394985
+data2 = 4022461784
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_2yopl"]
+name = "progress"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_1ix8v")
+maximum = 3.0
+guid = "{022fd6a0-ab36-4b9e-8282-28c11134ca66}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_1x0nh"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_2yopl")
+path = "parameter:/music/dlc/part01/progress"
+guid = "{022fd6a0-ab36-4b9e-8282-28c11134ca66}"
+name = "progress"
+
+[sub_resource type="EventAsset" id="EventAsset_iakek"]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{022fd6a0-ab36-4b9e-8282-28c11134ca66}": SubResource("ParameterAsset_1x0nh")
+}
+path = "event:/song"
+guid = "{58984cc6-f9ac-47c0-9d9d-57a3966d0b5b}"
+name = "song"
+
+[node name="MusicC" type="StudioBankLoader"]
+load_on = 1
+num_banks = 2
+bank_0 = SubResource("BankAsset_m3ewi")
+bank_1 = SubResource("BankAsset_iejd5")
+script = ExtResource("1_giepo")
+event = SubResource("EventAsset_iakek")

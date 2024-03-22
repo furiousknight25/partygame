@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://0syes52t2fni"]
+
+[resource]
+path = "bus:/gameplay_sfx/ambience/05_mirror_temple"
+guid = "{52d79f87-b8ae-49f8-9b8f-0623798fe5c0}"
+name = "05_mirror_temple"

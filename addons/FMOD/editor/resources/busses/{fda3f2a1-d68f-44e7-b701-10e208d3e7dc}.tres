@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://dmcpv2i7dv2yl"]
+
+[resource]
+path = "bus:/ui_sfx/rename_verb"
+guid = "{fda3f2a1-d68f-44e7-b701-10e208d3e7dc}"
+name = "rename_verb"

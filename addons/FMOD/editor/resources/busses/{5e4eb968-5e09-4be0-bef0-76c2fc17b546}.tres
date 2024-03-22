@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://ctyw3k7a145mh"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/10_farewell/cassette_room_cymbals"
+guid = "{5e4eb968-5e09-4be0-bef0-76c2fc17b546}"
+name = "cassette_room_cymbals"

@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://dncdllg1yydo8"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/05_mirror_temple/room_lightlevel"
+guid = "{60223204-af0c-42e2-a281-29ce5cad5edc}"
+name = "room_lightlevel"

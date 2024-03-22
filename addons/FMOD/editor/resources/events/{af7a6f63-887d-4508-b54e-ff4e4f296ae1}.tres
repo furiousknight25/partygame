@@ -1,0 +1,62 @@
+[gd_resource type="EventAsset" load_steps=10 format=3 uid="uid://bh3kch6j647e4"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_rm4e0"]
+data1 = 1148634128
+data2 = 3426216308
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_c8qc6"]
+name = "if_bubble"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_rm4e0")
+maximum = 1.0
+guid = "{14302477-b631-4468-b7df-5e8d1b6b88ad}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_8pbkw"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_c8qc6")
+path = "parameter:/if_bubble"
+guid = "{14302477-b631-4468-b7df-5e8d1b6b88ad}"
+name = "if_bubble"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_6xx6n"]
+data1 = 367015620
+data2 = 910902123
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_i7lw1"]
+name = "progress"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_6xx6n")
+maximum = 3.0
+guid = "{28c04247-6281-4719-99f6-1badde7601bc}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_jfbfc"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_i7lw1")
+path = "parameter:/music/dlc/part01/progress"
+guid = "{28c04247-6281-4719-99f6-1badde7601bc}"
+name = "progress"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_peg0x"]
+data1 = 3269231429
+data2 = 218405141
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_6o23b"]
+name = "fade"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_peg0x")
+maximum = 1.0
+default_value = 1.0
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_618iu"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_6o23b")
+path = "parameter:/shared/fade"
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+name = "fade"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{14302477-b631-4468-b7df-5e8d1b6b88ad}": SubResource("ParameterAsset_8pbkw"),
+"{28c04247-6281-4719-99f6-1badde7601bc}": SubResource("ParameterAsset_jfbfc"),
+"{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}": SubResource("ParameterAsset_618iu")
+}
+path = "event:/new_content/music/lvl10/part02"
+guid = "{af7a6f63-887d-4508-b54e-ff4e4f296ae1}"
+name = "part02"

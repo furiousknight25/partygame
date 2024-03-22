@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://bddrecqf06pyk"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_05_eyedistance"
+guid = "{f2738ff2-989f-40bc-8421-a976ba8e49e2}"
+name = "game_05_eyedistance"

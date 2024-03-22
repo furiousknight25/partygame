@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://cp5xnvp53fqhi"]
+
+[resource]
+path = "bus:/music/tunes/cassette_previews"
+guid = "{1ff13d10-7ecd-46fd-9140-2e67c33c217e}"
+name = "cassette_previews"

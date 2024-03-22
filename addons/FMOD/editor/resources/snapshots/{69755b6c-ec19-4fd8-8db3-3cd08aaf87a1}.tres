@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://rvtd5xn5tg4v"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_03_clutterswitch_moment"
+guid = "{69755b6c-ec19-4fd8-8db3-3cd08aaf87a1}"
+name = "game_03_clutterswitch_moment"

@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://b4xclkpy8oehn"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/general/yes_pause/crystalhearts"
+guid = "{dac56484-a3d4-47be-8c8e-38ecce68acc8}"
+name = "crystalhearts"

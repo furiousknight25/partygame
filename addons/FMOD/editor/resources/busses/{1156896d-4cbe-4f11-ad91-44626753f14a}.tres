@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://ldm13rb2k8gv"]
+
+[resource]
+path = "bus:/gameplay_sfx/classic/pico8_verb"
+guid = "{1156896d-4cbe-4f11-ad91-44626753f14a}"
+name = "pico8_verb"

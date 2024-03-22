@@ -1,0 +1,6 @@
+[gd_resource type="VCAAsset" format=3 uid="uid://dtwodtncxl3na"]
+
+[resource]
+path = "vca:/gameplay_sfx"
+guid = "{64ceaf84-8717-4592-80ab-6f3d75b5a276}"
+name = "gameplay_sfx"

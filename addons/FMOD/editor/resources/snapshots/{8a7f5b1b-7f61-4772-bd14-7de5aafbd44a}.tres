@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://dt0pfnm20ja12"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_00_verb"
+guid = "{8a7f5b1b-7f61-4772-bd14-7de5aafbd44a}"
+name = "game_00_verb"

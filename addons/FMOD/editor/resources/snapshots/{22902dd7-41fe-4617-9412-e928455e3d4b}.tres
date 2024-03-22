@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://dqjrkq6cetw82"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_gen_crystalheart"
+guid = "{22902dd7-41fe-4617-9412-e928455e3d4b}"
+name = "game_gen_crystalheart"

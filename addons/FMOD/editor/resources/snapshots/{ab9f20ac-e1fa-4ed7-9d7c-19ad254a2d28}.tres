@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://bicsxleytb7ue"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/assist_game_speed/assist_speed_60"
+guid = "{ab9f20ac-e1fa-4ed7-9d7c-19ad254a2d28}"
+name = "assist_speed_60"

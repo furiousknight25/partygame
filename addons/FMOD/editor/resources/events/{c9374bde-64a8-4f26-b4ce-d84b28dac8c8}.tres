@@ -1,0 +1,10 @@
+[gd_resource type="EventAsset" format=3 uid="uid://dlrvwf24r5kxd"]
+
+[resource]
+is_3d = true
+is_oneshot = true
+min_distance = 360.0
+max_distance = 480.0
+path = "event:/game/04_cliffside/whiteblock_fallthru"
+guid = "{c9374bde-64a8-4f26-b4ce-d84b28dac8c8}"
+name = "whiteblock_fallthru"

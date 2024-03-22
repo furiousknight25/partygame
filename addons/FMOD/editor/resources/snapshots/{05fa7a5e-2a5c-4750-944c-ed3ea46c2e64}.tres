@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://djjh4nnj8dala"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/char_granny_laughs_down"
+guid = "{05fa7a5e-2a5c-4750-944c-ed3ea46c2e64}"
+name = "char_granny_laughs_down"

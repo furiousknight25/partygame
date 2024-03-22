@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://clenh5c38rl2r"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/01_forsaken_city/birdbros_finish"
+guid = "{54bd4bc0-f511-416f-8629-a7abba53f460}"
+name = "birdbros_finish"

@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://c1lox35onhq3c"]
+
+[resource]
+path = "bus:/gameplay_sfx/ambience/07_summit"
+guid = "{2d22a1f7-3d3f-443a-9f5c-b3af2c719942}"
+name = "07_summit"

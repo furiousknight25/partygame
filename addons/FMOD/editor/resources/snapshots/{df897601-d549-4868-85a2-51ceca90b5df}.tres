@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://jkyo0v36l04f"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_10_final_boost"
+guid = "{df897601-d549-4868-85a2-51ceca90b5df}"
+name = "game_10_final_boost"

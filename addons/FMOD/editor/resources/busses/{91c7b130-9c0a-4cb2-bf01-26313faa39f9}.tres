@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://bgmwngmwkhn5x"]
+
+[resource]
+path = "bus:/gameplay_sfx/char/dialogue"
+guid = "{91c7b130-9c0a-4cb2-bf01-26313faa39f9}"
+name = "dialogue"

@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://bqmil0a67br6u"]
+
+[resource]
+path = "bus:/gameplay_sfx/berries/1000s"
+guid = "{bc43e82f-8373-4a3c-b676-5ef48f674f2e}"
+name = "1000s"

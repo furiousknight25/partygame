@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://b1cn4w1w6dl3w"]
+
+[resource]
+path = "bus:/gameplay_sfx/ambience/shared_local"
+guid = "{71710caf-9227-413f-ac6a-261cf6e0cb5b}"
+name = "shared_local"

@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://c32sdooxftgad"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/10_farewell/bird_wingflaps"
+guid = "{1290bf60-75df-4063-a36d-1f89c688a282}"
+name = "bird_wingflaps"

@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://on60nnv0ctoa"]
+
+[resource]
+path = "bus:/ui_sfx/rename_piano"
+guid = "{e8a05ec7-a764-4f64-aac4-4a7f3ba3e4b9}"
+name = "rename_piano"

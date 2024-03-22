@@ -1,0 +1,62 @@
+[gd_resource type="EventAsset" load_steps=10 format=3 uid="uid://cbj3x52wpxjh6"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_ydbdm"]
+data1 = 230085045
+data2 = 3785109769
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_rpcw1"]
+name = "bird_grab"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_ydbdm")
+maximum = 1.0
+guid = "{6bb33d0f-c163-4a63-9dd6-d65cc2b98930}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_apsnl"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_rpcw1")
+path = "parameter:/game/10_farewell/bird_grab"
+guid = "{6bb33d0f-c163-4a63-9dd6-d65cc2b98930}"
+name = "bird_grab"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_dsc0x"]
+data1 = 1983658481
+data2 = 1861215176
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_8fwqm"]
+name = "escape"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_dsc0x")
+maximum = 1.0
+guid = "{756dd3f2-189b-4f3c-b01a-bf2969c10132}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_7qq7s"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_8fwqm")
+path = "parameter:/music/lvl2/chase/escape"
+guid = "{756dd3f2-189b-4f3c-b01a-bf2969c10132}"
+name = "escape"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_6xh4i"]
+data1 = 3269231429
+data2 = 218405141
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_hkipp"]
+name = "fade"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_6xh4i")
+maximum = 1.0
+default_value = 1.0
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_453rf"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_hkipp")
+path = "parameter:/shared/fade"
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+name = "fade"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{6bb33d0f-c163-4a63-9dd6-d65cc2b98930}": SubResource("ParameterAsset_apsnl"),
+"{756dd3f2-189b-4f3c-b01a-bf2969c10132}": SubResource("ParameterAsset_7qq7s"),
+"{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}": SubResource("ParameterAsset_453rf")
+}
+path = "event:/new_content/music/lvl10/intermission_heartgroove"
+guid = "{e296f495-1041-400e-9c31-c59ef318e7b7}"
+name = "intermission_heartgroove"

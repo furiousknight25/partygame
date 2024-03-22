@@ -1,0 +1,81 @@
+[gd_resource type="EventAsset" load_steps=13 format=3 uid="uid://bb1hdscvixdqs"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_81ioh"]
+data1 = 5592517
+data2 = 599983095
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_40ad4"]
+name = "ahdsr_controller"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_81ioh")
+maximum = 1.0
+guid = "{9c51590a-dac6-41aa-b931-c2bda99a7bfb}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_17qno"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_40ad4")
+path = "parameter:/tools/ahdsr_controller"
+guid = "{9c51590a-dac6-41aa-b931-c2bda99a7bfb}"
+name = "ahdsr_controller"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_ovwxs"]
+data1 = 3269231429
+data2 = 218405141
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_ul124"]
+name = "fade"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_ovwxs")
+maximum = 1.0
+default_value = 1.0
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_vvpcy"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_ul124")
+path = "parameter:/shared/fade"
+guid = "{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}"
+name = "fade"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_gpr53"]
+data1 = 1714391018
+data2 = 1538390468
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_i3vd5"]
+name = "progress"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_gpr53")
+maximum = 3.0
+guid = "{ae89ca56-971a-471c-8aa9-4765ac5933cb}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_dee4e"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_i3vd5")
+path = "parameter:/music/dlc/cassette_rooms/progress"
+guid = "{ae89ca56-971a-471c-8aa9-4765ac5933cb}"
+name = "progress"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_chj1i"]
+data1 = 3225843725
+data2 = 985203868
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_t4rh8"]
+name = "sixteenth_note"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_chj1i")
+minimum = 1.0
+maximum = 257.0
+default_value = 1.0
+guid = "{c2b359ee-617f-49f2-a8bd-c627a9f4902b}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_chavd"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_t4rh8")
+path = "parameter:/shared/sixteenth_note"
+guid = "{c2b359ee-617f-49f2-a8bd-c627a9f4902b}"
+name = "sixteenth_note"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{9c51590a-dac6-41aa-b931-c2bda99a7bfb}": SubResource("ParameterAsset_17qno"),
+"{9cd4f7d4-e882-4ac4-af8e-25de0646bf57}": SubResource("ParameterAsset_vvpcy"),
+"{ae89ca56-971a-471c-8aa9-4765ac5933cb}": SubResource("ParameterAsset_dee4e"),
+"{c2b359ee-617f-49f2-a8bd-c627a9f4902b}": SubResource("ParameterAsset_chavd")
+}
+path = "event:/new_content/music/lvl10/cassette_rooms"
+guid = "{c188c18a-cede-4cca-b9c1-455f89a13ca8}"
+name = "cassette_rooms"

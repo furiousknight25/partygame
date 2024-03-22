@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://bhgheqrvh7ej8"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_10_glitch_active"
+guid = "{2ef4067b-f330-40b8-ab59-15280643ba2d}"
+name = "game_10_glitch_active"

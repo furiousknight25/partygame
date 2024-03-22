@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://bt2wbc5txo7hu"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_02_dreammemorial_fade"
+guid = "{1ab40160-5839-4d5b-8b1d-e0a6bd83347d}"
+name = "game_02_dreammemorial_fade"

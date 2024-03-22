@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://b2rc3bf1ieu82"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_gen_dash_assist_active"
+guid = "{03db7333-40ef-44fe-83cb-7e650abdb49c}"
+name = "game_gen_dash_assist_active"

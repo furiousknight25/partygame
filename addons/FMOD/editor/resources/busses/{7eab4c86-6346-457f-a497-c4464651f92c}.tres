@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://cjl0occrd12fm"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/05_mirror_temple"
+guid = "{7eab4c86-6346-457f-a497-c4464651f92c}"
+name = "05_mirror_temple"

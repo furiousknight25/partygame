@@ -1,0 +1,7 @@
+[gd_resource type="EventAsset" format=3 uid="uid://c4740t6llynix"]
+
+[resource]
+is_snapshot = true
+path = "snapshot:/game_10_granny_clouds_dialogue"
+guid = "{9ae549ff-5ba1-4ec1-aec8-ee17190a2d08}"
+name = "game_10_granny_clouds_dialogue"

@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://bnfjrr7rylv0b"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/10_farewell/cafe_computer_amb"
+guid = "{05e910f2-4e6d-4f1d-a82d-014519b4667f}"
+name = "cafe_computer_amb"

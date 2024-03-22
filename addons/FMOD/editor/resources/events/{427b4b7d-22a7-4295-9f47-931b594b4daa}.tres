@@ -1,0 +1,44 @@
+[gd_resource type="EventAsset" load_steps=7 format=3 uid="uid://dhcw1v2s0f87y"]
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_sfphf"]
+data1 = 2679576922
+data2 = 1830647483
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_cs6cs"]
+name = "toodamnfast"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_sfphf")
+maximum = 1.0
+guid = "{201d986c-f7a5-4ab1-a5a1-81f4c58a21b4}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_7oayw"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_cs6cs")
+path = "parameter:/music/dlc/space_finale/toodamnfast"
+guid = "{201d986c-f7a5-4ab1-a5a1-81f4c58a21b4}"
+name = "toodamnfast"
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_rm0yx"]
+data1 = 1672309251
+data2 = 2673800510
+
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_3xaih"]
+name = "progress"
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_rm0yx")
+maximum = 3.0
+guid = "{ae08734e-9300-44c8-89d7-fc71a7c4ce31}"
+
+[sub_resource type="ParameterAsset" id="ParameterAsset_nmewe"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_3xaih")
+path = "parameter:/music/dlc/space_finale/progress"
+guid = "{ae08734e-9300-44c8-89d7-fc71a7c4ce31}"
+name = "progress"
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+parameters = {
+"{201d986c-f7a5-4ab1-a5a1-81f4c58a21b4}": SubResource("ParameterAsset_7oayw"),
+"{ae08734e-9300-44c8-89d7-fc71a7c4ce31}": SubResource("ParameterAsset_nmewe")
+}
+path = "event:/new_content/music/lvl10/final_run"
+guid = "{427b4b7d-22a7-4295-9f47-931b594b4daa}"
+name = "final_run"

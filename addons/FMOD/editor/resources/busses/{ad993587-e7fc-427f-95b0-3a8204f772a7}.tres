@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://b2vqrlpo8fm2i"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/general/yes_pause/strawberry_pulse"
+guid = "{ad993587-e7fc-427f-95b0-3a8204f772a7}"
+name = "strawberry_pulse"

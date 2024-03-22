@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://bnpfx666o2miu"]
+
+[resource]
+path = "bus:/music/tunes/mains/lvl5/torch_arp"
+guid = "{d10b0171-eaf7-4c53-9d55-d05d1bc34e03}"
+name = "torch_arp"

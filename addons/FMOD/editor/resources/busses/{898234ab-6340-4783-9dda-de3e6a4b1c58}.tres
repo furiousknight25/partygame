@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://doaw8ayj7q2aj"]
+
+[resource]
+path = "bus:/music/tunes/mains/lvl6"
+guid = "{898234ab-6340-4783-9dda-de3e6a4b1c58}"
+name = "lvl6"

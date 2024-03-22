@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://bvidhhqiqyj6x"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/04_cliffside"
+guid = "{130cca3c-25f1-4e3f-a26a-d604b2a1bf58}"
+name = "04_cliffside"

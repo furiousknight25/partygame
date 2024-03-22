@@ -25,7 +25,6 @@ func _enter_tree():
 	
 func _ready():
 	#Engine.set_time_scale(.1)
-	
 	set_hold_process()
 func _process(delta):
 	#print(kick_timer.time_left)
@@ -48,7 +47,7 @@ func _process(delta):
 		velocity.y += gravity
 		if self.is_on_floor():
 			velocity.x = lerp(velocity.x,0.0, 10 * delta)
-		velocity.x += Input.get_axis('left','right') * 50
+		#velocity.x += Input.get_axis('left','right') * 50
 		#print(current_state, ' ', teleported)
 		if Input.is_action_just_pressed('RightM'):
 			if current_state == "thrown" and teleported == false:
@@ -97,11 +96,6 @@ func _process(delta):
 	
 	move_and_slide()
 	
-
-func death():
-	change_stocks(0)
-	$CollisionShape2D.disabled = true
-	health = 0
 	
 func set_hold_process():
 	rock.freeze = true
@@ -148,7 +142,6 @@ func mouse_process_stuff(delta):
 			$CollisionShape2D.disabled = false
 			TeleportCooldown.start()
 
-
 @rpc("any_peer")
 func hurt(direction, damage_percent):
 	#print(direction, " ", damage_percent)
@@ -164,6 +157,11 @@ func hurt(direction, damage_percent):
 	if health <= 0:
 		death()
 
+func death():
+	change_stocks(0)
+	$CollisionShape2D.disabled = true
+	health = 0
+
 @rpc("any_peer")
 func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
 	global_position = pos
@@ -174,8 +172,6 @@ func change_stocks(stock):
 	Director.players[name.to_int()]['stocks'] = stock
 	if !multiplayer.is_server():
 		set_stocks.rpc_id(1, name.to_int(), stock)
-	
 @rpc("any_peer", "reliable")
 func set_stocks(id, stock):
-	#print(id)
 	Director.players[id]['stocks'] = stock

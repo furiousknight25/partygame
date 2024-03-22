@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://c6u4jkdm1oob0"]
+
+[resource]
+path = "bus:/gameplay_sfx/game/chapters/04_cliffside/gondola_halted"
+guid = "{3420193e-c3db-4417-9232-4cf3ebb0d18c}"
+name = "gondola_halted"

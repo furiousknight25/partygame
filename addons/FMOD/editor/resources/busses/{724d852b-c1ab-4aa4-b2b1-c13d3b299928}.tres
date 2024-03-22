@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://cetq4uilg1erl"]
+
+[resource]
+path = "bus:/ui_sfx/worldmap_whoosh"
+guid = "{724d852b-c1ab-4aa4-b2b1-c13d3b299928}"
+name = "worldmap_whoosh"

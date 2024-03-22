@@ -1,0 +1,6 @@
+[gd_resource type="BusAsset" format=3 uid="uid://bpmhk6t8fhcbf"]
+
+[resource]
+path = "bus:/gameplay_sfx/char/dialogue/phone_static"
+guid = "{357a43e8-4c3d-4321-9116-1941d532be68}"
+name = "phone_static"
