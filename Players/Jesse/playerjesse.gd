@@ -20,7 +20,9 @@ var health = 100
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
-	change_stocks(1)
+	
+	if !multiplayer.is_server(): change_stocks.rpc_id(1, name.to_int(), 1)
+	if multiplayer.is_server(): change_stocks(1, 1)
 
 	
 func _ready():
@@ -158,7 +160,8 @@ func hurt(direction, damage_percent):
 		death()
 
 func death():
-	change_stocks(0)
+	if !multiplayer.is_server(): change_stocks.rpc_id(1, name.to_int(), 0)
+	if multiplayer.is_server(): change_stocks(1, 0)
 	$CollisionShape2D.disabled = true
 	health = 0
 
@@ -167,11 +170,12 @@ func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
 	global_position = pos
 	velocity = vel
 
-@rpc("any_peer")
-func change_stocks(stock):
-	Director.players[name.to_int()]['stocks'] = stock
-	if !multiplayer.is_server():
-		set_stocks.rpc_id(1, name.to_int(), stock)
-@rpc("any_peer", "reliable")
-func set_stocks(id, stock):
+@rpc("authority")
+func change_stocks(id, stock): #server id here
 	Director.players[id]['stocks'] = stock
+	for i in Director.players:
+		if i != 1:
+			set_stocks.rpc_id(i, Director.players)
+@rpc("any_peer", "reliable")
+func set_stocks(director_info): #then sync here 
+	Director.players = director_info

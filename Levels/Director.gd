@@ -16,7 +16,8 @@ func _process(delta):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 	if Input.is_action_just_pressed('restart'):
 		get_tree().reload_current_scene()
-	if multiplayer.is_server(): return
+	if !multiplayer.is_server(): return
+	if Engine.get_frames_drawn() % 40 >= 10: return
 	print(players)
 	
 func set_total():

@@ -27,7 +27,7 @@ func _ready():
 			3:
 				current_player = travis_scene.instantiate()
 			
-		current_player.name = str(Director.players[i].id)
+		current_player.name = str(i)
 		
 		players.add_child(current_player)
 		var spawnpoints : Array = $SpawnPoints.get_children()

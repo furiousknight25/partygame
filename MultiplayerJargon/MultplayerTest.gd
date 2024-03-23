@@ -26,9 +26,7 @@ func  _process(delta):
 	var total_stocks = 0
 	for i in Director.players:
 		total_stocks += Director.players[i]['stocks']
-	
 	if state == 'start':
-		MusicC.change_level(3)
 		if total_stocks <= 1 and !transition_time:
 			transition_time = true
 			await get_tree().create_timer(1).timeout
@@ -45,7 +43,7 @@ func _on_host_pressed():
 	multiplayer.peer_connected.connect(_add_player) #right track
 	multiplayer.peer_disconnected.connect(remove_player)
 	_add_player(multiplayer.get_unique_id())
-	send_player_info('host', multiplayer.get_unique_id())
+	send_player_info(multiplayer.get_unique_id())
 	
 	
 
@@ -54,9 +52,8 @@ func _on_join_pressed():
 	var peer = ENetMultiplayerPeer.new()
 	ip = text_type.text
 	if DEV_MODE == true: ip = 'localhost'
-	peer.create_client(ip, PORT)
+	peer.create_client('localhost', PORT)
 	multiplayer.multiplayer_peer = peer
-	
 	
 	
 func _add_player(id = 1):
@@ -75,21 +72,16 @@ func remove_player(peer_id):
 		player.queue_free()
 
 @rpc("any_peer")
-func send_player_info(name, id): #starts global data
+func send_player_info(id): #starts global data
 	if !Director.players.has(id):
 		Director.players[id] = {
-			"name": name,
-			"id": id,
-			'stocks': 1
+			'stocks': 1,
+			'choice': 1
 		}
-	Director.players[id]['choice'] = 1
-	if multiplayer.is_server(): 
-		Director.players[id]['choice'] = 1
-		for i in Director.players:
-			send_player_info.rpc(Director.players[i].name, i)
+	sync_server_to_peer()
 
 func on_connected_to_server():
-	send_player_info.rpc_id(1, 'player', multiplayer.get_unique_id()) #maybe do index stuff here for name
+	send_player_info.rpc_id(1, multiplayer.get_unique_id()) #maybe do index stuff here for name
 
 #region level management
 func start_game():

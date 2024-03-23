@@ -17,11 +17,14 @@ config/icon="res://icon.jpg"
 
 [autoload]
 
-MultiplayerTest="res://MultiplayerJargon/MultplayerTest.gd"
 Director="*res://Levels/Director.gd"
 Camera="*res://tools/camera.gd"
 FMODRuntime="*res://addons/FMOD/runtime/fmod_runtime_manager.gd"
 MusicC="*res://fmodstuff/MusicManager/music_c.tscn"
+
+[debug]
+
+gdscript/warnings/unused_variable=0
 
 [display]
 
