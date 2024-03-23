@@ -3,8 +3,7 @@ extends Node2D
 @export var container: PackedScene
 
 const PORT = 4433
-var choice = {0:'Chris', 1:'Jesse', 2:'Aria', 3:'Travis'}
-	
+
 var ip
 var state = 'menu'
 var dir = DirAccess.open("res://Levels/level_rotation/").get_files()
@@ -14,8 +13,6 @@ const DEV_MODE = false
 
 func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
-
-	#upnp_setup()
 
 func  _process(delta):
 	if not multiplayer.is_server(): return
@@ -30,6 +27,7 @@ func  _process(delta):
 			for i in Director.players: Director.players[i]['stocks'] = 1
 			await get_tree().create_timer(1).timeout
 			change_level(load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1]))
+
 func _on_port_forward_pressed():
 	upnp_setup()
 	$ui/Menu/Main/Control/TextEdit.text = var_to_str(ip) + ' I have your ip'
@@ -44,8 +42,6 @@ func _on_host_pressed():
 	_add_player(multiplayer.get_unique_id())
 	send_player_info(multiplayer.get_unique_id())
 	
-	
-
 func _on_join_pressed():
 	var text_type = $ui/Menu/Main/Control/TextEdit
 	var peer = ENetMultiplayerPeer.new()
@@ -94,7 +90,6 @@ func sync_server_to_peer():
 			sync.rpc_id(i, Director.players)
 @rpc("any_peer")
 func sync(director_info):
-	print(director_info)
 	Director.players = director_info
 
 func change_level(scene: PackedScene):
@@ -120,6 +115,7 @@ func change_level(scene: PackedScene):
 @rpc('any_peer')
 func play_trans(anim):
 	%Animation_Transition.play(anim)
+
 func _on_option_button_item_selected(index):
 	if multiplayer.is_server():
 		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[index - 1]))

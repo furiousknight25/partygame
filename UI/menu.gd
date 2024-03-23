@@ -41,9 +41,7 @@ func character(delta):
 func set_menu():
 	cur_state = STATES.MENU
 	main.position = Vector2.ZERO
-	#var c = container.instantiate()
-	#$select/HBoxContainer.add_child(c)
-	#c.set_text(multiplayer.get_unique_id()) #maybe try not to use multiplayer, its a mid level thing to not be changed
+
 
 func set_character(client):
 	cur_state = STATES.CHARACTER
