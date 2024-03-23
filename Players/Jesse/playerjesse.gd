@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var mouse_area = $MouseArea
 @onready var TeleportCooldown = $TeleportCooldown
 @onready var text = $HealthText
+@onready var musicC = get_tree().current_scene.get_node("/root/MusicC")
 
 var gravity = 10
 var strength = 15
@@ -21,11 +22,9 @@ var health = 100
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	
-	if !multiplayer.is_server(): change_stocks.rpc_id(1, name.to_int(), 1)
-	if multiplayer.is_server(): change_stocks(1, 1)
-
 	
 func _ready():
+	
 	#Engine.set_time_scale(.1)
 	set_hold_process()
 func _process(delta):
@@ -160,22 +159,26 @@ func hurt(direction, damage_percent):
 		death()
 
 func death():
-	if !multiplayer.is_server(): change_stocks.rpc_id(1, name.to_int(), 0)
-	if multiplayer.is_server(): change_stocks(1, 0)
+	change_stocks.rpc(name.to_int(), 0)
 	$CollisionShape2D.disabled = true
 	health = 0
+	
 
 @rpc("any_peer")
 func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
 	global_position = pos
 	velocity = vel
 
-@rpc("authority")
-func change_stocks(id, stock): #server id here
+@rpc("any_peer", "call_local")
+func change_stocks(id, stock): 
 	Director.players[id]['stocks'] = stock
+	
+	var total_stocks = Director.players.size()
 	for i in Director.players:
-		if i != 1:
-			set_stocks.rpc_id(i, Director.players)
+		total_stocks = total_stocks - Director.players[i]['stocks'] #okay this is working its going up
+	musicC.change_level.rpc(total_stocks)
+		
 @rpc("any_peer", "reliable")
 func set_stocks(director_info): #then sync here 
 	Director.players = director_info
+

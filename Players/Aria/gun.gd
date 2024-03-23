@@ -49,7 +49,7 @@ func shoot():
 	add_child(b, true)
 	
 	b.rotation = atan2(mouse_position.y - global_position.y, mouse_position.x - global_position.x)
-	#b.add_to_group("bullets")
+	b.add_to_group("bullets")
 	b.global_position = $Area2D.global_position
 		
 		

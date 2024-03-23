@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var gravity = 980
 @onready var sprite = $Sprite2D
 @onready var text = $RichTextLabel
+@onready var musicC = get_tree().current_scene.get_node("/root/MusicC")
 
 var health = 100
 var walk_animation_speed = 0
@@ -13,7 +14,6 @@ var mouse_position
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
-	change_stocks(1)
 	
 func _process(delta):
 	if not is_multiplayer_authority(): return
@@ -57,9 +57,12 @@ func _process(delta):
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
 
 func death():
-	change_stocks(0)
+	change_stocks.rpc(name.to_int(), 0)
 	$CollisionShape2D.disabled = true
 	health = 0
+	for i in $weapon.get_children():
+		if i.is_in_group('bullets'):
+			i.queue_free()
 
 @rpc("any_peer")
 func hurt(direction, damage_percent):
@@ -83,13 +86,13 @@ func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
 	global_position = pos
 	velocity = vel
 
-@rpc("any_peer")
-func change_stocks(stock):
-	Director.players[name.to_int()]['stocks'] = stock
-	if !multiplayer.is_server():
-		set_stocks.rpc_id(1, name.to_int(), stock)
-	
-@rpc("any_peer", "reliable")
-func set_stocks(id, stock):
-	#print(id)
+@rpc("any_peer", "call_local")
+func change_stocks(id, stock): #server id here
 	Director.players[id]['stocks'] = stock
+	var total_stocks = Director.players.size()
+	for i in Director.players:
+		total_stocks = total_stocks - Director.players[i]['stocks'] #okay this is working its going up
+	musicC.change_level.rpc(total_stocks)
+@rpc("any_peer", "reliable")
+func set_stocks(director_info): #then sync here 
+	Director.players = director_info

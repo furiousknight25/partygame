@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=11 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
 [ext_resource type="Script" path="res://UI/Transition.gd" id="4_d5tsa"]
 [ext_resource type="Script" path="res://Levels/Level_swap.gd" id="4_wtmqh"]
 [ext_resource type="PackedScene" uid="uid://bujc3kdcq2v58" path="res://UI/Character_block.tscn" id="5_n7qw0"]
 [ext_resource type="PackedScene" uid="uid://uog53iqxp4f3" path="res://UI/menu.tscn" id="5_pu61s"]
+[ext_resource type="PackedScene" uid="uid://bot68tj8cqwek" path="res://fmodstuff/MusicManager/music_c.tscn" id="6_so81q"]
 
 [sub_resource type="Animation" id="Animation_pnpsn"]
 length = 0.001
@@ -130,6 +131,8 @@ autoplay = "close"
 [node name="Level" type="Node2D" parent="Multplayer"]
 unique_name_in_owner = true
 script = ExtResource("4_wtmqh")
+
+[node name="MusicC" parent="." instance=ExtResource("6_so81q")]
 
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Join" to="Multplayer/ui/Menu" method="set_character" binds= ["join"]]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/PortForward" to="Multplayer" method="_on_port_forward_pressed"]

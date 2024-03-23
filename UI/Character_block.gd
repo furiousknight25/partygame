@@ -1,6 +1,5 @@
 extends VSplitContainer
 
-var multiplayer_test
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
@@ -25,7 +24,6 @@ func change_color():
 
 @rpc('any_peer')
 func _on_option_button_item_selected(index):
-	if multiplayer_test.state != 'menu': return
 	Director.players[multiplayer.get_unique_id()]['choice'] = index
 	if !multiplayer.is_server():
 		for i in Director.players:

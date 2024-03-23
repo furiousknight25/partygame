@@ -5,7 +5,7 @@ extends Node2D
 const PORT = 4433
 var choice = {0:'Chris', 1:'Jesse', 2:'Aria', 3:'Travis'}
 	
-var ip 
+var ip
 var state = 'menu'
 var dir = DirAccess.open("res://Levels/level_rotation/").get_files()
 
@@ -17,7 +17,6 @@ func _ready():
 
 	#upnp_setup()
 
-var transition_time = false
 func  _process(delta):
 	if not multiplayer.is_server(): return
 	if Input.is_action_just_pressed('ui_home'):
@@ -27,8 +26,8 @@ func  _process(delta):
 	for i in Director.players:
 		total_stocks += Director.players[i]['stocks']
 	if state == 'start':
-		if total_stocks <= 1 and !transition_time:
-			transition_time = true
+		if total_stocks <= 1:
+			for i in Director.players: Director.players[i]['stocks'] = 1
 			await get_tree().create_timer(1).timeout
 			change_level(load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1]))
 func _on_port_forward_pressed():
@@ -39,7 +38,7 @@ func _on_host_pressed():
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_server(PORT)
 	multiplayer.multiplayer_peer = peer
-
+	
 	multiplayer.peer_connected.connect(_add_player) #right track
 	multiplayer.peer_disconnected.connect(remove_player)
 	_add_player(multiplayer.get_unique_id())
@@ -60,10 +59,10 @@ func _add_player(id = 1):
 	var c = container.instantiate()
 	c.name = str(id)
 	$ui/Menu/select/HBoxContainer.add_child(c)
-	c.multiplayer_test = self
 	
-	MusicC.start()
-	if id != 1: MusicC.mute()
+	var musicC = get_tree().current_scene.get_node("/root/MusicC")
+	musicC.start()
+	musicC.mute()
 	
 func remove_player(peer_id):
 	var player = $ui/Menu/select/HBoxContainer.get_node_or_null(str(peer_id))
@@ -79,7 +78,6 @@ func send_player_info(id): #starts global data
 			'choice': 1
 		}
 	sync_server_to_peer()
-
 func on_connected_to_server():
 	send_player_info.rpc_id(1, multiplayer.get_unique_id()) #maybe do index stuff here for name
 
@@ -118,7 +116,6 @@ func change_level(scene: PackedScene):
 	for i in Director.players:
 		if i != 1:
 			play_trans.rpc_id(i, 'close')
-	transition_time = false
 #endregion
 @rpc('any_peer')
 func play_trans(anim):

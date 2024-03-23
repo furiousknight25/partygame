@@ -79,12 +79,12 @@ position = Vector2(30.2845, -2.81709)
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_bfkeo")
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Players/Aria/bullet.tscn")
 spawn_path = NodePath("../weapon")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_bfkeo")
 
 [connection signal="clicked" from="weapon" to="." method="hurt"]
 [connection signal="timeout" from="Timer" to="weapon" method="_on_timer_timeout"]
