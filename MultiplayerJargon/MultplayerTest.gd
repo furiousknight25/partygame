@@ -147,7 +147,7 @@ var steam_enabled = false
 var lobby_id = 0
 
 
-func _steam_setup(player_type):
+func _steam_setup(player_type, id = 1):
 	OS.set_environment('SteamAppID', str(480))
 	OS.set_environment('SteamGameID', str(480))
 	Steam.steamInitEx()
@@ -155,7 +155,7 @@ func _steam_setup(player_type):
 	
 	
 	if player_type == 'steam_host': host_steam()
-	if player_type == 'steam_join': host_steam()
+	if player_type == 'steam_join': join_lobby(id)
 
 func host_steam():
 	var peer = SteamMultiplayerPeer.new()
@@ -170,7 +170,7 @@ func host_steam():
 
 func join_lobby(id):
 	var peer = SteamMultiplayerPeer.new()
-	peer.connect_lobby(id)
+	peer.connect_lobby(str_to_var(id))
 	multiplayer.multiplayer_peer = peer
 	
 	lobby_id = id
@@ -188,7 +188,9 @@ func _open_lobby_list():
 
 func _on_lobby_match_list(these_lobbies: Array) -> void:
 	print(these_lobbies)
-
+	#if %Lobbies.get_child_count() > 0:
+		#for i in %Lobbies.get_children():
+			#i.queue_free()
 			
 	for lobby in these_lobbies:
 		var lobby_name = Steam.getLobbyData(lobby,'name')
@@ -203,9 +205,6 @@ func _on_lobby_match_list(these_lobbies: Array) -> void:
 	
 
 func _check_lobbies():
-	if %Lobbies.get_child_count() > 0:
-		for i in %Lobbies.get_children():
-			i.queue_free()
 	_open_lobby_list()
 
 func steam_process(delta):

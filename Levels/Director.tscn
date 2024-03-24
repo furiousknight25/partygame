@@ -274,6 +274,14 @@ offset_bottom = -156.583
 scale = Vector2(2.61257, 2.61257)
 text = "Check Lobbiess"
 
+[node name="LineEdit" type="LineEdit" parent="Multplayer/ui/Menu/Main/Control"]
+layout_mode = 0
+offset_left = -255.498
+offset_top = -94.2316
+offset_right = -19.4975
+offset_bottom = -63.2316
+placeholder_text = "lobby id "
+
 [node name="Start" type="Control" parent="Multplayer/ui/Menu"]
 layout_mode = 1
 anchors_preset = 15
@@ -347,3 +355,4 @@ script = ExtResource("4_wtmqh")
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/PortForward" to="Multplayer" method="_on_port_forward_pressed"]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/SteamHost" to="Multplayer/ui/Menu" method="set_character" binds= ["steam_host"]]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/check lobbies" to="Multplayer" method="_check_lobbies"]
+[connection signal="text_submitted" from="Multplayer/ui/Menu/Main/Control/LineEdit" to="Multplayer/ui/Menu" method="steam_join"]
