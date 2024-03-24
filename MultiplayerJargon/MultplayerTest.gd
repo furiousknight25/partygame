@@ -13,7 +13,7 @@ const DEV_MODE = false
 
 func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
-	Steam.lobby_match_list.connect(_on_lobby_match_list)
+	
 
 func  _process(delta):
 	steam_process(delta)
@@ -151,11 +151,17 @@ func _steam_setup(player_type, id = 1):
 	OS.set_environment('SteamAppID', str(480))
 	OS.set_environment('SteamGameID', str(480))
 	Steam.steamInitEx()
-	steam_enabled = true
+	print('sat')
+	
+	
 	
 	
 	if player_type == 'steam_host': host_steam()
 	if player_type == 'steam_join': join_lobby(id)
+	if player_type == 'check_lobbies': _check_lobbies()
+	if !steam_enabled: 
+		Steam.lobby_match_list.connect(_on_lobby_match_list)
+	steam_enabled = true
 
 func host_steam():
 	var peer = SteamMultiplayerPeer.new()
@@ -180,11 +186,7 @@ func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
 		lobby_id = this_lobby_id
 		Steam.setLobbyData(lobby_id, "name", str(Steam.getPersonaName()+"'s Lobby"))
 		Steam.setLobbyJoinable(lobby_id, true)
-
-func _open_lobby_list():
-	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
-	print("305 Mr. Worldwide Requesting a lobby list")
-	Steam.requestLobbyList()
+		print(lobby_id)
 
 func _on_lobby_match_list(these_lobbies: Array) -> void:
 	print(these_lobbies)
@@ -203,11 +205,12 @@ func _on_lobby_match_list(these_lobbies: Array) -> void:
 		
 		%Lobbies.add_child(but)
 	
-
 func _check_lobbies():
-	_open_lobby_list()
+	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
+	#print("305 Mr. Worldwide Requesting a lobby list")
+	Steam.requestLobbyList()
 
 func steam_process(delta):
-	if !steam_enabled: return
+	#if !steam_enabled: return
 	Steam.run_callbacks()
 #endregion

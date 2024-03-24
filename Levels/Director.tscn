@@ -354,5 +354,5 @@ script = ExtResource("4_wtmqh")
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Join" to="Multplayer/ui/Menu" method="set_character" binds= ["join"]]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/PortForward" to="Multplayer" method="_on_port_forward_pressed"]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/SteamHost" to="Multplayer/ui/Menu" method="set_character" binds= ["steam_host"]]
-[connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/check lobbies" to="Multplayer" method="_check_lobbies"]
+[connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/check lobbies" to="Multplayer" method="_steam_setup" binds= ["check_lobbies"]]
 [connection signal="text_submitted" from="Multplayer/ui/Menu/Main/Control/LineEdit" to="Multplayer/ui/Menu" method="steam_join"]
