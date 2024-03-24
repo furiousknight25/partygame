@@ -13,8 +13,10 @@ const DEV_MODE = false
 
 func _ready():
 	multiplayer.connected_to_server.connect(on_connected_to_server)
+	Steam.lobby_match_list.connect(_on_lobby_match_list)
 
 func  _process(delta):
+	steam_process(delta)
 	if not multiplayer.is_server(): return
 	if Input.is_action_just_pressed('ui_home'):
 		change_level.call_deferred(load("res://Levels/level_test.tscn"))
@@ -139,4 +141,74 @@ func upnp_setup(): #internet connection
 	ip = upnp.query_external_address()
 
 
+#region steam stuff 
+var steam_enabled = false
 
+var lobby_id = 0
+
+
+func _steam_setup(player_type):
+	OS.set_environment('SteamAppID', str(480))
+	OS.set_environment('SteamGameID', str(480))
+	Steam.steamInitEx()
+	steam_enabled = true
+	
+	
+	if player_type == 'steam_host': host_steam()
+	if player_type == 'steam_join': host_steam()
+
+func host_steam():
+	var peer = SteamMultiplayerPeer.new()
+	peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC)
+	peer.lobby_created.connect(_on_lobby_created)
+	multiplayer.multiplayer_peer = peer
+	
+	multiplayer.peer_connected.connect(_add_player) #right track
+	multiplayer.peer_disconnected.connect(remove_player)
+	_add_player(multiplayer.get_unique_id())
+	send_player_info(multiplayer.get_unique_id())
+
+func join_lobby(id):
+	var peer = SteamMultiplayerPeer.new()
+	peer.connect_lobby(id)
+	multiplayer.multiplayer_peer = peer
+	
+	lobby_id = id
+	
+func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
+	if connect == 1:
+		lobby_id = this_lobby_id
+		Steam.setLobbyData(lobby_id, "name", str(Steam.getPersonaName()+"'s Lobby"))
+		Steam.setLobbyJoinable(lobby_id, true)
+
+func _open_lobby_list():
+	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
+	print("305 Mr. Worldwide Requesting a lobby list")
+	Steam.requestLobbyList()
+
+func _on_lobby_match_list(these_lobbies: Array) -> void:
+	print(these_lobbies)
+
+			
+	for lobby in these_lobbies:
+		var lobby_name = Steam.getLobbyData(lobby,'name')
+		var memb_count = Steam.getNumLobbyMembers(lobby)
+		
+		var but = Button.new()
+		but.set_text(str(lobby_name,' Player Count: ', memb_count))
+		but.set_size(Vector2(100,5))
+		but.connect('pressed', Callable($ui/Menu,'set_character').bind('steam_join', lobby))
+		
+		%Lobbies.add_child(but)
+	
+
+func _check_lobbies():
+	if %Lobbies.get_child_count() > 0:
+		for i in %Lobbies.get_children():
+			i.queue_free()
+	_open_lobby_list()
+
+func steam_process(delta):
+	if !steam_enabled: return
+	Steam.run_callbacks()
+#endregion
