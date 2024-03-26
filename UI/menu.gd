@@ -43,7 +43,7 @@ func set_menu():
 	main.position = Vector2.ZERO
 
 
-func set_character(client):
+func set_character(client, id = 1):
 	cur_state = STATES.CHARACTER
 	select.position = Vector2.ZERO
 	#main.modulate.a = 0
@@ -54,13 +54,9 @@ func set_character(client):
 		multiplayer_manager._on_join_pressed()
 	if client == 'steam_host':
 		multiplayer_manager._steam_setup('steam_host')
-	
-func steam_join(id):
-	cur_state = STATES.CHARACTER
-	select.position = Vector2.ZERO
-	#main.modulate.a = 0
-	main.position = main.position + Vector2(100000,1000000)
-	multiplayer_manager._steam_setup('steam_join', id)
+	if client == 'steam_join':
+		multiplayer_manager._steam_setup('steam_join', id)
+
 
 @rpc('authority')
 func _start_game():

@@ -16,6 +16,7 @@ properties/1/replication_mode = 1
 
 [node name="bullet" type="CharacterBody2D"]
 top_level = true
+scale = Vector2(0.398933, 0.398933)
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_mfext")

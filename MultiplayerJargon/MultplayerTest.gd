@@ -8,7 +8,7 @@ var ip
 var state = 'menu'
 var dir = DirAccess.open("res://Levels/level_rotation/").get_files()
 
-const DEV_MODE = false
+const DEV_MODE = true
 
 
 func _ready():
@@ -19,7 +19,7 @@ func  _process(delta):
 	steam_process(delta)
 	if not multiplayer.is_server(): return
 	if Input.is_action_just_pressed('ui_home'):
-		change_level.call_deferred(load("res://Levels/level_test.tscn"))
+		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1]))
 	if DEV_MODE == true: return
 	var total_stocks = 0
 	for i in Director.players:

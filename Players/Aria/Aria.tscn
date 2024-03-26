@@ -29,12 +29,12 @@ properties/5/spawn = true
 properties/5/replication_mode = 1
 
 [node name="Aria" type="CharacterBody2D"]
-scale = Vector2(1.41987, 1.41987)
+scale = Vector2(0.603632, 0.603632)
 collision_mask = 3
 script = ExtResource("1_hexfs")
-jump_strength = 750
-speed = 400
-gravity = 2000
+jump_strength = 120
+speed = 100
+gravity = 1000
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 0.756863, 1)
@@ -42,7 +42,7 @@ texture_filter = 1
 texture = ExtResource("2_i55cl")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(0, 0, 4.22574, 2.11287, 5.63432, 8.45148, 9.86006, 11.2686, 9.86006, 14.7901, -10, 15, -9.86006, 11.2686, -5.63432, 8.45148, -4.22574, 2.81716)
+polygon = PackedVector2Array(0, -9.93983, 4.96991, -6.62655, 4.96991, 8.28319, 9.86006, 11.2686, 8.28319, 14.9097, -8.28319, 14.9097, -9.86006, 11.2686, -4.96991, 8.28319, -4.96991, -6.62655)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = -15.0
@@ -53,7 +53,6 @@ text = "100"
 
 [node name="weapon" type="Area2D" parent="."]
 position = Vector2(-1.26218e-29, -2.81716)
-rotation = 1.57079
 collision_layer = 6
 collision_mask = 7
 script = ExtResource("3_vyghg")
@@ -73,7 +72,8 @@ shape = SubResource("RectangleShape2D_cnr8k")
 disabled = true
 
 [node name="Area2D" type="Node2D" parent="weapon"]
-position = Vector2(30.2845, -2.81709)
+position = Vector2(33.1328, -2.15275)
+scale = Vector2(0.98761, 0.98761)
 
 [node name="Timer" type="Timer" parent="weapon"]
 

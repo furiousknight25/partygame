@@ -29,7 +29,7 @@ func _physics_process(delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and press and count < 10:
 		
 		if canShoot == true:
-			emit_signal('clicked', Vector2(cos(rotation), sin(rotation)) * 200, 0)
+			emit_signal('clicked', Vector2(cos(rotation), sin(rotation)) * -100, 0)
 			shoot()
 			canShoot = false
 			timer.start(1.0)

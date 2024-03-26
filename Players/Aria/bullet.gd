@@ -1,10 +1,9 @@
 extends CharacterBody2D
-@export var speed : int
 @export var gravity = 980
 @onready var sprite = $Sprite2D
 @onready var timer = $Timer
 
-var bullet_speed = 650
+var bullet_speed = 300
 var mouse_position
 
 func _enter_tree():
@@ -14,9 +13,9 @@ func _enter_tree():
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
 	mouse_position = get_global_mouse_position()
-	rotation = lerp_angle(rotation, atan2(mouse_position.y - global_position.y, mouse_position.x - global_position.x), 20 * delta)
-	velocity.x = lerp(velocity.x, cos(rotation) * bullet_speed, 12 * delta)
-	velocity.y = lerp(velocity.y, sin(rotation) * bullet_speed, 12 * delta)
+	rotation = lerp_angle(rotation, atan2(mouse_position.y - global_position.y, mouse_position.x - global_position.x), 25 * delta)
+	velocity.x = lerp(velocity.x, cos(rotation) * bullet_speed, 8 * delta)
+	velocity.y = lerp(velocity.y, sin(rotation) * bullet_speed, 8 * delta)
 	
 	$Sprite2D.self_modulate.a = sqrt(.3335 * timer.get_time_left())
 	
@@ -28,12 +27,18 @@ func _physics_process(delta):
 		var i = get_slide_collision(0).get_collider()
 		#print(i, get_parent().get_parent())
 		if i.has_method('hurt'):
-			i.hurt.rpc(Vector2(cos(rotation), sin(rotation) - 1.002) * 500, sqrt(.3335 * timer.get_time_left()) * 10)
+			i.hurt.rpc(Vector2(cos(rotation), sin(rotation) - 1.002) * 100, sqrt(.3335 * timer.get_time_left()) * 10)
 			self.queue_free()
 		if i == get_parent().get_parent():
-			print(i)
-			i.hurt(Vector2(cos(rotation), sin(rotation) - 1.002) * 500, sqrt(.3335 * timer.get_time_left()) * 3)
+			i.hurt(Vector2(cos(rotation), sin(rotation) * 2) * 200, sqrt(.3335 * timer.get_time_left()) * 3)
 			self.queue_free()
 
 func _on_timer_timeout():
 	self.queue_free()
+
+@rpc("any_peer")
+func hurt(direction, damage_percent):
+	velocity += direction
+	
+	
+#idea, hold right click to slow down some, kinda like the rocket from ultra kill, but you could position some, perhaps even pause the timer while this is the case

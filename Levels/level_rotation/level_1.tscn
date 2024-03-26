@@ -5,21 +5,64 @@
 [ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_6mxfl"]
 [ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="4_3u616"]
 [ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_t3s5q"]
-[ext_resource type="Texture2D" uid="uid://bxbcedddhfda5" path="res://raw_assets/basicfloor.png" id="6_0rcio"]
-[ext_resource type="PackedScene" uid="uid://cdn40np5q0sje" path="res://Levels/level_creation_tools/physicsfloor.tscn" id="6_ahci5"]
-[ext_resource type="PackedScene" uid="uid://c5n1lpquy2h6h" path="res://Levels/level_creation_tools/physicsball.tscn" id="8_78daj"]
-[ext_resource type="PackedScene" uid="uid://dh1x1cjbvqj57" path="res://Levels/level_creation_tools/hinge_door.tscn" id="9_gq00p"]
+[ext_resource type="Texture2D" uid="uid://cs1wnp58m8iub" path="res://raw_assets/basicfloortilesheet.png" id="6_b6fx2"]
+[ext_resource type="PackedScene" uid="uid://cq8w7di36k28n" path="res://Levels/level_creation_tools/animatable_body_2d.tscn" id="7_yw5ak"]
+[ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="8_06nnl"]
+[ext_resource type="Texture2D" uid="uid://bb1riedkjvybt" path="res://raw_assets/bruhbackground.png" id="9_s1nuc"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldcgv"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m5vyb"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oim6n"]
-size = Vector2(1.16838, 15.4106)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6v661"]
+texture = ExtResource("6_b6fx2")
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dt80n"]
-size = Vector2(151.75, 282)
+[sub_resource type="TileSet" id="TileSet_vli1o"]
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 7
+physics_layer_0/collision_mask = 3
+sources/2 = SubResource("TileSetAtlasSource_6v661")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_53ab7"]
-size = Vector2(26, 1083)
+[sub_resource type="Curve2D" id="Curve2D_ooe3r"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 99)
+}
+point_count = 2
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_it0v5")
@@ -32,127 +75,73 @@ chris_scene = ExtResource("5_t3s5q")
 position = Vector2(3, 126)
 
 [node name="0" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(170, 72)
+position = Vector2(62, -76)
 
 [node name="1" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(602, 93)
+position = Vector2(136, -77)
 
 [node name="2" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(877, 85)
+position = Vector2(216, -88)
 
 [node name="3" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(1142, 138)
+position = Vector2(344, -58)
 
 [node name="Level" type="Node" parent="."]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Level"]
-position = Vector2(648, 695)
-scale = Vector2(69.3268, 0.908468)
-collision_layer = 3
+[node name="TileMap" type="TileMap" parent="Level"]
+z_index = -1
+texture_filter = 1
+tile_set = SubResource("TileSet_vli1o")
+format = 2
+layer_0/name = "base"
+layer_0/tile_data = PackedInt32Array(0, 393218, 0, 65536, 65538, 1342177280, 131072, 65538, 1342177280, 196608, 65538, 1342177280, 327680, 65538, 1342177280, 393216, 65538, 1342177280, 458752, 65538, 1342177280, 524288, 65538, 1342177280, 589824, 65538, 1342177280, 655360, 65538, 1342177280, 720896, 65538, 1342177280, 786432, 65538, 1342177280, 851968, 65538, 1342177280, 917504, 65538, 1342177280, 983040, 65538, 1342177280, 1048576, 393218, 1610612736, 1048578, 65538, 805306368, 1048579, 65538, 805306368, 1048580, 65538, 805306368, 1048581, 65538, 805306368, 1048582, 65538, 805306368, 1048583, 65538, 805306368, 1048584, 65538, 805306368, 1048585, 65538, 805306368, 1048586, 65538, 805306368, 1048587, 65538, 805306368, 1048588, 65538, 805306368, 1048589, 65538, 805306368, 1048590, 65538, 805306368, 1048591, 65538, 805306368, 1048592, 65538, 805306368, 1048593, 65538, 805306368, 1048594, 65538, 805306368, 1048595, 65538, 805306368, 1048596, 65538, 805306368, 1048597, 65538, 805306368, 1048598, 65538, 805306368, 1048599, 65538, 805306368, 1048600, 65538, 805306368, 1048601, 65538, 805306368, 1048602, 65538, 805306368, 1048603, 65538, 805306368, 1048604, 65538, 805306368, 1048605, 393218, 805306368, 983069, 65538, 1342177280, 917533, 65538, 1342177280, 851997, 65538, 1342177280, 786461, 65538, 1342177280, 720925, 65538, 1342177280, 655389, 65538, 1342177280, 589853, 65538, 1342177280, 524317, 65538, 1342177280, 458781, 65538, 1342177280, 393245, 65538, 1342177280, 327709, 65538, 1342177280, 262173, 65538, 1342177280, 196637, 65538, 1342177280, 131101, 65538, 1342177280, 65565, 65538, 1342177280, 29, 393218, 1342177280, 28, 65538, 0, 27, 65538, 0, 26, 65538, 0, 25, 65538, 0, 24, 65538, 0, 23, 65538, 0, 22, 65538, 0, 21, 65538, 0, 20, 65538, 0, 19, 65538, 0, 18, 65538, 0, 17, 65538, 0, 16, 65538, 0, 15, 65538, 0, 14, 65538, 0, 13, 65538, 0, 12, 65538, 0, 11, 65538, 0, 10, 65538, 0, 9, 65538, 0, 8, 65538, 0, 7, 65538, 0, 6, 65538, 0, 5, 65538, 0, 4, 65538, 0, 3, 65538, 0, 2, 65538, 0, 1, 65538, 0, 393220, 196610, 805306368, 393221, 65538, 0, 393222, 65538, 0, 393223, 65538, 0, 393224, 65538, 0, 393225, 196610, 0, 655371, 196610, 805306368, 655372, 65538, 0, 655373, 65538, 0, 655374, 65538, 0, 655375, 196610, 0, 393237, 196610, 805306368, 393238, 65538, 0, 393239, 65538, 0, 393240, 65538, 0, 393241, 65538, 0, 393242, 393218, 805306368, 327706, 196610, 1610612736, 131094, 196610, 805306368, 131095, 65538, 0, 131096, 65538, 0, 131097, 196610, 0, 917525, 196610, 805306368, 917526, 65538, 0, 917527, 65538, 0, 917528, 65538, 0, 917529, 196610, 0, 917508, 196610, 805306368, 917509, 65538, 0, 917510, 65538, 0, 917511, 65538, 0, 917512, 196610, 0, 262144, 65538, 1342177280, 1048577, 65538, 805306368)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D"]
-shape = SubResource("RectangleShape2D_ldcgv")
+[node name="movingpath" parent="Level" instance=ExtResource("7_yw5ak")]
+position = Vector2(277, 118)
 
-[node name="Sprite2D" type="Sprite2D" parent="Level/StaticBody2D"]
-texture = ExtResource("6_0rcio")
+[node name="Path2D" parent="Level/movingpath" index="0"]
+curve = SubResource("Curve2D_ooe3r")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Level"]
-position = Vector2(524, 65)
-rotation = -1.57079
-scale = Vector2(69.3268, 0.908468)
-collision_layer = 3
+[node name="PathFollow2D" parent="Level/movingpath/Path2D" index="0"]
+position = Vector2(4.00094, 79.2185)
+progress = 79.3009
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D2"]
-position = Vector2(0.346187, 13.2089)
-scale = Vector2(1, 0.999999)
-shape = SubResource("RectangleShape2D_oim6n")
+[node name="AnimatableBody2D" parent="Level/movingpath" index="4"]
+position = Vector2(4.00095, 79.2185)
 
-[node name="Sprite2D" type="Sprite2D" parent="Level/StaticBody2D2"]
-position = Vector2(0.346888, 12.5328)
-scale = Vector2(0.0396717, 0.713066)
-texture = ExtResource("6_0rcio")
+[node name="CanvasModulate" type="CanvasModulate" parent="Level"]
+color = Color(0.560784, 0.560784, 0.560784, 1)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Level/StaticBody2D2"]
-position = Vector2(0.317354, 199.236)
-scale = Vector2(0.0396717, 0.713066)
-texture = ExtResource("6_0rcio")
+[node name="PointLight2D" type="PointLight2D" parent="Level"]
+position = Vector2(396, 138)
+color = Color(0.772549, 0.427451, 0.262745, 1)
+energy = 1.09
+shadow_enabled = true
+shadow_filter_smooth = 2.0
+texture = ExtResource("8_06nnl")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="Level"]
-position = Vector2(714, 65)
-rotation = -1.57079
-scale = Vector2(69.3268, 0.908468)
-collision_layer = 3
+[node name="PointLight2D2" type="PointLight2D" parent="Level"]
+position = Vector2(24, 18)
+color = Color(0.937255, 0.654902, 0.572549, 1)
+energy = 1.09
+shadow_enabled = true
+texture = ExtResource("8_06nnl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/StaticBody2D3"]
-position = Vector2(0.317337, -11.0077)
-scale = Vector2(1, 0.999999)
-shape = SubResource("RectangleShape2D_oim6n")
+[node name="PointLight2D3" type="PointLight2D" parent="Level"]
+position = Vector2(23, 209)
+color = Color(0.94902, 0.658824, 0.478431, 1)
+energy = 1.09
+shadow_enabled = true
+texture = ExtResource("8_06nnl")
 
-[node name="Physicsfloor" parent="Level" instance=ExtResource("6_ahci5")]
-position = Vector2(130, 526)
-
-[node name="CollisionShape2D" parent="Level/Physicsfloor" index="0"]
-position = Vector2(48.125, 2)
-shape = SubResource("RectangleShape2D_dt80n")
-
-[node name="Sprite2D" parent="Level/Physicsfloor" index="2"]
-position = Vector2(48.5, 2.99997)
-scale = Vector2(4.84375, 8.875)
-
-[node name="Physicsfloor5" parent="Level" instance=ExtResource("6_ahci5")]
-position = Vector2(1128, 528)
-
-[node name="CollisionShape2D" parent="Level/Physicsfloor5" index="0"]
-position = Vector2(-1, 2)
-shape = SubResource("RectangleShape2D_dt80n")
-
-[node name="Sprite2D" parent="Level/Physicsfloor5" index="2"]
-position = Vector2(-1.00005, 2.49999)
-scale = Vector2(4.6875, 9.15625)
-
-[node name="Physicsfloor6" parent="Level" instance=ExtResource("6_ahci5")]
-position = Vector2(628, 362)
-rotation = -1.5708
-
-[node name="CollisionShape2D" parent="Level/Physicsfloor6" index="0"]
-position = Vector2(1.99998, 2.99998)
-shape = SubResource("RectangleShape2D_53ab7")
-
-[node name="Sprite2D" parent="Level/Physicsfloor6" index="2"]
-position = Vector2(0.749135, 4.75674)
-scale = Vector2(0.884728, 33.53)
-
-[node name="Physicsball" parent="Level" instance=ExtResource("8_78daj")]
-position = Vector2(560, 20)
-
-[node name="Physicsball2" parent="Level" instance=ExtResource("8_78daj")]
-position = Vector2(601, 16)
-
-[node name="Physicsball3" parent="Level" instance=ExtResource("8_78daj")]
-position = Vector2(645, 13)
-
-[node name="Physicsball4" parent="Level" instance=ExtResource("8_78daj")]
-position = Vector2(585, 40)
-
-[node name="Physicsball6" parent="Level" instance=ExtResource("8_78daj")]
-position = Vector2(613, 52)
-
-[node name="Physicsball7" parent="Level" instance=ExtResource("8_78daj")]
-position = Vector2(556, 62)
-
-[node name="Physicsball8" parent="Level" instance=ExtResource("8_78daj")]
-position = Vector2(659, 57)
-
-[node name="Physicsball9" parent="Level" instance=ExtResource("8_78daj")]
-position = Vector2(669, 32)
+[node name="Sprite2D" type="Sprite2D" parent="Level"]
+z_index = -9
+texture_filter = 1
+texture = ExtResource("9_s1nuc")
+centered = false
 
 [node name="Players" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")
 spawn_limit = 4
 
-[node name="Node2D" parent="." instance=ExtResource("9_gq00p")]
-position = Vector2(551, 94)
-
-[editable path="Level/Physicsfloor"]
-[editable path="Level/Physicsfloor5"]
-[editable path="Level/Physicsfloor6"]
+[editable path="Level/movingpath"]

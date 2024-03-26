@@ -9,11 +9,12 @@
 _data = [Vector2(0, 0.287671), 0.0, 0.0, 0, 0, Vector2(1, 0.685737), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5m48"]
-size = Vector2(45, 52)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oq3x7"]
+radius = 18.3025
+height = 51.247
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4vtx"]
-size = Vector2(45, 52)
+size = Vector2(26, 28)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5ve0h"]
 properties/0/path = NodePath(".:position")
@@ -39,6 +40,7 @@ properties/6/spawn = true
 properties/6/replication_mode = 1
 
 [node name="playerjes" type="CharacterBody2D"]
+scale = Vector2(0.273187, 0.273187)
 collision_mask = 11
 script = ExtResource("1_w2pg1")
 
@@ -46,21 +48,20 @@ script = ExtResource("1_w2pg1")
 one_shot = true
 
 [node name="rock" parent="." instance=ExtResource("2_2fa4w")]
-position = Vector2(17, -4)
 collision_mask = 11
 mass = 5.0
 gravity_scale = 0.45
 can_sleep = false
 continuous_cd = 1
 max_contacts_reported = 1
-contact_monitor = true
 
 [node name="TeleportToHand" type="Timer" parent="rock"]
+wait_time = 0.5
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="rock"]
 texture_filter = 1
-scale = Vector2(0.232544, 0.232544)
+scale = Vector2(0.118498, 0.118498)
 texture = ExtResource("3_344pe")
 
 [node name="Line2D" type="Line2D" parent="rock"]
@@ -72,7 +73,8 @@ width_curve = SubResource("Curve_qpbn6")
 default_color = Color(0.705882, 0.286275, 0.305882, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_v5m48")
+shape = SubResource("CapsuleShape2D_oq3x7")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="state" type="RichTextLabel" parent="."]
 modulate = Color(0.533333, 1, 0.47451, 1)
@@ -98,15 +100,14 @@ scroll_active = false
 
 [node name="MouseArea" type="Area2D" parent="."]
 top_level = true
-position = Vector2(7, -6)
 collision_mask = 9
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MouseArea"]
-position = Vector2(-6, 7)
 shape = SubResource("RectangleShape2D_q4vtx")
+debug_color = Color(0.85098, 0.321569, 0.490196, 0.419608)
 
 [node name="TeleportCooldown" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

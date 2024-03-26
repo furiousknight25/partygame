@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@export var speed = 5
-@export var max_speed = 150.0
+@export var speed = 3
+@export var max_speed = 75.0
 @export var rotation_speed = 3
 
 @onready var text = $RichTextLabel
@@ -30,9 +30,9 @@ func _physics_process(delta):
 	if health > 0:
 		get_input()
 		rotation += rotation_direction * rotation_speed * delta
-		velocity = lerp(velocity, Vector2(0,0), 0.02)
+		velocity = lerp(velocity, Vector2(0,0), delta)
 		blast()
-		if global_position.length() >= 3000:
+		if global_position.length() >= 1000:
 			death()
 	else: velocity.y += 9.8#just adding gravity if you die for lols, u can delete
 	move_and_slide()

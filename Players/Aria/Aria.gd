@@ -11,7 +11,10 @@ var health = 100
 var walk_animation_speed = 0
 var dash_strength = 10
 var mouse_position 
-
+var buff_jump = 0.0
+var jump_length = .1
+var coyote_time = .1
+var dash_timer = 0
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	
@@ -26,27 +29,37 @@ func _process(delta):
 		if direction:
 			velocity.x = lerp(velocity.x, speed * direction, 12 * delta) #add jump buffer later
 			#dash function
-			if Input.is_action_just_pressed('shift'):
-				velocity.x = lerp(velocity.x, dash_strength * speed * direction, 16 * delta)
-			
+			if Input.is_action_just_pressed('shift') and dash_timer < 0:
+				dash_timer = .4
+				velocity.x +=  speed * direction * 5
+		dash_timer -= delta
 		if is_on_floor():
-			velocity.x = lerp(velocity.x, 0.0, 12*delta)
+			velocity.x = lerp(velocity.x, 0.0, 5*delta)
 			walk_animation_speed += velocity.x * .0005
 			if abs(sin(walk_animation_speed) * 3) <= .8:
 				sprite.scale.x = .9
 				sprite.scale.y = 1.1
 		
-		if Input.is_action_just_pressed('up') and is_on_floor():
+		if Input.is_action_just_pressed("up"):
+					buff_jump = .2
+		if is_on_floor():
+			coyote_time = .1
+		if coyote_time > 0 and buff_jump > 0:
+			jump_length = .2
+			coyote_time = 0
+			buff_jump = 0
 			velocity.y -= jump_strength
-			sprite.scale.y += .3
-			sprite.scale.x -= .3
+		if Input.is_action_just_released('up'):
+			jump_length = 0
+		if jump_length > 0 and Input.is_action_pressed('up'):
+			velocity.y -= 1400 * delta
+			jump_length -= delta
 		
 		velocity.y += gravity * delta
-		
 		sprite.scale.x = lerp(sprite.scale.x, 1.0, 12 * delta) #messing around with squshing you can delete
 		sprite.scale.y = lerp(sprite.scale.y, 1.0, 12 * delta)
 		sprite.rotation = lerp_angle(sprite.rotation, 0.0, 8 * delta)
-		if global_position.length() >= 3000:
+		if global_position.length() >= 1000:
 			death()
 	else: velocity.y += 9.8
 	move_and_slide()

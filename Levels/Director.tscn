@@ -150,10 +150,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1279.0
-offset_top = -2.0
-offset_right = 1279.0
-offset_bottom = -2.0
+offset_left = 483.0
+offset_top = 2.0
+offset_right = 483.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -162,23 +162,24 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -77.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="Multplayer/ui/Menu/select"]
 layout_mode = 0
-offset_left = 654.0
-offset_top = 644.0
-offset_right = 760.0
-offset_bottom = 675.0
+offset_left = 9.0
+offset_top = 228.0
+offset_right = 115.0
+offset_bottom = 259.0
 text = "START GAME"
 
 [node name="OptionButton" type="OptionButton" parent="Multplayer/ui/Menu/select"]
 layout_mode = 0
-offset_left = 654.0
-offset_top = 680.0
-offset_right = 785.0
-offset_bottom = 711.0
+offset_left = 124.0
+offset_top = 228.0
+offset_right = 255.0
+offset_bottom = 259.0
 item_count = 1
 selected = 0
 popup/item_0/text = "select level"
@@ -199,67 +200,69 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -323.0
-offset_top = -395.0
-offset_right = -323.0
-offset_bottom = -395.0
+offset_left = 317.0
+offset_top = 325.0
+offset_right = 317.0
+offset_bottom = 325.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.982397, 1.1355)
 
 [node name="Host" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
-offset_left = 34.6092
-offset_top = 189.344
-offset_right = 80.6092
-offset_bottom = 220.344
-scale = Vector2(6.34402, 2.9015)
+offset_left = -221.906
+offset_top = -105.68
+offset_right = -175.906
+offset_bottom = -74.6803
+scale = Vector2(2.66012, 1.21663)
 text = "Host"
 
 [node name="Join" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
-offset_left = 362.379
-offset_top = 189.344
-offset_right = 408.379
-offset_bottom = 220.344
-scale = Vector2(6.82762, 3.12268)
+offset_left = -64.1289
+offset_top = -103.919
+offset_right = -18.1289
+offset_bottom = -72.919
+scale = Vector2(2.83005, 1.29435)
 text = "Join
 "
 
 [node name="TextEdit" type="TextEdit" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
-offset_left = 592.428
-offset_top = 96.8736
-offset_right = 898.428
-offset_bottom = 136.874
+offset_left = -4.07168
+offset_top = -131.22
+offset_right = 301.928
+offset_bottom = -91.2193
+scale = Vector2(0.51929, 0.51929)
 text = "66.242.81.85"
 placeholder_text = "66.242.81.85"
 
 [node name="PortForward" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
-offset_left = -287.053
-offset_top = 94.2316
-offset_right = -97.053
-offset_bottom = 125.232
-scale = Vector2(4.26597, 1.95108)
+offset_left = -271.784
+offset_top = -132.1
+offset_right = -81.7842
+offset_bottom = -101.1
+scale = Vector2(1.3055, 0.597082)
 text = "PortForward(if you can)"
 
 [node name="SteamHost" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -302.322
-offset_top = -273.007
-offset_right = -206.322
-offset_bottom = -242.007
-scale = Vector2(3.32006, 1.95022)
+offset_left = -310.465
+offset_top = -280.934
+offset_right = -214.465
+offset_bottom = -249.934
+scale = Vector2(1.35177, 0.794036)
 text = "Steam host"
 
 [node name="LobbyContainer" type="ScrollContainer" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
-offset_left = 261.605
-offset_top = -267.723
-offset_right = 900.605
-offset_bottom = 41.2765
+offset_left = -79.3976
+offset_top = -275.65
+offset_right = 559.602
+offset_bottom = 33.35
+scale = Vector2(0.368744, 0.368744)
 
 [node name="Lobbies" type="VBoxContainer" parent="Multplayer/ui/Menu/Main/Control/LobbyContainer"]
 unique_name_in_owner = true
@@ -267,28 +270,22 @@ layout_mode = 2
 
 [node name="check lobbies" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
-offset_left = -306.393
-offset_top = -187.583
-offset_right = -179.393
-offset_bottom = -156.583
-scale = Vector2(2.61257, 2.61257)
+offset_left = -308.429
+offset_top = -247.468
+offset_right = -181.429
+offset_bottom = -216.468
+scale = Vector2(1.04183, 1.04183)
 text = "Check Lobbiess"
-
-[node name="LineEdit" type="LineEdit" parent="Multplayer/ui/Menu/Main/Control"]
-layout_mode = 0
-offset_left = -255.498
-offset_top = -94.2316
-offset_right = -19.4975
-offset_bottom = -63.2316
-placeholder_text = "lobby id "
 
 [node name="Start" type="Control" parent="Multplayer/ui/Menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 753.0
-offset_bottom = 753.0
+offset_left = 3.0
+offset_top = 278.0
+offset_right = 3.0
+offset_bottom = 278.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
@@ -313,7 +310,6 @@ text = "Press Any Button to Start"
 replication_config = SubResource("SceneReplicationConfig_o1fnw")
 
 [node name="Transition" type="Control" parent="Multplayer/ui"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -324,14 +320,14 @@ mouse_filter = 2
 script = ExtResource("4_d5tsa")
 
 [node name="ColorRect" type="ColorRect" parent="Multplayer/ui/Transition"]
-z_index = 2
+z_index = 4
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(0, 360)
+pivot_offset = Vector2(1, 150)
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
@@ -355,4 +351,3 @@ script = ExtResource("4_wtmqh")
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/PortForward" to="Multplayer" method="_on_port_forward_pressed"]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/SteamHost" to="Multplayer/ui/Menu" method="set_character" binds= ["steam_host"]]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/check lobbies" to="Multplayer" method="_steam_setup" binds= ["check_lobbies"]]
-[connection signal="text_submitted" from="Multplayer/ui/Menu/Main/Control/LineEdit" to="Multplayer/ui/Menu" method="steam_join"]

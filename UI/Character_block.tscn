@@ -21,7 +21,7 @@ offset_right = -539.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-split_offset = 515
+split_offset = 130
 script = ExtResource("1_kbg36")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

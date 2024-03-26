@@ -2,7 +2,7 @@ extends Camera2D
 #keep in mind they are TWO camera shake systems being used here
 
 var decay := .8 #How quickly shaking will stop [0,1].
-var max_offset := Vector2(1280*.01,720*.01) #this reduces how much your camera can shake
+var max_offset := Vector2(480*.01,272*.01) #this reduces how much your camera can shake
 var max_roll = 0.01 #Maximum rotation in radians (use sparingly).
 @onready var noise = preload("res://tools/cam_noise.tres")
 
@@ -12,8 +12,8 @@ var trauma_pwr := 2 #Trauma exponent. Use [2,3]
 
 var tension = 2 #this simulates the camera going back to its orignal position like an elastic spring
 var damp = .1 #this changes how fast your camera resets to its original state
-const target_pos = Vector2(1280/2, 720*.5) # where to reset your position back to, its a variable that never changes
-var shake_pos = Vector2(1280/2, 720*.5) #this gets changed to simulate an offset 
+const target_pos = Vector2(480/2, 272*.5) # where to reset your position back to, its a variable that never changes
+var shake_pos = Vector2(480/2, 272*.5) #this gets changed to simulate an offset 
 var velocity = Vector2.ZERO #changes how fast your offset changes
 
 func _ready():

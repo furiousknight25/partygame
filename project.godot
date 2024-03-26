@@ -28,8 +28,10 @@ gdscript/warnings/unused_variable=0
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=480
+window/size/viewport_height=272
+window/size/initial_position=Vector2i(0, 100)
+window/size/always_on_top=true
 window/stretch/mode="viewport"
 
 [editor_plugins]
