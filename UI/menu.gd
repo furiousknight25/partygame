@@ -6,7 +6,6 @@ extends Control
 @onready var main = $Main
 @onready var level_select = $select/OptionButton
 
-@export var container : PackedScene
 
 @onready var multiplayer_manager = get_parent().get_parent()
 enum STATES {START, MENU, CHARACTER}

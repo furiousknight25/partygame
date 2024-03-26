@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsydj1kdvco0d"]
+
+[ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="2_obksd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wbft"]
+size = Vector2(37.8501, 3.24324)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_de7rw"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="1" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="la criatura" parent="." instance=ExtResource("2_obksd")]
+position = Vector2(0, 1)
+scale = Vector2(0.178047, 0.178047)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.925001, 19.1081)
+shape = SubResource("RectangleShape2D_2wbft")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(19.0092, 17.4865)
+rotation = 1.57079
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-18.6486, -4.17233e-05)
+shape = SubResource("RectangleShape2D_2wbft")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-18, -19)
+rotation = 3.14159
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(-18.6486, -4.17233e-05)
+shape = SubResource("RectangleShape2D_2wbft")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(-18, -19)
+rotation = -1.5708
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(-18.6486, -4.17233e-05)
+shape = SubResource("RectangleShape2D_2wbft")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_de7rw")

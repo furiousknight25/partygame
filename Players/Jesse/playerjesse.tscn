@@ -127,6 +127,6 @@ rotation = -3.14159
 scale = Vector2(0.666667, -0.666667)
 
 [node name="RockFinal" type="Marker2D" parent="Sprite2D"]
-position = Vector2(-8.68958, -4.52042)
+position = Vector2(-2.46323, -9.61506)
 
 [connection signal="timeout" from="rock/TeleportToHand" to="rock" method="_on_timer_timeout"]

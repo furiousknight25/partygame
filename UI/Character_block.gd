@@ -12,7 +12,6 @@ func _ready():
 
 func on_connected_to_server():
 	_on_option_button_item_selected($PanelContainer/Select/OptionButton.get_selected_id())
-	
 
 @rpc("any_peer")
 func set_text(text):

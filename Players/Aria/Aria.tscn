@@ -53,6 +53,7 @@ text = "100"
 
 [node name="weapon" type="Area2D" parent="."]
 position = Vector2(-1.26218e-29, -2.81716)
+rotation = -0.00361755
 collision_layer = 6
 collision_mask = 7
 script = ExtResource("3_vyghg")

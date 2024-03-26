@@ -1,9 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=18 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
 [ext_resource type="Script" path="res://UI/menu.gd" id="3_ysm53"]
 [ext_resource type="Script" path="res://UI/Transition.gd" id="4_d5tsa"]
+[ext_resource type="PackedScene" uid="uid://0jha4ipd1n12" path="res://UI/char_blockV2.tscn" id="4_l0t0d"]
 [ext_resource type="Script" path="res://Levels/Level_swap.gd" id="4_wtmqh"]
+[ext_resource type="Script" path="res://UI/FightBox.gd" id="5_bpvfn"]
 [ext_resource type="PackedScene" uid="uid://bujc3kdcq2v58" path="res://UI/Character_block.tscn" id="5_n7qw0"]
 [ext_resource type="PackedScene" uid="uid://bot68tj8cqwek" path="res://fmodstuff/MusicManager/music_c.tscn" id="6_so81q"]
 
@@ -120,7 +122,6 @@ spawn_path = NodePath("../Level")
 
 [node name="ui" type="MultiplayerSpawner" parent="Multplayer"]
 _spawnable_scenes = PackedStringArray("res://UI/Character_block.tscn")
-spawn_path = NodePath("Menu/select/HBoxContainer")
 
 [node name="Menu" type="Control" parent="Multplayer/ui"]
 layout_mode = 3
@@ -130,7 +131,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_ysm53")
-container = ExtResource("5_n7qw0")
 metadata/_edit_lock_ = true
 
 [node name="AnimationTree" type="AnimationTree" parent="Multplayer/ui/Menu"]
@@ -157,33 +157,59 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Multplayer/ui/Menu/select"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_bottom = -77.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Button" type="Button" parent="Multplayer/ui/Menu/select"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 228.0
-offset_right = 115.0
-offset_bottom = 259.0
+offset_left = 2.0
+offset_top = 251.0
+offset_right = 108.0
+offset_bottom = 282.0
+scale = Vector2(0.47432, 0.47432)
 text = "START GAME"
 
 [node name="OptionButton" type="OptionButton" parent="Multplayer/ui/Menu/select"]
 layout_mode = 0
-offset_left = 124.0
-offset_top = 228.0
-offset_right = 255.0
-offset_bottom = 259.0
+offset_left = 55.0
+offset_top = 258.0
+offset_right = 186.0
+offset_bottom = 289.0
+scale = Vector2(0.295615, 0.295615)
 item_count = 1
 selected = 0
 popup/item_0/text = "select level"
 popup/item_0/id = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Multplayer/ui/Menu/select"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 17.0
+offset_right = -41.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="Multplayer/ui/Menu/select/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 196
+theme_override_constants/v_separation = 25
+columns = 2
+
+[node name="Panel" parent="Multplayer/ui/Menu/select/MarginContainer/GridContainer" instance=ExtResource("4_l0t0d")]
+layout_mode = 2
+
+[node name="Panel2" parent="Multplayer/ui/Menu/select/MarginContainer/GridContainer" instance=ExtResource("4_l0t0d")]
+layout_mode = 2
+
+[node name="Panel3" parent="Multplayer/ui/Menu/select/MarginContainer/GridContainer" instance=ExtResource("4_l0t0d")]
+layout_mode = 2
+
+[node name="Panel4" parent="Multplayer/ui/Menu/select/MarginContainer/GridContainer" instance=ExtResource("4_l0t0d")]
+layout_mode = 2
+
+[node name="FightBox" type="Sprite2D" parent="Multplayer/ui/Menu/select"]
+script = ExtResource("5_bpvfn")
 
 [node name="Main" type="Control" parent="Multplayer/ui/Menu"]
 layout_mode = 1
@@ -200,10 +226,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 317.0
-offset_top = 325.0
-offset_right = 317.0
-offset_bottom = 325.0
+offset_left = 77.0
+offset_top = 53.0
+offset_right = 77.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.982397, 1.1355)
@@ -320,6 +346,7 @@ mouse_filter = 2
 script = ExtResource("4_d5tsa")
 
 [node name="ColorRect" type="ColorRect" parent="Multplayer/ui/Transition"]
+visible = false
 z_index = 4
 layout_mode = 1
 anchors_preset = 15

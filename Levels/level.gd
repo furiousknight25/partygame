@@ -13,6 +13,7 @@ func _ready():
 	var index = 0
 	for i in Director.players:
 		#return
+		
 		var choice = 2
 		var current_player
 		#if Director.players[i]['choice']: #OHHOHHHH, error exists because 0 is false, why dindt 4 work
@@ -55,6 +56,5 @@ func change_level():
 
 func remove_player(peer_id):
 	var player = players.get_node_or_null(str(peer_id))
-	print(peer_id)
 	if player:
 		player.queue_free()

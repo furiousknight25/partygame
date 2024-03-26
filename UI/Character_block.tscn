@@ -17,11 +17,14 @@ properties/2/replication_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -539.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = -17.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-split_offset = 130
+split_offset = 175
 script = ExtResource("1_kbg36")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

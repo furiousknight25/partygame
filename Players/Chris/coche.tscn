@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://r7acn5diagc6"]
+[gd_scene load_steps=4 format=3 uid="uid://r7acn5diagc6"]
 
 [ext_resource type="Script" path="res://Players/Chris/coche.gd" id="1_uiler"]
 [ext_resource type="Texture2D" uid="uid://c3v5f1ffft7gj" path="res://Players/Chris/584674f4ef5a427.png" id="2_ghgna"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfkjs"]
-size = Vector2(21, 11)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ot044"]
 properties/0/path = NodePath(".:position")
@@ -25,9 +22,16 @@ scale = Vector2(0.4, 0.4)
 collision_mask = 3
 script = ExtResource("1_uiler")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.57079
 scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_yfkjs")
+polygon = PackedVector2Array(4.99997, 11.25, 4.99999, 3.75001, 2.5, 5.55316e-06, 1.25001, -6.25, 2.22126e-05, -10, -1.24999, -6.25, -2.5, -5.55316e-06, -5.00001, 3.74999, -5.00002, 9.99999, -2.50002, 8.74999, -2.22126e-05, 10, 3.74998, 8.75001)
+
+[node name="rocke" type="Sprite2D" parent="."]
+position = Vector2(-0.341621, 0.500565)
+rotation = 1.5708
+scale = Vector2(0.0278575, 0.0357459)
+texture = ExtResource("2_ghgna")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 modulate = Color(1, 0.733333, 0.94902, 1)
@@ -40,12 +44,6 @@ pivot_offset = Vector2(15, 12)
 bbcode_enabled = true
 text = "100"
 scroll_active = false
-
-[node name="rocke" type="Sprite2D" parent="."]
-position = Vector2(-0.341621, 0.500565)
-rotation = 1.5708
-scale = Vector2(0.0278575, 0.0357459)
-texture = ExtResource("2_ghgna")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

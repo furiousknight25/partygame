@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cl5m3av27sfj"]
+[gd_scene load_steps=16 format=3 uid="uid://cl5m3av27sfj"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_it0v5"]
 [ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_cpka6"]
@@ -6,9 +6,31 @@
 [ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="4_3u616"]
 [ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_t3s5q"]
 [ext_resource type="Texture2D" uid="uid://cs1wnp58m8iub" path="res://raw_assets/basicfloortilesheet.png" id="6_b6fx2"]
+[ext_resource type="Texture2D" uid="uid://byb5jkceayvtv" path="res://raw_assets/Judes_game_tile_set.png" id="6_j8a0v"]
 [ext_resource type="PackedScene" uid="uid://cq8w7di36k28n" path="res://Levels/level_creation_tools/animatable_body_2d.tscn" id="7_yw5ak"]
 [ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="8_06nnl"]
 [ext_resource type="Texture2D" uid="uid://bb1riedkjvybt" path="res://raw_assets/bruhbackground.png" id="9_s1nuc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h0adx"]
+texture = ExtResource("6_j8a0v")
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -6.375, -8, -6.375)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -5.25, -8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m5vyb"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -57,6 +79,7 @@ occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 7
 physics_layer_0/collision_mask = 3
 sources/2 = SubResource("TileSetAtlasSource_6v661")
+sources/0 = SubResource("TileSetAtlasSource_h0adx")
 
 [sub_resource type="Curve2D" id="Curve2D_ooe3r"]
 _data = {
@@ -103,11 +126,14 @@ position = Vector2(277, 118)
 curve = SubResource("Curve2D_ooe3r")
 
 [node name="PathFollow2D" parent="Level/movingpath/Path2D" index="0"]
-position = Vector2(4.00094, 79.2185)
+position = Vector2(4.00093, 79.2185)
 progress = 79.3009
 
 [node name="AnimatableBody2D" parent="Level/movingpath" index="4"]
 position = Vector2(4.00095, 79.2185)
+
+[node name="CollisionShape2D" parent="Level/movingpath/AnimatableBody2D" index="1"]
+polygon = PackedVector2Array(0.20163, -0.232269, -13.7984, -0.232214, -26.7984, 3.76784, -31.7984, 4.76787, -26.7984, -6.23216, -13.7984, -6.23221, 0.201599, -6.23228, 26.2016, -5.23239, 30.2016, -2.23241, 30.2016, 3.76759, 27.2016, 3.7676, 25.2016, 0.767612, 10.2016, 0.767679)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Level"]
 color = Color(0.560784, 0.560784, 0.560784, 1)
@@ -119,6 +145,7 @@ energy = 1.09
 shadow_enabled = true
 shadow_filter_smooth = 2.0
 texture = ExtResource("8_06nnl")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="Level"]
 position = Vector2(24, 18)
@@ -126,6 +153,7 @@ color = Color(0.937255, 0.654902, 0.572549, 1)
 energy = 1.09
 shadow_enabled = true
 texture = ExtResource("8_06nnl")
+metadata/_edit_lock_ = true
 
 [node name="PointLight2D3" type="PointLight2D" parent="Level"]
 position = Vector2(23, 209)
@@ -133,12 +161,14 @@ color = Color(0.94902, 0.658824, 0.478431, 1)
 energy = 1.09
 shadow_enabled = true
 texture = ExtResource("8_06nnl")
+metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Level"]
 z_index = -9
 texture_filter = 1
 texture = ExtResource("9_s1nuc")
 centered = false
+metadata/_edit_lock_ = true
 
 [node name="Players" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")

@@ -12,7 +12,7 @@ func _physics_process(delta):
 		#print(get_last_slide_collision().get_collider())
 		if get_last_slide_collision().get_collider():
 			if get_last_slide_collision().get_collider().has_method('hurt'):
-				get_last_slide_collision().get_collider().hurt.rpc(Vector2(cos(rotation), sin(rotation) - 1.002) * 90, 10)
+				get_last_slide_collision().get_collider().hurt.rpc(Vector2(cos(rotation), sin(rotation) - 1.002) * 80, 10)
 		queue_free()
 	move_and_slide()
 	

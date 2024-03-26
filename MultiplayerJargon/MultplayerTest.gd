@@ -56,14 +56,16 @@ func _on_join_pressed():
 func _add_player(id = 1):
 	var c = container.instantiate()
 	c.name = str(id)
-	$ui/Menu/select/HBoxContainer.add_child(c)
+	$ui/Menu/select/MarginContainer/PlayerContainers.add_child(c)
+	
+	var fightbox = $ui/Menu/select/MarginContainer/FightBox
 	
 	var musicC = get_tree().current_scene.get_node("/root/MusicC")
 	musicC.start()
 	musicC.mute()
 	
 func remove_player(peer_id):
-	var player = $ui/Menu/select/HBoxContainer.get_node_or_null(str(peer_id))
+	var player = $ui/Menu/select/MarginContainer/PlayerContainers.get_node_or_null(str(peer_id))
 	Director.players.erase(peer_id)
 	if player:
 		player.queue_free()
@@ -151,9 +153,6 @@ func _steam_setup(player_type, id = 1):
 	OS.set_environment('SteamAppID', str(480))
 	OS.set_environment('SteamGameID', str(480))
 	Steam.steamInitEx()
-	print('sat')
-	
-	
 	
 	
 	if player_type == 'steam_host': host_steam()
@@ -186,10 +185,8 @@ func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
 		lobby_id = this_lobby_id
 		Steam.setLobbyData(lobby_id, "name", str(Steam.getPersonaName()+"'s Lobby"))
 		Steam.setLobbyJoinable(lobby_id, true)
-		print(lobby_id)
 
 func _on_lobby_match_list(these_lobbies: Array) -> void:
-	print(these_lobbies)
 	#if %Lobbies.get_child_count() > 0:
 		#for i in %Lobbies.get_children():
 			#i.queue_free()
@@ -207,7 +204,7 @@ func _on_lobby_match_list(these_lobbies: Array) -> void:
 	
 func _check_lobbies():
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
-	#print("305 Mr. Worldwide Requesting a lobby list")
+	print("305 Mr. Worldwide Requesting a lobby list")
 	Steam.requestLobbyList()
 
 func steam_process(delta):

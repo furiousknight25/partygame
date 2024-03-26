@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://0jha4ipd1n12"]
+
+[ext_resource type="Script" path="res://UI/char_blockV2.gd" id="1_8lobr"]
+[ext_resource type="Texture2D" uid="uid://cau5q1se3ne8y" path="res://raw_assets/jesseselect.png" id="1_heea5"]
+[ext_resource type="Texture2D" uid="uid://c17xbqhduw282" path="res://raw_assets/chrisselect.png" id="1_mg4hu"]
+[ext_resource type="Texture2D" uid="uid://t5fpdcnj2ptn" path="res://raw_assets/chrischosen.png" id="2_f44k3"]
+[ext_resource type="Texture2D" uid="uid://qdhy1em6fxdh" path="res://raw_assets/jessechosen.png" id="2_rct4e"]
+[ext_resource type="Texture2D" uid="uid://5hl4ic37wync" path="res://raw_assets/travisselect.png" id="5_2yang"]
+[ext_resource type="Texture2D" uid="uid://cv7e2k4gppskp" path="res://raw_assets/travischosen.png" id="6_u2gu6"]
+[ext_resource type="Texture2D" uid="uid://sqtrd6xx85nf" path="res://raw_assets/ariaselect.png" id="7_id1s6"]
+[ext_resource type="Texture2D" uid="uid://b8v3cgapqriom" path="res://raw_assets/ariachosen.png" id="8_jvolt"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5e80n"]
+properties/0/path = NodePath("GridContainer/0:button_pressed")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("GridContainer/1:button_pressed")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("GridContainer/2:button_pressed")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("GridContainer/3:button_pressed")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="Panel" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -323.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_8lobr")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -34.0
+offset_top = -34.0
+offset_right = 34.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="0" type="TextureButton" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("1_mg4hu")
+texture_pressed = ExtResource("2_f44k3")
+
+[node name="1" type="TextureButton" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("1_heea5")
+texture_pressed = ExtResource("2_rct4e")
+
+[node name="2" type="TextureButton" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("7_id1s6")
+texture_pressed = ExtResource("8_jvolt")
+
+[node name="3" type="TextureButton" parent="GridContainer"]
+texture_filter = 1
+layout_mode = 2
+toggle_mode = true
+texture_normal = ExtResource("5_2yang")
+texture_pressed = ExtResource("6_u2gu6")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 2.0
+offset_right = 170.0
+offset_bottom = 25.0
+scale = Vector2(0.584576, 0.584576)
+fit_content = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_5e80n")
+
+[connection signal="pressed" from="GridContainer/0" to="." method="select" binds= [0]]
+[connection signal="pressed" from="GridContainer/1" to="." method="select" binds= [1]]
+[connection signal="pressed" from="GridContainer/2" to="." method="select" binds= [2]]
+[connection signal="pressed" from="GridContainer/3" to="." method="select" binds= [3]]

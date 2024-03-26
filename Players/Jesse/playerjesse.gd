@@ -69,7 +69,6 @@ func _process(delta):
 				velocity += get_last_slide_collision().get_normal() * (bounce * get_real_velocity().length())
 				if get_last_slide_collision().get_collider().has_method('hurt') and velocity.length() >= 50 and kick_timer.time_left == 0:
 					get_last_slide_collision().get_collider().hurt.rpc((last_velocity * 2) + Vector2(0,-10),12)
-					print(last_velocity)
 					kick_timer.stop()
 					kick_timer.start()
 		if !get_floor_normal():
@@ -78,7 +77,6 @@ func _process(delta):
 			Thrower.rotation = lerp_angle(Thrower.rotation, atan2(get_real_velocity().y, get_real_velocity().x) + PI/2, 25*delta)
 		else:
 			Thrower.rotation = lerp_angle(Thrower.rotation, 0.0 + PI, 12*delta)
-		#print(kick_timer.time_left)
 		mouse_process_stuff(delta)
 		
 		if global_position.length() >= 1000:
@@ -108,7 +106,7 @@ func set_throw_process():
 	rock.get_child(0).disabled = false
 	rock.can_hit = true
 	current_state = 'thrown'
-	#print(current_state)
+
 	
 func throw_process():
 	pass

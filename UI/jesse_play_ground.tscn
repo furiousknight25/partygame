@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctvybd2tobfvp"]
+
+[ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="2_5lbyt"]
+
+[sub_resource type="GDScript" id="GDScript_uh6sv"]
+script/source = "extends StaticBody2D
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wbft"]
+size = Vector2(37.8501, 3.24324)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_de7rw"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="1" type="StaticBody2D"]
+position = Vector2(21, 19)
+collision_layer = 3
+collision_mask = 3
+script = SubResource("GDScript_uh6sv")
+
+[node name="player" parent="." instance=ExtResource("2_5lbyt")]
+position = Vector2(1.8741, 11.4573)
+scale = Vector2(0.0969924, 0.0969924)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.925001, 19.1081)
+shape = SubResource("RectangleShape2D_2wbft")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(19.0092, 17.4865)
+rotation = 1.57079
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-18.6486, -4.17233e-05)
+shape = SubResource("RectangleShape2D_2wbft")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-18, -19)
+rotation = 3.14159
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(-18.6486, -4.17233e-05)
+shape = SubResource("RectangleShape2D_2wbft")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="."]
+position = Vector2(-18, -19)
+rotation = -1.5708
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
+position = Vector2(-18.6486, -4.17233e-05)
+shape = SubResource("RectangleShape2D_2wbft")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_de7rw")
