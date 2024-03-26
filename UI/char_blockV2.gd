@@ -18,25 +18,27 @@ func _ready():
 	sync_server_to_peer.rpc_id(1)
 
 func on_connected_to_server():
-	select_set(selected)
+	sync_server_to_peer.rpc_id(1)
 
 @rpc("authority")
 func sync_server_to_peer():
 	for i in fightbox.get_children():
 		for x in Director.players:
-			sync.rpc_id(x, str_to_var(i.name), str_to_var(i.name))
+			if x != 1:
+				sync.rpc_id(x, str_to_var(i.name), str_to_var(i.name))
 		
-			
+		
 @rpc("any_peer")
 func sync(names, names2):
-	fightbox.set_fighter.rpc(names, names2)
-	print(names)
+	fightbox.set_fighter(names, names2)
+	
 	
 func select(choice):
 	if not is_multiplayer_authority(): return
+	
 	selected = choice
 	select_set(choice)
-	fightbox.spawn_playground.rpc(name.to_int(), selected)
+	fightbox.spawn_playground.rpc(Director.players[name.to_int()]["name"], selected, name.to_int())
 	Camera.add_trauma(.5, Vector2(0,1))
 	for i in $GridContainer.get_children():
 		i.button_pressed = false
@@ -63,3 +65,7 @@ func set_choice(index, id):
 @rpc("any_peer")
 func set_text(text):
 	$RichTextLabel.text = var_to_str(text)
+
+@rpc("call_local")
+func disable():
+	queue_free()

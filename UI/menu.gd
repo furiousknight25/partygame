@@ -59,7 +59,10 @@ func set_character(client, id = 1):
 
 @rpc('authority')
 func _start_game():
+	$select/Button.process_mode = Node.PROCESS_MODE_DISABLED
+	$select/OptionButton.process_mode = Node.PROCESS_MODE_DISABLED
 	position = position + Vector2(100000,1000000)
+	$select/MarginContainer/FightBox.clear_children.rpc()
 	multiplayer_manager.start_game()
 
 @rpc("authority")

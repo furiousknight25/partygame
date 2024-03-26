@@ -8,7 +8,7 @@ var ip
 var state = 'menu'
 var dir = DirAccess.open("res://Levels/level_rotation/").get_files()
 
-const DEV_MODE = true
+const DEV_MODE = false
 
 
 func _ready():
@@ -70,14 +70,19 @@ func remove_player(peer_id):
 	if player:
 		player.queue_free()
 
+var index = 0
 @rpc("any_peer")
 func send_player_info(id): #starts global data
+	index += 1
 	if !Director.players.has(id):
 		Director.players[id] = {
 			'stocks': 1,
-			'choice': 1
+			'choice': 1,
+			'name': index
 		}
 	sync_server_to_peer()
+	
+	
 func on_connected_to_server():
 	send_player_info.rpc_id(1, multiplayer.get_unique_id()) #maybe do index stuff here for name
 
@@ -86,8 +91,17 @@ func start_game():
 	if multiplayer.is_server():
 		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1]))
 		state = 'start'
+		for i in $ui/Menu/select/MarginContainer/PlayerContainers.get_children():
+			i.disable.rpc()
 		sync_server_to_peer()
 
+func _on_option_button_item_selected(index):
+	if multiplayer.is_server():
+		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[index - 1]))
+		for i in $ui/Menu/select/MarginContainer/PlayerContainers.get_children():
+			i.disable.rpc()
+		state = 'start'
+		
 func sync_server_to_peer():
 	for i in Director.players:
 		if i != 1:
@@ -120,10 +134,7 @@ func change_level(scene: PackedScene):
 func play_trans(anim):
 	%Animation_Transition.play(anim)
 
-func _on_option_button_item_selected(index):
-	if multiplayer.is_server():
-		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[index - 1]))
-		state = 'start'
+
 		
 func upnp_setup(): #internet connection
 	var upnp = UPNP.new()

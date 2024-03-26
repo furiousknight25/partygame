@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=22 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
 [ext_resource type="Script" path="res://UI/menu.gd" id="3_ysm53"]
@@ -6,8 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://0jha4ipd1n12" path="res://UI/char_blockV2.tscn" id="4_l0t0d"]
 [ext_resource type="Script" path="res://Levels/Level_swap.gd" id="4_wtmqh"]
 [ext_resource type="Script" path="res://UI/FightBox.gd" id="5_bpvfn"]
-[ext_resource type="PackedScene" uid="uid://bujc3kdcq2v58" path="res://UI/Character_block.tscn" id="5_n7qw0"]
+[ext_resource type="PackedScene" uid="uid://dsydj1kdvco0d" path="res://UI/chris_play_ground.tscn" id="6_ajoet"]
+[ext_resource type="PackedScene" uid="uid://ctvybd2tobfvp" path="res://UI/jesse_play_ground.tscn" id="6_d3ccp"]
+[ext_resource type="Texture2D" uid="uid://dviw8r6py0mox" path="res://raw_assets/fightbox.png" id="6_n2igm"]
 [ext_resource type="PackedScene" uid="uid://bot68tj8cqwek" path="res://fmodstuff/MusicManager/music_c.tscn" id="6_so81q"]
+[ext_resource type="PackedScene" uid="uid://jovugslpubd5" path="res://UI/aria_play_ground.tscn" id="8_gongr"]
+[ext_resource type="PackedScene" uid="uid://tckwhehi0vu0" path="res://UI/travis_play_ground.tscn" id="10_f4g1t"]
 
 [sub_resource type="Animation" id="Animation_uour8"]
 resource_name = "Menu"
@@ -49,7 +53,7 @@ _data = {
 states/Start/position = Vector2(203, 100)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o1fnw"]
-properties/0/path = NodePath("select/HBoxContainer:alignment")
+properties/0/path = NodePath("select/MarginContainer/PlayerContainers:columns")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 properties/1/path = NodePath(".:position")
@@ -114,14 +118,15 @@ _data = {
 
 [node name="Multplayer" type="Node2D" parent="."]
 script = ExtResource("3_o2mgw")
-container = ExtResource("5_n7qw0")
+container = ExtResource("4_l0t0d")
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="Multplayer"]
 _spawnable_scenes = PackedStringArray("res://Levels/level_test.tscn", "res://Levels/level_rotation/level_1.tscn", "res://Levels/level_rotation/level_2.tscn")
 spawn_path = NodePath("../Level")
 
 [node name="ui" type="MultiplayerSpawner" parent="Multplayer"]
-_spawnable_scenes = PackedStringArray("res://UI/Character_block.tscn")
+_spawnable_scenes = PackedStringArray("res://UI/char_blockV2.tscn")
+spawn_path = NodePath("Menu/select/MarginContainer/PlayerContainers")
 
 [node name="Menu" type="Control" parent="Multplayer/ui"]
 layout_mode = 3
@@ -190,26 +195,38 @@ offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GridContainer" type="GridContainer" parent="Multplayer/ui/Menu/select/MarginContainer"]
+[node name="PlayerContainers" type="GridContainer" parent="Multplayer/ui/Menu/select/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 196
 theme_override_constants/v_separation = 25
 columns = 2
 
-[node name="Panel" parent="Multplayer/ui/Menu/select/MarginContainer/GridContainer" instance=ExtResource("4_l0t0d")]
-layout_mode = 2
-
-[node name="Panel2" parent="Multplayer/ui/Menu/select/MarginContainer/GridContainer" instance=ExtResource("4_l0t0d")]
-layout_mode = 2
-
-[node name="Panel3" parent="Multplayer/ui/Menu/select/MarginContainer/GridContainer" instance=ExtResource("4_l0t0d")]
-layout_mode = 2
-
-[node name="Panel4" parent="Multplayer/ui/Menu/select/MarginContainer/GridContainer" instance=ExtResource("4_l0t0d")]
-layout_mode = 2
-
-[node name="FightBox" type="Sprite2D" parent="Multplayer/ui/Menu/select"]
+[node name="FightBox" type="Sprite2D" parent="Multplayer/ui/Menu/select/MarginContainer"]
+texture_filter = 1
+position = Vector2(207, 107)
+scale = Vector2(1.75936, 1.75936)
+texture = ExtResource("6_n2igm")
 script = ExtResource("5_bpvfn")
+chris_scene = ExtResource("6_ajoet")
+jesse_scene = ExtResource("6_d3ccp")
+aria_scene = ExtResource("8_gongr")
+travis_scene = ExtResource("10_f4g1t")
+
+[node name="1" type="Marker2D" parent="Multplayer/ui/Menu/select/MarginContainer/FightBox"]
+position = Vector2(-21, -19)
+
+[node name="2" type="Marker2D" parent="Multplayer/ui/Menu/select/MarginContainer/FightBox"]
+position = Vector2(23, -20)
+
+[node name="3" type="Marker2D" parent="Multplayer/ui/Menu/select/MarginContainer/FightBox"]
+position = Vector2(-21, 26)
+
+[node name="4" type="Marker2D" parent="Multplayer/ui/Menu/select/MarginContainer/FightBox"]
+position = Vector2(21, 26)
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Multplayer/ui/Menu/select/MarginContainer"]
+_spawnable_scenes = PackedStringArray("")
+spawn_path = NodePath("../FightBox")
 
 [node name="Main" type="Control" parent="Multplayer/ui/Menu"]
 layout_mode = 1
@@ -336,6 +353,7 @@ text = "Press Any Button to Start"
 replication_config = SubResource("SceneReplicationConfig_o1fnw")
 
 [node name="Transition" type="Control" parent="Multplayer/ui"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -346,7 +364,6 @@ mouse_filter = 2
 script = ExtResource("4_d5tsa")
 
 [node name="ColorRect" type="ColorRect" parent="Multplayer/ui/Transition"]
-visible = false
 z_index = 4
 layout_mode = 1
 anchors_preset = 15

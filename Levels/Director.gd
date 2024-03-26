@@ -17,8 +17,8 @@ func _process(delta):
 		get_tree().reload_current_scene()
 	if multiplayer.is_server(): return
 	if Engine.get_frames_drawn() % 40 >= 10: return
-	#print(players)
-	
+	print(Director.players)
+
 func set_total():
 	var total_stocks = 0
 	for i in Director.players:

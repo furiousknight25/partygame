@@ -1,11 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctvybd2tobfvp"]
+[gd_scene load_steps=12 format=3 uid="uid://ctvybd2tobfvp"]
 
-[ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="2_5lbyt"]
+[ext_resource type="PackedScene" uid="uid://dj3wb8ww3tfvb" path="res://UI/brightlight.tscn" id="1_2e5tg"]
+[ext_resource type="Script" path="res://UI/Playground Chars/playerjessePlayground.gd" id="1_vsdep"]
+[ext_resource type="PackedScene" uid="uid://bmjkc1l0qdpx" path="res://Players/Jesse/rock.tscn" id="2_je0lr"]
+[ext_resource type="Texture2D" uid="uid://re21y8djadvk" path="res://raw_assets/ball.png" id="3_5eg3g"]
+[ext_resource type="Texture2D" uid="uid://dqce47oo1o0t1" path="res://Players/Jesse/pixil-frame-0.png" id="4_2yf5e"]
 
-[sub_resource type="GDScript" id="GDScript_uh6sv"]
-script/source = "extends StaticBody2D
+[sub_resource type="Curve" id="Curve_qpbn6"]
+_data = [Vector2(0, 0.287671), 0.0, 0.0, 0, 0, Vector2(1, 0.685737), 0.0, 0.0, 0, 0]
+point_count = 2
 
-"
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oq3x7"]
+radius = 18.3025
+height = 51.247
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q4vtx"]
+size = Vector2(26, 28)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5ve0h"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("rock:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Sprite2D:scale")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("rock:linear_velocity")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Sprite2D:rotation")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("HealthText:text")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("CollisionShape2D:disabled")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wbft"]
 size = Vector2(37.8501, 3.24324)
@@ -19,11 +52,99 @@ properties/0/replication_mode = 1
 position = Vector2(21, 19)
 collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_uh6sv")
 
-[node name="player" parent="." instance=ExtResource("2_5lbyt")]
+[node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(1.8741, 11.4573)
 scale = Vector2(0.0969924, 0.0969924)
+collision_mask = 11
+script = ExtResource("1_vsdep")
+
+[node name="KickTimer" type="Timer" parent="player"]
+one_shot = true
+
+[node name="rock" parent="player" instance=ExtResource("2_je0lr")]
+collision_mask = 11
+mass = 5.0
+gravity_scale = 0.45
+can_sleep = false
+continuous_cd = 1
+max_contacts_reported = 1
+
+[node name="TeleportToHand" type="Timer" parent="player/rock"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="player/rock"]
+texture_filter = 1
+scale = Vector2(0.118498, 0.118498)
+texture = ExtResource("3_5eg3g")
+
+[node name="Line2D" type="Line2D" parent="player/rock"]
+top_level = true
+points = PackedVector2Array(0, 0, 0, 35.745)
+closed = true
+width = 4.305
+width_curve = SubResource("Curve_qpbn6")
+default_color = Color(0.705882, 0.286275, 0.305882, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+shape = SubResource("CapsuleShape2D_oq3x7")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="state" type="RichTextLabel" parent="player"]
+modulate = Color(0.533333, 1, 0.47451, 1)
+texture_filter = 1
+offset_left = -64.0
+offset_top = -74.0
+offset_right = 250.0
+offset_bottom = -49.0
+scale = Vector2(0.914467, 0.914467)
+text = "Accel: "
+
+[node name="HealthText" type="RichTextLabel" parent="player"]
+modulate = Color(1, 0.733333, 0.94902, 1)
+texture_filter = 3
+offset_left = -15.0
+offset_top = -37.0
+offset_right = 14.0
+offset_bottom = -14.0
+pivot_offset = Vector2(15, 12)
+bbcode_enabled = true
+text = "100"
+scroll_active = false
+
+[node name="MouseArea" type="Area2D" parent="player"]
+top_level = true
+collision_mask = 9
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="player/MouseArea"]
+shape = SubResource("RectangleShape2D_q4vtx")
+debug_color = Color(0.85098, 0.321569, 0.490196, 0.419608)
+
+[node name="TeleportCooldown" type="Timer" parent="player"]
+wait_time = 2.0
+one_shot = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="player"]
+replication_config = SubResource("SceneReplicationConfig_5ve0h")
+
+[node name="Sprite2D" type="Sprite2D" parent="player"]
+texture_filter = 1
+position = Vector2(-0.0343857, -0.219398)
+rotation = -3.14159
+scale = Vector2(1.5, -1.5)
+texture = ExtResource("4_2yf5e")
+offset = Vector2(7.3104, 0.146267)
+
+[node name="RockInitial" type="Marker2D" parent="player/Sprite2D"]
+position = Vector2(-11.3563, -2.5204)
+rotation = -3.14159
+scale = Vector2(0.666667, -0.666667)
+
+[node name="RockFinal" type="Marker2D" parent="player/Sprite2D"]
+position = Vector2(-2.46323, -9.61506)
+
+[node name="ColorRect" parent="." instance=ExtResource("1_2e5tg")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.925001, 19.1081)
@@ -61,3 +182,5 @@ shape = SubResource("RectangleShape2D_2wbft")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_de7rw")
+
+[connection signal="timeout" from="player/rock/TeleportToHand" to="player/rock" method="_on_timer_timeout"]

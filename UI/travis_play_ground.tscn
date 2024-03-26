@@ -1,7 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://tckwhehi0vu0"]
+[gd_scene load_steps=17 format=3 uid="uid://tckwhehi0vu0"]
 
-[ext_resource type="Script" path="res://UI/PlayGround.gd" id="1_1mqqk"]
-[ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="2_px0nx"]
+[ext_resource type="Script" path="res://UI/Playground Chars/trabisground.gd" id="1_fi1r6"]
+[ext_resource type="PackedScene" uid="uid://dj3wb8ww3tfvb" path="res://UI/brightlight.tscn" id="1_s403r"]
+[ext_resource type="Texture2D" uid="uid://2238kevtrmp6" path="res://Players/Travis/pixil-frame-0 (1).png" id="2_wsjhf"]
+[ext_resource type="Texture2D" uid="uid://iv8akcip6y3g" path="res://Players/Travis/shape_star_20.png" id="3_ry637"]
+[ext_resource type="VideoStream" path="res://raw_assets/recuperare.ogv" id="4_k77wf"]
+[ext_resource type="Texture2D" uid="uid://68f1xqu50nja" path="res://Players/Travis/magnetguysprite.png" id="5_3m67f"]
+[ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="6_76jh4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k50uc"]
+radius = 8.0
+height = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwimv"]
+size = Vector2(11, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q50yx"]
+custom_solver_bias = 0.299
+size = Vector2(128, 47)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_f7yqv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Magnet:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Magnet/CPUParticles2D:emitting")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("HealthText:text")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Character hitbox:disabled")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+
+[sub_resource type="Curve" id="Curve_km62g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.318681), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_wwk3j"]
+colors = PackedColorArray(0.4, 0, 0, 1, 0.4, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_si8ic"]
+offsets = PackedFloat32Array(0, 0.375)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wbft"]
 size = Vector2(37.8501, 3.24324)
@@ -14,11 +61,134 @@ properties/0/replication_mode = 1
 [node name="1" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_1mqqk")
 
-[node name="Character" parent="." instance=ExtResource("2_px0nx")]
+[node name="Character" type="CharacterBody2D" parent="."]
 position = Vector2(-1, 1)
 scale = Vector2(0.193767, 0.193767)
+collision_mask = 3
+script = ExtResource("1_fi1r6")
+
+[node name="Character hitbox" type="CollisionShape2D" parent="Character"]
+shape = SubResource("CapsuleShape2D_k50uc")
+
+[node name="Magnet" type="Area2D" parent="Character"]
+
+[node name="Magnet Body" type="CollisionShape2D" parent="Character/Magnet"]
+position = Vector2(8.5, -1)
+shape = SubResource("RectangleShape2D_gwimv")
+
+[node name="Magnet Sprite" type="Sprite2D" parent="Character/Magnet/Magnet Body"]
+texture_filter = 1
+position = Vector2(2.5, 0.5)
+texture = ExtResource("2_wsjhf")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Character/Magnet"]
+texture_filter = 1
+position = Vector2(16, 0)
+emitting = false
+amount = 100
+lifetime = 0.2
+speed_scale = 0.65
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+fixed_fps = 144
+texture = ExtResource("3_ry637")
+direction = Vector2(1.535, 0)
+initial_velocity_min = 619.91
+initial_velocity_max = 751.23
+angular_velocity_min = -142.23
+angular_velocity_max = 585.04
+linear_accel_min = -466.65
+linear_accel_max = 29.29
+radial_accel_min = -7.07
+radial_accel_max = -7.07
+tangential_accel_min = -26.0
+tangential_accel_max = -26.0
+angle_min = 58.2
+angle_max = 58.2
+scale_amount_min = 0.01
+scale_amount_max = 0.01
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null
+color = Color(0.776471, 0.792157, 0.784314, 1)
+hue_variation_min = -0.01
+hue_variation_max = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/Magnet"]
+position = Vector2(65, -1)
+shape = SubResource("RectangleShape2D_q50yx")
+one_way_collision_margin = 0.0
+
+[node name="HealthText" type="RichTextLabel" parent="Character"]
+modulate = Color(1, 0.733333, 0.94902, 1)
+texture_filter = 3
+offset_left = -15.0
+offset_top = -37.0
+offset_right = 14.0
+offset_bottom = -14.0
+pivot_offset = Vector2(15, 12)
+bbcode_enabled = true
+text = "100"
+scroll_active = false
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Character"]
+replication_config = SubResource("SceneReplicationConfig_f7yqv")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Character"]
+visible = false
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 390.0
+offset_bottom = 358.0
+scale = Vector2(0.0516597, 0.0516597)
+stream = ExtResource("4_k77wf")
+volume_db = -80.0
+autoplay = true
+loop = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Character"]
+texture_filter = 1
+position = Vector2(1, 0)
+scale = Vector2(2.26626, 1.13724)
+texture = ExtResource("5_3m67f")
+
+[node name="Trail" type="CPUParticles2D" parent="Character/Sprite2D"]
+z_index = -1
+position = Vector2(-2.20628, 0)
+scale = Vector2(0.441256, 0.879322)
+amount = 120
+gravity = Vector2(0, 1)
+scale_amount_curve = SubResource("Curve_km62g")
+color_ramp = SubResource("Gradient_wwk3j")
+
+[node name="JumpParticles" type="CPUParticles2D" parent="Character"]
+position = Vector2(2, 16)
+rotation = -1.56653
+emitting = false
+amount = 45
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(1, 4.87)
+spread = 83.9
+gravity = Vector2(0, -10)
+initial_velocity_min = 16.95
+initial_velocity_max = 18.0
+linear_accel_min = -22.03
+linear_accel_max = -11.86
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_si8ic")
+
+[node name="PointLight2D" type="PointLight2D" parent="Character"]
+color = Color(0.212104, 0.618335, 0.719323, 1)
+energy = 0.1
+shadow_enabled = true
+shadow_filter = 1
+texture = ExtResource("6_76jh4")
+
+[node name="ColorRect" parent="." instance=ExtResource("1_s403r")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.925001, 19.1081)
