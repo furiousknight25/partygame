@@ -131,7 +131,6 @@ func mouse_process_stuff(delta):
 			$CollisionShape2D.disabled = false
 			TeleportCooldown.start()
 
-@rpc("any_peer")
 func hurt(direction, damage_percent):
 	#print(direction, " ", damage_percent)
 	velocity += direction

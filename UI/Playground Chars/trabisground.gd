@@ -67,8 +67,6 @@ func _physics_process(delta):
 	magnet_process(delta)
 	move_and_slide()
 	
-	
-	
 
 func magnet_process(delta):
 	if Input.is_action_pressed('RightM') or Input.is_action_pressed("LeftM"):
@@ -76,15 +74,14 @@ func magnet_process(delta):
 		magnet_stuff.color = Color(Input.get_axis("LeftM", 'RightM') + 1, .1,  Input.get_axis('RightM', 'LeftM') + 1, .2)
 		for i in magnet.get_overlapping_bodies():
 			if i != self and i.has_method('hurt'):
-				i.hurt.rpc(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 50 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1) * delta, 10 * delta)
+				if i is RigidBody2D:
+					i.hurt.rpc(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 50 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1) * delta, 10 * delta)
 	else: magnet_stuff.emitting = false
 	
 func death():
-	change_stocks.rpc(name.to_int(), 0)
 	$"Character hitbox".disabled = true
 	health = 0
 	
-@rpc("any_peer")
 func hurt(direction, damage_percent):
 	velocity += direction
 	health -= damage_percent
@@ -96,15 +93,4 @@ func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
 	global_position = pos
 	velocity = vel
 
-@rpc("any_peer", "call_local")
-func change_stocks(id, stock): #server id here
-	Director.players[id]['stocks'] = stock
-	var total_stocks = Director.players.size()
-	for i in Director.players:
-		total_stocks = total_stocks - Director.players[i]['stocks'] #okay this is working its going up
-	musicC.change_level.rpc(total_stocks)
-	
-@rpc("any_peer", "reliable")
-func set_stocks(director_info): #then sync here 
-	Director.players = director_info
 

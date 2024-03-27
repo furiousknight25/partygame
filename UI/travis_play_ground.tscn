@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://tckwhehi0vu0"]
+[gd_scene load_steps=20 format=3 uid="uid://tckwhehi0vu0"]
 
 [ext_resource type="Script" path="res://UI/Playground Chars/trabisground.gd" id="1_fi1r6"]
 [ext_resource type="PackedScene" uid="uid://dj3wb8ww3tfvb" path="res://UI/brightlight.tscn" id="1_s403r"]
@@ -7,6 +7,8 @@
 [ext_resource type="VideoStream" path="res://raw_assets/recuperare.ogv" id="4_k77wf"]
 [ext_resource type="Texture2D" uid="uid://68f1xqu50nja" path="res://Players/Travis/magnetguysprite.png" id="5_3m67f"]
 [ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="6_76jh4"]
+[ext_resource type="Script" path="res://UI/ballplayground.gd" id="8_tgk54"]
+[ext_resource type="Texture2D" uid="uid://re21y8djadvk" path="res://raw_assets/ball.png" id="8_wob75"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k50uc"]
 radius = 8.0
@@ -57,6 +59,21 @@ size = Vector2(37.8501, 3.24324)
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath("RigidBody2D:replicated_position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("RigidBody2D:replicated_rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("RigidBody2D:replicated_linear_velocity")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("RigidBody2D:replicated_angular_velocity")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qtg7l"]
+radius = 2.23607
 
 [node name="1" type="StaticBody2D"]
 collision_layer = 3
@@ -189,6 +206,7 @@ shadow_filter = 1
 texture = ExtResource("6_76jh4")
 
 [node name="ColorRect" parent="." instance=ExtResource("1_s403r")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.925001, 19.1081)
@@ -226,3 +244,15 @@ shape = SubResource("RectangleShape2D_2wbft")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_de7rw")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(6, -6)
+script = ExtResource("8_tgk54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_qtg7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture_filter = 1
+scale = Vector2(0.138282, 0.138282)
+texture = ExtResource("8_wob75")

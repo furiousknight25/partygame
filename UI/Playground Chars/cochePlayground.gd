@@ -32,8 +32,6 @@ func _physics_process(delta):
 		rotation += rotation_direction * rotation_speed * delta
 		velocity = lerp(velocity, Vector2(0,0), delta)
 		blast()
-		if global_position.length() >= 1000:
-			death()
 	else: velocity.y += 9.8#just adding gravity if you die for lols, u can delete
 	move_and_slide()
 	
@@ -55,7 +53,6 @@ func death():
 	$CollisionShape2D.disabled = true
 	health = 0
 	
-@rpc("any_peer")
 func hurt(direction, damage_percent):
 	velocity += direction
 	health -= damage_percent

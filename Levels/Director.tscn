@@ -225,7 +225,6 @@ position = Vector2(-21, 26)
 position = Vector2(21, 26)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Multplayer/ui/Menu/select/MarginContainer"]
-_spawnable_scenes = PackedStringArray("")
 spawn_path = NodePath("../FightBox")
 
 [node name="Main" type="Control" parent="Multplayer/ui/Menu"]

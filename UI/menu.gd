@@ -59,6 +59,7 @@ func set_character(client, id = 1):
 
 @rpc('authority')
 func _start_game():
+	if !multiplayer.is_server(): return
 	$select/Button.process_mode = Node.PROCESS_MODE_DISABLED
 	$select/OptionButton.process_mode = Node.PROCESS_MODE_DISABLED
 	position = position + Vector2(100000,1000000)

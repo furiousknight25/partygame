@@ -26,7 +26,7 @@ func _physics_process(delta):
 	if get_last_slide_collision():
 		var i = get_slide_collision(0).get_collider()
 		#print(i, get_parent().get_parent())
-		if i.has_method('hurt'):
+		if i.has_method('hurt') and i != get_parent().get_parent():
 			i.hurt.rpc(Vector2(cos(rotation), sin(rotation) - 1.002) * 100, sqrt(.3335 * timer.get_time_left()) * 10)
 			self.queue_free()
 		if i == get_parent().get_parent():

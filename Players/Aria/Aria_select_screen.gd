@@ -21,8 +21,6 @@ func _enter_tree():
 func _process(delta):
 	if not is_multiplayer_authority(): return
 	if health > 0:
-		if Input.is_action_just_pressed('kill'):
-			death()
 		mouse_position = get_global_mouse_position()
 		var direction = Input.get_axis('left', "right")
 		
@@ -70,14 +68,12 @@ func _process(delta):
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
 
 func death():
-	change_stocks.rpc(name.to_int(), 0)
 	$CollisionShape2D.disabled = true
 	health = 0
 	for i in $weapon.get_children():
 		if i.is_in_group('bullets'):
 			i.queue_free()
 
-@rpc("any_peer")
 func hurt(direction, damage_percent):
 	sprite.scale.x += .2
 	sprite.scale.y -= .1
@@ -99,13 +95,3 @@ func set_stuff(pos, vel): #this is honestly kinda just for jesse, jank solution
 	global_position = pos
 	velocity = vel
 
-@rpc("any_peer", "call_local")
-func change_stocks(id, stock): #server id here
-	Director.players[id]['stocks'] = stock
-	var total_stocks = Director.players.size()
-	for i in Director.players:
-		total_stocks = total_stocks - Director.players[i]['stocks'] #okay this is working its going up
-	musicC.change_level.rpc(total_stocks)
-@rpc("any_peer", "reliable")
-func set_stocks(director_info): #then sync here 
-	Director.players = director_info
