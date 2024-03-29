@@ -200,7 +200,7 @@ func host_steam():
 
 func join_lobby(id):
 	var peer = SteamMultiplayerPeer.new()
-	peer.connect_lobby(str_to_var(id))
+	peer.connect_lobby(id)
 	multiplayer.multiplayer_peer = peer
 	
 	lobby_id = id
@@ -212,9 +212,9 @@ func _on_lobby_created(connect: int, this_lobby_id: int) -> void:
 		Steam.setLobbyJoinable(lobby_id, true)
 
 func _on_lobby_match_list(these_lobbies: Array) -> void:
-	#if %Lobbies.get_child_count() > 0:
-		#for i in %Lobbies.get_children():
-			#i.queue_free()
+	if %Lobbies.get_child_count() > 0:
+		for i in %Lobbies.get_children():
+			i.queue_free()
 			
 	for lobby in these_lobbies:
 		var lobby_name = Steam.getLobbyData(lobby,'name')
@@ -228,7 +228,7 @@ func _on_lobby_match_list(these_lobbies: Array) -> void:
 		%Lobbies.add_child(but)
 	
 func _check_lobbies():
-	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
+	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 	print("305 Mr. Worldwide Requesting a lobby list")
 	Steam.requestLobbyList()
 
