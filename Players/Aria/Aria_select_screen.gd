@@ -15,9 +15,7 @@ var buff_jump = 0.0
 var jump_length = .1
 var coyote_time = .1
 var dash_timer = 0
-func _enter_tree():
-	set_multiplayer_authority(name.to_int())
-	
+
 func _process(delta):
 	if not is_multiplayer_authority(): return
 	if health > 0:
@@ -57,8 +55,8 @@ func _process(delta):
 		sprite.scale.x = lerp(sprite.scale.x, 1.0, 12 * delta) #messing around with squshing you can delete
 		sprite.scale.y = lerp(sprite.scale.y, 1.0, 12 * delta)
 		sprite.rotation = lerp_angle(sprite.rotation, 0.0, 8 * delta)
-		if global_position.length() >= 1000:
-			death()
+		if position.length() >= 23:
+			position = Vector2.ZERO
 	else: velocity.y += 9.8
 	move_and_slide()
 	

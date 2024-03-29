@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=24 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
 [ext_resource type="Script" path="res://UI/menu.gd" id="3_ysm53"]
@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://0jha4ipd1n12" path="res://UI/char_blockV2.tscn" id="4_l0t0d"]
 [ext_resource type="Script" path="res://Levels/Level_swap.gd" id="4_wtmqh"]
 [ext_resource type="Script" path="res://UI/FightBox.gd" id="5_bpvfn"]
-[ext_resource type="PackedScene" uid="uid://dsydj1kdvco0d" path="res://UI/chris_play_ground.tscn" id="6_ajoet"]
-[ext_resource type="PackedScene" uid="uid://ctvybd2tobfvp" path="res://UI/jesse_play_ground.tscn" id="6_d3ccp"]
+[ext_resource type="PackedScene" uid="uid://dsydj1kdvco0d" path="res://UI/Playground Chars/chris_play_ground.tscn" id="6_3l45t"]
 [ext_resource type="Texture2D" uid="uid://dviw8r6py0mox" path="res://raw_assets/fightbox.png" id="6_n2igm"]
 [ext_resource type="PackedScene" uid="uid://bot68tj8cqwek" path="res://fmodstuff/MusicManager/music_c.tscn" id="6_so81q"]
-[ext_resource type="PackedScene" uid="uid://jovugslpubd5" path="res://UI/aria_play_ground.tscn" id="8_gongr"]
-[ext_resource type="PackedScene" uid="uid://tckwhehi0vu0" path="res://UI/travis_play_ground.tscn" id="10_f4g1t"]
+[ext_resource type="PackedScene" uid="uid://ctvybd2tobfvp" path="res://UI/Playground Chars/jesse_play_ground.tscn" id="7_wwgfm"]
+[ext_resource type="PackedScene" uid="uid://jovugslpubd5" path="res://UI/Playground Chars/aria_play_ground.tscn" id="8_mptte"]
+[ext_resource type="PackedScene" uid="uid://tckwhehi0vu0" path="res://UI/Playground Chars/travis_play_ground.tscn" id="9_e2yen"]
 
 [sub_resource type="Animation" id="Animation_uour8"]
 resource_name = "Menu"
@@ -59,6 +59,12 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath(".:position")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath("select/MarginContainer/FightBox:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("select/MarginContainer/FightBox:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [sub_resource type="Animation" id="Animation_pnpsn"]
 length = 0.001
@@ -73,6 +79,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_2y5jp"]
@@ -90,6 +120,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1e-05)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -272)]
+}
 
 [sub_resource type="Animation" id="Animation_d2klf"]
 resource_name = "open"
@@ -106,12 +148,106 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1e-05), Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -272)]
+}
+
+[sub_resource type="Animation" id="Animation_fvxjm"]
+resource_name = "slideinto"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1.62451, 0.870553),
+"update": 0,
+"values": [Vector2(0, 15), Vector2(0, -272)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_44b6h"]
+resource_name = "slideouto"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, -272), Vector2(0, -547)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h45ca"]
 _data = {
 "RESET": SubResource("Animation_pnpsn"),
 "close": SubResource("Animation_2y5jp"),
-"open": SubResource("Animation_d2klf")
+"open": SubResource("Animation_d2klf"),
+"slideinto": SubResource("Animation_fvxjm"),
+"slideouto": SubResource("Animation_44b6h")
 }
 
 [node name="Director" type="Node2D"]
@@ -121,7 +257,7 @@ script = ExtResource("3_o2mgw")
 container = ExtResource("4_l0t0d")
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="Multplayer"]
-_spawnable_scenes = PackedStringArray("res://Levels/level_test.tscn", "res://Levels/level_rotation/level_1.tscn", "res://Levels/level_rotation/level_2.tscn")
+_spawnable_scenes = PackedStringArray("res://Levels/level_test.tscn", "res://Levels/level_rotation/level_1.tscn", "res://Levels/level_rotation/level_2.tscn", "res://Levels/level_rotation/level_0.tscn")
 spawn_path = NodePath("../Level")
 
 [node name="ui" type="MultiplayerSpawner" parent="Multplayer"]
@@ -207,10 +343,10 @@ position = Vector2(207, 107)
 scale = Vector2(1.75936, 1.75936)
 texture = ExtResource("6_n2igm")
 script = ExtResource("5_bpvfn")
-chris_scene = ExtResource("6_ajoet")
-jesse_scene = ExtResource("6_d3ccp")
-aria_scene = ExtResource("8_gongr")
-travis_scene = ExtResource("10_f4g1t")
+chris_scene = ExtResource("6_3l45t")
+jesse_scene = ExtResource("7_wwgfm")
+aria_scene = ExtResource("8_mptte")
+travis_scene = ExtResource("9_e2yen")
 
 [node name="1" type="Marker2D" parent="Multplayer/ui/Menu/select/MarginContainer/FightBox"]
 position = Vector2(-21, -19)
@@ -352,11 +488,12 @@ text = "Press Any Button to Start"
 replication_config = SubResource("SceneReplicationConfig_o1fnw")
 
 [node name="Transition" type="Control" parent="Multplayer/ui"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 272.0
+offset_bottom = 272.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

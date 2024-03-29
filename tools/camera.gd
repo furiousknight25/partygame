@@ -42,4 +42,4 @@ func shake(): #you can kinda ignore this
 	offset.x = max_offset.x * amt * noise.get_noise_2d(noise.seed*2,noise_y)
 	offset.y = max_offset.y * amt * noise.get_noise_2d(noise.seed*3,noise_y)
 	
-	
+

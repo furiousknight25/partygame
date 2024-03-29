@@ -15,7 +15,8 @@ func _ready():
 	for i in fightbox.get_children():
 		if str_to_var(i.name) == get_parent().get_child_count():
 			fightbox.set_fighter.rpc(str_to_var(i.name), name.to_int())
-	sync_server_to_peer.rpc_id(1)
+	if name.to_int() != 1:
+		sync_server_to_peer.rpc_id(1)
 
 func on_connected_to_server():
 	sync_server_to_peer.rpc_id(1)

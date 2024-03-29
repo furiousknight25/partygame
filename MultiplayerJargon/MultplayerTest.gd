@@ -7,6 +7,7 @@ const PORT = 4433
 var ip
 var state = 'menu'
 var dir = DirAccess.open("res://Levels/level_rotation/").get_files()
+var level_index = 0
 
 const DEV_MODE = false
 
@@ -28,7 +29,10 @@ func  _process(delta):
 		if total_stocks <= 1:
 			for i in Director.players: Director.players[i]['stocks'] = 1
 			await get_tree().create_timer(1).timeout
-			change_level(load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1]))
+			level_index += 1
+			level_index = level_index % dir.size()
+			change_level(load("res://Levels/level_rotation/" + "level_" + var_to_str(level_index) + '.tscn'))
+
 
 func _on_port_forward_pressed():
 	upnp_setup()
@@ -89,19 +93,17 @@ func on_connected_to_server():
 #region level management
 func start_game():
 	if multiplayer.is_server():
-		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1]))
+		#change_level.call_deferred(load("res://Levels/level_rotation/" + dir[randi_range(0, dir.size()) - 1]))
+		change_level.call_deferred(load("res://Levels/level_rotation/level_0.tscn"))
 		state = 'start'
-		for i in $ui/Menu/select/MarginContainer/PlayerContainers.get_children():
-			i.disable.rpc()
 		sync_server_to_peer()
 
 func _on_option_button_item_selected(index):
 	if multiplayer.is_server():
 		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[index - 1]))
-		for i in $ui/Menu/select/MarginContainer/PlayerContainers.get_children():
-			i.disable.rpc()
 		state = 'start'
-		
+		sync_server_to_peer()
+	
 func sync_server_to_peer():
 	for i in Director.players:
 		if i != 1:
@@ -111,13 +113,17 @@ func sync(director_info):
 	Director.players = director_info
 
 func change_level(scene: PackedScene):
-	%Animation_Transition.play('open')
+	%Animation_Transition.play('slideinto')
 	for i in Director.players:
 		if i != 1:
-			play_trans.rpc_id(i, 'open')
+			play_trans.rpc_id(i, 'slideinto')
 	await %Animation_Transition.animation_finished
+	for i in Director.players:
+		if i != 1:
+			clear.rpc_id(i)
+	clear()
 	if not multiplayer.is_server(): return
-	
+
 	var level = $Level
 	if level:
 		for c in level.get_children():
@@ -125,15 +131,23 @@ func change_level(scene: PackedScene):
 			c.queue_free()
 	# Add new level.
 		level.add_child(scene.instantiate()) #chunker to make
-	%Animation_Transition.play('close')
+	%Animation_Transition.play('slideouto')
 	for i in Director.players:
 		if i != 1:
-			play_trans.rpc_id(i, 'close')
+			play_trans.rpc_id(i, 'slideouto')
 #endregion
 @rpc('any_peer')
 func play_trans(anim):
 	%Animation_Transition.play(anim)
-
+@rpc("any_peer")
+func clear():
+	for i in $ui/Menu/select/MarginContainer/PlayerContainers.get_children():
+		if i: i.queue_free()
+	
+	for i in $ui/Menu/select/MarginContainer/FightBox.get_children():
+		if i:
+			if i.get_child_count() > 0:
+				i.get_child(0).queue_free()
 
 		
 func upnp_setup(): #internet connection

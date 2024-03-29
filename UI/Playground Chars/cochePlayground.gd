@@ -12,18 +12,12 @@ var rotation_direction = 0
 var health := 100
 
 
-func _enter_tree():
-	set_multiplayer_authority(name.to_int())
-	
-
 func get_input():
 	rotation_direction = Input.get_axis("left", "right")
 	if Input.get_axis("down", "up"):
 		velocity += transform.x * Input.get_axis("down", "up") * speed
 		velocity.x = clamp(velocity.x, -max_speed, max_speed)
 		velocity.y = clamp(velocity.y, -max_speed, max_speed)
-	if Input.is_action_just_pressed('kill'):
-		death()
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
@@ -34,6 +28,9 @@ func _physics_process(delta):
 		blast()
 	else: velocity.y += 9.8#just adding gravity if you die for lols, u can delete
 	move_and_slide()
+	
+	if position.length() >= 23:
+		position = Vector2.ZERO
 	
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
 

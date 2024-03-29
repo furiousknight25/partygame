@@ -11,7 +11,7 @@ func _ready():
 	add_collision_exception_with(player)
 	
 func _enter_tree():
-	set_multiplayer_authority(get_parent().name.to_int())
+	set_multiplayer_authority(get_parent().get_multiplayer_authority())
 		
 func _process(delta):
 	if not is_multiplayer_authority(): return
@@ -24,6 +24,7 @@ func _process(delta):
 		$Line2D.set_point_position(1, ((Vector2(cos(angle_to), sin(angle_to)) * strength_arrow.length() * .2) + global_position))
 	else: $Line2D.modulate.a = lerp($Line2D.modulate.a, 0.0, delta * 12)
 	if get_colliding_bodies() and player.current_state == 'thrown':
+		
 		if get_colliding_bodies()[0].has_method('hurt') and can_hit == true and player.current_state == 'thrown': #layer 8 for enemy
 			get_colliding_bodies()[0].hurt.rpc(last_velocity, 25)
 			print(last_velocity)

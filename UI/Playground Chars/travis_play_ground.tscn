@@ -52,11 +52,8 @@ colors = PackedColorArray(0.4, 0, 0, 1, 0.4, 0, 0, 0)
 offsets = PackedFloat32Array(0, 0.375)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wbft"]
-size = Vector2(37.8501, 3.24324)
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_de7rw"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath("Box:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 properties/1/path = NodePath("RigidBody2D:replicated_position")
@@ -71,13 +68,17 @@ properties/3/replication_mode = 1
 properties/4/path = NodePath("RigidBody2D:replicated_angular_velocity")
 properties/4/spawn = true
 properties/4/replication_mode = 1
+properties/5/path = NodePath(".:position")
+properties/5/spawn = true
+properties/5/replication_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qtg7l"]
 radius = 2.23607
 
-[node name="1" type="StaticBody2D"]
-collision_layer = 3
-collision_mask = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q60jx"]
+size = Vector2(37.8501, 3.24324)
+
+[node name="1" type="Node2D"]
 
 [node name="Character" type="CharacterBody2D" parent="."]
 position = Vector2(-1, 1)
@@ -208,40 +209,6 @@ texture = ExtResource("6_76jh4")
 [node name="ColorRect" parent="." instance=ExtResource("1_s403r")]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.925001, 19.1081)
-shape = SubResource("RectangleShape2D_2wbft")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(19.0092, 17.4865)
-rotation = 1.57079
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-18.6486, -4.17233e-05)
-shape = SubResource("RectangleShape2D_2wbft")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(-18, -19)
-rotation = 3.14159
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(-18.6486, -4.17233e-05)
-shape = SubResource("RectangleShape2D_2wbft")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(-18, -19)
-rotation = -1.5708
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(-18.6486, -4.17233e-05)
-shape = SubResource("RectangleShape2D_2wbft")
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_de7rw")
 
@@ -256,3 +223,25 @@ shape = SubResource("CircleShape2D_qtg7l")
 texture_filter = 1
 scale = Vector2(0.138282, 0.138282)
 texture = ExtResource("8_wob75")
+
+[node name="Box" type="AnimatableBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+position = Vector2(0.925001, 19.1081)
+shape = SubResource("RectangleShape2D_q60jx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Box"]
+position = Vector2(1, -19)
+shape = SubResource("RectangleShape2D_q60jx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Box"]
+position = Vector2(-18.6486, -4.17233e-05)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_q60jx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Box"]
+position = Vector2(19, 0)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_q60jx")

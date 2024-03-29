@@ -29,17 +29,18 @@ properties/5/path = NodePath("CollisionShape2D:disabled")
 properties/5/spawn = true
 properties/5/replication_mode = 1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wbft"]
-size = Vector2(37.8501, 3.24324)
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_de7rw"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath("Box:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
-[node name="1" type="StaticBody2D"]
-collision_layer = 3
-collision_mask = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0xjj"]
+size = Vector2(37.8501, 3.24324)
+
+[node name="1" type="Node2D"]
 
 [node name="Aria" type="CharacterBody2D" parent="."]
 position = Vector2(0, 11)
@@ -102,44 +103,33 @@ replication_config = SubResource("SceneReplicationConfig_bfkeo")
 _spawnable_scenes = PackedStringArray("res://Players/Aria/bullet.tscn")
 spawn_path = NodePath("../weapon")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.925001, 19.1081)
-shape = SubResource("RectangleShape2D_2wbft")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(19.0092, 17.4865)
-rotation = 1.57079
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-18.6486, -4.17233e-05)
-shape = SubResource("RectangleShape2D_2wbft")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(-18, -19)
-rotation = 3.14159
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(-18.6486, -4.17233e-05)
-shape = SubResource("RectangleShape2D_2wbft")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(-18, -19)
-rotation = -1.5708
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(-18.6486, -4.17233e-05)
-shape = SubResource("RectangleShape2D_2wbft")
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_de7rw")
 
 [node name="ColorRect" parent="." instance=ExtResource("5_jgexo")]
+visible = false
+
+[node name="Box" type="AnimatableBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+position = Vector2(0.925001, 19.1081)
+shape = SubResource("RectangleShape2D_c0xjj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Box"]
+position = Vector2(1, -19)
+shape = SubResource("RectangleShape2D_c0xjj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Box"]
+position = Vector2(-18.6486, -4.17233e-05)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_c0xjj")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Box"]
+position = Vector2(19, 0)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_c0xjj")
 
 [connection signal="clicked" from="Aria/weapon" to="Aria" method="hurt"]
 [connection signal="timeout" from="Aria/Timer" to="Aria/weapon" method="_on_timer_timeout"]

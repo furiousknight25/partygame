@@ -22,32 +22,33 @@ properties/3/replication_mode = 1
 size = Vector2(37.8501, 3.24324)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_de7rw"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath("..:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
-[node name="1" type="StaticBody2D"]
-collision_layer = 3
-collision_mask = 3
+[node name="1" type="Node2D"]
 
-[node name="la criatura" type="CharacterBody2D" parent="."]
+[node name="2" type="CharacterBody2D" parent="."]
 position = Vector2(0, 1)
 scale = Vector2(0.178047, 0.178047)
 collision_mask = 3
 script = ExtResource("1_m1100")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="la criatura"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="2"]
 rotation = 1.57079
 scale = Vector2(2, 2)
 polygon = PackedVector2Array(4.99997, 11.25, 4.99999, 3.75001, 2.5, 5.55316e-06, 1.25001, -6.25, 2.22126e-05, -10, -1.24999, -6.25, -2.5, -5.55316e-06, -5.00001, 3.74999, -5.00002, 9.99999, -2.50002, 8.74999, -2.22126e-05, 10, 3.74998, 8.75001)
 
-[node name="rocke" type="Sprite2D" parent="la criatura"]
+[node name="rocke" type="Sprite2D" parent="2"]
 position = Vector2(-0.341621, 0.500565)
 rotation = 1.5708
 scale = Vector2(0.0278575, 0.0357459)
 texture = ExtResource("2_46vh4")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="la criatura"]
+[node name="RichTextLabel" type="RichTextLabel" parent="2"]
 modulate = Color(1, 0.733333, 0.94902, 1)
 texture_filter = 3
 offset_left = -15.0
@@ -59,56 +60,46 @@ bbcode_enabled = true
 text = "100"
 scroll_active = false
 
-[node name="Timer" type="Timer" parent="la criatura"]
+[node name="Timer" type="Timer" parent="2"]
 autostart = true
 
-[node name="Spawn_marker" type="Marker2D" parent="la criatura"]
+[node name="Spawn_marker" type="Marker2D" parent="2"]
 position = Vector2(32, 1)
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="la criatura"]
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="2"]
 _spawnable_scenes = PackedStringArray("res://Players/Chris/bullet.tscn")
 spawn_path = NodePath("../Spawn_marker")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="la criatura"]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="2"]
 replication_config = SubResource("SceneReplicationConfig_ot044")
 
 [node name="ColorRect" parent="." instance=ExtResource("2_q2x81")]
+visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Box" type="AnimatableBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
 position = Vector2(0.925001, 19.1081)
 shape = SubResource("RectangleShape2D_2wbft")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(19.0092, 17.4865)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Box"]
+position = Vector2(1, -19)
+shape = SubResource("RectangleShape2D_2wbft")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Box"]
+position = Vector2(-18.6486, -4.17233e-05)
 rotation = 1.57079
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-18.6486, -4.17233e-05)
 shape = SubResource("RectangleShape2D_2wbft")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(-18, -19)
-rotation = 3.14159
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(-18.6486, -4.17233e-05)
-shape = SubResource("RectangleShape2D_2wbft")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(-18, -19)
-rotation = -1.5708
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(-18.6486, -4.17233e-05)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Box"]
+position = Vector2(19, 0)
+rotation = 1.57079
 shape = SubResource("RectangleShape2D_2wbft")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../Box")
 replication_config = SubResource("SceneReplicationConfig_de7rw")
 
-[connection signal="timeout" from="la criatura/Timer" to="la criatura" method="_on_timer_timeout"]
+[connection signal="timeout" from="2/Timer" to="2" method="_on_timer_timeout"]

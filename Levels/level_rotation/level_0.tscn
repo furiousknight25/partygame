@@ -1,0 +1,245 @@
+[gd_scene load_steps=18 format=3 uid="uid://60ey017ntoyi"]
+
+[ext_resource type="Script" path="res://Levels/level.gd" id="1_ivfa4"]
+[ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_2nd2f"]
+[ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_nojfh"]
+[ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="4_360mq"]
+[ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_v4o51"]
+[ext_resource type="Texture2D" uid="uid://byb5jkceayvtv" path="res://raw_assets/Judes_game_tile_set.png" id="6_lw6y5"]
+[ext_resource type="Texture2D" uid="uid://cs1wnp58m8iub" path="res://raw_assets/basicfloortilesheet.png" id="7_4vdv4"]
+[ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="9_eghrr"]
+[ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/physicsfloor.gd" id="10_vxe3m"]
+[ext_resource type="PackedScene" uid="uid://b1v4no3m0g7a8" path="res://Randomjunk/box_door.tscn" id="11_56ie1"]
+[ext_resource type="Texture2D" uid="uid://dviw8r6py0mox" path="res://raw_assets/fightbox.png" id="12_2f46v"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h0adx"]
+texture = ExtResource("6_lw6y5")
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -6.375, -8, -6.375)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, -5.25, -8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m5vyb"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6v661"]
+texture = ExtResource("7_4vdv4")
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m5vyb")
+6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:0/0/physics_layer_0/angular_velocity = 0.0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_vli1o"]
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 7
+physics_layer_0/collision_mask = 3
+sources/2 = SubResource("TileSetAtlasSource_6v661")
+sources/0 = SubResource("TileSetAtlasSource_h0adx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_waa3k"]
+size = Vector2(16.0001, 60)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_b1vac"]
+properties/0/path = NodePath(".:replicated_position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:replicated_rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:replicated_linear_velocity")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:replicated_angular_velocity")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_ivfa4")
+aria_scene = ExtResource("2_2nd2f")
+jesse_scene = ExtResource("3_nojfh")
+travis_scene = ExtResource("4_360mq")
+chris_scene = ExtResource("5_v4o51")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+position = Vector2(3, 126)
+
+[node name="0" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(168, -167)
+
+[node name="1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(232, -166)
+
+[node name="2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(166, -222)
+
+[node name="3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(239, -222)
+
+[node name="Level" type="Node" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Level"]
+z_index = -1
+texture_filter = 1
+tile_set = SubResource("TileSet_vli1o")
+format = 2
+layer_0/name = "base"
+layer_0/tile_data = PackedInt32Array(1048576, 131072, 0, 1048577, 131072, 0, 1048578, 131072, 0, 1048579, 131072, 0, 1048580, 131072, 0, 1048581, 131072, 0, 1048582, 131072, 0, 1048583, 131072, 0, 1048584, 131072, 0, 1048585, 131072, 0, 1048586, 131072, 0, 1048587, 131072, 0, 1048588, 131072, 0, 1048589, 131072, 0, 1048590, 131072, 0, 1048591, 131072, 0, 1048592, 131072, 0, 1048593, 131072, 0, 1048594, 131072, 0, 1048595, 131072, 0, 1048596, 131072, 0, 1048597, 131072, 0, 1048598, 131072, 0, 1048599, 131072, 0, 1048600, 131072, 0, 1048601, 131072, 0, 1048602, 131072, 0, 1048603, 131072, 0, 1048604, 131072, 0, 1048605, 131072, 0, 983068, 131072, 0, 983067, 131072, 0, 983066, 131072, 0, 983065, 131072, 0, 983064, 131072, 0, 983063, 131072, 0, 983062, 131072, 0, 983061, 131072, 0, 983060, 131072, 0, 983059, 131072, 0, 983058, 131072, 0, 983057, 131072, 0, 983056, 131072, 0, 983055, 131072, 0, 983054, 131072, 0, 983053, 131072, 0, 983052, 131072, 0, 983051, 131072, 0, 983050, 131072, 0, 983049, 131072, 0, 983048, 131072, 0, 983047, 131072, 0, 983046, 131072, 0, 983045, 131072, 0, 983044, 131072, 0, 983043, 131072, 0, 983042, 131072, 0, 983041, 131072, 0, 983040, 262144, 805306368, 983069, 262144, 1610612736, 917505, 262144, 805306368, 917506, 131072, 0, 917507, 131072, 0, 917508, 262144, 1610612736, 917529, 262144, 1610612736, 917528, 131072, 0, 917527, 131072, 0, 917526, 131072, 0, 851991, 131072, 0, 851990, 131072, 0, 917525, 262144, 805306368, 851992, 262144, 1610612736, 786455, 196608, 805306368, 786454, 196608, 805306368, 851989, 196608, 1342177280, 917524, 196608, 805306368, 917523, 196608, 805306368, 917522, 196608, 805306368, 917521, 196608, 805306368, 917520, 196608, 805306368, 917519, 196608, 805306368, 917518, 196608, 805306368, 917517, 196608, 805306368, 917516, 262144, 1610612736, 917515, 131072, 0, 917514, 262144, 805306368, 917513, 196608, 805306368, 917512, 196608, 805306368, 917511, 196608, 805306368, 917510, 196608, 805306368, 917509, 196608, 805306368, 851971, 196608, 805306368, 851970, 196608, 805306368, 851979, 196608, 805306368)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Level"]
+color = Color(0.560784, 0.560784, 0.560784, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="Level"]
+position = Vector2(396, 138)
+color = Color(0.772549, 0.427451, 0.262745, 1)
+energy = 1.09
+shadow_enabled = true
+shadow_filter_smooth = 2.0
+texture = ExtResource("9_eghrr")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D2" type="PointLight2D" parent="Level"]
+position = Vector2(24, 18)
+color = Color(0.937255, 0.654902, 0.572549, 1)
+energy = 1.09
+shadow_enabled = true
+texture = ExtResource("9_eghrr")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D3" type="PointLight2D" parent="Level"]
+position = Vector2(23, 209)
+color = Color(0.94902, 0.658824, 0.478431, 1)
+energy = 1.09
+shadow_enabled = true
+texture = ExtResource("9_eghrr")
+metadata/_edit_lock_ = true
+
+[node name="box" type="Node2D" parent="Level"]
+position = Vector2(190, -47)
+
+[node name="base" type="RigidBody2D" parent="Level/box"]
+position = Vector2(-3, 16)
+rotation = -1.5708
+collision_layer = 2
+collision_mask = 2
+mass = 0.5
+script = ExtResource("10_vxe3m")
+
+[node name="Sprite2D" type="Sprite2D" parent="Level/box/base"]
+z_index = -4
+texture_filter = 1
+position = Vector2(40, 21)
+rotation = 1.5708
+scale = Vector2(1.38272, 1.38272)
+texture = ExtResource("12_2f46v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/box/base"]
+position = Vector2(-18, -10.0001)
+shape = SubResource("RectangleShape2D_waa3k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/box/base"]
+position = Vector2(15.9999, 20.0001)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_waa3k")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Level/box/base"]
+position = Vector2(75.9999, 19.0003)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_waa3k")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Level/box/base"]
+position = Vector2(37, -13.9999)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_waa3k")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Level/box/base"]
+position = Vector2(98.0001, -15.9996)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_waa3k")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Level/box/base"]
+position = Vector2(36.9998, 52.0001)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_waa3k")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Level/box/base"]
+position = Vector2(93.9999, 53.0004)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_waa3k")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Level/box/base"]
+position = Vector2(-17.0002, 49.9999)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_waa3k")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Level/box/base"]
+replication_config = SubResource("SceneReplicationConfig_b1vac")
+
+[node name="BLDoor" parent="Level/box" instance=ExtResource("11_56ie1")]
+
+[node name="BLDoor2" parent="Level/box" instance=ExtResource("11_56ie1")]
+position = Vector2(-59, -59)
+
+[node name="BLDoor3" parent="Level/box" instance=ExtResource("11_56ie1")]
+position = Vector2(88, 4)
+
+[node name="PinJoint2D" parent="Level/box/BLDoor3" index="3"]
+position = Vector2(-8, -26)
+
+[node name="BLDoor4" parent="Level/box" instance=ExtResource("11_56ie1")]
+position = Vector2(91, -59)
+
+[node name="PinJoint2D" parent="Level/box/BLDoor4" index="3"]
+position = Vector2(-12, -22)
+
+[node name="Players" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+spawn_limit = 4
+
+[editable path="Level/box/BLDoor3"]
+[editable path="Level/box/BLDoor4"]

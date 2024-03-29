@@ -14,10 +14,7 @@ var buff_jump = 0.0
 var jump_length = .1
 var coyote_time = .1
 
-func _enter_tree(): #multiplayer stuff
-	set_multiplayer_authority(name.to_int())
 
-	
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
 	if health > 0:
@@ -64,6 +61,8 @@ func _physics_process(delta):
 		else: $Sprite2D.flip_h = true
 		$Magnet.rotation = atan2(get_global_mouse_position().y - global_position.y, get_global_mouse_position().x - global_position.x)
 	else: velocity.y += 9.8
+	if position.length() >= 23:
+		position = Vector2.ZERO
 	magnet_process(delta)
 	move_and_slide()
 	

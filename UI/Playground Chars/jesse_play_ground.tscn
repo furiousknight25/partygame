@@ -40,18 +40,18 @@ properties/6/path = NodePath("CollisionShape2D:disabled")
 properties/6/spawn = true
 properties/6/replication_mode = 1
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wbft"]
-size = Vector2(37.8501, 3.24324)
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_de7rw"]
-properties/0/path = NodePath(".:position")
+properties/0/path = NodePath("Box:position")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
-[node name="1" type="StaticBody2D"]
-position = Vector2(21, 19)
-collision_layer = 3
-collision_mask = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_325vj"]
+size = Vector2(37.8501, 3.24324)
+
+[node name="1" type="Node2D"]
 
 [node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(1.8741, 11.4573)
@@ -63,12 +63,12 @@ script = ExtResource("1_vsdep")
 one_shot = true
 
 [node name="rock" parent="player" instance=ExtResource("2_je0lr")]
-collision_mask = 11
+collision_mask = 15
 mass = 5.0
 gravity_scale = 0.45
 can_sleep = false
 continuous_cd = 1
-max_contacts_reported = 1
+max_contacts_reported = 2
 
 [node name="TeleportToHand" type="Timer" parent="player/rock"]
 wait_time = 0.5
@@ -145,42 +145,31 @@ scale = Vector2(0.666667, -0.666667)
 position = Vector2(-2.46323, -9.61506)
 
 [node name="ColorRect" parent="." instance=ExtResource("1_2e5tg")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.925001, 19.1081)
-shape = SubResource("RectangleShape2D_2wbft")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(19.0092, 17.4865)
-rotation = 1.57079
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-position = Vector2(-18.6486, -4.17233e-05)
-shape = SubResource("RectangleShape2D_2wbft")
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(-18, -19)
-rotation = 3.14159
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(-18.6486, -4.17233e-05)
-shape = SubResource("RectangleShape2D_2wbft")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(-18, -19)
-rotation = -1.5708
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(-18.6486, -4.17233e-05)
-shape = SubResource("RectangleShape2D_2wbft")
+visible = false
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_de7rw")
+
+[node name="Box" type="AnimatableBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
+position = Vector2(0.925001, 19.1081)
+shape = SubResource("RectangleShape2D_325vj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Box"]
+position = Vector2(1, -19)
+shape = SubResource("RectangleShape2D_325vj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Box"]
+position = Vector2(-18.6486, -4.17233e-05)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_325vj")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Box"]
+position = Vector2(19, 0)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_325vj")
 
 [connection signal="timeout" from="player/rock/TeleportToHand" to="player/rock" method="_on_timer_timeout"]
