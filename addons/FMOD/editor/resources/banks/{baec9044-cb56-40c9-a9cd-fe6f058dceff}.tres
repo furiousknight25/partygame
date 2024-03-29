@@ -2,7 +2,7 @@
 
 [resource]
 file_path = "res://fmodstuff/testfolder/testproject/Build/Desktop/Master.bank"
-modified_time = 1711092346
+modified_time = 1711738819
 path = "bank:/Master"
 guid = "{baec9044-cb56-40c9-a9cd-fe6f058dceff}"
 name = "Master"

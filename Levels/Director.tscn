@@ -384,10 +384,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 317.0
-offset_top = 325.0
-offset_right = 317.0
-offset_bottom = 325.0
+offset_left = 77.0
+offset_top = 53.0
+offset_right = 77.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.982397, 1.1355)
@@ -536,3 +536,4 @@ script = ExtResource("4_wtmqh")
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Join" to="Multplayer/ui/Menu" method="set_character" binds= ["join"]]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/PortForward" to="Multplayer" method="_on_port_forward_pressed"]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/SteamHost" to="Multplayer/ui/Menu" method="set_character" binds= ["steam_host"]]
+[connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/check lobbies" to="Multplayer" method="_steam_setup" binds= ["check_lobbies"]]

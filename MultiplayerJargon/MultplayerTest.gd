@@ -228,7 +228,7 @@ func _on_lobby_match_list(these_lobbies: Array) -> void:
 		%Lobbies.add_child(but)
 	
 func _check_lobbies():
-	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
+	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
 	print("305 Mr. Worldwide Requesting a lobby list")
 	Steam.requestLobbyList()
 
