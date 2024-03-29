@@ -53,7 +53,7 @@ func _on_join_pressed():
 	var peer = ENetMultiplayerPeer.new()
 	ip = text_type.text
 	if DEV_MODE == true: ip = 'localhost'
-	peer.create_client('66.242.82.251', PORT)
+	peer.create_client('localhost', PORT)
 	multiplayer.multiplayer_peer = peer
 	
 # travis ip 66.242.82.251
