@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=25 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
 [ext_resource type="Script" path="res://UI/menu.gd" id="3_ysm53"]
 [ext_resource type="Script" path="res://UI/Transition.gd" id="4_d5tsa"]
 [ext_resource type="PackedScene" uid="uid://0jha4ipd1n12" path="res://UI/char_blockV2.tscn" id="4_l0t0d"]
+[ext_resource type="Script" path="res://UI/fillone.gd" id="4_l2d50"]
 [ext_resource type="Script" path="res://Levels/Level_swap.gd" id="4_wtmqh"]
 [ext_resource type="Script" path="res://UI/FightBox.gd" id="5_bpvfn"]
 [ext_resource type="PackedScene" uid="uid://dsydj1kdvco0d" path="res://UI/Playground Chars/chris_play_ground.tscn" id="6_3l45t"]
@@ -336,6 +337,12 @@ layout_mode = 2
 theme_override_constants/h_separation = 196
 theme_override_constants/v_separation = 25
 columns = 2
+script = ExtResource("4_l2d50")
+
+[node name="Control" type="Control" parent="Multplayer/ui/Menu/select/MarginContainer/PlayerContainers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="FightBox" type="Sprite2D" parent="Multplayer/ui/Menu/select/MarginContainer"]
 texture_filter = 1
