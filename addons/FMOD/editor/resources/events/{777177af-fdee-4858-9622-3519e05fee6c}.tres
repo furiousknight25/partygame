@@ -1,15 +1,11 @@
 [gd_resource type="EventAsset" load_steps=2 format=3 uid="uid://csx5g1xj7inq5"]
 
 [sub_resource type="ParameterAsset" id="ParameterAsset_b7601"]
-resource_local_to_scene = false
-resource_name = ""
 path = "parameter:/Parameter 1"
 guid = "{5d83dc7b-c9a3-40c2-a1ad-5417b5f74f85}"
 name = "Parameter 1"
 
 [resource]
-resource_local_to_scene = false
-resource_name = ""
 min_distance = 1.0
 max_distance = 20.0
 parameters = {

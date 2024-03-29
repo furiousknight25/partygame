@@ -1,15 +1,11 @@
 [gd_resource type="EventAsset" load_steps=2 format=3 uid="uid://c3njyc6l2b2fi"]
 
 [sub_resource type="ParameterAsset" id="ParameterAsset_1x0nh"]
-resource_local_to_scene = false
-resource_name = ""
 path = "parameter:/music/dlc/part01/progress"
 guid = "{022fd6a0-ab36-4b9e-8282-28c11134ca66}"
 name = "progress"
 
 [resource]
-resource_local_to_scene = false
-resource_name = ""
 min_distance = 1.0
 max_distance = 20.0
 parameters = {
