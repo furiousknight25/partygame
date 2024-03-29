@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=24 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
 [ext_resource type="Script" path="res://UI/menu.gd" id="3_ysm53"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://UI/FightBox.gd" id="5_bpvfn"]
 [ext_resource type="PackedScene" uid="uid://dsydj1kdvco0d" path="res://UI/Playground Chars/chris_play_ground.tscn" id="6_3l45t"]
 [ext_resource type="Texture2D" uid="uid://dviw8r6py0mox" path="res://raw_assets/fightbox.png" id="6_n2igm"]
-[ext_resource type="PackedScene" uid="uid://bot68tj8cqwek" path="res://fmodstuff/MusicManager/music_c.tscn" id="6_so81q"]
 [ext_resource type="PackedScene" uid="uid://ctvybd2tobfvp" path="res://UI/Playground Chars/jesse_play_ground.tscn" id="7_wwgfm"]
 [ext_resource type="PackedScene" uid="uid://jovugslpubd5" path="res://UI/Playground Chars/aria_play_ground.tscn" id="8_mptte"]
 [ext_resource type="PackedScene" uid="uid://tckwhehi0vu0" path="res://UI/Playground Chars/travis_play_ground.tscn" id="9_e2yen"]
@@ -385,10 +384,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 77.0
-offset_top = 53.0
-offset_right = 77.0
-offset_bottom = 53.0
+offset_left = 317.0
+offset_top = 325.0
+offset_right = 317.0
+offset_bottom = 325.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.982397, 1.1355)
@@ -512,6 +511,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1440.0
+offset_bottom = 816.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1, 150)
@@ -529,12 +530,9 @@ autoplay = "close"
 unique_name_in_owner = true
 script = ExtResource("4_wtmqh")
 
-[node name="MusicC" parent="." instance=ExtResource("6_so81q")]
-
 [connection signal="pressed" from="Multplayer/ui/Menu/select/Button" to="Multplayer/ui/Menu" method="_start_game"]
 [connection signal="item_selected" from="Multplayer/ui/Menu/select/OptionButton" to="Multplayer/ui/Menu" method="_on_option_button_item_selected"]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Host" to="Multplayer/ui/Menu" method="set_character" binds= ["host"]]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Join" to="Multplayer/ui/Menu" method="set_character" binds= ["join"]]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/PortForward" to="Multplayer" method="_on_port_forward_pressed"]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/SteamHost" to="Multplayer/ui/Menu" method="set_character" binds= ["steam_host"]]
-[connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/check lobbies" to="Multplayer" method="_steam_setup" binds= ["check_lobbies"]]

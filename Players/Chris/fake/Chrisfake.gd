@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 var health = 100
 var walk_animation_speed = 0
+
+
 func _process(delta):
 #region debug keybinds
 	if Input.is_action_just_pressed("exit"):

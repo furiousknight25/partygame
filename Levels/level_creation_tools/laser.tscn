@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://fo5r1m4y7kw8"]
+
+[ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/laser.gd" id="1_r1del"]
+[ext_resource type="Texture2D" uid="uid://daykh5eqh4ctx" path="res://raw_assets/laser.png" id="2_ueve7"]
+[ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="3_ako6l"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ifr5v"]
+properties/0/path = NodePath("Line2D:width")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Line2D:points")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("PointLight2D:energy")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="RayCast2D" type="RayCast2D"]
+target_position = Vector2(0, 600)
+collision_mask = 3
+script = ExtResource("1_r1del")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0.999985, -14)
+rotation = 1.57079
+texture = ExtResource("2_ueve7")
+offset = Vector2(7, 0)
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(5.0195e-05, 8)
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0.905882, 0.635294, 0.454902, 1)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ifr5v")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.866667, 0.443137, 0.239216, 1)
+energy = 0.35
+texture = ExtResource("3_ako6l")

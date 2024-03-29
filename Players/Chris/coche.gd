@@ -15,7 +15,8 @@ var health := 100
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 	
-
+func _ready():
+	velocity.y = 100
 func get_input():
 	rotation_direction = Input.get_axis("left", "right")
 	if Input.get_axis("down", "up"):
