@@ -128,6 +128,7 @@ func sync(director_info):
 
 func change_level(scene: PackedScene):
 	%Animation_Transition.play('slideinto')
+	$ui/Transition/TransitionAudio.play()
 	for i in Director.players:
 		if i != 1:
 			play_trans.rpc_id(i, 'slideinto')

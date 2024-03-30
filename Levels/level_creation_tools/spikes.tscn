@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbsiod3n0h11j"]
+[gd_scene load_steps=5 format=3 uid="uid://dbsiod3n0h11j"]
 
 [ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/spikes.gd" id="1_e4gjp"]
 [ext_resource type="Texture2D" uid="uid://vr25uvuu7ata" path="res://raw_assets/spike.png" id="1_lhsan"]
+[ext_resource type="AudioStream" uid="uid://ddmiwc7v2skps" path="res://raw_assets/sounds/spike.wav" id="3_vv1l6"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3dkrg"]
 properties/0/path = NodePath(".:disable_mode")
@@ -28,5 +29,8 @@ polygon = PackedVector2Array(-15, 15, 15, 15, 0, -14)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_3dkrg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vv1l6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -30,6 +30,7 @@ func _process(delta):
 	point_light_2d.energy = lerp(point_light_2d.energy, 0.0, delta * 12)
 
 func shoot():
+	$AudioStreamPlayer.play()
 	point_light_2d.energy = 2.5
 	sprite.position += transform.x * 50
 	sprite.scale.y = 3

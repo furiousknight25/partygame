@@ -19,12 +19,20 @@ func _enter_tree():
 	
 func _ready():
 	velocity.y = 100
+var stop_loop = true
 func get_input():
 	rotation_direction = Input.get_axis("left", "right")
 	if Input.get_axis("down", "up"):
 		velocity += transform.x * Input.get_axis("down", "up") * speed
 		velocity.x = clamp(velocity.x, -max_speed, max_speed)
 		velocity.y = clamp(velocity.y, -max_speed, max_speed)
+		
+		if stop_loop: 
+			$StudioEventEmitter2D.play()
+			stop_loop = false
+	else:
+		stop_loop = true
+		$StudioEventEmitter2D.stop()
 	if Input.is_action_just_pressed('kill'):
 		death()
 

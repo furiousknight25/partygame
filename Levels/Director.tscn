@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=28 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
 [ext_resource type="Script" path="res://UI/menu.gd" id="3_ysm53"]
@@ -12,8 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://ctvybd2tobfvp" path="res://UI/Playground Chars/jesse_play_ground.tscn" id="7_wwgfm"]
 [ext_resource type="PackedScene" uid="uid://jovugslpubd5" path="res://UI/Playground Chars/aria_play_ground.tscn" id="8_mptte"]
 [ext_resource type="PackedScene" uid="uid://tckwhehi0vu0" path="res://UI/Playground Chars/travis_play_ground.tscn" id="9_e2yen"]
-[ext_resource type="Theme" path="res://raw_assets/pixelar.tres" id="12_bbmg8"]
-[ext_resource type="PackedScene" path="res://UI/points.tscn" id="13_els4n"]
+[ext_resource type="Theme" uid="uid://debxqs6npj4hd" path="res://raw_assets/pixelar.tres" id="12_bbmg8"]
+[ext_resource type="PackedScene" uid="uid://xiaiji7om40m" path="res://UI/points.tscn" id="13_els4n"]
+[ext_resource type="AudioStream" uid="uid://cxmjbs48qeys2" path="res://raw_assets/sounds/transition.wav" id="14_0p28e"]
 
 [sub_resource type="Animation" id="Animation_uour8"]
 resource_name = "Menu"
@@ -525,8 +526,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 5760.0
-offset_bottom = 3264.0
+offset_right = 9120.0
+offset_bottom = 5168.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1, 150)
@@ -539,6 +540,9 @@ libraries = {
 "": SubResource("AnimationLibrary_h45ca")
 }
 autoplay = "close"
+
+[node name="TransitionAudio" type="AudioStreamPlayer" parent="Multplayer/ui/Transition"]
+stream = ExtResource("14_0p28e")
 
 [node name="PointsSpawner" type="MultiplayerSpawner" parent="Multplayer"]
 _spawnable_scenes = PackedStringArray("res://UI/points.tscn")

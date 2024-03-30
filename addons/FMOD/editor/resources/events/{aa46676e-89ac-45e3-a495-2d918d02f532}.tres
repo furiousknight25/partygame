@@ -1,0 +1,8 @@
+[gd_resource type="EventAsset" format=3 uid="uid://1mtk2og3p60g"]
+
+[resource]
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/chrisblowing"
+guid = "{aa46676e-89ac-45e3-a495-2d918d02f532}"
+name = "chrisblowing"

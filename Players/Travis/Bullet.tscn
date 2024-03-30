@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://re21y8djadvk" path="res://raw_assets/ball.png" id="2_pqp1g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpd8h"]
-radius = 5.0
+radius = 4.0
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_benj5"]
 properties/0/path = NodePath(".:position")
@@ -22,16 +22,15 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_30yvj")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.19209e-07, 1.19209e-07)
+texture = ExtResource("2_pqp1g")
+
 [node name="Bullet hitboxs" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vpd8h")
 
 [node name="Bullet scribt" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(1.19209e-07, 1.19209e-07)
-scale = Vector2(0.3125, 0.3125)
-texture = ExtResource("2_pqp1g")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_benj5")

@@ -7,6 +7,9 @@ func _on_body_entered(body):
 		body.hurt.rpc(transform.x * strength, damage)
 		$Sprite2D.scale.y = 2
 		$Sprite2D.scale.x = .5
+		$AudioStreamPlayer.play()
+		
+		
 
 func _process(delta):
 	if $Sprite2D.scale.y >= 1.05:
