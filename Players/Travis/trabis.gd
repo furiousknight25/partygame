@@ -78,6 +78,8 @@ func magnet_process(delta):
 		for i in magnet.get_overlapping_bodies():
 			if i != self and i.has_method('hurt'):
 				i.hurt.rpc(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 50 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1) * delta, 10 * delta)
+			elif i == self:
+				i.hurt(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 10 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1) * delta,0)
 	else: magnet_stuff.emitting = false
 	
 	if Input.is_action_just_pressed('mm'):
