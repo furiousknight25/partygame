@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://canqomfe3wsj0"]
+[gd_scene load_steps=15 format=3 uid="uid://canqomfe3wsj0"]
 
 [ext_resource type="Script" path="res://Players/Travis/trabis.gd" id="1_0a8f0"]
+[ext_resource type="PackedScene" uid="uid://5e7l135cd6vc" path="res://Players/Travis/Bullet.tscn" id="2_skdsd"]
 [ext_resource type="Texture2D" uid="uid://2238kevtrmp6" path="res://Players/Travis/pixil-frame-0 (1).png" id="2_syvtv"]
 [ext_resource type="Texture2D" uid="uid://iv8akcip6y3g" path="res://Players/Travis/shape_star_20.png" id="3_uw8kn"]
 [ext_resource type="VideoStream" path="res://raw_assets/recuperare.ogv" id="4_kdvm6"]
@@ -56,6 +57,7 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 scale = Vector2(0.5, 0.5)
 collision_mask = 3
 script = ExtResource("1_0a8f0")
+bullet = ExtResource("2_skdsd")
 
 [node name="Character hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_k50uc")
@@ -109,6 +111,9 @@ hue_variation_max = 1.0
 position = Vector2(65, -1)
 shape = SubResource("RectangleShape2D_q50yx")
 one_way_collision_margin = 0.0
+
+[node name="Magnert positom" type="Node2D" parent="Magnet"]
+position = Vector2(34, 0)
 
 [node name="HealthText" type="RichTextLabel" parent="."]
 modulate = Color(1, 0.733333, 0.94902, 1)

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var text = $HealthText
 @onready var musicC = get_tree().current_scene.get_node("/root/MusicC")
 
+@export var bullet : PackedScene
 const SPEED = 150.0
 const JUMP_VELOCITY = -150.0
 const JUMP_HORIZONTAL = 200
@@ -79,6 +80,25 @@ func magnet_process(delta):
 				i.hurt.rpc(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 50 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1) * delta, 10 * delta)
 	else: magnet_stuff.emitting = false
 	
+	if Input.is_action_just_pressed('mm'):
+		var new_bullet = bullet.instantiate()
+		add_child(new_bullet)
+		
+		new_bullet.top_level = true
+		new_bullet.global_position = $"Magnet/Magnert positom".global_position
+		magnet.transform.x
+		new_bullet.velocity += 100 * magnet.transform.x
+		
+		
+		
+		#
+		
+		
+		
+		
+		
+		
+		
 func death():
 	change_stocks.rpc(name.to_int(), 0)
 	$"Character hitbox".disabled = true

@@ -4,7 +4,7 @@
 [ext_resource type="BankAsset" uid="uid://dn4dteo8gdqlk" path="res://addons/FMOD/editor/resources/banks/{baec9044-cb56-40c9-a9cd-fe6f058dceff}.tres" id="1_p143o"]
 [ext_resource type="BusAsset" uid="uid://bk3pgeoysn8wc" path="res://addons/FMOD/editor/resources/busses/{74cab10f-322e-4eb7-bc71-39b2f87198da}.tres" id="2_18g4g"]
 [ext_resource type="BankAsset" uid="uid://ci7oj02ll1jtx" path="res://addons/FMOD/editor/resources/banks/{22f1b090-ba2d-0c8b-2f84-7491f47ec867}.tres" id="2_wiyar"]
-[ext_resource type="EventAsset" uid="uid://cdigqg71rgndu" path="res://addons/FMOD/editor/resources/events/{251b69a9-7663-46aa-8aed-e08c7aaa9bfa}.tres" id="5_7viob"]
+[ext_resource type="EventAsset" path="res://addons/FMOD/editor/resources/events/{251b69a9-7663-46aa-8aed-e08c7aaa9bfa}.tres" id="5_7viob"]
 
 [resource]
 banks = {
