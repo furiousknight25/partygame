@@ -11,7 +11,6 @@ var health := 100
 
 func _enter_tree():
 	set_multiplayer_authority(get_parent().get_parent().get_parent().get_multiplayer_authority())
-	print(get_parent().get_parent().get_parent())
 	
 func _physics_process(delta):
 #region JUNK you dont have to care abouts

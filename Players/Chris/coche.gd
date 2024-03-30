@@ -48,7 +48,7 @@ func _physics_process(delta):
 		modulate = lerp(modulate, Color('ffffff'), delta*5)
 	else: velocity.y += 9.8#just adding gravity if you die for lols, u can delete
 	move_and_slide()
-	pitch_strength = lerp(pitch_strength, 1.0, delta)
+	pitch_strength = lerp(pitch_strength, .6, delta)
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
 
 

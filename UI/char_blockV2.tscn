@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://0jha4ipd1n12"]
+[gd_scene load_steps=15 format=3 uid="uid://0jha4ipd1n12"]
 
 [ext_resource type="Script" path="res://UI/char_blockV2.gd" id="1_8lobr"]
 [ext_resource type="Texture2D" uid="uid://cau5q1se3ne8y" path="res://raw_assets/jesseselect.png" id="1_heea5"]
@@ -10,6 +10,20 @@
 [ext_resource type="Texture2D" uid="uid://sqtrd6xx85nf" path="res://raw_assets/ariaselect.png" id="7_id1s6"]
 [ext_resource type="Texture2D" uid="uid://b8v3cgapqriom" path="res://raw_assets/ariachosen.png" id="8_jvolt"]
 [ext_resource type="AudioStream" uid="uid://cmgbisve2yhq4" path="res://raw_assets/sounds/charselect.wav" id="10_arnct"]
+[ext_resource type="Theme" uid="uid://debxqs6npj4hd" path="res://raw_assets/pixelar.tres" id="11_estgw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ib3p4"]
+bg_color = Color(0.219608, 0.180392, 0.247059, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0784314, 0.105882, 0.168627, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ir212"]
+frequency = 0.0131
+fractal_gain = 0.31
+fractal_weighted_strength = 0.88
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5e80n"]
 properties/0/path = NodePath("GridContainer/0:button_pressed")
@@ -25,20 +39,35 @@ properties/3/path = NodePath("GridContainer/3:button_pressed")
 properties/3/spawn = true
 properties/3/replication_mode = 1
 properties/4/path = NodePath(".:process_mode")
-properties/4/spawn = true
-properties/4/replication_mode = 1
+properties/4/spawn = false
+properties/4/replication_mode = 0
+properties/5/path = NodePath(".:scale")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:position")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("RichTextLabel:text")
+properties/7/spawn = true
+properties/7/replication_mode = 1
 
 [node name="Panel" type="Panel"]
+texture_filter = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -323.0
-offset_bottom = -159.0
+offset_left = 0.5
+offset_top = 0.5
+offset_right = -322.5
+offset_bottom = -158.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(78, 57)
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_ib3p4")
 script = ExtResource("1_8lobr")
+noise = SubResource("FastNoiseLite_ir212")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_arnct")
@@ -87,13 +116,19 @@ texture_normal = ExtResource("5_2yang")
 texture_pressed = ExtResource("6_u2gu6")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 2.0
-offset_right = 170.0
-offset_bottom = 25.0
-scale = Vector2(0.584576, 0.584576)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.197452
+anchor_top = 0.0176991
+anchor_right = 0.847134
+anchor_bottom = 0.159292
+grow_horizontal = 2
+scale = Vector2(1, 0.88)
+theme = ExtResource("11_estgw")
+text = "1"
 fit_content = true
+metadata/_edit_use_anchors_ = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5e80n")

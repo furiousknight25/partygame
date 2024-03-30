@@ -63,6 +63,7 @@ func _start_game():
 	$select/Button.process_mode = Node.PROCESS_MODE_DISABLED
 	$select/OptionButton.process_mode = Node.PROCESS_MODE_DISABLED
 	position = position + Vector2(100000,1000000)
+	hide()
 	$select/MarginContainer/FightBox.clear_children.rpc()
 	multiplayer_manager.start_game()
 

@@ -1,4 +1,4 @@
-extends VSplitContainer
+extends VBoxContainer
 
 @onready var points = $points
 @onready var nam = $name
@@ -11,3 +11,6 @@ func _ready():
 
 func update(point):
 	points.text = var_to_str(point)
+
+func play():
+	$AnimationPlayer.play('ding!')

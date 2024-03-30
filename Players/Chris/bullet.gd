@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 func _enter_tree():
-	set_multiplayer_authority(get_parent().get_parent().name.to_int())
+	set_multiplayer_authority(get_parent().get_parent().get_multiplayer_authority())
 
 	
 func _physics_process(delta):
