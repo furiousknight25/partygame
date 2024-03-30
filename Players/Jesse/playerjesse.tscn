@@ -1,20 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxylv50enx4tb"]
+[gd_scene load_steps=28 format=3 uid="uid://bxylv50enx4tb"]
 
 [ext_resource type="Script" path="res://Players/Jesse/playerjesse.gd" id="1_w2pg1"]
 [ext_resource type="PackedScene" uid="uid://bmjkc1l0qdpx" path="res://Players/Jesse/rock.tscn" id="2_2fa4w"]
-[ext_resource type="Texture2D" uid="uid://dqce47oo1o0t1" path="res://Players/Jesse/pixil-frame-0.png" id="2_4awxi"]
-[ext_resource type="Texture2D" uid="uid://re21y8djadvk" path="res://raw_assets/ball.png" id="3_344pe"]
+[ext_resource type="Texture2D" uid="uid://cipqhc32x518p" path="res://Players/Jesse/SpriteStuff/Rock.png" id="3_qhiqc"]
+[ext_resource type="Texture2D" uid="uid://gwfncqa5ijbe" path="res://Players/Jesse/SpriteStuff/SpriteDropkick-Sheet.png" id="4_h0b7r"]
+[ext_resource type="Texture2D" uid="uid://dowl470qk7yoh" path="res://Players/Jesse/SpriteStuff/SpriteDropkickHit.png" id="5_k4gj1"]
+[ext_resource type="Texture2D" uid="uid://bpiyrx3yvgjab" path="res://Players/Jesse/SpriteStuff/MainSprite.png" id="6_gdv3u"]
+[ext_resource type="Texture2D" uid="uid://62o0wi1dcn13" path="res://Players/Jesse/SpriteStuff/SpriteTeleport-Sheet.png" id="7_q84o2"]
+[ext_resource type="Texture2D" uid="uid://llpqoseqp4e6" path="res://Players/Jesse/SpriteStuff/ThrowSprite-Sheet.png" id="8_q4kkg"]
 
 [sub_resource type="Curve" id="Curve_qpbn6"]
 _data = [Vector2(0, 0.287671), 0.0, 0.0, 0, 0, Vector2(1, 0.685737), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oq3x7"]
-radius = 18.3025
-height = 51.247
+radius = 6.8529
+height = 26.0674
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4vtx"]
-size = Vector2(26, 28)
+size = Vector2(15.3464, 25.597)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5ve0h"]
 properties/0/path = NodePath(".:position")
@@ -42,8 +46,138 @@ properties/7/path = NodePath(".:modulate")
 properties/7/spawn = true
 properties/7/replication_mode = 1
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g8vd"]
+atlas = ExtResource("4_h0b7r")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vjwi"]
+atlas = ExtResource("5_k4gj1")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsrb4"]
+atlas = ExtResource("4_h0b7r")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mje3t"]
+atlas = ExtResource("4_h0b7r")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kor2"]
+atlas = ExtResource("4_h0b7r")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_watds"]
+atlas = ExtResource("6_gdv3u")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltvq5"]
+atlas = ExtResource("7_q84o2")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnv5w"]
+atlas = ExtResource("7_q84o2")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rl5x0"]
+atlas = ExtResource("7_q84o2")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2onl"]
+atlas = ExtResource("7_q84o2")
+region = Rect2(54, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37ret"]
+atlas = ExtResource("7_q84o2")
+region = Rect2(72, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mryf5"]
+atlas = ExtResource("8_q4kkg")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8e1j"]
+atlas = ExtResource("8_q4kkg")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p5r7"]
+atlas = ExtResource("8_q4kkg")
+region = Rect2(36, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2jofs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g8vd")
+}],
+"loop": true,
+"name": &"dropkick",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vjwi")
+}],
+"loop": true,
+"name": &"dropkickhit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_gsrb4")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_mje3t")
+}, {
+"duration": 0.7,
+"texture": SubResource("AtlasTexture_0kor2")
+}],
+"loop": true,
+"name": &"dropkickstart",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_watds")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_ltvq5")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_bnv5w")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_rl5x0")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_v2onl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37ret")
+}],
+"loop": true,
+"name": &"teleport",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_mryf5")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_g8e1j")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_6p5r7")
+}],
+"loop": true,
+"name": &"throw",
+"speed": 5.0
+}]
+
 [node name="playerjes" type="CharacterBody2D"]
-scale = Vector2(0.273187, 0.273187)
 collision_mask = 11
 script = ExtResource("1_w2pg1")
 
@@ -51,6 +185,7 @@ script = ExtResource("1_w2pg1")
 one_shot = true
 
 [node name="rock" parent="." instance=ExtResource("2_2fa4w")]
+position = Vector2(5.85221, -6.54622)
 collision_mask = 11
 mass = 5.0
 gravity_scale = 0.45
@@ -64,12 +199,13 @@ one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="rock"]
 texture_filter = 1
-scale = Vector2(0.118498, 0.118498)
-texture = ExtResource("3_344pe")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_qhiqc")
 
 [node name="Line2D" type="Line2D" parent="rock"]
 top_level = true
-points = PackedVector2Array(0, 0, 0, 35.745)
+position = Vector2(26.6888, 8.40833)
+points = PackedVector2Array(-20.9353, -14.9434, -54.081, -16.1809)
 closed = true
 width = 4.305
 width_curve = SubResource("Curve_qpbn6")
@@ -78,6 +214,7 @@ default_color = Color(0.705882, 0.286275, 0.305882, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_oq3x7")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+metadata/_edit_lock_ = true
 
 [node name="state" type="RichTextLabel" parent="."]
 modulate = Color(0.533333, 1, 0.47451, 1)
@@ -92,10 +229,10 @@ text = "Accel: "
 [node name="HealthText" type="RichTextLabel" parent="."]
 modulate = Color(1, 0.733333, 0.94902, 1)
 texture_filter = 3
-offset_left = -15.0
-offset_top = -37.0
-offset_right = 14.0
-offset_bottom = -14.0
+offset_left = -14.1081
+offset_top = -39.0218
+offset_right = 14.8919
+offset_bottom = -16.0218
 pivot_offset = Vector2(15, 12)
 bbcode_enabled = true
 text = "100"
@@ -106,6 +243,7 @@ top_level = true
 collision_mask = 9
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MouseArea"]
+position = Vector2(22.0153, -12.0959)
 shape = SubResource("RectangleShape2D_q4vtx")
 debug_color = Color(0.85098, 0.321569, 0.490196, 0.419608)
 
@@ -116,20 +254,21 @@ one_shot = true
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5ve0h")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-0.0343857, -0.219398)
 rotation = -3.14159
-scale = Vector2(1.5, -1.5)
-texture = ExtResource("2_4awxi")
-offset = Vector2(7.3104, 0.146267)
+scale = Vector2(1, -1.175)
+sprite_frames = SubResource("SpriteFrames_2jofs")
+animation = &"idle"
+offset = Vector2(-0.578097, 1.49012e-08)
+metadata/_edit_lock_ = true
 
 [node name="RockInitial" type="Marker2D" parent="Sprite2D"]
-position = Vector2(-11.3563, -2.5204)
+position = Vector2(-7.06957, -5.41533)
 rotation = -3.14159
 scale = Vector2(0.666667, -0.666667)
 
 [node name="RockFinal" type="Marker2D" parent="Sprite2D"]
-position = Vector2(-2.46323, -9.61506)
+position = Vector2(6.17391, -1.01316)
 
 [connection signal="timeout" from="rock/TeleportToHand" to="rock" method="_on_timer_timeout"]

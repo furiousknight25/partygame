@@ -58,10 +58,10 @@ func _process(delta):
 			elif current_state == "hold":
 				set_throw_process()
 		if get_global_mouse_position() > self.global_position:
-			$Sprite2D.scale.x = -1.5
+			$Sprite2D.scale.x = -1
 			flipped = false
 		else:
-			$Sprite2D.scale.x = 1.5
+			$Sprite2D.scale.x = 1
 			flipped = true
 		if get_last_slide_collision():
 			if get_last_slide_collision().get_collider() is CharacterBody2D:
@@ -77,7 +77,7 @@ func _process(delta):
 		else:
 			Thrower.rotation = lerp_angle(Thrower.rotation, 0.0 + PI, 12*delta)
 		mouse_process_stuff(delta)
-		modulate = lerp(modulate, Color('ffffff'), delta*5)
+		
 		if global_position.length() >= 1000:
 			death()
 	else: velocity.y += 9.8
@@ -133,7 +133,7 @@ func mouse_process_stuff(delta):
 
 @rpc("any_peer")
 func hurt(direction, damage_percent):
-	if damage_percent > 0: modulate = Color("ff0000")
+	#print(direction, " ", damage_percent)
 	velocity += direction
 	
 	var push_direction = 1

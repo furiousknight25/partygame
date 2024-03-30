@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Players/Jesse/rock.gd" id="1_h504p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mpekc"]
-radius = 4.78845
+radius = 8.30035
 
 [node name="rock" type="RigidBody2D"]
 top_level = true
