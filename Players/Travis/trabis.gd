@@ -4,8 +4,8 @@ extends CharacterBody2D
 @onready var magnet = $Magnet
 @onready var text = $HealthText
 @onready var musicC = get_tree().current_scene.get_node("/root/MusicC")
+@onready var bullet = preload("res://Players/Travis/Bullet.tscn")
 
-@export var bullet : PackedScene
 const SPEED = 150.0
 const JUMP_VELOCITY = -150.0
 const JUMP_HORIZONTAL = 200
@@ -82,7 +82,7 @@ func magnet_process(delta):
 	
 	if Input.is_action_just_pressed('mm'):
 		var new_bullet = bullet.instantiate()
-		add_child(new_bullet)
+		$"Magnet/Magnert positom".add_child(new_bullet,true)
 		
 		new_bullet.top_level = true
 		new_bullet.global_position = $"Magnet/Magnert positom".global_position
@@ -91,7 +91,7 @@ func magnet_process(delta):
 		
 		
 		
-		#
+		
 		
 		
 		
