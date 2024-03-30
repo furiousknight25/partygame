@@ -17,7 +17,7 @@ func mute():
 @rpc("any_peer", "call_local")
 func change_level(level = 0):
 	#var mew_addon = instance.get_parameter_by_name('progress')['value'] + 1
-	print(level)
+	#print(level)
 	#print(instance)
 	instance.set_parameter_by_name("progress", level, false)
 	#print(instance.get_parameter_by_name('progress'))

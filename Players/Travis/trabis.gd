@@ -55,7 +55,7 @@ func _physics_process(delta):
 			velocity.x = lerp(velocity.x, direction * SPEED, acceleration * delta)
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED * delta * 5)
-
+		modulate = lerp(modulate, Color('ffffff'), delta*5)
 		if global_position.length() >= 1000:
 			death()
 		#character flip
@@ -86,6 +86,7 @@ func death():
 	
 @rpc("any_peer")
 func hurt(direction, damage_percent):
+	if damage_percent > 0: modulate = Color("ff0000")
 	velocity += direction
 	health -= damage_percent
 	if health <= 0:

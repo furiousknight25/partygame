@@ -7,10 +7,12 @@ extends CharacterBody2D
 @onready var text = $RichTextLabel
 @onready var bullet = preload("res://Players/Chris/bullet.tscn")
 @onready var musicC = get_tree().current_scene.get_node("/root/MusicC")
+@onready var blast_sound = $blast
+
 
 var rotation_direction = 0
 var health := 100
-
+var pitch_strength = 0.0
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
@@ -35,13 +37,18 @@ func _physics_process(delta):
 		blast()
 		if global_position.length() >= 1000:
 			death()
+		modulate = lerp(modulate, Color('ffffff'), delta*5)
 	else: velocity.y += 9.8#just adding gravity if you die for lols, u can delete
 	move_and_slide()
-	
+	pitch_strength = lerp(pitch_strength, 1.0, delta)
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
+
 
 func blast():
 	if Input.is_action_just_pressed('z'):
+		pitch_strength += .1
+		blast_sound.pitch_scale = pitch_strength
+		blast_sound.play()
 		Camera.add_trauma(.3, transform.x)
 		velocity -= transform.x * 20
 		var b = bullet.instantiate()
@@ -59,6 +66,7 @@ func death():
 	
 @rpc("any_peer")
 func hurt(direction, damage_percent):
+	if damage_percent > 0: modulate = Color("ff0000")
 	velocity += direction
 	health -= damage_percent
 	if health <= 0:

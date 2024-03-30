@@ -77,7 +77,7 @@ func _process(delta):
 		else:
 			Thrower.rotation = lerp_angle(Thrower.rotation, 0.0 + PI, 12*delta)
 		mouse_process_stuff(delta)
-		
+		modulate = lerp(modulate, Color('ffffff'), delta*5)
 		if global_position.length() >= 1000:
 			death()
 	else: velocity.y += 9.8
@@ -133,7 +133,7 @@ func mouse_process_stuff(delta):
 
 @rpc("any_peer")
 func hurt(direction, damage_percent):
-	#print(direction, " ", damage_percent)
+	if damage_percent > 0: modulate = Color("ff0000")
 	velocity += direction
 	
 	var push_direction = 1

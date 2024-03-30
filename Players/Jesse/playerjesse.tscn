@@ -38,6 +38,9 @@ properties/5/replication_mode = 1
 properties/6/path = NodePath("CollisionShape2D:disabled")
 properties/6/spawn = true
 properties/6/replication_mode = 1
+properties/7/path = NodePath(".:modulate")
+properties/7/spawn = true
+properties/7/replication_mode = 1
 
 [node name="playerjes" type="CharacterBody2D"]
 scale = Vector2(0.273187, 0.273187)

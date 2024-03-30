@@ -61,6 +61,7 @@ func _process(delta):
 		sprite.rotation = lerp_angle(sprite.rotation, 0.0, 8 * delta)
 		if global_position.length() >= 1000:
 			death()
+		modulate = lerp(modulate, Color('ffffff'), delta*5)
 	else: velocity.y += 9.8
 	move_and_slide()
 	
@@ -79,6 +80,7 @@ func death():
 
 @rpc("any_peer")
 func hurt(direction, damage_percent):
+	if damage_percent > 0: modulate = Color("ff0000")
 	sprite.scale.x += .2
 	sprite.scale.y -= .1
 	velocity += direction

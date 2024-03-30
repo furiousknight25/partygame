@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://xiaiji7om40m"]
+
+[ext_resource type="Script" path="res://UI/points.gd" id="1_8cthv"]
+[ext_resource type="Theme" uid="uid://debxqs6npj4hd" path="res://raw_assets/pixelar.tres" id="1_l2udw"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ihajs"]
+properties/0/path = NodePath("points:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("name:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Points" type="VSplitContainer"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+script = ExtResource("1_8cthv")
+
+[node name="name" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme = ExtResource("1_l2udw")
+text = "Name
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="points" type="RichTextLabel" parent="."]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_l2udw")
+text = "0"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ihajs")

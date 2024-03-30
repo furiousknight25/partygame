@@ -37,6 +37,9 @@ properties/4/replication_mode = 1
 properties/5/path = NodePath("Character hitbox:disabled")
 properties/5/spawn = true
 properties/5/replication_mode = 1
+properties/6/path = NodePath(".:modulate")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [sub_resource type="Curve" id="Curve_km62g"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.318681), 0.0, 0.0, 0, 0]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://r7acn5diagc6"]
+[gd_scene load_steps=5 format=3 uid="uid://r7acn5diagc6"]
 
 [ext_resource type="Script" path="res://Players/Chris/coche.gd" id="1_uiler"]
 [ext_resource type="Texture2D" uid="uid://c3v5f1ffft7gj" path="res://Players/Chris/584674f4ef5a427.png" id="2_ghgna"]
+[ext_resource type="AudioStream" uid="uid://d3mswxhsvs0vg" path="res://raw_assets/sounds/chris.wav" id="3_ayl3e"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ot044"]
 properties/0/path = NodePath(".:position")
@@ -16,6 +17,9 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("CollisionShape2D:disabled")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath(".:modulate")
+properties/4/spawn = true
+properties/4/replication_mode = 1
 
 [node name="la criatura" type="CharacterBody2D"]
 scale = Vector2(0.4, 0.4)
@@ -57,5 +61,8 @@ spawn_path = NodePath("../Spawn_marker")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ot044")
+
+[node name="blast" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ayl3e")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

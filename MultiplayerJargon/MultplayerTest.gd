@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var container: PackedScene
+@export var points: PackedScene
 
 const PORT = 4433
 
@@ -27,12 +28,21 @@ func  _process(delta):
 		total_stocks += Director.players[i]['stocks']
 	if state == 'start':
 		if total_stocks <= 1:
+			for i in Director.players:
+				if Director.players[i]["stocks"] == 1:
+					Director.players[i]["points"] = Director.players[i]["points"] + 1
+					for x in $points.get_children():
+						if x.name == var_to_str(Director.players[i]['name']):
+							x.update(Director.players[i]["points"])
+					print(Director.players[i]['name'])
+			
+			
 			for i in Director.players: Director.players[i]['stocks'] = 1
 			await get_tree().create_timer(1).timeout
 			level_index += 1
 			level_index = level_index % dir.size()
 			change_level(load("res://Levels/level_rotation/" + "level_" + var_to_str(level_index) + '.tscn'))
-
+			
 
 func _on_port_forward_pressed():
 	upnp_setup()
@@ -61,7 +71,6 @@ func _add_player(id = 1):
 	var c = container.instantiate()
 	c.name = str(id)
 	$ui/Menu/select/MarginContainer/PlayerContainers.add_child(c)
-	
 	var fightbox = $ui/Menu/select/MarginContainer/FightBox
 	
 	var musicC = get_tree().current_scene.get_node("/root/MusicC")
@@ -82,10 +91,13 @@ func send_player_info(id): #starts global data
 		Director.players[id] = {
 			'stocks': 1,
 			'choice': 1,
-			'name': index
+			'name': index,
+			'points': 0
 		}
 	sync_server_to_peer()
-	
+	var p = points.instantiate()
+	p.name = str(Director.players[id]["name"])
+	$points.add_child(p)
 	
 func on_connected_to_server():
 	send_player_info.rpc_id(1, multiplayer.get_unique_id()) #maybe do index stuff here for name
@@ -97,12 +109,14 @@ func start_game():
 		change_level.call_deferred(load("res://Levels/level_rotation/level_0.tscn"))
 		state = 'start'
 		sync_server_to_peer()
+		$points.show()
 
 func _on_option_button_item_selected(index):
 	if multiplayer.is_server():
 		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[index - 1]))
 		state = 'start'
 		sync_server_to_peer()
+		$points.show()
 	
 func sync_server_to_peer():
 	for i in Director.players:

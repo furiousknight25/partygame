@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://debxqs6npj4hd"]
+
+[ext_resource type="FontFile" uid="uid://c6e6e2cn0f5vg" path="res://raw_assets/8-bit Arcade In.ttf" id="1_0khrn"]
+
+[resource]
+default_font = ExtResource("1_0khrn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=27 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
 [ext_resource type="Script" path="res://UI/menu.gd" id="3_ysm53"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://ctvybd2tobfvp" path="res://UI/Playground Chars/jesse_play_ground.tscn" id="7_wwgfm"]
 [ext_resource type="PackedScene" uid="uid://jovugslpubd5" path="res://UI/Playground Chars/aria_play_ground.tscn" id="8_mptte"]
 [ext_resource type="PackedScene" uid="uid://tckwhehi0vu0" path="res://UI/Playground Chars/travis_play_ground.tscn" id="9_e2yen"]
+[ext_resource type="Theme" uid="uid://debxqs6npj4hd" path="res://raw_assets/pixelar.tres" id="12_bbmg8"]
+[ext_resource type="PackedScene" uid="uid://xiaiji7om40m" path="res://UI/points.tscn" id="13_els4n"]
 
 [sub_resource type="Animation" id="Animation_uour8"]
 resource_name = "Menu"
@@ -250,14 +252,20 @@ _data = {
 "slideouto": SubResource("Animation_44b6h")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_cvx6b"]
+properties/0/path = NodePath(".:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
 [node name="Director" type="Node2D"]
 
 [node name="Multplayer" type="Node2D" parent="."]
 script = ExtResource("3_o2mgw")
 container = ExtResource("4_l0t0d")
+points = ExtResource("13_els4n")
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="Multplayer"]
-_spawnable_scenes = PackedStringArray("res://Levels/level_test.tscn", "res://Levels/level_rotation/level_1.tscn", "res://Levels/level_rotation/level_2.tscn", "res://Levels/level_rotation/level_0.tscn")
+_spawnable_scenes = PackedStringArray("res://Levels/level_test.tscn", "res://Levels/level_rotation/level_1.tscn", "res://Levels/level_rotation/level_2.tscn", "res://Levels/level_rotation/level_0.tscn", "res://Levels/level_rotation/level_3.tscn")
 spawn_path = NodePath("../Level")
 
 [node name="ui" type="MultiplayerSpawner" parent="Multplayer"]
@@ -384,60 +392,65 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 317.0
-offset_top = 325.0
-offset_right = 317.0
-offset_bottom = 325.0
+offset_left = 77.0
+offset_top = 53.0
+offset_right = 77.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.982397, 1.1355)
 
 [node name="Host" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
+texture_filter = 1
 layout_mode = 0
-offset_left = -221.906
-offset_top = -105.68
-offset_right = -175.906
-offset_bottom = -74.6803
-scale = Vector2(2.66012, 1.21663)
+offset_left = -174.064
+offset_top = -99.5156
+offset_right = -64.0641
+offset_bottom = -63.5156
+theme = ExtResource("12_bbmg8")
 text = "Host"
 
 [node name="Join" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
+texture_filter = 1
 layout_mode = 0
-offset_left = -64.1289
-offset_top = -103.919
-offset_right = -18.1289
-offset_bottom = -72.919
-scale = Vector2(2.83005, 1.29435)
+offset_left = -39.6988
+offset_top = -103.038
+offset_right = 60.3012
+offset_bottom = -66.0383
+theme = ExtResource("12_bbmg8")
 text = "Join
 "
 
 [node name="TextEdit" type="TextEdit" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
-offset_left = -4.07168
-offset_top = -131.22
-offset_right = 301.928
-offset_bottom = -91.2193
+offset_left = -25.448
+offset_top = -138.265
+offset_right = 280.552
+offset_bottom = -98.2644
 scale = Vector2(0.51929, 0.51929)
+theme = ExtResource("12_bbmg8")
 text = "66.242.81.85"
 placeholder_text = "66.242.81.85"
 
 [node name="PortForward" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
+texture_filter = 1
 layout_mode = 0
-offset_left = -271.784
-offset_top = -132.1
-offset_right = -81.7842
-offset_bottom = -101.1
-scale = Vector2(1.3055, 0.597082)
+offset_left = -211.727
+offset_top = -141.788
+offset_right = -34.727
+offset_bottom = -110.788
+theme = ExtResource("12_bbmg8")
 text = "PortForward(if you can)"
 
 [node name="SteamHost" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -310.465
-offset_top = -280.934
-offset_right = -214.465
-offset_bottom = -249.934
+offset_left = -304.358
+offset_top = -280.053
+offset_right = -219.358
+offset_bottom = -246.053
 scale = Vector2(1.35177, 0.794036)
+theme = ExtResource("12_bbmg8")
 text = "Steam host"
 
 [node name="LobbyContainer" type="ScrollContainer" parent="Multplayer/ui/Menu/Main/Control"]
@@ -453,12 +466,13 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="check lobbies" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
+texture_filter = 1
 layout_mode = 0
 offset_left = -308.429
 offset_top = -247.468
 offset_right = -181.429
 offset_bottom = -216.468
-scale = Vector2(1.04183, 1.04183)
+theme = ExtResource("12_bbmg8")
 text = "Check Lobbiess"
 
 [node name="Start" type="Control" parent="Multplayer/ui/Menu"]
@@ -511,8 +525,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 480.0
-offset_bottom = 272.0
+offset_right = 2400.0
+offset_bottom = 1360.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1, 150)
@@ -526,9 +540,22 @@ libraries = {
 }
 autoplay = "close"
 
+[node name="PointsSpawner" type="MultiplayerSpawner" parent="Multplayer"]
+_spawnable_scenes = PackedStringArray("res://UI/points.tscn")
+spawn_path = NodePath("../points")
+
 [node name="Level" type="Node2D" parent="Multplayer"]
 unique_name_in_owner = true
 script = ExtResource("4_wtmqh")
+
+[node name="points" type="HBoxContainer" parent="Multplayer"]
+z_index = 2
+offset_left = 152.0
+offset_right = 342.0
+offset_bottom = 40.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Multplayer/points"]
+replication_config = SubResource("SceneReplicationConfig_cvx6b")
 
 [connection signal="pressed" from="Multplayer/ui/Menu/select/Button" to="Multplayer/ui/Menu" method="_start_game"]
 [connection signal="item_selected" from="Multplayer/ui/Menu/select/OptionButton" to="Multplayer/ui/Menu" method="_on_option_button_item_selected"]
