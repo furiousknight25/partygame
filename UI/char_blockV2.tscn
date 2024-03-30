@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://0jha4ipd1n12"]
+[gd_scene load_steps=12 format=3 uid="uid://0jha4ipd1n12"]
 
 [ext_resource type="Script" path="res://UI/char_blockV2.gd" id="1_8lobr"]
 [ext_resource type="Texture2D" uid="uid://cau5q1se3ne8y" path="res://raw_assets/jesseselect.png" id="1_heea5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cv7e2k4gppskp" path="res://raw_assets/travischosen.png" id="6_u2gu6"]
 [ext_resource type="Texture2D" uid="uid://sqtrd6xx85nf" path="res://raw_assets/ariaselect.png" id="7_id1s6"]
 [ext_resource type="Texture2D" uid="uid://b8v3cgapqriom" path="res://raw_assets/ariachosen.png" id="8_jvolt"]
+[ext_resource type="AudioStream" uid="uid://cmgbisve2yhq4" path="res://raw_assets/sounds/charselect.wav" id="10_arnct"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5e80n"]
 properties/0/path = NodePath("GridContainer/0:button_pressed")
@@ -38,6 +39,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_8lobr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_arnct")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 1
@@ -94,7 +98,11 @@ fit_content = true
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5e80n")
 
+[connection signal="pressed" from="GridContainer/0" to="AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="GridContainer/0" to="." method="select" binds= [0]]
+[connection signal="pressed" from="GridContainer/1" to="AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="GridContainer/1" to="." method="select" binds= [1]]
+[connection signal="pressed" from="GridContainer/2" to="AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="GridContainer/2" to="." method="select" binds= [2]]
+[connection signal="pressed" from="GridContainer/3" to="AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="GridContainer/3" to="." method="select" binds= [3]]
