@@ -204,7 +204,6 @@ texture = ExtResource("3_qhiqc")
 
 [node name="Line2D" type="Line2D" parent="rock"]
 top_level = true
-position = Vector2(26.6888, 8.40833)
 points = PackedVector2Array(-20.9353, -14.9434, -54.081, -16.1809)
 closed = true
 width = 4.305

@@ -10,7 +10,7 @@ var state = 'menu'
 var dir = DirAccess.open("res://Levels/level_rotation/").get_files()
 var level_index = 0
 
-const DEV_MODE = false
+const DEV_MODE = true
 
 
 func _ready():
