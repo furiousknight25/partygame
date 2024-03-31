@@ -49,7 +49,7 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_325vj"]
-size = Vector2(37.8501, 3.24324)
+size = Vector2(41.925, 4.62162)
 
 [node name="1" type="Node2D"]
 
@@ -151,24 +151,25 @@ visible = false
 replication_config = SubResource("SceneReplicationConfig_de7rw")
 
 [node name="Box" type="AnimatableBody2D" parent="."]
+position = Vector2(0, -2)
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
-position = Vector2(0.925001, 19.1081)
+position = Vector2(-1, 21)
 shape = SubResource("RectangleShape2D_325vj")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Box"]
-position = Vector2(1, -19)
+position = Vector2(-1, -23.6892)
 shape = SubResource("RectangleShape2D_325vj")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Box"]
-position = Vector2(-18.6486, -4.17233e-05)
+position = Vector2(-23, -2)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_325vj")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Box"]
-position = Vector2(19, 0)
+position = Vector2(19, -2.03747)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_325vj")
 

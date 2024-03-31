@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://r7acn5diagc6"]
+[gd_scene load_steps=11 format=3 uid="uid://r7acn5diagc6"]
 
 [ext_resource type="Script" path="res://Players/Chris/coche.gd" id="1_uiler"]
 [ext_resource type="Texture2D" uid="uid://c3v5f1ffft7gj" path="res://Players/Chris/584674f4ef5a427.png" id="2_ghgna"]
 [ext_resource type="AudioStream" uid="uid://d3mswxhsvs0vg" path="res://raw_assets/sounds/chris.wav" id="3_ayl3e"]
+[ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="4_3c0n8"]
+[ext_resource type="AudioStream" uid="uid://bmqplue8011eg" path="res://raw_assets/sounds/death.wav" id="4_ui8cd"]
+[ext_resource type="PackedScene" uid="uid://dr1rfsb0fkqdk" path="res://raw_assets/death_particles.tscn" id="5_70c6h"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ot044"]
 properties/0/path = NodePath(".:position")
@@ -20,6 +23,12 @@ properties/3/replication_mode = 1
 properties/4/path = NodePath(".:modulate")
 properties/4/spawn = true
 properties/4/replication_mode = 1
+properties/5/path = NodePath("PointLight2D:energy")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("CPUParticles2D:emitting")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [sub_resource type="EventAsset" id="EventAsset_hklm1"]
 min_distance = 1.0
@@ -27,6 +36,14 @@ max_distance = 20.0
 path = "event:/chrisblowing"
 guid = "{aa46676e-89ac-45e3-a495-2d918d02f532}"
 name = "chrisblowing"
+
+[sub_resource type="Curve" id="Curve_qqkji"]
+_data = [Vector2(0, 0.793378), 0.0, 0.0, 0, 0, Vector2(1, 0.457616), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xoaoh"]
+offsets = PackedFloat32Array(0, 0.105455, 0.170909, 0.301818, 1)
+colors = PackedColorArray(0.755368, 0.076662, 9.62615e-08, 1, 0.87953, 0.79933, 0, 1, 0.513726, 0.513726, 0.513726, 1, 0.513726, 0.513726, 0.513726, 1, 0.165656, 0.165657, 0.165656, 0)
 
 [node name="la criatura" type="CharacterBody2D"]
 scale = Vector2(0.4, 0.4)
@@ -72,7 +89,36 @@ replication_config = SubResource("SceneReplicationConfig_ot044")
 [node name="blast" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ayl3e")
 
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ui8cd")
+
+[node name="Death_particles" parent="." instance=ExtResource("5_70c6h")]
+position = Vector2(0, -4.76837e-07)
+
 [node name="StudioEventEmitter2D" type="StudioEventEmitter2D" parent="."]
 event = SubResource("EventAsset_hklm1")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-22.5, 0)
+rotation = 3.14159
+amount = 16
+emission_shape = 1
+emission_sphere_radius = 4.18
+spread = 31.58
+gravity = Vector2(0, 9.8)
+initial_velocity_min = 6.21
+initial_velocity_max = 37.27
+angular_velocity_min = -98.39
+angular_velocity_max = 44.72
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_qqkji")
+color_ramp = SubResource("Gradient_xoaoh")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(35, 0)
+scale = Vector2(0.3057, 0.3057)
+color = Color(0.105882, 0.517647, 0.607843, 1)
+energy = 0.45
+texture = ExtResource("4_3c0n8")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

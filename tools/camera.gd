@@ -29,7 +29,7 @@ func _process(delta):
 	shake_pos += velocity
 	offset = shake_pos #this is the property that moves the camera
 
-func add_trauma(amount : float, direction): #this function starts everything
+func add_trauma(amount : float, direction : Vector2): #this function starts everything
 	trauma = min(trauma + amount, 1.0) #for the regular camera shake motion
 	velocity += direction #for the spring camera motion
 	#noise.seed = randi()

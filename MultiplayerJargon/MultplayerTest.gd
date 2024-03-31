@@ -41,6 +41,9 @@ func  _process(delta):
 			for i in Director.players: Director.players[i]['stocks'] = 1
 			await get_tree().create_timer(1).timeout
 			level_index += 1
+			if level_index == dir.size():
+				change_level(load("res://Levels/win.tscn"))
+				return
 			level_index = level_index % dir.size()
 			change_level(load("res://Levels/level_rotation/" + "level_" + var_to_str(level_index) + '.tscn'))
 			

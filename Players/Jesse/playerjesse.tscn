@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bxylv50enx4tb"]
+[gd_scene load_steps=33 format=3 uid="uid://bxylv50enx4tb"]
 
 [ext_resource type="Script" path="res://Players/Jesse/playerjesse.gd" id="1_w2pg1"]
 [ext_resource type="PackedScene" uid="uid://bmjkc1l0qdpx" path="res://Players/Jesse/rock.tscn" id="2_2fa4w"]
@@ -8,17 +8,24 @@
 [ext_resource type="Texture2D" uid="uid://bpiyrx3yvgjab" path="res://Players/Jesse/SpriteStuff/MainSprite.png" id="6_gdv3u"]
 [ext_resource type="Texture2D" uid="uid://62o0wi1dcn13" path="res://Players/Jesse/SpriteStuff/SpriteTeleport-Sheet.png" id="7_q84o2"]
 [ext_resource type="Texture2D" uid="uid://llpqoseqp4e6" path="res://Players/Jesse/SpriteStuff/ThrowSprite-Sheet.png" id="8_q4kkg"]
+[ext_resource type="AudioStream" uid="uid://bmqplue8011eg" path="res://raw_assets/sounds/death.wav" id="9_e86t5"]
+[ext_resource type="PackedScene" uid="uid://dr1rfsb0fkqdk" path="res://raw_assets/death_particles.tscn" id="10_eimba"]
+[ext_resource type="Texture2D" uid="uid://ckuur2fgf6wko" path="res://raw_assets/lockin.png" id="11_csl5l"]
 
 [sub_resource type="Curve" id="Curve_qpbn6"]
 _data = [Vector2(0, 0.287671), 0.0, 0.0, 0, 0, Vector2(1, 0.685737), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oq3x7"]
-radius = 6.8529
-height = 26.0674
+radius = 6.0
+height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4vtx"]
-size = Vector2(15.3464, 25.597)
+size = Vector2(4, 4)
+
+[sub_resource type="Curve" id="Curve_mn2hu"]
+_data = [Vector2(0, 0.712389), 0.0, 0.0, 0, 0, Vector2(0.495238, 0.12757), -0.0462232, -0.0462232, 0, 0, Vector2(1, 0.720607), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5ve0h"]
 properties/0/path = NodePath(".:position")
@@ -45,6 +52,18 @@ properties/6/replication_mode = 1
 properties/7/path = NodePath(".:modulate")
 properties/7/spawn = true
 properties/7/replication_mode = 1
+properties/8/path = NodePath("TeleLine:width")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("TeleLine:points")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("HoverSprite:scale")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("HoverSprite:position")
+properties/11/spawn = true
+properties/11/replication_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7g8vd"]
 atlas = ExtResource("4_h0b7r")
@@ -130,9 +149,9 @@ animations = [{
 "duration": 0.7,
 "texture": SubResource("AtlasTexture_0kor2")
 }],
-"loop": true,
+"loop": false,
 "name": &"dropkickstart",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -158,7 +177,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_37ret")
 }],
-"loop": true,
+"loop": false,
 "name": &"teleport",
 "speed": 5.0
 }, {
@@ -177,17 +196,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Curve" id="Curve_4xmul"]
-_data = [Vector2(0.0168539, 0.901099), 0.0, 0.0, 0, 0, Vector2(0.932584, 0.56044), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_x3eid"]
-offsets = PackedFloat32Array(0.166667, 1)
-colors = PackedColorArray(0.485703, 0.485704, 0.485703, 1, 0.800491, 0.800491, 0.800491, 1)
-
-[sub_resource type="Curve" id="Curve_gadhi"]
-_data = [Vector2(0.0105263, 0.296703), 0.0, 0.0, 0, 0, Vector2(0.5, 0.175824), 0.0, 0.0, 0, 0, Vector2(0.989474, 0.296703), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="Gradient" id="Gradient_e03t0"]
+offsets = PackedFloat32Array(0, 0.0472727, 1)
+colors = PackedColorArray(0.485049, 0.219896, 0, 1, 0.305882, 0.305882, 0.305882, 1, 0.305882, 0.305882, 0.305882, 0)
 
 [node name="playerjes" type="CharacterBody2D"]
 collision_mask = 11
@@ -216,7 +227,7 @@ texture = ExtResource("3_qhiqc")
 
 [node name="Line2D" type="Line2D" parent="rock"]
 top_level = true
-points = PackedVector2Array(-20.9353, -14.9434, -54.081, -16.1809)
+points = PackedVector2Array(0, 0, 0, 0)
 closed = true
 width = 4.305
 width_curve = SubResource("Curve_qpbn6")
@@ -228,6 +239,7 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 metadata/_edit_lock_ = true
 
 [node name="state" type="RichTextLabel" parent="."]
+visible = false
 modulate = Color(0.533333, 1, 0.47451, 1)
 texture_filter = 1
 offset_left = -64.0
@@ -238,6 +250,7 @@ scale = Vector2(0.914467, 0.914467)
 text = "Accel: "
 
 [node name="HealthText" type="RichTextLabel" parent="."]
+visible = false
 modulate = Color(1, 0.733333, 0.94902, 1)
 texture_filter = 3
 offset_left = -14.1081
@@ -254,13 +267,21 @@ top_level = true
 collision_mask = 9
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MouseArea"]
-position = Vector2(22.0153, -12.0959)
+position = Vector2(1.19209e-07, 0)
 shape = SubResource("RectangleShape2D_q4vtx")
 debug_color = Color(0.85098, 0.321569, 0.490196, 0.419608)
 
 [node name="TeleportCooldown" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="TeleLine" type="Line2D" parent="."]
+modulate = Color(0, 0.866667, 0.862745, 0.717647)
+top_level = true
+z_index = 2
+points = PackedVector2Array(51, 0, 26, 0, 0, 0)
+width = 5.0
+width_curve = SubResource("Curve_mn2hu")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5ve0h")
@@ -270,7 +291,7 @@ texture_filter = 1
 rotation = -3.14159
 scale = Vector2(1, -1.175)
 sprite_frames = SubResource("SpriteFrames_2jofs")
-animation = &"throw"
+animation = &"dropkickhit"
 offset = Vector2(-0.578097, 1.49012e-08)
 metadata/_edit_lock_ = true
 
@@ -280,29 +301,28 @@ rotation = -3.14159
 scale = Vector2(0.666667, -0.666667)
 
 [node name="RockFinal" type="Marker2D" parent="Sprite2D"]
-position = Vector2(6.17391, -1.01316)
+position = Vector2(1.00001, -3.40425)
 
 [node name="SmokeParticle" type="CPUParticles2D" parent="."]
-position = Vector2(-6.0579, -4.67249)
-amount = 12
-speed_scale = 0.75
-randomness = 0.03
-lifetime_randomness = 0.05
-gravity = Vector2(0, -40)
-angular_velocity_min = -29.1
-angular_velocity_max = 29.09
-linear_accel_min = -26.26
-linear_accel_max = -14.14
-tangential_accel_min = -6.06
-tangential_accel_max = 2.02
+position = Vector2(-6, -4)
+amount = 3
+lifetime = 1.5
+gravity = Vector2(0, -9.8)
+angular_velocity_min = -53.67
+angular_velocity_max = 44.72
+scale_amount_min = 2.0
 scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_4xmul")
-color = Color(1, 1, 1, 0.752941)
-color_ramp = SubResource("Gradient_x3eid")
+color_ramp = SubResource("Gradient_e03t0")
 
-[node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(-22.4697, -7.66358, -37.699, -7.763, -52.928, -7.66358)
-width_curve = SubResource("Curve_gadhi")
-default_color = Color(0.435294, 0.898039, 1, 0.709804)
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_e86t5")
+
+[node name="Death_particles" parent="." instance=ExtResource("10_eimba")]
+position = Vector2(0, -3.31328)
+
+[node name="HoverSprite" type="Sprite2D" parent="."]
+modulate = Color(0.454902, 0.454902, 0.454902, 0.552941)
+top_level = true
+texture = ExtResource("11_csl5l")
 
 [connection signal="timeout" from="rock/TeleportToHand" to="rock" method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=33 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
 [ext_resource type="Script" path="res://UI/menu.gd" id="3_ysm53"]
@@ -8,12 +8,14 @@
 [ext_resource type="Script" path="res://Levels/Level_swap.gd" id="4_wtmqh"]
 [ext_resource type="Script" path="res://UI/FightBox.gd" id="5_bpvfn"]
 [ext_resource type="PackedScene" uid="uid://dsydj1kdvco0d" path="res://UI/Playground Chars/chris_play_ground.tscn" id="6_3l45t"]
-[ext_resource type="Texture2D" uid="uid://dviw8r6py0mox" path="res://raw_assets/fightbox.png" id="6_n2igm"]
+[ext_resource type="Texture2D" uid="uid://d3pb3aia4106o" path="res://raw_assets/crate_close.png" id="6_vi0yc"]
 [ext_resource type="PackedScene" uid="uid://ctvybd2tobfvp" path="res://UI/Playground Chars/jesse_play_ground.tscn" id="7_wwgfm"]
 [ext_resource type="PackedScene" uid="uid://jovugslpubd5" path="res://UI/Playground Chars/aria_play_ground.tscn" id="8_mptte"]
 [ext_resource type="PackedScene" uid="uid://tckwhehi0vu0" path="res://UI/Playground Chars/travis_play_ground.tscn" id="9_e2yen"]
-[ext_resource type="Theme" path="res://raw_assets/pixelar.tres" id="12_bbmg8"]
-[ext_resource type="PackedScene" path="res://UI/points.tscn" id="13_els4n"]
+[ext_resource type="Theme" uid="uid://debxqs6npj4hd" path="res://raw_assets/pixelar.tres" id="12_bbmg8"]
+[ext_resource type="AudioStream" uid="uid://dgw2rb6mn38dq" path="res://raw_assets/sounds/uiselect1.wav" id="13_1g5jn"]
+[ext_resource type="PackedScene" uid="uid://xiaiji7om40m" path="res://UI/points.tscn" id="13_els4n"]
+[ext_resource type="AudioStream" uid="uid://cxmjbs48qeys2" path="res://raw_assets/sounds/transition.wav" id="14_0p28e"]
 
 [sub_resource type="Animation" id="Animation_uour8"]
 resource_name = "Menu"
@@ -54,6 +56,27 @@ _data = {
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_3i5o8"]
 states/Start/position = Vector2(203, 100)
 
+[sub_resource type="Curve" id="Curve_4rm1f"]
+min_value = 0.99
+max_value = 27.09
+_data = [Vector2(0, 14.9561), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Gradient" id="Gradient_ud7bi"]
+colors = PackedColorArray(0.103932, 0.108981, 0.106457, 1, 0.196078, 0.203922, 0.2, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jt6qs"]
+gradient = SubResource("Gradient_ud7bi")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1gq7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o1fnw"]
 properties/0/path = NodePath("select/MarginContainer/PlayerContainers:columns")
 properties/0/spawn = true
@@ -67,6 +90,9 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("select/MarginContainer/FightBox:rotation")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath(".:visible")
+properties/4/spawn = true
+properties/4/replication_mode = 1
 
 [sub_resource type="Animation" id="Animation_pnpsn"]
 length = 0.001
@@ -309,18 +335,18 @@ grow_vertical = 2
 [node name="Button" type="Button" parent="Multplayer/ui/Menu/select"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 251.0
+offset_top = 281.0
 offset_right = 108.0
-offset_bottom = 282.0
+offset_bottom = 312.0
 scale = Vector2(0.47432, 0.47432)
 text = "START GAME"
 
 [node name="OptionButton" type="OptionButton" parent="Multplayer/ui/Menu/select"]
 layout_mode = 0
 offset_left = 55.0
-offset_top = 258.0
+offset_top = 288.0
 offset_right = 186.0
-offset_bottom = 289.0
+offset_bottom = 319.0
 scale = Vector2(0.295615, 0.295615)
 item_count = 1
 selected = 0
@@ -355,7 +381,7 @@ size_flags_vertical = 3
 texture_filter = 1
 position = Vector2(207, 107)
 scale = Vector2(1.75936, 1.75936)
-texture = ExtResource("6_n2igm")
+texture = ExtResource("6_vi0yc")
 script = ExtResource("5_bpvfn")
 chris_scene = ExtResource("6_3l45t")
 jesse_scene = ExtResource("7_wwgfm")
@@ -377,6 +403,49 @@ position = Vector2(21, 26)
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="Multplayer/ui/Menu/select/MarginContainer"]
 spawn_path = NodePath("../FightBox")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Multplayer/ui/Menu/select"]
+z_index = -4
+position = Vector2(241, 393)
+amount = 12
+emission_shape = 3
+emission_rect_extents = Vector2(240, 1)
+gravity = Vector2(0, -980)
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_4rm1f")
+color = Color(0.784314, 0.729412, 0.647059, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Multplayer/ui/Menu/select"]
+show_behind_parent = true
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_jt6qs")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="Multplayer/ui/Menu/select"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 224.0
+offset_right = 290.0
+offset_bottom = 247.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g1gq7")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Multplayer/ui/Menu/select/Panel"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 131.0
+offset_bottom = 18.0
+theme = ExtResource("12_bbmg8")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Mash G to start"
+
 [node name="Main" type="Control" parent="Multplayer/ui/Menu"]
 layout_mode = 1
 anchors_preset = 15
@@ -392,10 +461,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 317.0
-offset_top = 325.0
-offset_right = 317.0
-offset_bottom = 325.0
+offset_left = 77.0
+offset_top = 53.0
+offset_right = 77.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.982397, 1.1355)
@@ -410,6 +479,9 @@ offset_bottom = -63.5156
 theme = ExtResource("12_bbmg8")
 text = "Host"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Multplayer/ui/Menu/Main/Control/Host"]
+stream = ExtResource("13_1g5jn")
+
 [node name="Join" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
 layout_mode = 0
@@ -420,6 +492,10 @@ offset_bottom = -66.0383
 theme = ExtResource("12_bbmg8")
 text = "Join
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Multplayer/ui/Menu/Main/Control/Join"]
+stream = ExtResource("13_1g5jn")
+pitch_scale = 1.39
 
 [node name="TextEdit" type="TextEdit" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
@@ -435,12 +511,15 @@ placeholder_text = "66.242.81.85"
 [node name="PortForward" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -211.727
-offset_top = -141.788
-offset_right = -34.727
-offset_bottom = -110.788
+offset_left = -212.0
+offset_top = -142.0
+offset_right = -35.0
+offset_bottom = -111.0
 theme = ExtResource("12_bbmg8")
 text = "PortForward(if you can)"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Multplayer/ui/Menu/Main/Control/PortForward"]
+stream = ExtResource("13_1g5jn")
 
 [node name="SteamHost" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
@@ -452,6 +531,9 @@ offset_bottom = -246.053
 scale = Vector2(1.35177, 0.794036)
 theme = ExtResource("12_bbmg8")
 text = "Steam host"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Multplayer/ui/Menu/Main/Control/SteamHost"]
+stream = ExtResource("13_1g5jn")
 
 [node name="LobbyContainer" type="ScrollContainer" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
@@ -525,8 +607,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 6240.0
-offset_bottom = 3536.0
+offset_right = 480.0
+offset_bottom = 272.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1, 150)
@@ -540,6 +622,9 @@ libraries = {
 }
 autoplay = "close"
 
+[node name="TransitionAudio" type="AudioStreamPlayer" parent="Multplayer/ui/Transition"]
+stream = ExtResource("14_0p28e")
+
 [node name="PointsSpawner" type="MultiplayerSpawner" parent="Multplayer"]
 _spawnable_scenes = PackedStringArray("res://UI/points.tscn")
 spawn_path = NodePath("../points")
@@ -550,17 +635,21 @@ script = ExtResource("4_wtmqh")
 
 [node name="points" type="HBoxContainer" parent="Multplayer"]
 z_index = 2
-offset_left = 152.0
-offset_right = 342.0
-offset_bottom = 40.0
+offset_left = 142.0
+offset_right = 332.0
+offset_bottom = 20.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Multplayer/points"]
 replication_config = SubResource("SceneReplicationConfig_cvx6b")
 
 [connection signal="pressed" from="Multplayer/ui/Menu/select/Button" to="Multplayer/ui/Menu" method="_start_game"]
 [connection signal="item_selected" from="Multplayer/ui/Menu/select/OptionButton" to="Multplayer/ui/Menu" method="_on_option_button_item_selected"]
+[connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Host" to="Multplayer/ui/Menu/Main/Control/Host/AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Host" to="Multplayer/ui/Menu" method="set_character" binds= ["host"]]
+[connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Join" to="Multplayer/ui/Menu/Main/Control/Join/AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/Join" to="Multplayer/ui/Menu" method="set_character" binds= ["join"]]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/PortForward" to="Multplayer" method="_on_port_forward_pressed"]
+[connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/PortForward" to="Multplayer/ui/Menu/Main/Control/PortForward/AudioStreamPlayer" method="play"]
+[connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/SteamHost" to="Multplayer/ui/Menu/Main/Control/SteamHost/AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/SteamHost" to="Multplayer/ui/Menu" method="set_character" binds= ["steam_host"]]
 [connection signal="pressed" from="Multplayer/ui/Menu/Main/Control/check lobbies" to="Multplayer" method="_steam_setup" binds= ["check_lobbies"]]

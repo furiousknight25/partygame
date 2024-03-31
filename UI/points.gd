@@ -12,5 +12,7 @@ func _ready():
 func update(point):
 	points.text = var_to_str(point)
 
+
 func play():
 	$AnimationPlayer.play('ding!')
+	

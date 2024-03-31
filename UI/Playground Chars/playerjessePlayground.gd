@@ -77,7 +77,7 @@ func _process(delta):
 			Thrower.rotation = lerp_angle(Thrower.rotation, 0.0 + PI, 12*delta)
 		
 		
-		if position.length() >= 23:
+		if position.length() >= 25:
 			position = Vector2.ZERO
 	else: velocity.y += 9.8
 	last_velocity = velocity

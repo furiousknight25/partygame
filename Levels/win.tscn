@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cxomdofxou8x0"]
+
+[node name="Win" type="Node2D"]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 242.0
+offset_top = 119.0
+offset_right = 282.0
+offset_bottom = 159.0
+text = "fin"

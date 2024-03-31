@@ -76,7 +76,7 @@ properties/5/replication_mode = 1
 radius = 2.23607
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q60jx"]
-size = Vector2(37.8501, 3.24324)
+size = Vector2(40.9625, 4.81081)
 
 [node name="1" type="Node2D"]
 
@@ -229,19 +229,19 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Box"]
-position = Vector2(0.925001, 19.1081)
+position = Vector2(1, 20)
 shape = SubResource("RectangleShape2D_q60jx")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Box"]
-position = Vector2(1, -19)
+position = Vector2(1, -24.5946)
 shape = SubResource("RectangleShape2D_q60jx")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Box"]
-position = Vector2(-18.6486, -4.17233e-05)
+position = Vector2(-20.1892, -1.03747)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_q60jx")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Box"]
-position = Vector2(19, 0)
+position = Vector2(22, -1.51874)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_q60jx")

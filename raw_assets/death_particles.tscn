@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr1rfsb0fkqdk"]
+
+[sub_resource type="Gradient" id="Gradient_8sv10"]
+colors = PackedColorArray(0.709804, 0.564706, 0.384314, 0.862745, 0.537255, 0.298039, 0.152941, 0)
+
+[node name="Death_particles" type="CPUParticles2D"]
+emitting = false
+amount = 12
+one_shot = true
+explosiveness = 0.96
+emission_shape = 1
+emission_sphere_radius = 5.0
+direction = Vector2(0, -1)
+spread = 180.0
+gravity = Vector2(0, 120)
+initial_velocity_min = 24.84
+initial_velocity_max = 62.11
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_8sv10")

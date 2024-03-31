@@ -77,6 +77,7 @@ func magnet_process(delta):
 		magnet_stuff.color = Color(Input.get_axis("LeftM", 'RightM') + 1, .1,  Input.get_axis('RightM', 'LeftM') + 1, .2)
 		for i in magnet.get_overlapping_bodies():
 			if i != self and i.has_method('hurt'):
+				Camera.add_trauma(delta * 2, magnet.transform.x * .01)
 				i.hurt.rpc(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 50 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1) * delta, 10 * delta)
 			elif i == self:
 				i.hurt(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 10 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1) * delta,0)
@@ -104,6 +105,8 @@ func magnet_process(delta):
 func death():
 	change_stocks.rpc(name.to_int(), 0)
 	$"Character hitbox".disabled = true
+	$Death.play()
+	$Death_particles.emitting = true
 	health = 0
 	
 @rpc("any_peer")

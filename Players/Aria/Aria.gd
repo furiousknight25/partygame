@@ -74,6 +74,8 @@ func death():
 	change_stocks.rpc(name.to_int(), 0)
 	$CollisionShape2D.disabled = true
 	health = 0
+	$Death.play()
+	$Death_particles.emitting = true
 	for i in $weapon.get_children():
 		if i.is_in_group('bullets'):
 			i.queue_free()

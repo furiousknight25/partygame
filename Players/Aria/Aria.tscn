@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh8ehuq4bkge3"]
+[gd_scene load_steps=9 format=3 uid="uid://dh8ehuq4bkge3"]
 
 [ext_resource type="Script" path="res://Players/Aria/Aria.gd" id="1_hexfs"]
 [ext_resource type="Texture2D" uid="uid://tw4dw0lw3aqa" path="res://Players/Aria/droid.png" id="2_i55cl"]
 [ext_resource type="Script" path="res://Players/Aria/gun.gd" id="3_vyghg"]
 [ext_resource type="Texture2D" uid="uid://ck5ae1v61dpi1" path="res://Players/Aria/shooter.png" id="4_7mumg"]
+[ext_resource type="AudioStream" uid="uid://bmqplue8011eg" path="res://raw_assets/sounds/death.wav" id="5_3q6fg"]
+[ext_resource type="PackedScene" uid="uid://dr1rfsb0fkqdk" path="res://raw_assets/death_particles.tscn" id="6_1g5g7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnr8k"]
 size = Vector2(19.0566, 17.0152)
@@ -89,6 +91,12 @@ replication_config = SubResource("SceneReplicationConfig_bfkeo")
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Players/Aria/bullet.tscn")
 spawn_path = NodePath("../weapon")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3q6fg")
+
+[node name="Death_particles" parent="." instance=ExtResource("6_1g5g7")]
+position = Vector2(0, -3.31328)
 
 [connection signal="clicked" from="weapon" to="." method="hurt"]
 [connection signal="timeout" from="Timer" to="weapon" method="_on_timer_timeout"]

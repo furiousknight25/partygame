@@ -29,7 +29,7 @@ func _physics_process(delta):
 	else: velocity.y += 9.8#just adding gravity if you die for lols, u can delete
 	move_and_slide()
 	
-	if position.length() >= 23:
+	if position.length() >= 25:
 		position = Vector2.ZERO
 	
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))

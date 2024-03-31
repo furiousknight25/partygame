@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @onready var rock: RigidBody2D = $rock
-@onready var Thrower = $Sprite2D
+@onready var Thrower: AnimatedSprite2D = $Sprite2D
 @onready var Thrower_sprite = $Sprite2D
 @onready var kick_timer = $KickTimer
 @onready var mouse_area = $MouseArea
@@ -8,6 +8,9 @@ extends CharacterBody2D
 @onready var text = $HealthText
 @onready var musicC = get_tree().current_scene.get_node("/root/MusicC")
 @onready var smoke = $SmokeParticle
+@onready var tele_line = $TeleLine
+@onready var hover = $HoverSprite
+
 
 @export var gravity = 6
 @export var strength = 12
@@ -56,6 +59,8 @@ func _process(delta):
 				rock.global_position = player_old_position
 				rock.freeze = false
 				teleported = true
+				Thrower.play("dropkickstart")
+				set_line(player_old_position)
 			elif current_state == "hold":
 				set_throw_process()
 		if get_global_mouse_position() > self.global_position:
@@ -73,21 +78,32 @@ func _process(delta):
 					get_last_slide_collision().get_collider().hurt.rpc((last_velocity * 2) + Vector2(0,-10),12)
 					kick_timer.stop()
 					kick_timer.start()
+					Thrower.play("dropkickhit", 1.0, false)
 		if !get_floor_normal():
 			var forward_rotation = atan2(get_real_velocity().y, get_real_velocity().x) - PI/2
 		if get_real_velocity().length() >= stand_threshold:
 			Thrower.rotation = lerp_angle(Thrower.rotation, atan2(get_real_velocity().y, get_real_velocity().x) + PI/2, 25*delta)
 		else:
 			Thrower.rotation = lerp_angle(Thrower.rotation, 0.0 + PI, 12*delta)
+			
 		mouse_process_stuff(delta)
-		
+		modulate = lerp(modulate, Color('ffffff'), delta*5)
 		if global_position.length() >= 1000:
 			death()
 	else: velocity.y += 9.8
 	last_velocity = velocity
+	tele_line.width = lerp(tele_line.width, 0.0, delta * 12)
+	
 	move_and_slide()
 	if kick_timer.time_left: $CollisionShape2D.debug_color = Color.CRIMSON
 	else: $CollisionShape2D.debug_color = Color.GREEN
+	
+	
+func set_line(end):
+	tele_line.width = 5
+	tele_line.set_point_position(0, global_position)
+	tele_line.set_point_position(1, (end + global_position) * .5)
+	tele_line.set_point_position(2, end)
 	
 func set_hold_process():
 	Thrower.play("idle", 1.0, false)
@@ -111,14 +127,29 @@ func set_throw_process():
 	rock.get_child(0).disabled = false
 	rock.can_hit = true
 	current_state = 'thrown'
-
+	
 	
 func throw_process():
-	pass
+	if is_on_floor() and Thrower.animation != 'throw': 
+		Thrower.play("idle")
 
 func mouse_process_stuff(delta):
 	mouse_area.global_position = get_global_mouse_position()
-	if Input.is_action_just_pressed('LeftM') and TeleportCooldown.is_stopped() == true:
+	if mouse_area.has_overlapping_bodies():
+		for i in mouse_area.get_overlapping_bodies():
+			if i.has_method('set_stuff') and i != self:
+				hover.scale.y = lerp(hover.scale.y, 1.0, delta * 60)
+				hover.global_position = i.global_position
+			else:
+				hover.scale.y = lerp(hover.scale.y, 0.0, delta * 60)
+	else:
+		hover.scale.y = lerp(hover.scale.y, 0.0, delta * 60)
+	
+	if TeleportCooldown.time_left:
+		hover.modulate = Color('d90c008d')
+	else:
+		hover.modulate = Color('7474748d')
+	if Input.is_action_just_pressed('LeftM') and !TeleportCooldown.time_left:
 		for i in mouse_area.get_overlapping_bodies():
 			if !i.has_method('set_stuff') or i == self: return
 			$CollisionShape2D.disabled = true
@@ -129,6 +160,7 @@ func mouse_process_stuff(delta):
 			global_position = enemy_old_position_LMB + Vector2(20,0)
 			velocity = enemy_old_velocity_LMB
 			i.set_stuff.rpc(i.global_position, player_old_velocity_LMB)
+			set_line(player_old_position_LMB)
 			if flipped == false:
 				i.set_stuff.rpc(player_old_position_LMB + Vector2(-i.scale.x/2 - 5, -i.scale.y/2 - 32), i.velocity)
 			else:
@@ -141,7 +173,7 @@ func mouse_process_stuff(delta):
 func hurt(direction, damage_percent):
 	#print(direction, " ", damage_percent)
 	velocity += direction
-	
+	if damage_percent > 0: modulate = Color("ff0000")
 	var push_direction = 1
 	if is_on_floor():
 		push_direction = 1
@@ -155,6 +187,8 @@ func hurt(direction, damage_percent):
 func death():
 	change_stocks.rpc(name.to_int(), 0)
 	$CollisionShape2D.disabled = true
+	$Death.play()
+	$Death_particles.emitting = true
 	health = 0
 	
 
