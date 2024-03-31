@@ -40,15 +40,4 @@ func hurt(direction, damage_percent):
 	#print(linear_velocity)
 	#apply_central_impulse(direction * 1000)
 var hit = false
-func _process(delta):
-	if hit:return
-	if $RayCast2D.is_colliding():
-		for i in $children.get_children():
-			i.freeze = false
-			i.apply_impulse((global_position-i.global_position) * -3)
-			i.apply_torque_impulse(12)
-			
-		$Sprite2D.play('dead')
-		$AudioStreamPlayer.play()
-		Camera.add_trauma(.5, Vector2(0,1))
-		hit= true
+

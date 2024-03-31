@@ -1,10 +1,16 @@
-[gd_scene format=3 uid="uid://cxomdofxou8x0"]
+[gd_scene load_steps=3 format=3 uid="uid://cxomdofxou8x0"]
+
+[ext_resource type="Script" path="res://Levels/win.gd" id="1_8hc44"]
+[ext_resource type="Theme" uid="uid://debxqs6npj4hd" path="res://raw_assets/pixelar.tres" id="2_38etv"]
 
 [node name="Win" type="Node2D"]
+script = ExtResource("1_8hc44")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Survivor" type="RichTextLabel" parent="."]
 offset_left = 242.0
 offset_top = 119.0
 offset_right = 282.0
-offset_bottom = 159.0
+offset_bottom = 136.0
+theme = ExtResource("2_38etv")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "fin"

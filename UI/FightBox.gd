@@ -54,6 +54,8 @@ var started = false
 
 var velocity = Vector2.ZERO
 func _process(delta):
+	rotate(randf_range(-delta,delta) * .1)
+	rotation = lerp(rotation, 0.0, delta)
 	if Input.is_action_just_pressed('smash'):
 		if multiplayer.is_server():
 			shake()
