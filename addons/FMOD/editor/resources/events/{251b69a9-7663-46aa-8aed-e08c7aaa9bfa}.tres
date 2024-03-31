@@ -1,17 +1,17 @@
 [gd_resource type="EventAsset" load_steps=4 format=3 uid="uid://cdigqg71rgndu"]
 
-[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_0yuwl"]
+[sub_resource type="FMOD_STUDIO_PARAMETER_ID" id="FMOD_STUDIO_PARAMETER_ID_uuc7j"]
 data1 = 1960536102
 data2 = 2119904837
 
-[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_eetwm"]
+[sub_resource type="FMOD_STUDIO_PARAMETER_DESCRIPTION" id="FMOD_STUDIO_PARAMETER_DESCRIPTION_7hnda"]
 name = "pitch"
-id = SubResource("FMOD_STUDIO_PARAMETER_ID_0yuwl")
+id = SubResource("FMOD_STUDIO_PARAMETER_ID_uuc7j")
 maximum = 1.0
 guid = "{85c7ff74-8b02-48ab-b091-36db00841a46}"
 
-[sub_resource type="ParameterAsset" id="ParameterAsset_12ih1"]
-parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_eetwm")
+[sub_resource type="ParameterAsset" id="ParameterAsset_2kv7e"]
+parameter_description = SubResource("FMOD_STUDIO_PARAMETER_DESCRIPTION_7hnda")
 path = "parameter:/pitch"
 guid = "{85c7ff74-8b02-48ab-b091-36db00841a46}"
 name = "pitch"
@@ -21,8 +21,8 @@ is_oneshot = true
 min_distance = 1.0
 max_distance = 20.0
 parameters = {
-"{85c7ff74-8b02-48ab-b091-36db00841a46}": SubResource("ParameterAsset_12ih1")
+"{85c7ff74-8b02-48ab-b091-36db00841a46}": SubResource("ParameterAsset_2kv7e")
 }
-path = "event:/ChrisShoot"
+path = "event:/chrisShoot"
 guid = "{251b69a9-7663-46aa-8aed-e08c7aaa9bfa}"
-name = "ChrisShoot"
+name = "chrisShoot"

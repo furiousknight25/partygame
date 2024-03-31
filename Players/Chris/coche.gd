@@ -19,12 +19,20 @@ func _enter_tree():
 	
 func _ready():
 	velocity.y = 100
+var stop_loop = true
 func get_input():
 	rotation_direction = Input.get_axis("left", "right")
 	if Input.get_axis("down", "up"):
 		velocity += transform.x * Input.get_axis("down", "up") * speed
 		velocity.x = clamp(velocity.x, -max_speed, max_speed)
 		velocity.y = clamp(velocity.y, -max_speed, max_speed)
+		
+		if stop_loop: 
+			$StudioEventEmitter2D.play()
+			stop_loop = false
+	else:
+		stop_loop = true
+		$StudioEventEmitter2D.stop()
 	if Input.is_action_just_pressed('kill'):
 		death()
 
@@ -40,7 +48,7 @@ func _physics_process(delta):
 		modulate = lerp(modulate, Color('ffffff'), delta*5)
 	else: velocity.y += 9.8#just adding gravity if you die for lols, u can delete
 	move_and_slide()
-	pitch_strength = lerp(pitch_strength, 1.0, delta)
+	pitch_strength = lerp(pitch_strength, .6, delta)
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
 
 

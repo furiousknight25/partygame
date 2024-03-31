@@ -110,6 +110,9 @@ position = Vector2(65, -1)
 shape = SubResource("RectangleShape2D_q50yx")
 one_way_collision_margin = 0.0
 
+[node name="Magnert positom" type="Node2D" parent="Magnet"]
+position = Vector2(34, 0)
+
 [node name="HealthText" type="RichTextLabel" parent="."]
 modulate = Color(1, 0.733333, 0.94902, 1)
 texture_filter = 3
@@ -176,3 +179,7 @@ energy = 0.1
 shadow_enabled = true
 shadow_filter = 1
 texture = ExtResource("6_av4mk")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Players/Travis/Bullet.tscn")
+spawn_path = NodePath("../Magnet/Magnert positom")

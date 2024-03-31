@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://fo5r1m4y7kw8"]
+[gd_scene load_steps=6 format=3 uid="uid://fo5r1m4y7kw8"]
 
 [ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/laser.gd" id="1_r1del"]
 [ext_resource type="Texture2D" uid="uid://daykh5eqh4ctx" path="res://raw_assets/laser.png" id="2_ueve7"]
 [ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="3_ako6l"]
+[ext_resource type="AudioStream" uid="uid://c4qdo8jp56mup" path="res://raw_assets/sounds/laser.wav" id="4_aby0n"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ifr5v"]
 properties/0/path = NodePath("Line2D:width")
@@ -39,3 +40,7 @@ replication_config = SubResource("SceneReplicationConfig_ifr5v")
 color = Color(0.866667, 0.443137, 0.239216, 1)
 energy = 0.35
 texture = ExtResource("3_ako6l")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_aby0n")
+volume_db = -12.021

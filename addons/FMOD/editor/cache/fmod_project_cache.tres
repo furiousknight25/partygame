@@ -1,4 +1,4 @@
-[gd_resource type="ProjectCache" load_steps=6 format=3 uid="uid://grnv2stm0lm2"]
+[gd_resource type="ProjectCache" load_steps=7 format=3 uid="uid://grnv2stm0lm2"]
 
 [ext_resource type="BusAsset" uid="uid://bq3q00hx473ig" path="res://addons/FMOD/editor/resources/busses/{0b566b7a-8776-44f9-beb7-3519ef27fdee}.tres" id="1_26e0m"]
 [ext_resource type="BankAsset" uid="uid://dn4dteo8gdqlk" path="res://addons/FMOD/editor/resources/banks/{baec9044-cb56-40c9-a9cd-fe6f058dceff}.tres" id="1_p143o"]
@@ -6,13 +6,21 @@
 [ext_resource type="BankAsset" uid="uid://ci7oj02ll1jtx" path="res://addons/FMOD/editor/resources/banks/{22f1b090-ba2d-0c8b-2f84-7491f47ec867}.tres" id="2_wiyar"]
 [ext_resource type="EventAsset" uid="uid://cdigqg71rgndu" path="res://addons/FMOD/editor/resources/events/{251b69a9-7663-46aa-8aed-e08c7aaa9bfa}.tres" id="5_7viob"]
 
+[sub_resource type="EventAsset" id="EventAsset_hklm1"]
+min_distance = 1.0
+max_distance = 20.0
+path = "event:/chrisblowing"
+guid = "{aa46676e-89ac-45e3-a495-2d918d02f532}"
+name = "chrisblowing"
+
 [resource]
 banks = {
 "{22f1b090-ba2d-0c8b-2f84-7491f47ec867}": ExtResource("2_wiyar"),
 "{baec9044-cb56-40c9-a9cd-fe6f058dceff}": ExtResource("1_p143o")
 }
 events = {
-"{251b69a9-7663-46aa-8aed-e08c7aaa9bfa}": ExtResource("5_7viob")
+"{251b69a9-7663-46aa-8aed-e08c7aaa9bfa}": ExtResource("5_7viob"),
+"{aa46676e-89ac-45e3-a495-2d918d02f532}": SubResource("EventAsset_hklm1")
 }
 busses = {
 "{0b566b7a-8776-44f9-beb7-3519ef27fdee}": ExtResource("1_26e0m"),
@@ -34,8 +42,14 @@ bank_tree = [{
 event_tree = [{
 "children": [],
 "item_type": 1,
-"node_name": "ChrisShoot",
-"path": "event:/ChrisShoot",
+"node_name": "chrisblowing",
+"path": "event:/chrisblowing",
+"resource": SubResource("EventAsset_hklm1")
+}, {
+"children": [],
+"item_type": 1,
+"node_name": "chrisShoot",
+"path": "event:/chrisShoot",
 "resource": ExtResource("5_7viob")
 }]
 bus_tree = [{

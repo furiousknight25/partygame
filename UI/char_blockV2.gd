@@ -2,10 +2,12 @@ extends Panel
 
 var selected = 0
 @onready var fightbox = get_parent().get_parent().get_child(1)
+@export var noise : FastNoiseLite
 #chris 0, jesse 1, aria 2, travis 3
 
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
+@onready var start_pos = null
 
 func _ready():
 	set_text(name.to_int())
@@ -17,6 +19,16 @@ func _ready():
 			fightbox.set_fighter.rpc(str_to_var(i.name), name.to_int())
 	if name.to_int() != 1:
 		sync_server_to_peer.rpc_id(1)
+	join_scale.rpc()
+	await get_tree().create_timer(.5).timeout
+	start_pos = position
+@rpc("call_remote")
+func join_scale():
+	scale = Vector2(1.1,1.1)
+	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, 'scale', Vector2(1, 1), .7).set_trans(Tween.TRANS_ELASTIC)
+	
 
 func on_connected_to_server():
 	sync_server_to_peer.rpc_id(1)
@@ -65,8 +77,20 @@ func set_choice(index, id):
 
 @rpc("any_peer")
 func set_text(text):
-	$RichTextLabel.text = var_to_str(text)
+	#$RichTextLabel.text = var_to_str(text)
+	$RichTextLabel.text = "player " + var_to_str(get_parent().get_child_count() - 1)
 
 @rpc("call_local")
 func disable():
 	queue_free()
+
+
+
+func _process(delta):
+	if not is_multiplayer_authority(): return
+	if start_pos == null: 
+		return
+	
+	position.x = start_pos.x + noise.get_noise_2d(Engine.get_frames_drawn() * .1, .5) * 3
+	position.y = start_pos.y - noise.get_noise_2d(Engine.get_frames_drawn() * .1, 20) * 3
+

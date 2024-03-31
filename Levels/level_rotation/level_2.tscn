@@ -156,3 +156,4 @@ rotation = -1.57079
 [node name="laer2" parent="." instance=ExtResource("11_s27be")]
 position = Vector2(115, 12)
 rotation = -0.0910308
+time_to_shoot = 5

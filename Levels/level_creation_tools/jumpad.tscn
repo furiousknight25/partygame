@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c10p4ygw7atbb"]
+[gd_scene load_steps=6 format=3 uid="uid://c10p4ygw7atbb"]
 
 [ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/spikes.gd" id="1_rryyo"]
 [ext_resource type="Texture2D" uid="uid://re21y8djadvk" path="res://raw_assets/ball.png" id="2_5uptp"]
+[ext_resource type="AudioStream" uid="uid://ces51aa3wmxek" path="res://raw_assets/sounds/bouncepad.wav" id="3_1rax7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v46jm"]
 radius = 8.0
@@ -34,5 +35,8 @@ shape = SubResource("CapsuleShape2D_v46jm")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_3dkrg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1rax7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

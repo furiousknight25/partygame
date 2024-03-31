@@ -10,7 +10,7 @@ var state = 'menu'
 var dir = DirAccess.open("res://Levels/level_rotation/").get_files()
 var level_index = 0
 
-const DEV_MODE = true
+const DEV_MODE = false
 
 
 func _ready():
@@ -34,6 +34,7 @@ func  _process(delta):
 					for x in $points.get_children():
 						if x.name == var_to_str(Director.players[i]['name']):
 							x.update(Director.players[i]["points"])
+							x.play()
 					print(Director.players[i]['name'])
 			
 			
@@ -68,6 +69,7 @@ func _on_join_pressed():
 	
 # travis ip 66.242.82.251
 func _add_player(id = 1):
+	print(multiplayer.get_unique_id())
 	var c = container.instantiate()
 	c.name = str(id)
 	$ui/Menu/select/MarginContainer/PlayerContainers.add_child(c)
@@ -109,14 +111,12 @@ func start_game():
 		change_level.call_deferred(load("res://Levels/level_rotation/level_0.tscn"))
 		state = 'start'
 		sync_server_to_peer()
-		$points.show()
 
 func _on_option_button_item_selected(index):
 	if multiplayer.is_server():
 		change_level.call_deferred(load("res://Levels/level_rotation/" + dir[index - 1]))
 		state = 'start'
 		sync_server_to_peer()
-		$points.show()
 	
 func sync_server_to_peer():
 	for i in Director.players:
@@ -128,10 +128,13 @@ func sync(director_info):
 
 func change_level(scene: PackedScene):
 	%Animation_Transition.play('slideinto')
+	$ui/Transition/TransitionAudio.play()
 	for i in Director.players:
 		if i != 1:
 			play_trans.rpc_id(i, 'slideinto')
 	await %Animation_Transition.animation_finished
+	$ui/Menu.hide()
+	$points.show()
 	for i in Director.players:
 		if i != 1:
 			clear.rpc_id(i)

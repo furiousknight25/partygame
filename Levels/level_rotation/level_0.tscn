@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://60ey017ntoyi"]
+[gd_scene load_steps=18 format=3 uid="uid://60ey017ntoyi"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_ivfa4"]
 [ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_2nd2f"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cs1wnp58m8iub" path="res://raw_assets/basicfloortilesheet.png" id="7_4vdv4"]
 [ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="9_eghrr"]
 [ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/physicsfloor.gd" id="10_vxe3m"]
+[ext_resource type="AudioStream" uid="uid://ytv2631eam0r" path="res://raw_assets/sounds/boxdrop.wav" id="11_taqjf"]
 [ext_resource type="Texture2D" uid="uid://dviw8r6py0mox" path="res://raw_assets/fightbox.png" id="12_2f46v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h0adx"]
@@ -167,6 +168,7 @@ rotation = -1.5708
 collision_layer = 2
 collision_mask = 2
 mass = 0.2
+contact_monitor = true
 script = ExtResource("10_vxe3m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Level/box/base"]
@@ -178,7 +180,7 @@ scale = Vector2(1.38272, 1.38272)
 texture = ExtResource("12_2f46v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/box/base"]
-position = Vector2(-18, -10.0001)
+position = Vector2(-13, -10.0001)
 shape = SubResource("RectangleShape2D_waa3k")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/box/base"]
@@ -212,12 +214,20 @@ rotation = 3.14159
 shape = SubResource("RectangleShape2D_waa3k")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="Level/box/base"]
-position = Vector2(-17.0002, 49.9999)
+position = Vector2(-13.0002, 49.9999)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_waa3k")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Level/box/base"]
 replication_config = SubResource("SceneReplicationConfig_b1vac")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Level/box/base"]
+stream = ExtResource("11_taqjf")
+
+[node name="RayCast2D" type="RayCast2D" parent="Level/box/base"]
+position = Vector2(-27.0001, 20.9999)
+rotation = 1.57079
+target_position = Vector2(-0.000152588, 24)
 
 [node name="Players" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var magnet = $Magnet
 @onready var text = $HealthText
 @onready var musicC = get_tree().current_scene.get_node("/root/MusicC")
+@onready var bullet = preload("res://Players/Travis/Bullet.tscn")
 
 const SPEED = 150.0
 const JUMP_VELOCITY = -150.0
@@ -77,8 +78,29 @@ func magnet_process(delta):
 		for i in magnet.get_overlapping_bodies():
 			if i != self and i.has_method('hurt'):
 				i.hurt.rpc(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 50 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1) * delta, 10 * delta)
+			elif i == self:
+				i.hurt(Vector2(cos(magnet.rotation), sin(magnet.rotation)) * 10 * Input.get_axis("LeftM", 'RightM') + Vector2(0,-1) * delta,0)
 	else: magnet_stuff.emitting = false
 	
+	if Input.is_action_just_pressed('mm'):
+		var new_bullet = bullet.instantiate()
+		$"Magnet/Magnert positom".add_child(new_bullet,true)
+		
+		new_bullet.top_level = true
+		new_bullet.global_position = $"Magnet/Magnert positom".global_position
+		magnet.transform.x
+		new_bullet.velocity += 100 * magnet.transform.x
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 func death():
 	change_stocks.rpc(name.to_int(), 0)
 	$"Character hitbox".disabled = true
