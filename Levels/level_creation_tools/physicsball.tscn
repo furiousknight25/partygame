@@ -32,5 +32,5 @@ replication_config = SubResource("SceneReplicationConfig_b1vac")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.625677, 0.625677)
+scale = Vector2(1.42151, 1.42151)
 texture = ExtResource("2_pcyf2")

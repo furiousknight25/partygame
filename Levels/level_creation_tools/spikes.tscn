@@ -1,8 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbsiod3n0h11j"]
+[gd_scene load_steps=7 format=3 uid="uid://dbsiod3n0h11j"]
 
 [ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/spikes.gd" id="1_e4gjp"]
-[ext_resource type="Texture2D" uid="uid://vr25uvuu7ata" path="res://raw_assets/spike.png" id="1_lhsan"]
+[ext_resource type="Texture2D" uid="uid://byb5jkceayvtv" path="res://raw_assets/Judes_game_tile_set.png" id="2_sk2o5"]
 [ext_resource type="AudioStream" uid="uid://ddmiwc7v2skps" path="res://raw_assets/sounds/spike.wav" id="3_vv1l6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51m1v"]
+atlas = ExtResource("2_sk2o5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6y5ib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51m1v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3dkrg"]
 properties/0/path = NodePath(".:disable_mode")
@@ -16,12 +31,12 @@ properties/1/replication_mode = 1
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_e4gjp")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-15.4493, 0.174892)
-rotation = 1.5708
-texture = ExtResource("1_lhsan")
-offset = Vector2(-0.174893, -15.4493)
+position = Vector2(-16, 0)
+scale = Vector2(1.91399, 1.91399)
+sprite_frames = SubResource("SpriteFrames_6y5ib")
+offset = Vector2(8.37581, 0.725593)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 rotation = 1.5708
