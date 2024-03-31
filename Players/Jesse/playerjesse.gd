@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var TeleportCooldown = $TeleportCooldown
 @onready var text = $HealthText
 @onready var musicC = get_tree().current_scene.get_node("/root/MusicC")
+@onready var smoke = $SmokeParticle
 
 @export var gravity = 6
 @export var strength = 12
@@ -59,9 +60,11 @@ func _process(delta):
 				set_throw_process()
 		if get_global_mouse_position() > self.global_position:
 			$Sprite2D.scale.x = -1
+			smoke.position.x = smoke.position.x
 			flipped = false
 		else:
 			$Sprite2D.scale.x = 1
+			smoke.position.x = -smoke.position.x
 			flipped = true
 		if get_last_slide_collision():
 			if get_last_slide_collision().get_collider() is CharacterBody2D:
@@ -87,6 +90,7 @@ func _process(delta):
 	else: $CollisionShape2D.debug_color = Color.GREEN
 	
 func set_hold_process():
+	Thrower.play("idle", 1.0, false)
 	rock.freeze = true
 	rock.get_child(0).disabled = true
 	current_state = 'hold'
@@ -101,6 +105,8 @@ func hold_process():
 		rock.global_position = $Sprite2D/RockInitial.global_position
 		
 func set_throw_process():
+	Thrower.play("throw", 2, false)
+	Thrower.stop
 	rock.throw(strength)
 	rock.get_child(0).disabled = false
 	rock.can_hit = true

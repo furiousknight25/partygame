@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bxylv50enx4tb"]
+[gd_scene load_steps=31 format=3 uid="uid://bxylv50enx4tb"]
 
 [ext_resource type="Script" path="res://Players/Jesse/playerjesse.gd" id="1_w2pg1"]
 [ext_resource type="PackedScene" uid="uid://bmjkc1l0qdpx" path="res://Players/Jesse/rock.tscn" id="2_2fa4w"]
@@ -172,10 +172,22 @@ animations = [{
 "duration": 0.8,
 "texture": SubResource("AtlasTexture_6p5r7")
 }],
-"loop": true,
+"loop": false,
 "name": &"throw",
 "speed": 5.0
 }]
+
+[sub_resource type="Curve" id="Curve_4xmul"]
+_data = [Vector2(0.0168539, 0.901099), 0.0, 0.0, 0, 0, Vector2(0.932584, 0.56044), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_x3eid"]
+offsets = PackedFloat32Array(0.166667, 1)
+colors = PackedColorArray(0.485703, 0.485704, 0.485703, 1, 0.800491, 0.800491, 0.800491, 1)
+
+[sub_resource type="Curve" id="Curve_gadhi"]
+_data = [Vector2(0.0105263, 0.296703), 0.0, 0.0, 0, 0, Vector2(0.5, 0.175824), 0.0, 0.0, 0, 0, Vector2(0.989474, 0.296703), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [node name="playerjes" type="CharacterBody2D"]
 collision_mask = 11
@@ -258,7 +270,7 @@ texture_filter = 1
 rotation = -3.14159
 scale = Vector2(1, -1.175)
 sprite_frames = SubResource("SpriteFrames_2jofs")
-animation = &"idle"
+animation = &"throw"
 offset = Vector2(-0.578097, 1.49012e-08)
 metadata/_edit_lock_ = true
 
@@ -269,5 +281,28 @@ scale = Vector2(0.666667, -0.666667)
 
 [node name="RockFinal" type="Marker2D" parent="Sprite2D"]
 position = Vector2(6.17391, -1.01316)
+
+[node name="SmokeParticle" type="CPUParticles2D" parent="."]
+position = Vector2(-6.0579, -4.67249)
+amount = 12
+speed_scale = 0.75
+randomness = 0.03
+lifetime_randomness = 0.05
+gravity = Vector2(0, -40)
+angular_velocity_min = -29.1
+angular_velocity_max = 29.09
+linear_accel_min = -26.26
+linear_accel_max = -14.14
+tangential_accel_min = -6.06
+tangential_accel_max = 2.02
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_4xmul")
+color = Color(1, 1, 1, 0.752941)
+color_ramp = SubResource("Gradient_x3eid")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-22.4697, -7.66358, -37.699, -7.763, -52.928, -7.66358)
+width_curve = SubResource("Curve_gadhi")
+default_color = Color(0.435294, 0.898039, 1, 0.709804)
 
 [connection signal="timeout" from="rock/TeleportToHand" to="rock" method="_on_timer_timeout"]
