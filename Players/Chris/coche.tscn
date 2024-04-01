@@ -30,6 +30,15 @@ properties/5/replication_mode = 1
 properties/6/path = NodePath("CPUParticles2D:emitting")
 properties/6/spawn = true
 properties/6/replication_mode = 1
+properties/7/path = NodePath("blast:playing")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("Death:playing")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("Hurt:playing")
+properties/9/spawn = true
+properties/9/replication_mode = 1
 
 [sub_resource type="EventAsset" id="EventAsset_hklm1"]
 min_distance = 1.0
@@ -94,6 +103,9 @@ stream = ExtResource("3_ayl3e")
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ui8cd")
 
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0f4o4")
+
 [node name="Death_particles" parent="." instance=ExtResource("5_70c6h")]
 position = Vector2(0, -4.76837e-07)
 
@@ -122,8 +134,5 @@ scale = Vector2(0.3057, 0.3057)
 color = Color(0.105882, 0.517647, 0.607843, 1)
 energy = 0.45
 texture = ExtResource("4_3c0n8")
-
-[node name="Hurt" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_0f4o4")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

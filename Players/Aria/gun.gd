@@ -45,6 +45,7 @@ func _on_timer_timeout():
 	canShoot = true
 
 func shoot():
+	$"../Shoot".play()
 	Camera.add_trauma(.4, transform.x * .5)
 	var b = bullet.instantiate()
 	add_child(b, true)
