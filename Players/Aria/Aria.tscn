@@ -34,15 +34,6 @@ properties/5/replication_mode = 1
 properties/6/path = NodePath(".:modulate")
 properties/6/spawn = true
 properties/6/replication_mode = 1
-properties/7/path = NodePath("Death:playing")
-properties/7/spawn = true
-properties/7/replication_mode = 1
-properties/8/path = NodePath("Hurt:playing")
-properties/8/spawn = true
-properties/8/replication_mode = 1
-properties/9/path = NodePath("Shoot:playing")
-properties/9/spawn = true
-properties/9/replication_mode = 1
 
 [node name="Aria" type="CharacterBody2D"]
 scale = Vector2(0.603632, 0.603632)

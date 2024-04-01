@@ -106,7 +106,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-82.4514, -129.458)]
+"values": [Vector2(-76.344, -150)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -134,7 +134,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2, 0.5, 0.8, 1.1, 1.5, 1.6),
 "transitions": PackedFloat32Array(0.5, 1, 1, 1, 1.68179, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-79.3976, -130.339), Vector2(-64.1289, -140.907), Vector2(-61.0751, -141.788), Vector2(-68.2005, -136.504), Vector2(-80.4156, -125.936), Vector2(-79.3976, -130.339), Vector2(-77.3618, -128.578), Vector2(-77.3618, -128.578)]
+"values": [Vector2(-79.398, -150.339), Vector2(-64.129, -160.907), Vector2(-61.075, -161.788), Vector2(-68.201, -156.504), Vector2(-80.416, -145.936), Vector2(-79.398, -150.339), Vector2(-77.362, -148.578), Vector2(-77.362, -148.578)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -668,7 +668,8 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0it76")
 
 [node name="Plane" type="Sprite2D" parent="Multplayer/ui/Menu/Main/Control"]
-position = Vector2(-82.4514, -129.458)
+z_index = -1
+position = Vector2(-76.344, -150)
 texture = ExtResource("14_yxcrd")
 script = ExtResource("15_dullb")
 
@@ -757,8 +758,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2400.0
-offset_bottom = 1360.0
+offset_right = -480.0
+offset_bottom = -272.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1, 150)
