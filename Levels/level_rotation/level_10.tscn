@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b0dibojmdjjlm"]
+[gd_scene load_steps=13 format=3 uid="uid://b0dibojmdjjlm"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_sw7qr"]
 [ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_r5foh"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_rbj1t"]
 [ext_resource type="Texture2D" uid="uid://cs1wnp58m8iub" path="res://raw_assets/basicfloortilesheet.png" id="6_ptl1i"]
 [ext_resource type="Texture2D" uid="uid://bb1riedkjvybt" path="res://raw_assets/bruhbackground.png" id="7_k4kj2"]
+[ext_resource type="PackedScene" uid="uid://fo5r1m4y7kw8" path="res://Levels/level_creation_tools/laser.tscn" id="8_d4t73"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xp6ir"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -105,3 +106,19 @@ metadata/_edit_lock_ = true
 [node name="Players" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")
 spawn_limit = 4
+
+[node name="RayCast2D" parent="." instance=ExtResource("8_d4t73")]
+position = Vector2(6, 144)
+rotation = -1.8326
+
+[node name="RayCast2D2" parent="." instance=ExtResource("8_d4t73")]
+position = Vector2(170, 248)
+rotation = -2.35619
+
+[node name="RayCast2D3" parent="." instance=ExtResource("8_d4t73")]
+position = Vector2(475, 192)
+rotation = -4.45059
+
+[node name="RayCast2D4" parent="." instance=ExtResource("8_d4t73")]
+position = Vector2(366, 233)
+rotation = -4.18879
