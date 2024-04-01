@@ -25,10 +25,10 @@ func _ready():
 	
 	survivor.text = "player " + var_to_str(Director.players[greatest_of_them_all]['name'])
 	
+	await get_tree().create_timer(2.5).timeout
 	var choice = 1
 	var current_player
 	choice = Director.players[greatest_of_them_all]['choice']
-	
 	match choice:
 		0:
 			current_player = chris_scene.instantiate()
@@ -38,27 +38,27 @@ func _ready():
 			current_player = aria_scene.instantiate()
 		3:
 			current_player = travis_scene.instantiate()
-	
 	current_player.name = str(greatest_of_them_all)
 	$DropPoints.add_child(current_player)
 	
-	current_player.global_position = $WinnerSpot.global_position
 	
-	
+	await get_tree().create_timer(2.5).timeout
 	var death_choice = 1
 	for i in Director.players:
 		if i != greatest_of_them_all:
 			var ball = death_ball.instantiate()
-			$DropPoints.add_child(ball)
+			$DropPoints.add_child(ball, true)
 			death_choice = Director.players[i]['choice']
 			
 			for n in ball.get_children():
 				if n.name == var_to_str(death_choice):
 					n.show()
 					
-			for x in $DropPoints.get_children():
+			for x in $DropPoints/points.get_children():
 				if x.name == var_to_str(Director.players[i]['name']):
 					ball.global_position = x.global_position
+			
+			
 			
 
 func shake():

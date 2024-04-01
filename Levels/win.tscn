@@ -33,6 +33,45 @@ properties/5/path = NodePath("../Credits/AnimatableBody2D:position")
 properties/5/spawn = true
 properties/5/replication_mode = 1
 
+[sub_resource type="Animation" id="Animation_bbyow"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Survivor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 43)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wins:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(131, 130)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Credits:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(135, -142)]
+}
+
 [sub_resource type="Animation" id="Animation_q2uev"]
 resource_name = "win"
 length = 999.9
@@ -84,7 +123,7 @@ tracks/3/path = NodePath("fin:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(10, 10.8),
+"times": PackedFloat32Array(11.5, 12.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -96,7 +135,7 @@ tracks/4/path = NodePath("Survivor:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(3.2, 6.6),
+"times": PackedFloat32Array(4.7, 8.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(13, 43), Vector2(13, 360)]
@@ -108,7 +147,7 @@ tracks/5/path = NodePath("Wins:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(3.2, 6.6),
+"times": PackedFloat32Array(4.7, 8.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(131, 130), Vector2(131, 447)]
@@ -120,61 +159,10 @@ tracks/6/path = NodePath("Credits:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(4.2, 6.6),
+"times": PackedFloat32Array(5.7, 8.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(135, -142), Vector2(135, 74)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(7.4, 7.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_bbyow"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Survivor:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(13, 43)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Wins:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(131, 130)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Credits:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(135, -142)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_is8it"]
@@ -183,17 +171,16 @@ _data = {
 "win": SubResource("Animation_q2uev")
 }
 
+[sub_resource type="Gradient" id="Gradient_eq3be"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u1gei"]
+gradient = SubResource("Gradient_eq3be")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l5smb"]
 size = Vector2(824, 48)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5bx2"]
-size = Vector2(481, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2yvs"]
-size = Vector2(271.75, 18)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m026"]
-size = Vector2(274, 20)
+size = Vector2(711.5, 10.9996)
 
 [node name="Win" type="Node2D"]
 script = ExtResource("1_8hc44")
@@ -251,6 +238,7 @@ text = "CREDITS
 
 [node name="Credits2" type="RichTextLabel" parent="Credits"]
 modulate = Color(0.760784, 0.792157, 0.788235, 1)
+layout_mode = 0
 offset_left = 11.6606
 offset_top = 12.8267
 offset_right = 123.661
@@ -275,6 +263,7 @@ collision_mask = 2
 position = Vector2(26.8668, 3.32637)
 rotation = -1.57079
 shape = SubResource("CapsuleShape2D_n8isi")
+disabled = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 root_path = NodePath("../Survivor")
@@ -288,18 +277,28 @@ libraries = {
 autoplay = "win"
 
 [node name="DropPoints" type="Marker2D" parent="."]
-position = Vector2(252, -306)
+position = Vector2(213, -22)
 
-[node name="1" type="Marker2D" parent="DropPoints"]
+[node name="WinnerSpot" type="Marker2D" parent="DropPoints"]
+position = Vector2(206, 21)
+
+[node name="Sprite2D" type="Sprite2D" parent="DropPoints"]
+scale = Vector2(-0.0694208, 23.6107)
+texture = SubResource("GradientTexture1D_u1gei")
+
+[node name="points" type="Marker2D" parent="DropPoints"]
+position = Vector2(17, -169)
+
+[node name="1" type="Marker2D" parent="DropPoints/points"]
 position = Vector2(-94, 29)
 
-[node name="2" type="Marker2D" parent="DropPoints"]
+[node name="2" type="Marker2D" parent="DropPoints/points"]
 position = Vector2(-34, 27)
 
-[node name="3" type="Marker2D" parent="DropPoints"]
+[node name="3" type="Marker2D" parent="DropPoints/points"]
 position = Vector2(36, 32)
 
-[node name="4" type="Marker2D" parent="DropPoints"]
+[node name="4" type="Marker2D" parent="DropPoints/points"]
 position = Vector2(87, 20)
 
 [node name="teleback" type="Area2D" parent="."]
@@ -331,17 +330,21 @@ texture = ExtResource("3_lbyaa")
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Winback/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Winback/StaticBody2D"]
 position = Vector2(2, 137)
-shape = SubResource("RectangleShape2D_t5bx2")
+polygon = PackedVector2Array(39, -7, 100, -5, 146, -4, 202, -5, 229, -17, 233, -25, 237, -22, 238, -1, -226, 5, -245, -10, -243, -34, -235, -31, -227, -13, -211, -7, -155, -5, -102, -5, -73, -6)
+
+[node name="CollisionShape2D2" type="CollisionPolygon2D" parent="Winback/StaticBody2D"]
+position = Vector2(7, -527)
+polygon = PackedVector2Array(227, 639, 225, 614, 223, 586, 227, 568, 229, 548, 222, 530, 223, 488, 228, 456, 230, 431, 229, 411, 223, 404, 222, 391, 233, 391, 233, 641)
+
+[node name="CollisionShape2D4" type="CollisionPolygon2D" parent="Winback/StaticBody2D"]
+position = Vector2(-230, -205.5)
+rotation = 1.57079
+polygon = PackedVector2Array(73.5, -1.99954, 78.5, 5.00049, 90.5, 6.00057, 120.5, 7.00076, 156.5, 9.00098, 173.5, 7.00109, 190.5, 2.00119, 219.5, 1.00138, 239.5, 3.0015, 269.5, 6.00169, 303.5, 5.0019, 311.5, 3.00195, 307.5, 13.0019, 69.4999, 14.0004)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Winback/StaticBody2D"]
-position = Vector2(239, -0.875)
-rotation = 1.57079
-shape = SubResource("RectangleShape2D_d2yvs")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Winback/StaticBody2D"]
-position = Vector2(-239, -2)
+position = Vector2(245, -193)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_d2yvs")
 
@@ -350,13 +353,12 @@ _spawnable_scenes = PackedStringArray("res://Randomjunk/deathball.tscn", "res://
 spawn_path = NodePath("../DropPoints")
 spawn_limit = 4
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(239, -206)
-collision_layer = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(11, 0)
-shape = SubResource("RectangleShape2D_1m026")
-
-[node name="WinnerSpot" type="Marker2D" parent="."]
-position = Vector2(152, 171)
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+z_index = -2
+position = Vector2(241, 136)
+amount = 25
+lifetime = 3.0
+emission_shape = 3
+emission_rect_extents = Vector2(240, 135)
+gravity = Vector2(0, 9.8)
+color = Color(0.615686, 0.45098, 0.368627, 1)

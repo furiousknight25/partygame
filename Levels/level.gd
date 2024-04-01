@@ -13,7 +13,6 @@ func _ready():
 	var index = 0
 	for i in Director.players:
 		#return
-		
 		var choice = 2
 		var current_player
 		#if Director.players[i]['choice']: #OHHOHHHH, error exists because 0 is false, why dindt 4 work

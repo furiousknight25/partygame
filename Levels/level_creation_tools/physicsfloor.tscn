@@ -22,6 +22,7 @@ properties/3/replication_mode = 1
 [node name="Physicsfloor" type="RigidBody2D"]
 collision_layer = 7
 script = ExtResource("1_1bg8a")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_waa3k")

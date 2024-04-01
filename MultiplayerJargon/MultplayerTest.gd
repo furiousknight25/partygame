@@ -8,7 +8,7 @@ const PORT = 4433
 var ip
 var state = 'menu'
 var dir = DirAccess.open("res://Levels/level_rotation/").get_files()
-var level_index = 5
+var level_index = 0
 
 const DEV_MODE = false
 
@@ -42,6 +42,7 @@ func  _process(delta):
 			await get_tree().create_timer(1).timeout
 			level_index += 1
 			if level_index == dir.size():
+				sync_server_to_peer()
 				change_level(load("res://Levels/win.tscn"))
 				return
 			level_index = level_index % dir.size()

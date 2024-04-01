@@ -94,6 +94,33 @@ bg_color = Color(0.054902, 0.137255, 0.219608, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0it76"]
 bg_color = Color(0.392157, 0.294118, 0.196078, 1)
 
+[sub_resource type="Animation" id="Animation_fwjp3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Multplayer/ui/Menu/Main/Control/Plane:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-82.4514, -129.458)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Multplayer/ui/Menu/Main/Control/Plane:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_ft1tj"]
 resource_name = "shot"
 length = 1.60001
@@ -120,33 +147,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1.41421, 1.31951, 1, 1),
 "update": 0,
 "values": [-0.0488297, 0.0494665, -0.0221813, 0.00288081, -0.00635581]
-}
-
-[sub_resource type="Animation" id="Animation_fwjp3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Multplayer/ui/Menu/Main/Control/Plane:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-82.4514, -129.458)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Multplayer/ui/Menu/Main/Control/Plane:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uifh7"]
@@ -427,10 +427,10 @@ text = "START GAME"
 
 [node name="OptionButton" type="OptionButton" parent="Multplayer/ui/Menu/select"]
 layout_mode = 0
-offset_left = 55.0
-offset_top = 288.0
-offset_right = 186.0
-offset_bottom = 319.0
+offset_left = 2.99999
+offset_top = 262.0
+offset_right = 134.0
+offset_bottom = 293.0
 scale = Vector2(0.295615, 0.295615)
 item_count = 1
 selected = 0
@@ -679,7 +679,6 @@ time_to_shoot = 99999
 
 [node name="Plane2" type="Sprite2D" parent="Multplayer/ui/Menu/Main/Control/Plane"]
 position = Vector2(25.448, 24.6587)
-scale = Vector2(1, 1)
 texture = ExtResource("6_vi0yc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Multplayer/ui/Menu/Main/Control/Plane"]
@@ -757,8 +756,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 4800.0
-offset_bottom = 2720.0
+offset_right = 480.0
+offset_bottom = 272.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1, 150)

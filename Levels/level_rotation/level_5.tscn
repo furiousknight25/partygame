@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dylfnhn0gdeeb"]
+[gd_scene load_steps=22 format=3 uid="uid://dylfnhn0gdeeb"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_b6pl2"]
 [ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_7xjc8"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cs1wnp58m8iub" path="res://raw_assets/basicfloortilesheet.png" id="7_g0qtl"]
 [ext_resource type="Texture2D" uid="uid://bb1riedkjvybt" path="res://raw_assets/bruhbackground.png" id="8_hvmw8"]
 [ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="9_kpjsw"]
+[ext_resource type="PackedScene" uid="uid://cq8w7di36k28n" path="res://Levels/level_creation_tools/animatable_body_2d.tscn" id="10_1e2kq"]
+[ext_resource type="PackedScene" uid="uid://cdn40np5q0sje" path="res://Levels/level_creation_tools/physicsfloor.tscn" id="10_nkp5y"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rm4qb"]
 resource_name = "spike"
@@ -66,6 +68,27 @@ physics_layer_0/collision_mask = 3
 sources/2 = SubResource("TileSetAtlasSource_6v661")
 sources/1 = SubResource("TileSetScenesCollectionSource_rm4qb")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r21bd"]
+size = Vector2(20, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2j3k8"]
+size = Vector2(20, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdyq2"]
+size = Vector2(104, 20)
+
+[sub_resource type="Curve2D" id="Curve2D_uphg6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 120, 106)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_nvnj0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 215, 1, 0, 0, 0, 0, 120, 106)
+}
+point_count = 2
+
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_b6pl2")
 aria_scene = ExtResource("2_7xjc8")
@@ -96,7 +119,7 @@ scale = Vector2(1.16479, 1)
 tile_set = SubResource("TileSet_vli1o")
 format = 2
 layer_0/name = "base"
-layer_0/tile_data = PackedInt32Array(851968, 262146, 805306368, 917504, 327682, 0, 983040, 327682, 0, 1048576, 327682, 0, 1048577, 327682, 0, 1048578, 327682, 0, 1048579, 262146, 1342177280, 1048580, 262146, 1342177280, 1048581, 262146, 1342177280, 1048582, 262146, 1342177280, 1048583, 262146, 1342177280, 1048584, 262146, 1342177280, 1048585, 262146, 1342177280, 1048586, 262146, 1342177280, 1048587, 262146, 1342177280, 1048588, 262146, 1342177280, 1048589, 262146, 1342177280, 1048590, 262146, 1342177280, 1048591, 262146, 1342177280, 1048592, 262146, 1342177280, 1048593, 262146, 1342177280, 1048594, 262146, 1342177280, 1048595, 262146, 1342177280, 1048596, 262146, 1342177280, 1048597, 327682, 0, 1048598, 327682, 0, 917505, 393218, 1342177280, 983041, 327682, 0, 983042, 393218, 1342177280, 851971, 196610, 805306368, 851972, 196610, 0, 720902, 393218, 0, 720903, 262146, 1342177280, 720904, 393218, 1342177280, 1114134, 65538, 0, 1114133, 65538, 0, 1114132, 65538, 0, 1114131, 65538, 0, 1179666, 65538, 0, 1179665, 65538, 0, 1179664, 65538, 0, 1179663, 65538, 0, 1179662, 65538, 0, 1179661, 65538, 0, 1179660, 65538, 0, 1114124, 65538, 0, 1114123, 65538, 0, 1114122, 65538, 0, 1114121, 65538, 0, 1114120, 65538, 0, 1114119, 65538, 0, 1114118, 65538, 0, 1114117, 65538, 0, 1114116, 65538, 0, 1114125, 65538, 0, 1114126, 65538, 0, 1114127, 65538, 0, 1114128, 65538, 0, 1179667, 65538, 0, 1179668, 65538, 0, 1114130, 65538, 0, 1114129, 65538, 0, 1114115, 65538, 0, 1114114, 65538, 0, 1114113, 65538, 0, 1114112, 65538, 0, 1179647, 65538, 0, 1179646, 65538, 0, 1114111, 65538, 0, 1048575, 65538, 0, 983039, 65538, 0, 589837, 131074, 1342177280, 655373, 393218, 1610612736, 655374, 262146, 1342177280, 655376, 262146, 1342177280, 655377, 262146, 1342177280, 655375, 262146, 1342177280, 655378, 327682, 0, 589842, 131074, 1342177280, 655379, 131074, 805306368, 720910, 393218, 1610612736, 720911, 327682, 0, 720912, 327682, 0, 720913, 262146, 1610612736, 720914, 393218, 805306368, 786438, 393218, 1610612736, 786439, 262146, 1610612736, 786440, 393218, 805306368, 786447, 393218, 1610612736, 786448, 393218, 805306368, 1048600, 327682, 0, 1114136, 65538, 0, 1048599, 327682, 0, 1114135, 65538, 0, 917529, 327682, 0, 983065, 327682, 0, 1048601, 327682, 0, 1114137, 65538, 0, 458778, 65538, 0, 524314, 65538, 0, 589850, 65538, 0, 655386, 65538, 0, 720922, 65538, 0, 786458, 65538, 0, 851994, 65538, 0, 917530, 65538, 0, 983066, 65538, 0, 1048602, 65538, 0, 1114138, 65538, 0, 1179674, 65538, 0, 131097, 262146, 0, 655385, 327682, 0, 720921, 327682, 0, 786457, 327682, 0, 851993, 327682, 0, 1179673, 65538, 0, 983064, 327682, 0, 917528, 327682, 0, 851992, 327682, 0, 786456, 262146, 0, 851991, 262146, 1342177280, 851990, 393218, 0, 917526, 327682, 0, 983062, 327682, 0, 983063, 327682, 0, 917527, 327682, 0, 720916, 2, 0, 917525, 393218, 0, 983061, 262146, 0, 720920, 262146, 0, 917514, 131074, 0, 917515, 65538, 0, 917516, 65538, 0, 917517, 196610, 0)
+layer_0/tile_data = PackedInt32Array(851968, 262146, 805306368, 917504, 327682, 0, 983040, 327682, 0, 1048576, 327682, 0, 1048577, 327682, 0, 1048578, 327682, 0, 1048579, 262146, 1342177280, 1048580, 262146, 1342177280, 1048583, 262146, 1342177280, 1048584, 262146, 1342177280, 1048585, 262146, 1342177280, 1048586, 262146, 1342177280, 1048590, 262146, 1342177280, 1048591, 262146, 1342177280, 1048592, 262146, 1342177280, 1048595, 262146, 1342177280, 1048596, 262146, 1342177280, 1048597, 327682, 0, 1048598, 327682, 0, 917505, 393218, 1342177280, 983041, 327682, 0, 983042, 393218, 1342177280, 1114122, 65538, 0, 1114121, 65538, 0, 1114120, 65538, 0, 1114119, 65538, 0, 1114116, 65538, 0, 1114115, 65538, 0, 1114114, 65538, 0, 1114113, 65538, 0, 1114112, 65538, 0, 1048600, 327682, 0, 1048599, 327682, 0, 1048601, 327682, 0, 983065, 327682, 0, 917529, 327682, 0)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Level"]
 color = Color(0.537255, 0.537255, 0.537255, 1)
@@ -125,6 +148,98 @@ shadow_filter = 2
 shadow_filter_smooth = 3.3
 texture = ExtResource("9_kpjsw")
 
+[node name="Physicsfloor" parent="Level" instance=ExtResource("10_nkp5y")]
+position = Vector2(187, 244)
+
+[node name="Physicsfloor2" parent="Level" instance=ExtResource("10_nkp5y")]
+position = Vector2(187, 207)
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor2" index="0"]
+shape = SubResource("RectangleShape2D_r21bd")
+
+[node name="Sprite2D" parent="Level/Physicsfloor2" index="2"]
+position = Vector2(0, 0.500006)
+scale = Vector2(0.603795, 1.53125)
+
+[node name="Physicsfloor6" parent="Level" instance=ExtResource("10_nkp5y")]
+position = Vector2(266, 215)
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor6" index="0"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2j3k8")
+
+[node name="Sprite2D" parent="Level/Physicsfloor6" index="2"]
+position = Vector2(0, 4)
+scale = Vector2(0.603795, 2.125)
+
+[node name="Physicsfloor7" parent="Level" instance=ExtResource("10_nkp5y")]
+position = Vector2(334, 237)
+rotation = -1.57079
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor7" index="0"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2j3k8")
+
+[node name="Sprite2D" parent="Level/Physicsfloor7" index="2"]
+position = Vector2(0, 4)
+scale = Vector2(0.603795, 2.125)
+
+[node name="Physicsfloor8" parent="Level" instance=ExtResource("10_nkp5y")]
+position = Vector2(112, 239)
+rotation = -1.57079
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor8" index="0"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2j3k8")
+
+[node name="Sprite2D" parent="Level/Physicsfloor8" index="2"]
+position = Vector2(0, 4)
+scale = Vector2(0.603795, 2.125)
+
+[node name="Physicsfloor4" parent="Level" instance=ExtResource("10_nkp5y")]
+position = Vector2(216, 170)
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor4" index="0"]
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_bdyq2")
+
+[node name="Sprite2D" parent="Level/Physicsfloor4" index="2"]
+position = Vector2(9.49999, 0)
+scale = Vector2(3.21875, 0.603795)
+
 [node name="Players" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")
 spawn_limit = 4
+
+[node name="moving_path" parent="." instance=ExtResource("10_1e2kq")]
+position = Vector2(323, 31)
+
+[node name="Path2D" parent="moving_path" index="0"]
+curve = SubResource("Curve2D_uphg6")
+
+[node name="PathFollow2D" parent="moving_path/Path2D" index="0"]
+position = Vector2(77.6119, 68.5572)
+
+[node name="AnimatableBody2D" parent="moving_path" index="4"]
+position = Vector2(114, 101)
+
+[node name="moving_path2" parent="." instance=ExtResource("10_1e2kq")]
+position = Vector2(-67, 27)
+
+[node name="Path2D" parent="moving_path2" index="0"]
+curve = SubResource("Curve2D_nvnj0")
+
+[node name="PathFollow2D" parent="moving_path2/Path2D" index="0"]
+position = Vector2(145.523, 77.7902)
+
+[node name="AnimatableBody2D" parent="moving_path2" index="4"]
+position = Vector2(114, 101)
+
+[editable path="Level/Physicsfloor"]
+[editable path="Level/Physicsfloor2"]
+[editable path="Level/Physicsfloor6"]
+[editable path="Level/Physicsfloor7"]
+[editable path="Level/Physicsfloor8"]
+[editable path="Level/Physicsfloor4"]
+[editable path="moving_path"]
+[editable path="moving_path2"]

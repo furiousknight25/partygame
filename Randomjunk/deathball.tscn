@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cll6f5mnqtf6d"]
+[gd_scene load_steps=9 format=3 uid="uid://cll6f5mnqtf6d"]
 
 [ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/physicsfloor.gd" id="1_x78eu"]
 [ext_resource type="Texture2D" uid="uid://c3v5f1ffft7gj" path="res://Players/Chris/584674f4ef5a427.png" id="2_uw4cx"]
 [ext_resource type="Texture2D" uid="uid://bpiyrx3yvgjab" path="res://Players/Jesse/SpriteStuff/MainSprite.png" id="3_61g04"]
 [ext_resource type="Texture2D" uid="uid://dxsrjyvf4bi1t" path="res://raw_assets/deadaria.png" id="4_hh3wl"]
 [ext_resource type="Texture2D" uid="uid://68f1xqu50nja" path="res://Players/Travis/magnetguysprite.png" id="5_85855"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_117ac"]
+bounce = 0.25
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j1qxm"]
 
@@ -36,6 +39,7 @@ properties/7/replication_mode = 1
 
 [node name="Node2D" type="RigidBody2D"]
 collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_117ac")
 script = ExtResource("1_x78eu")
 
 [node name="col" type="CollisionShape2D" parent="."]
@@ -57,6 +61,7 @@ texture = ExtResource("4_hh3wl")
 
 [node name="3" type="Sprite2D" parent="."]
 visible = false
+scale = Vector2(0.654431, 0.654431)
 texture = ExtResource("5_85855")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
