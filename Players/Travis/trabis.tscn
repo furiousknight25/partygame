@@ -42,6 +42,12 @@ properties/5/replication_mode = 1
 properties/6/path = NodePath(".:modulate")
 properties/6/spawn = true
 properties/6/replication_mode = 1
+properties/7/path = NodePath("Hurt:playing")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("Death:playing")
+properties/8/spawn = true
+properties/8/replication_mode = 1
 
 [sub_resource type="Curve" id="Curve_km62g"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.318681), 0.0, 0.0, 0, 0]
@@ -189,8 +195,8 @@ spawn_path = NodePath("../Magnet/Magnert positom")
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 
-[node name="Death_particles" parent="." instance=ExtResource("7_p62bd")]
-position = Vector2(0, -4)
-
 [node name="Hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_w7ud4")
+
+[node name="Death_particles" parent="." instance=ExtResource("7_p62bd")]
+position = Vector2(0, -4)
