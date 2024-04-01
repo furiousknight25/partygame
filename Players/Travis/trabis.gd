@@ -113,6 +113,7 @@ func death():
 	
 @rpc("any_peer")
 func hurt(direction, damage_percent):
+	$Hurt.play()
 	if damage_percent > 0: modulate = Color("ff0000")
 	velocity += direction
 	health -= damage_percent

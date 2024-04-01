@@ -178,6 +178,7 @@ func mouse_process_stuff(delta):
 @rpc("any_peer")
 func hurt(direction, damage_percent):
 	#print(direction, " ", damage_percent)
+	$Hurt.play()
 	velocity += direction
 	if damage_percent > 0: modulate = Color("ff0000")
 	var push_direction = 1

@@ -85,6 +85,7 @@ func death():
 
 @rpc("any_peer")
 func hurt(direction, damage_percent):
+	$Hurt.play()
 	if damage_percent > 0: modulate = Color("ff0000")
 	sprite.scale.x += .2
 	sprite.scale.y -= .1

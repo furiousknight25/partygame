@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bxylv50enx4tb"]
+[gd_scene load_steps=36 format=3 uid="uid://bxylv50enx4tb"]
 
 [ext_resource type="Script" path="res://Players/Jesse/playerjesse.gd" id="1_w2pg1"]
 [ext_resource type="PackedScene" uid="uid://bmjkc1l0qdpx" path="res://Players/Jesse/rock.tscn" id="2_2fa4w"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://bmqplue8011eg" path="res://raw_assets/sounds/death.wav" id="9_e86t5"]
 [ext_resource type="AudioStream" uid="uid://cts6l183igfca" path="res://raw_assets/sounds/throw.wav" id="10_78stt"]
 [ext_resource type="PackedScene" uid="uid://dr1rfsb0fkqdk" path="res://raw_assets/death_particles.tscn" id="10_eimba"]
+[ext_resource type="AudioStream" uid="uid://0dyyx4ryrkns" path="res://raw_assets/sounds/hurt.wav" id="10_tlqap"]
 [ext_resource type="Texture2D" uid="uid://ckuur2fgf6wko" path="res://raw_assets/lockin.png" id="11_csl5l"]
 [ext_resource type="AudioStream" uid="uid://cvahbtprqplk4" path="res://raw_assets/sounds/teleport.wav" id="11_h8psq"]
 
@@ -321,6 +322,9 @@ color_ramp = SubResource("Gradient_e03t0")
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_e86t5")
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_tlqap")
 
 [node name="Throw" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_78stt")
