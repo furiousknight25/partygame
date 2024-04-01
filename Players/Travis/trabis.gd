@@ -101,8 +101,10 @@ func magnet_process(delta):
 		
 		
 		
-		
+var dead = false
 func death():
+	if dead: return
+	dead = true
 	change_stocks.rpc(name.to_int(), 0)
 	$"Character hitbox".disabled = true
 	$Death.play()

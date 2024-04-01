@@ -61,6 +61,8 @@ func _process(delta):
 				teleported = true
 				Thrower.play("dropkickstart")
 				set_line(player_old_position)
+				$Teleport.pitch_scale = 1.0
+				$Teleport.play()
 			elif current_state == "hold":
 				set_throw_process()
 		if get_global_mouse_position() > self.global_position:
@@ -122,6 +124,7 @@ func hold_process():
 		
 func set_throw_process():
 	Thrower.play("throw", 2, false)
+	$Throw.play()
 	Thrower.stop
 	rock.throw(strength)
 	rock.get_child(0).disabled = false
@@ -157,6 +160,9 @@ func mouse_process_stuff(delta):
 			var enemy_old_velocity_LMB = i.velocity
 			var player_old_position_LMB = global_position
 			var player_old_velocity_LMB = velocity
+			$Teleport.pitch_scale = 1.25
+			$Teleport.play()
+			
 			global_position = enemy_old_position_LMB + Vector2(20,0)
 			velocity = enemy_old_velocity_LMB
 			i.set_stuff.rpc(i.global_position, player_old_velocity_LMB)
@@ -183,8 +189,10 @@ func hurt(direction, damage_percent):
 	health -= damage_percent
 	if health <= 0:
 		death()
-
+var dead = false
 func death():
+	if dead: return
+	dead = true
 	change_stocks.rpc(name.to_int(), 0)
 	$CollisionShape2D.disabled = true
 	$Death.play()

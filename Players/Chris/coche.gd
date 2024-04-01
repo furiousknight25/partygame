@@ -71,8 +71,11 @@ func blast():
 		b.velocity = transform.x * 200
 		
 		$PointLight2D.energy = 1
-	
+
+var dead = false
 func death():
+	if dead: return
+	dead = true
 	change_stocks.rpc(name.to_int(), 0)
 	$CollisionShape2D.disabled = true
 	health = 0

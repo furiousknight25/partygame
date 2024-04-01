@@ -70,7 +70,10 @@ func _process(delta):
 	text.scale = lerp(text.scale, Vector2.ONE, 15 * delta)
 	text.text =  var_to_str(int(move_toward(str_to_var(text.text), health, 150 * delta)))
 
+var dead = false
 func death():
+	if dead: return
+	dead = true
 	change_stocks.rpc(name.to_int(), 0)
 	$CollisionShape2D.disabled = true
 	health = 0
