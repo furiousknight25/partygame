@@ -100,7 +100,7 @@ stream = ExtResource("5_3q6fg")
 [node name="Death_particles" parent="." instance=ExtResource("6_1g5g7")]
 position = Vector2(0, -3.31328)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_0fbrh")
 
 [connection signal="clicked" from="weapon" to="." method="hurt"]
