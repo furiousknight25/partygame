@@ -115,6 +115,7 @@ one_way_collision_margin = 0.0
 position = Vector2(34, 0)
 
 [node name="HealthText" type="RichTextLabel" parent="."]
+visible = false
 modulate = Color(1, 0.733333, 0.94902, 1)
 texture_filter = 3
 offset_left = -15.0

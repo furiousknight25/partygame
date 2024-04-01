@@ -1,16 +1,362 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxomdofxou8x0"]
+[gd_scene load_steps=18 format=3 uid="uid://cxomdofxou8x0"]
 
 [ext_resource type="Script" path="res://Levels/win.gd" id="1_8hc44"]
+[ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_6a1xe"]
 [ext_resource type="Theme" uid="uid://debxqs6npj4hd" path="res://raw_assets/pixelar.tres" id="2_38etv"]
+[ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_3df5g"]
+[ext_resource type="Texture2D" uid="uid://cb8wgcntld1ci" path="res://raw_assets/winback.png" id="3_lbyaa"]
+[ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="4_t1iux"]
+[ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_skwmt"]
+[ext_resource type="PackedScene" uid="uid://cll6f5mnqtf6d" path="res://Randomjunk/deathball.tscn" id="6_52kby"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n8isi"]
+radius = 3.32637
+height = 53.2219
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_63hbk"]
+properties/0/path = NodePath(".:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("../AnimationPlayer:current_animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("../Wins:position")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("../Credits:position")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("../Credits/AnimatableBody2D:position")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+
+[sub_resource type="Animation" id="Animation_q2uev"]
+resource_name = "win"
+length = 999.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Survivor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wins:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"shake"
+}, {
+"args": [],
+"method": &"shake"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fin:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(10, 10.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Survivor:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.2, 6.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(13, 43), Vector2(13, 360)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Wins:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.2, 6.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(131, 130), Vector2(131, 447)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Credits:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.2, 6.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(135, -142), Vector2(135, 74)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("StaticBody2D/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(7.4, 7.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_bbyow"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Survivor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, 43)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wins:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(131, 130)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Credits:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(135, -142)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_is8it"]
+_data = {
+"RESET": SubResource("Animation_bbyow"),
+"win": SubResource("Animation_q2uev")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l5smb"]
+size = Vector2(824, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5bx2"]
+size = Vector2(481, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2yvs"]
+size = Vector2(271.75, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1m026"]
+size = Vector2(274, 20)
 
 [node name="Win" type="Node2D"]
 script = ExtResource("1_8hc44")
+aria_scene = ExtResource("2_6a1xe")
+jesse_scene = ExtResource("3_3df5g")
+travis_scene = ExtResource("4_t1iux")
+chris_scene = ExtResource("5_skwmt")
+death_ball = ExtResource("6_52kby")
 
 [node name="Survivor" type="RichTextLabel" parent="."]
-offset_left = 242.0
-offset_top = 119.0
-offset_right = 282.0
-offset_bottom = 136.0
+offset_left = 13.0
+offset_top = 43.0
+offset_right = 93.0
+offset_bottom = 58.0
+scale = Vector2(7.32083, 7.32083)
+size_flags_horizontal = 4
 theme = ExtResource("2_38etv")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "fin"
+text = "PLAYER 1"
+
+[node name="Wins" type="RichTextLabel" parent="."]
+modulate = Color(0.913725, 0.835294, 0.407843, 1)
+offset_left = 131.0
+offset_top = 130.0
+offset_right = 207.0
+offset_bottom = 146.0
+scale = Vector2(4.5748, 4.5748)
+size_flags_horizontal = 4
+theme = ExtResource("2_38etv")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "survives"
+
+[node name="fin" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_left = 34.0
+offset_top = 248.0
+offset_right = 394.0
+offset_bottom = 290.0
+theme = ExtResource("2_38etv")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "lazy win screen"
+
+[node name="Credits" type="RichTextLabel" parent="."]
+self_modulate = Color(0.568627, 0.733333, 0.972549, 1)
+offset_left = 135.0
+offset_top = -142.0
+offset_right = 188.0
+offset_bottom = -103.0
+scale = Vector2(3.90816, 3.90816)
+theme = ExtResource("2_38etv")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "CREDITS
+
+"
+
+[node name="Credits2" type="RichTextLabel" parent="Credits"]
+modulate = Color(0.760784, 0.792157, 0.788235, 1)
+offset_left = 11.6606
+offset_top = 12.8267
+offset_right = 123.661
+offset_bottom = 94.8267
+scale = Vector2(0.262762, 0.262762)
+theme = ExtResource("2_38etv")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Travis Nyard
+Jeese boonchwa
+Alex the slave
+Chris Falk
+camrin fiektek
+Aria Williams
+"
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="Credits"]
+position = Vector2(-0.767624, 4.86162)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Credits/AnimatableBody2D"]
+position = Vector2(26.8668, 3.32637)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_n8isi")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../Survivor")
+replication_config = SubResource("SceneReplicationConfig_63hbk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 0
+libraries = {
+"": SubResource("AnimationLibrary_is8it")
+}
+autoplay = "win"
+
+[node name="DropPoints" type="Marker2D" parent="."]
+position = Vector2(252, -306)
+
+[node name="1" type="Marker2D" parent="DropPoints"]
+position = Vector2(-94, 29)
+
+[node name="2" type="Marker2D" parent="DropPoints"]
+position = Vector2(-34, 27)
+
+[node name="3" type="Marker2D" parent="DropPoints"]
+position = Vector2(36, 32)
+
+[node name="4" type="Marker2D" parent="DropPoints"]
+position = Vector2(87, 20)
+
+[node name="teleback" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleback"]
+position = Vector2(246, 327)
+shape = SubResource("RectangleShape2D_l5smb")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="teleback"]
+position = Vector2(-77.0002, -22)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_l5smb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="teleback"]
+position = Vector2(569, 17)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_l5smb")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="teleback"]
+position = Vector2(245, -420)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_l5smb")
+
+[node name="Winback" type="Sprite2D" parent="."]
+position = Vector2(240, 136)
+texture = ExtResource("3_lbyaa")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Winback"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Winback/StaticBody2D"]
+position = Vector2(2, 137)
+shape = SubResource("RectangleShape2D_t5bx2")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Winback/StaticBody2D"]
+position = Vector2(239, -0.875)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_d2yvs")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Winback/StaticBody2D"]
+position = Vector2(-239, -2)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_d2yvs")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Randomjunk/deathball.tscn", "res://Players/Aria/Aria.tscn", "res://Players/Chris/coche.tscn", "res://Players/Jesse/playerjesse.tscn", "res://Players/Travis/trabis.tscn")
+spawn_path = NodePath("../DropPoints")
+spawn_limit = 4
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(239, -206)
+collision_layer = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_1m026")
+
+[node name="WinnerSpot" type="Marker2D" parent="."]
+position = Vector2(152, 171)

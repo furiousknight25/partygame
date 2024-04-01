@@ -8,7 +8,7 @@ const PORT = 4433
 var ip
 var state = 'menu'
 var dir = DirAccess.open("res://Levels/level_rotation/").get_files()
-var level_index = 0
+var level_index = 5
 
 const DEV_MODE = false
 
@@ -35,7 +35,7 @@ func  _process(delta):
 						if x.name == var_to_str(Director.players[i]['name']):
 							x.update(Director.players[i]["points"])
 							x.play()
-					print(Director.players[i]['name'])
+					#print(Director.players[i]['name'])
 			
 			
 			for i in Director.players: Director.players[i]['stocks'] = 1
@@ -243,6 +243,7 @@ func _on_lobby_match_list(these_lobbies: Array) -> void:
 		var but = Button.new()
 		but.set_text(str(lobby_name,' Player Count: ', memb_count))
 		but.set_size(Vector2(100,5))
+		#but.set_theme(load("res://raw_assets/pixelar.tres"))
 		but.connect('pressed', Callable($ui/Menu,'set_character').bind('steam_join', lobby))
 		
 		%Lobbies.add_child(but)

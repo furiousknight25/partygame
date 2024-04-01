@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://UI/Playground Chars/playerjessePlayground.gd" id="1_vsdep"]
 [ext_resource type="PackedScene" uid="uid://bmjkc1l0qdpx" path="res://Players/Jesse/rock.tscn" id="2_je0lr"]
 [ext_resource type="Texture2D" uid="uid://re21y8djadvk" path="res://raw_assets/ball.png" id="3_5eg3g"]
-[ext_resource type="Texture2D" uid="uid://dqce47oo1o0t1" path="res://Players/Jesse/pixil-frame-0.png" id="4_2yf5e"]
+[ext_resource type="Texture2D" uid="uid://bpiyrx3yvgjab" path="res://Players/Jesse/SpriteStuff/MainSprite.png" id="4_bkr45"]
 
 [sub_resource type="Curve" id="Curve_qpbn6"]
 _data = [Vector2(0, 0.287671), 0.0, 0.0, 0, 0, Vector2(1, 0.685737), 0.0, 0.0, 0, 0]
@@ -130,19 +130,19 @@ replication_config = SubResource("SceneReplicationConfig_5ve0h")
 
 [node name="Sprite2D" type="Sprite2D" parent="player"]
 texture_filter = 1
-position = Vector2(-0.0343857, -0.219398)
+position = Vector2(21.9182, -4.7148)
 rotation = -3.14159
-scale = Vector2(1.5, -1.5)
-texture = ExtResource("4_2yf5e")
+scale = Vector2(2.50872, -2.50872)
+texture = ExtResource("4_bkr45")
 offset = Vector2(7.3104, 0.146267)
 
 [node name="RockInitial" type="Marker2D" parent="player/Sprite2D"]
-position = Vector2(-11.3563, -2.5204)
+position = Vector2(1.04904e-05, -4.10971)
 rotation = -3.14159
 scale = Vector2(0.666667, -0.666667)
 
 [node name="RockFinal" type="Marker2D" parent="player/Sprite2D"]
-position = Vector2(-2.46323, -9.61506)
+position = Vector2(8.21944, -12.3291)
 
 [node name="ColorRect" parent="." instance=ExtResource("1_2e5tg")]
 visible = false

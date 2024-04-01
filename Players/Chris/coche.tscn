@@ -62,6 +62,7 @@ scale = Vector2(0.0278575, 0.0357459)
 texture = ExtResource("2_ghgna")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 modulate = Color(1, 0.733333, 0.94902, 1)
 texture_filter = 3
 offset_left = -15.0

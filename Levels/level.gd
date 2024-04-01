@@ -34,6 +34,8 @@ func _ready():
 		var spawnpoints : Array = $SpawnPoints.get_children()
 		current_player.global_position = spawnpoints[index].global_position
 		index += 1
+		
+		
 
 
 func change_level():

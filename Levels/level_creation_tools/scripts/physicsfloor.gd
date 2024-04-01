@@ -7,7 +7,7 @@ extends RigidBody2D
 @export var replicated_rotation : float
 @export var replicated_linear_velocity : Vector2
 @export var replicated_angular_velocity : float
-
+@export var is_drop_box = false
 
 func _integrate_forces(_state : PhysicsDirectBodyState2D) -> void:
 	# Synchronizing the physics values directly causes problems since you can't
@@ -39,8 +39,10 @@ func hurt(direction, damage_percent):
 	linear_velocity += direction * Vector2(1,-1)
 	#print(linear_velocity)
 	#apply_central_impulse(direction * 1000)
+	
 var hit = false
 func _process(delta):
+	if !is_drop_box: return
 	if hit:return
 	if $RayCast2D.is_colliding():
 		for i in $children.get_children():

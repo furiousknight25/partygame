@@ -50,6 +50,7 @@ texture = ExtResource("2_i55cl")
 polygon = PackedVector2Array(0, -9.93983, 4.96991, -6.62655, 4.96991, 8.28319, 9.86006, 11.2686, 8.28319, 14.9097, -8.28319, 14.9097, -9.86006, 11.2686, -4.96991, 8.28319, -4.96991, -6.62655)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+visible = false
 offset_left = -15.0
 offset_top = -35.0
 offset_right = 25.0

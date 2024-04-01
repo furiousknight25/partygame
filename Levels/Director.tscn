@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://i7mvbsy1s34q"]
+[gd_scene load_steps=44 format=3 uid="uid://i7mvbsy1s34q"]
 
 [ext_resource type="Script" path="res://MultiplayerJargon/MultplayerTest.gd" id="3_o2mgw"]
 [ext_resource type="Script" path="res://UI/menu.gd" id="3_ysm53"]
@@ -16,6 +16,9 @@
 [ext_resource type="AudioStream" uid="uid://dgw2rb6mn38dq" path="res://raw_assets/sounds/uiselect1.wav" id="13_1g5jn"]
 [ext_resource type="PackedScene" uid="uid://xiaiji7om40m" path="res://UI/points.tscn" id="13_els4n"]
 [ext_resource type="AudioStream" uid="uid://cxmjbs48qeys2" path="res://raw_assets/sounds/transition.wav" id="14_0p28e"]
+[ext_resource type="Texture2D" uid="uid://1nqrcpaaoubx" path="res://raw_assets/plane.png" id="14_yxcrd"]
+[ext_resource type="Script" path="res://UI/Plane.gd" id="15_dullb"]
+[ext_resource type="PackedScene" uid="uid://fo5r1m4y7kw8" path="res://Levels/level_creation_tools/laser.tscn" id="16_ma4jc"]
 
 [sub_resource type="Animation" id="Animation_uour8"]
 resource_name = "Menu"
@@ -76,6 +79,87 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1m1wg"]
+bg_color = Color(0.231373, 0.231373, 0.231373, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.211765, 0.356863, 0.466667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ybf2"]
+bg_color = Color(0.054902, 0.137255, 0.219608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0it76"]
+bg_color = Color(0.392157, 0.294118, 0.196078, 1)
+
+[sub_resource type="Animation" id="Animation_ft1tj"]
+resource_name = "shot"
+length = 1.60001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Multplayer/ui/Menu/Main/Control/Plane:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5, 0.8, 1.1, 1.5, 1.6),
+"transitions": PackedFloat32Array(0.5, 1, 1, 1, 1.68179, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-79.3976, -130.339), Vector2(-64.1289, -140.907), Vector2(-61.0751, -141.788), Vector2(-68.2005, -136.504), Vector2(-80.4156, -125.936), Vector2(-79.3976, -130.339), Vector2(-77.3618, -128.578), Vector2(-77.3618, -128.578)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Multplayer/ui/Menu/Main/Control/Plane:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1.41421, 1.31951, 1, 1),
+"update": 0,
+"values": [-0.0488297, 0.0494665, -0.0221813, 0.00288081, -0.00635581]
+}
+
+[sub_resource type="Animation" id="Animation_fwjp3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Multplayer/ui/Menu/Main/Control/Plane:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-82.4514, -129.458)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Multplayer/ui/Menu/Main/Control/Plane:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uifh7"]
+_data = {
+"RESET": SubResource("Animation_fwjp3"),
+"shot": SubResource("Animation_ft1tj")
+}
+
+[sub_resource type="Gradient" id="Gradient_bcgr3"]
+colors = PackedColorArray(0.796243, 0.796243, 0.796243, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1qvqd"]
+gradient = SubResource("Gradient_bcgr3")
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_o1fnw"]
 properties/0/path = NodePath("select/MarginContainer/PlayerContainers:columns")
@@ -434,6 +518,7 @@ offset_left = 169.0
 offset_top = 224.0
 offset_right = 290.0
 offset_bottom = 247.0
+pivot_offset = Vector2(61, 11)
 theme_override_styles/panel = SubResource("StyleBoxFlat_g1gq7")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Multplayer/ui/Menu/select/Panel"]
@@ -461,10 +546,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 77.0
-offset_top = 53.0
-offset_right = 77.0
-offset_bottom = 53.0
+offset_left = 317.0
+offset_top = 325.0
+offset_right = 317.0
+offset_bottom = 325.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.982397, 1.1355)
@@ -472,12 +557,13 @@ scale = Vector2(0.982397, 1.1355)
 [node name="Host" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -174.064
-offset_top = -99.5156
-offset_right = -64.0641
-offset_bottom = -63.5156
+offset_left = -321.662
+offset_top = -225.451
+offset_right = -252.662
+offset_bottom = -206.451
+scale = Vector2(0.904237, 0.904237)
 theme = ExtResource("12_bbmg8")
-text = "Host"
+text = "LAN Host"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Multplayer/ui/Menu/Main/Control/Host"]
 stream = ExtResource("13_1g5jn")
@@ -485,12 +571,13 @@ stream = ExtResource("13_1g5jn")
 [node name="Join" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -39.6988
-offset_top = -103.038
-offset_right = 60.3012
-offset_bottom = -66.0383
+offset_left = -257.533
+offset_top = -225.451
+offset_right = -184.533
+offset_bottom = -206.451
+scale = Vector2(0.874939, 0.874939)
 theme = ExtResource("12_bbmg8")
-text = "Join
+text = "LAN Join
 "
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Multplayer/ui/Menu/Main/Control/Join"]
@@ -499,11 +586,11 @@ pitch_scale = 1.39
 
 [node name="TextEdit" type="TextEdit" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
-offset_left = -25.448
-offset_top = -138.265
-offset_right = 280.552
-offset_bottom = -98.2644
-scale = Vector2(0.51929, 0.51929)
+offset_left = -390.881
+offset_top = -60.7662
+offset_right = -84.8807
+offset_bottom = -20.7656
+scale = Vector2(0.208807, 0.208807)
 theme = ExtResource("12_bbmg8")
 text = "66.242.81.85"
 placeholder_text = "66.242.81.85"
@@ -511,10 +598,11 @@ placeholder_text = "66.242.81.85"
 [node name="PortForward" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -212.0
-offset_top = -142.0
-offset_right = -35.0
-offset_bottom = -111.0
+offset_left = -403.096
+offset_top = -86.3056
+offset_right = -226.096
+offset_bottom = -55.3056
+scale = Vector2(0.308526, 0.308526)
 theme = ExtResource("12_bbmg8")
 text = "PortForward(if you can)"
 
@@ -524,10 +612,10 @@ stream = ExtResource("13_1g5jn")
 [node name="SteamHost" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -304.358
-offset_top = -280.053
-offset_right = -219.358
-offset_bottom = -246.053
+offset_left = -322.0
+offset_top = -282.0
+offset_right = -229.0
+offset_bottom = -258.0
 scale = Vector2(1.35177, 0.794036)
 theme = ExtResource("12_bbmg8")
 text = "Steam host"
@@ -537,11 +625,12 @@ stream = ExtResource("13_1g5jn")
 
 [node name="LobbyContainer" type="ScrollContainer" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
-offset_left = -79.3976
-offset_top = -275.65
-offset_right = 559.602
-offset_bottom = 33.35
+offset_left = -191.369
+offset_top = -283.576
+offset_right = 769.631
+offset_bottom = -51.5755
 scale = Vector2(0.368744, 0.368744)
+theme_override_styles/panel = SubResource("StyleBoxFlat_1m1wg")
 
 [node name="Lobbies" type="VBoxContainer" parent="Multplayer/ui/Menu/Main/Control/LobbyContainer"]
 unique_name_in_owner = true
@@ -550,12 +639,73 @@ layout_mode = 2
 [node name="check lobbies" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -308.429
-offset_top = -247.468
-offset_right = -181.429
-offset_bottom = -216.468
+offset_left = -323.0
+offset_top = -259.797
+offset_right = -196.0
+offset_bottom = -240.797
 theme = ExtResource("12_bbmg8")
 text = "Check Lobbiess"
+
+[node name="PanelContainer" type="PanelContainer" parent="Multplayer/ui/Menu/Main/Control"]
+z_index = -2
+layout_mode = 0
+offset_left = -323.0
+offset_top = -286.0
+offset_right = -194.0
+offset_bottom = -235.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ybf2")
+metadata/_edit_lock_ = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="Multplayer/ui/Menu/Main/Control"]
+z_index = -2
+layout_mode = 0
+offset_left = -323.0
+offset_top = -231.0
+offset_right = -194.0
+offset_bottom = -203.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0it76")
+
+[node name="Plane" type="Sprite2D" parent="Multplayer/ui/Menu/Main/Control"]
+position = Vector2(-82.4514, -129.458)
+texture = ExtResource("14_yxcrd")
+script = ExtResource("15_dullb")
+
+[node name="RayCast2D" parent="Multplayer/ui/Menu/Main/Control/Plane" instance=ExtResource("16_ma4jc")]
+position = Vector2(-272.802, 181.418)
+rotation = -2.09439
+time_to_shoot = 99999
+
+[node name="Plane2" type="Sprite2D" parent="Multplayer/ui/Menu/Main/Control/Plane"]
+position = Vector2(25.448, 24.6587)
+scale = Vector2(1, 1)
+texture = ExtResource("6_vi0yc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Multplayer/ui/Menu/Main/Control/Plane"]
+root_node = NodePath("../../../../../../..")
+libraries = {
+"": SubResource("AnimationLibrary_uifh7")
+}
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Multplayer/ui/Menu/Main/Control"]
+z_index = -4
+position = Vector2(-384.773, -125.055)
+emission_shape = 3
+emission_rect_extents = Vector2(1, 90)
+gravity = Vector2(980, 0)
+split_scale = true
+scale_curve_x = SubResource("Curve_4rm1f")
+scale_curve_y = null
+color = Color(0.784314, 0.729412, 0.647059, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Multplayer/ui/Menu/Main/Control"]
+modulate = Color(0.0313726, 0.0509804, 0.0901961, 1)
+z_index = -12
+position = Vector2(-76.8528, -165.566)
+scale = Vector2(1.92848, 239.542)
+texture = SubResource("GradientTexture1D_1qvqd")
+metadata/_edit_lock_ = true
 
 [node name="Start" type="Control" parent="Multplayer/ui/Menu"]
 layout_mode = 1
@@ -607,8 +757,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2400.0
-offset_bottom = 1360.0
+offset_right = 4800.0
+offset_bottom = 2720.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1, 150)

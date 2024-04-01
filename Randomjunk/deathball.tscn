@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://cll6f5mnqtf6d"]
+
+[ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/physicsfloor.gd" id="1_x78eu"]
+[ext_resource type="Texture2D" uid="uid://c3v5f1ffft7gj" path="res://Players/Chris/584674f4ef5a427.png" id="2_uw4cx"]
+[ext_resource type="Texture2D" uid="uid://bpiyrx3yvgjab" path="res://Players/Jesse/SpriteStuff/MainSprite.png" id="3_61g04"]
+[ext_resource type="Texture2D" uid="uid://dxsrjyvf4bi1t" path="res://raw_assets/deadaria.png" id="4_hh3wl"]
+[ext_resource type="Texture2D" uid="uid://68f1xqu50nja" path="res://Players/Travis/magnetguysprite.png" id="5_85855"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j1qxm"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_jhf6j"]
+properties/0/path = NodePath("0:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("1:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("2:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("3:visible")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:replicated_position")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath(".:replicated_rotation")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath(".:replicated_linear_velocity")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath(".:replicated_angular_velocity")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+
+[node name="Node2D" type="RigidBody2D"]
+collision_mask = 3
+script = ExtResource("1_x78eu")
+
+[node name="col" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j1qxm")
+
+[node name="0" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.0157554, 0.0157554)
+texture = ExtResource("2_uw4cx")
+
+[node name="1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_61g04")
+
+[node name="2" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.531022, 0.531022)
+texture = ExtResource("4_hh3wl")
+
+[node name="3" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_85855")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_jhf6j")

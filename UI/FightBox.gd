@@ -56,9 +56,13 @@ var velocity = Vector2.ZERO
 func _process(delta):
 	rotate(randf_range(-delta,delta) * .1)
 	rotation = lerp(rotation, 0.0, delta)
+	$"../../Panel".scale = lerp($"../../Panel".scale, Vector2.ONE, delta * 12)
+	$"../../Panel".rotation = lerp($"../../Panel".rotation, 0.0, delta * 3)
 	if Input.is_action_just_pressed('smash'):
 		if multiplayer.is_server():
 			shake()
+			$"../../Panel".rotation += randf_range(-.04, .04)
+			$"../../Panel".scale += Vector2(.15,.1)
 		else:
 			shake.rpc_id(1)
 	

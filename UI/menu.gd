@@ -43,6 +43,15 @@ func set_menu():
 
 
 func set_character(client, id = 1):
+	$Main/Control/Plane/RayCast2D.shoot()
+	$Main/Control/Plane/AnimationPlayer.play('shot')
+	$Main/Control/Plane.drop = true
+	$Main/Control/CPUParticles2D.emitting = false
+	Camera.add_trauma(3, Vector2(0,0))
+	await get_tree().create_timer(1.4).timeout
+	%Animation_Transition.play('slideinto')
+	await %Animation_Transition.animation_finished
+	%Animation_Transition.play('slideouto')
 	cur_state = STATES.CHARACTER
 	select.position = Vector2.ZERO
 	#main.modulate.a = 0
