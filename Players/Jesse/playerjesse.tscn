@@ -21,7 +21,7 @@ radius = 6.0
 height = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q4vtx"]
-size = Vector2(4, 4)
+size = Vector2(6, 6)
 
 [sub_resource type="Curve" id="Curve_mn2hu"]
 _data = [Vector2(0, 0.712389), 0.0, 0.0, 0, 0, Vector2(0.495238, 0.12757), -0.0462232, -0.0462232, 0, 0, Vector2(1, 0.720607), 0.0, 0.0, 0, 0]

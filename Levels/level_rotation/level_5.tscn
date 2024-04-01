@@ -1,20 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://dylfnhn0gdeeb"]
+[gd_scene load_steps=21 format=3 uid="uid://dylfnhn0gdeeb"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_b6pl2"]
 [ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_7xjc8"]
 [ext_resource type="PackedScene" uid="uid://bxylv50enx4tb" path="res://Players/Jesse/playerjesse.tscn" id="3_ag7wk"]
 [ext_resource type="PackedScene" uid="uid://canqomfe3wsj0" path="res://Players/Travis/trabis.tscn" id="4_a5wuc"]
 [ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_inoyf"]
-[ext_resource type="PackedScene" uid="uid://dbsiod3n0h11j" path="res://Levels/level_creation_tools/spikes.tscn" id="6_rrysa"]
 [ext_resource type="Texture2D" uid="uid://cs1wnp58m8iub" path="res://raw_assets/basicfloortilesheet.png" id="7_g0qtl"]
 [ext_resource type="Texture2D" uid="uid://bb1riedkjvybt" path="res://raw_assets/bruhbackground.png" id="8_hvmw8"]
 [ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="9_kpjsw"]
 [ext_resource type="PackedScene" uid="uid://cq8w7di36k28n" path="res://Levels/level_creation_tools/animatable_body_2d.tscn" id="10_1e2kq"]
 [ext_resource type="PackedScene" uid="uid://cdn40np5q0sje" path="res://Levels/level_creation_tools/physicsfloor.tscn" id="10_nkp5y"]
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_rm4qb"]
-resource_name = "spike"
-scenes/1/scene = ExtResource("6_rrysa")
+[ext_resource type="PackedScene" uid="uid://c10p4ygw7atbb" path="res://Levels/level_creation_tools/jumpad.tscn" id="11_jwfoy"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xp6ir"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -66,7 +62,6 @@ occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 7
 physics_layer_0/collision_mask = 3
 sources/2 = SubResource("TileSetAtlasSource_6v661")
-sources/1 = SubResource("TileSetScenesCollectionSource_rm4qb")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r21bd"]
 size = Vector2(20, 50)
@@ -89,7 +84,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Level4" type="Node2D"]
+[node name="Level5" type="Node2D"]
 script = ExtResource("1_b6pl2")
 aria_scene = ExtResource("2_7xjc8")
 jesse_scene = ExtResource("3_ag7wk")
@@ -115,11 +110,12 @@ position = Vector2(384, -153)
 
 [node name="TileMap" type="TileMap" parent="Level"]
 texture_filter = 1
+rotation = 0.000638799
 scale = Vector2(1.16479, 1)
 tile_set = SubResource("TileSet_vli1o")
 format = 2
 layer_0/name = "base"
-layer_0/tile_data = PackedInt32Array(851968, 262146, 805306368, 917504, 327682, 0, 983040, 327682, 0, 1048576, 327682, 0, 1048577, 327682, 0, 1048578, 327682, 0, 1048579, 262146, 1342177280, 1048580, 262146, 1342177280, 1048583, 262146, 1342177280, 1048584, 262146, 1342177280, 1048585, 262146, 1342177280, 1048586, 262146, 1342177280, 1048590, 262146, 1342177280, 1048591, 262146, 1342177280, 1048592, 262146, 1342177280, 1048595, 262146, 1342177280, 1048596, 262146, 1342177280, 1048597, 327682, 0, 1048598, 327682, 0, 917505, 393218, 1342177280, 983041, 327682, 0, 983042, 393218, 1342177280, 1114122, 65538, 0, 1114121, 65538, 0, 1114120, 65538, 0, 1114119, 65538, 0, 1114116, 65538, 0, 1114115, 65538, 0, 1114114, 65538, 0, 1114113, 65538, 0, 1114112, 65538, 0, 1048600, 327682, 0, 1048599, 327682, 0, 1048601, 327682, 0, 983065, 327682, 0, 917529, 327682, 0)
+layer_0/tile_data = PackedInt32Array(1048577, 327682, 0, 1048583, 262146, 1342177280, 1048584, 262146, 1342177280, 1048585, 262146, 1342177280, 1048586, 262146, 1342177280, 1048590, 262146, 1342177280, 1048591, 262146, 1342177280, 1048592, 262146, 1342177280, 1048595, 262146, 1342177280, 1048596, 262146, 1342177280, 1048597, 327682, 0, 1048598, 327682, 0, 1114122, 65538, 0, 1114121, 65538, 0, 1114120, 65538, 0, 1114119, 65538, 0, 1114116, 65538, 0, 1114113, 65538, 0, 1048600, 327682, 0, 1048599, 327682, 0, 1048601, 327682, 0, 983065, 327682, 0, 917529, 327682, 0, 1048580, 262146, 1342177280, 327692, 2, 0)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Level"]
 color = Color(0.537255, 0.537255, 0.537255, 1)
@@ -196,6 +192,18 @@ shape = SubResource("RectangleShape2D_2j3k8")
 position = Vector2(0, 4)
 scale = Vector2(0.603795, 2.125)
 
+[node name="Physicsfloor9" parent="Level" instance=ExtResource("10_nkp5y")]
+position = Vector2(40, 242)
+rotation = -1.57079
+
+[node name="CollisionShape2D" parent="Level/Physicsfloor9" index="0"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2j3k8")
+
+[node name="Sprite2D" parent="Level/Physicsfloor9" index="2"]
+position = Vector2(0, 4)
+scale = Vector2(0.603795, 2.125)
+
 [node name="Physicsfloor4" parent="Level" instance=ExtResource("10_nkp5y")]
 position = Vector2(216, 170)
 
@@ -235,11 +243,15 @@ position = Vector2(145.523, 77.7902)
 [node name="AnimatableBody2D" parent="moving_path2" index="4"]
 position = Vector2(114, 101)
 
+[node name="Jumpad" parent="." instance=ExtResource("11_jwfoy")]
+position = Vector2(232, 78)
+
 [editable path="Level/Physicsfloor"]
 [editable path="Level/Physicsfloor2"]
 [editable path="Level/Physicsfloor6"]
 [editable path="Level/Physicsfloor7"]
 [editable path="Level/Physicsfloor8"]
+[editable path="Level/Physicsfloor9"]
 [editable path="Level/Physicsfloor4"]
 [editable path="moving_path"]
 [editable path="moving_path2"]

@@ -85,6 +85,7 @@ properties/3/replication_mode = 1
 size = Vector2(41, 39)
 
 [node name="hingedoor" type="CharacterBody2D"]
+scale = Vector2(0.388872, 0.468872)
 collision_layer = 3
 script = ExtResource("1_nxb32")
 
