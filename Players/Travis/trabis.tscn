@@ -192,5 +192,5 @@ spawn_path = NodePath("../Magnet/Magnert positom")
 [node name="Death_particles" parent="." instance=ExtResource("7_p62bd")]
 position = Vector2(0, -4)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_w7ud4")
