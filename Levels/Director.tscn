@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ctvybd2tobfvp" path="res://UI/Playground Chars/jesse_play_ground.tscn" id="7_wwgfm"]
 [ext_resource type="PackedScene" uid="uid://jovugslpubd5" path="res://UI/Playground Chars/aria_play_ground.tscn" id="8_mptte"]
 [ext_resource type="PackedScene" uid="uid://tckwhehi0vu0" path="res://UI/Playground Chars/travis_play_ground.tscn" id="9_e2yen"]
-[ext_resource type="Theme" path="res://raw_assets/pixelar.tres" id="12_bbmg8"]
+[ext_resource type="Theme" uid="uid://debxqs6npj4hd" path="res://raw_assets/pixelar.tres" id="12_bbmg8"]
 [ext_resource type="AudioStream" uid="uid://dgw2rb6mn38dq" path="res://raw_assets/sounds/uiselect1.wav" id="13_1g5jn"]
 [ext_resource type="PackedScene" uid="uid://xiaiji7om40m" path="res://UI/points.tscn" id="13_els4n"]
 [ext_resource type="AudioStream" uid="uid://cxmjbs48qeys2" path="res://raw_assets/sounds/transition.wav" id="14_0p28e"]
@@ -756,8 +756,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1440.0
-offset_bottom = 816.0
+offset_right = 1920.0
+offset_bottom = 1088.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1, 150)

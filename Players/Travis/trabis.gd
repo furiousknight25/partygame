@@ -101,8 +101,10 @@ func magnet_process(delta):
 		
 		
 		
-		
+var dead = false
 func death():
+	if dead: return
+	dead = true
 	change_stocks.rpc(name.to_int(), 0)
 	$"Character hitbox".disabled = true
 	$Death.play()
@@ -111,6 +113,7 @@ func death():
 	
 @rpc("any_peer")
 func hurt(direction, damage_percent):
+	$Hurt.play()
 	if damage_percent > 0: modulate = Color("ff0000")
 	velocity += direction
 	health -= damage_percent

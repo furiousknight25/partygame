@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://canqomfe3wsj0"]
+[gd_scene load_steps=16 format=3 uid="uid://canqomfe3wsj0"]
 
 [ext_resource type="Script" path="res://Players/Travis/trabis.gd" id="1_0a8f0"]
 [ext_resource type="Texture2D" uid="uid://2238kevtrmp6" path="res://Players/Travis/pixil-frame-0 (1).png" id="2_syvtv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://68f1xqu50nja" path="res://Players/Travis/magnetguysprite.png" id="5_yyjyo"]
 [ext_resource type="Texture2D" uid="uid://eiru85hldd4k" path="res://raw_assets/2d_lights_and_shadows_neutral_point_light.webp" id="6_av4mk"]
 [ext_resource type="PackedScene" uid="uid://dr1rfsb0fkqdk" path="res://raw_assets/death_particles.tscn" id="7_p62bd"]
+[ext_resource type="AudioStream" uid="uid://0dyyx4ryrkns" path="res://raw_assets/sounds/hurt.wav" id="8_w7ud4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k50uc"]
 radius = 8.0
@@ -190,3 +191,6 @@ spawn_path = NodePath("../Magnet/Magnert positom")
 
 [node name="Death_particles" parent="." instance=ExtResource("7_p62bd")]
 position = Vector2(0, -4)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_w7ud4")

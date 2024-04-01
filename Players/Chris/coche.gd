@@ -71,8 +71,11 @@ func blast():
 		b.velocity = transform.x * 200
 		
 		$PointLight2D.energy = 1
-	
+
+var dead = false
 func death():
+	if dead: return
+	dead = true
 	change_stocks.rpc(name.to_int(), 0)
 	$CollisionShape2D.disabled = true
 	health = 0
@@ -82,6 +85,7 @@ func death():
 	
 @rpc("any_peer")
 func hurt(direction, damage_percent):
+	$Hurt.play()
 	if damage_percent > 0: modulate = Color("ff0000")
 	velocity += direction
 	health -= damage_percent

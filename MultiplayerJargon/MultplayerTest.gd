@@ -39,6 +39,7 @@ func  _process(delta):
 			
 			
 			for i in Director.players: Director.players[i]['stocks'] = 1
+			sync_server_to_peer()
 			await get_tree().create_timer(1).timeout
 			level_index += 1
 			if level_index == dir.size():
