@@ -135,4 +135,6 @@ color = Color(0.105882, 0.517647, 0.607843, 1)
 energy = 0.45
 texture = ExtResource("4_3c0n8")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ctvybd2tobfvp" path="res://UI/Playground Chars/jesse_play_ground.tscn" id="7_wwgfm"]
 [ext_resource type="PackedScene" uid="uid://jovugslpubd5" path="res://UI/Playground Chars/aria_play_ground.tscn" id="8_mptte"]
 [ext_resource type="PackedScene" uid="uid://tckwhehi0vu0" path="res://UI/Playground Chars/travis_play_ground.tscn" id="9_e2yen"]
-[ext_resource type="Theme" path="res://raw_assets/pixelar.tres" id="12_bbmg8"]
+[ext_resource type="Theme" uid="uid://debxqs6npj4hd" path="res://raw_assets/pixelar.tres" id="12_bbmg8"]
 [ext_resource type="AudioStream" uid="uid://dgw2rb6mn38dq" path="res://raw_assets/sounds/uiselect1.wav" id="13_1g5jn"]
 [ext_resource type="PackedScene" uid="uid://xiaiji7om40m" path="res://UI/points.tscn" id="13_els4n"]
 [ext_resource type="AudioStream" uid="uid://cxmjbs48qeys2" path="res://raw_assets/sounds/transition.wav" id="14_0p28e"]
@@ -375,7 +375,7 @@ container = ExtResource("4_l0t0d")
 points = ExtResource("13_els4n")
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="Multplayer"]
-_spawnable_scenes = PackedStringArray("res://Levels/level_test.tscn", "res://Levels/level_rotation/level_1.tscn", "res://Levels/level_rotation/level_2.tscn", "res://Levels/level_rotation/level_0.tscn", "res://Levels/level_rotation/level_3.tscn", "res://Levels/win.tscn", "res://Levels/level_rotation/level_4.tscn", "res://Levels/level_rotation/level_5.tscn", "res://Levels/level_rotation/level_6.tscn")
+_spawnable_scenes = PackedStringArray("res://Levels/level_test.tscn", "res://Levels/level_rotation/level_1.tscn", "res://Levels/level_rotation/level_2.tscn", "res://Levels/level_rotation/level_0.tscn", "res://Levels/level_rotation/level_3.tscn", "res://Levels/win.tscn", "res://Levels/level_rotation/level_4.tscn", "res://Levels/level_rotation/level_5.tscn", "res://Levels/level_rotation/level_6.tscn", "res://Levels/level_rotation/level_7.tscn")
 spawn_path = NodePath("../Level")
 
 [node name="ui" type="MultiplayerSpawner" parent="Multplayer"]

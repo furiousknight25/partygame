@@ -38,6 +38,8 @@ func get_input():
 	if Input.is_action_just_pressed('kill'):
 		death()
 
+@onready var visible_on_screen_notifier_2d = $VisibleOnScreenNotifier2D
+
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
 	if health > 0:
