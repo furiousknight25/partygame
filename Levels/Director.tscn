@@ -546,10 +546,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 317.0
-offset_top = 325.0
-offset_right = 317.0
-offset_bottom = 325.0
+offset_left = 77.0
+offset_top = 53.0
+offset_right = 77.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.982397, 1.1355)
@@ -586,11 +586,11 @@ pitch_scale = 1.39
 
 [node name="TextEdit" type="TextEdit" parent="Multplayer/ui/Menu/Main/Control"]
 layout_mode = 0
-offset_left = -390.881
-offset_top = -60.7662
-offset_right = -84.8807
-offset_bottom = -20.7656
-scale = Vector2(0.208807, 0.208807)
+offset_left = -453.992
+offset_top = -222.809
+offset_right = -239.992
+offset_bottom = -192.809
+scale = Vector2(0.557553, 0.557553)
 theme = ExtResource("12_bbmg8")
 text = "66.242.81.85"
 placeholder_text = "66.242.81.85"
@@ -598,10 +598,10 @@ placeholder_text = "66.242.81.85"
 [node name="PortForward" type="Button" parent="Multplayer/ui/Menu/Main/Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = -403.096
-offset_top = -86.3056
-offset_right = -226.096
-offset_bottom = -55.3056
+offset_left = -401.06
+offset_top = -196.389
+offset_right = -144.06
+offset_bottom = -160.389
 scale = Vector2(0.308526, 0.308526)
 theme = ExtResource("12_bbmg8")
 text = "PortForward(if you can)"
@@ -658,12 +658,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4ybf2")
 metadata/_edit_lock_ = true
 
 [node name="PanelContainer2" type="PanelContainer" parent="Multplayer/ui/Menu/Main/Control"]
-z_index = -2
+z_index = -1
 layout_mode = 0
 offset_left = -323.0
 offset_top = -231.0
 offset_right = -194.0
-offset_bottom = -203.0
+offset_bottom = -199.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0it76")
 
@@ -677,6 +677,7 @@ script = ExtResource("15_dullb")
 position = Vector2(-272.802, 181.418)
 rotation = -2.09439
 time_to_shoot = 99999
+metadata/_edit_lock_ = true
 
 [node name="Plane2" type="Sprite2D" parent="Multplayer/ui/Menu/Main/Control/Plane"]
 position = Vector2(13.2329, 42.2717)
@@ -758,6 +759,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1440.0
+offset_bottom = 816.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1, 150)

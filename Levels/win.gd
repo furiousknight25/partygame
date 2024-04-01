@@ -25,7 +25,7 @@ func _ready():
 	
 	survivor.text = "player " + var_to_str(Director.players[greatest_of_them_all]['name'])
 	
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(2.7).timeout
 	var choice = 1
 	var current_player
 	choice = Director.players[greatest_of_them_all]['choice']
@@ -42,7 +42,7 @@ func _ready():
 	$DropPoints.add_child(current_player)
 	
 	
-	await get_tree().create_timer(2.5).timeout
+	await get_tree().create_timer(2.8).timeout
 	var death_choice = 1
 	for i in Director.players:
 		if i != greatest_of_them_all:

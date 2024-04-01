@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdn40np5q0sje"]
+[gd_scene load_steps=5 format=3 uid="uid://cwfsk0oava66f"]
 
-[ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/physicsfloor.gd" id="1_1bg8a"]
-[ext_resource type="Texture2D" uid="uid://cgpmdi73lp1cy" path="res://raw_assets/movablebox1.png" id="2_0ylmb"]
+[ext_resource type="Script" path="res://Levels/level_creation_tools/scripts/physicsfloor.gd" id="1_mcw2p"]
+[ext_resource type="Texture2D" uid="uid://djr227vd0j5e8" path="res://raw_assets/movablebox2.png" id="2_eep6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_waa3k"]
+size = Vector2(80, 20)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_b1vac"]
 properties/0/path = NodePath(".:replicated_position")
@@ -22,7 +23,7 @@ properties/3/replication_mode = 1
 [node name="Physicsfloor" type="RigidBody2D"]
 collision_layer = 7
 collision_mask = 2
-script = ExtResource("1_1bg8a")
+script = ExtResource("1_mcw2p")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -34,4 +35,4 @@ replication_config = SubResource("SceneReplicationConfig_b1vac")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.22401, 1.22401)
-texture = ExtResource("2_0ylmb")
+texture = ExtResource("2_eep6h")

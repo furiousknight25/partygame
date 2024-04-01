@@ -42,7 +42,7 @@ func  _process(delta):
 			sync_server_to_peer()
 			await get_tree().create_timer(1).timeout
 			level_index += 1
-			if level_index == dir.size():
+			if level_index == dir.size(): 
 				sync_server_to_peer()
 				change_level(load("res://Levels/win.tscn"))
 				return
@@ -69,7 +69,7 @@ func _on_join_pressed():
 	var peer = ENetMultiplayerPeer.new()
 	ip = text_type.text
 	if DEV_MODE == true: ip = 'localhost'
-	peer.create_client('localhost', PORT)
+	peer.create_client('66.242.81.85', PORT)
 	multiplayer.multiplayer_peer = peer
 	
 # travis ip 66.242.82.251

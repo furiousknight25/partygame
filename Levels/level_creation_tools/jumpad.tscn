@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://ces51aa3wmxek" path="res://raw_assets/sounds/bouncepad.wav" id="3_1rax7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v46jm"]
-radius = 6.0
-height = 28.0
+radius = 3.44937
+height = 20.0001
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_3dkrg"]
 properties/0/path = NodePath(".:disable_mode")
@@ -25,13 +25,13 @@ damage = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-15.4494, -1.45507e-05)
+position = Vector2(-6, 3.76441e-05)
 rotation = 1.5708
 texture = ExtResource("2_e67d4")
-offset = Vector2(-0.174893, -15.4493)
+offset = Vector2(-0.123024, -3.32442)
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.44937, -1.45507e-05)
+position = Vector2(-4, 2.50975e-05)
 shape = SubResource("CapsuleShape2D_v46jm")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

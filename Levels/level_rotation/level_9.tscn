@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drbc6t1ke525c"]
+[gd_scene load_steps=14 format=3 uid="uid://drbc6t1ke525c"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_lg1bu"]
 [ext_resource type="PackedScene" uid="uid://dh8ehuq4bkge3" path="res://Players/Aria/Aria.tscn" id="2_jpje8"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://r7acn5diagc6" path="res://Players/Chris/coche.tscn" id="5_rprei"]
 [ext_resource type="Texture2D" uid="uid://cs1wnp58m8iub" path="res://raw_assets/basicfloortilesheet.png" id="6_tj4hm"]
 [ext_resource type="Texture2D" uid="uid://bb1riedkjvybt" path="res://raw_assets/bruhbackground.png" id="7_v4y2h"]
+[ext_resource type="PackedScene" uid="uid://cwfsk0oava66f" path="res://Levels/level_creation_tools/physicsfloorlong.tscn" id="8_iwowp"]
+[ext_resource type="PackedScene" uid="uid://cdn40np5q0sje" path="res://Levels/level_creation_tools/physicsfloor.tscn" id="9_oaw36"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xp6ir"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -105,3 +107,76 @@ metadata/_edit_lock_ = true
 [node name="Players" type="MultiplayerSpawner" parent="."]
 spawn_path = NodePath("..")
 spawn_limit = 4
+
+[node name="Physicsfloor" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(115, 212)
+rotation = 1.5708
+
+[node name="Physicsfloor2" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(161, 214)
+rotation = 1.5708
+
+[node name="Physicsfloor3" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(206, 213)
+rotation = 1.5708
+
+[node name="Physicsfloor4" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(313, 215)
+rotation = 1.5708
+
+[node name="Physicsfloor5" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(184, 160)
+
+[node name="Physicsfloor6" parent="." instance=ExtResource("9_oaw36")]
+position = Vector2(162, 136)
+
+[node name="Physicsfloor7" parent="." instance=ExtResource("9_oaw36")]
+position = Vector2(162, 111)
+
+[node name="Physicsfloor8" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(137, 73)
+
+[node name="Physicsfloor9" parent="." instance=ExtResource("9_oaw36")]
+position = Vector2(367, 98)
+
+[node name="Physicsfloor10" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(366, 74)
+
+[node name="Physicsfloor21" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(252, 78)
+
+[node name="Physicsfloor22" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(252, 23)
+rotation = 1.57079
+
+[node name="Physicsfloor11" parent="." instance=ExtResource("9_oaw36")]
+position = Vector2(405, 100)
+
+[node name="Physicsfloor12" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(421, 198)
+rotation = 1.5708
+
+[node name="Physicsfloor13" parent="." instance=ExtResource("9_oaw36")]
+position = Vector2(366, 245)
+
+[node name="Physicsfloor14" parent="." instance=ExtResource("9_oaw36")]
+position = Vector2(260, 244)
+
+[node name="Physicsfloor15" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(311, 160)
+
+[node name="Physicsfloor16" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(58, 197)
+rotation = 0.523599
+
+[node name="Physicsfloor17" parent="." instance=ExtResource("9_oaw36")]
+position = Vector2(108, 99)
+
+[node name="Physicsfloor18" parent="." instance=ExtResource("9_oaw36")]
+position = Vector2(67, 98)
+
+[node name="Physicsfloor19" parent="." instance=ExtResource("8_iwowp")]
+position = Vector2(248, 133)
+
+[node name="Physicsfloor20" parent="." instance=ExtResource("9_oaw36")]
+position = Vector2(251, 103)

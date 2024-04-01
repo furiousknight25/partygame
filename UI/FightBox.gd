@@ -49,7 +49,7 @@ func clear_children():
 
 var shake_level = 0
 @onready var original_position = position
-var threshold = 1
+var threshold = 7
 var started = false
 
 var velocity = Vector2.ZERO
