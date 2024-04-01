@@ -61,7 +61,7 @@ physics_layer_0/collision_layer = 7
 physics_layer_0/collision_mask = 3
 sources/2 = SubResource("TileSetAtlasSource_6v661")
 
-[node name="Level7" type="Node2D"]
+[node name="Level8" type="Node2D"]
 script = ExtResource("1_ffic2")
 aria_scene = ExtResource("2_m7w1u")
 jesse_scene = ExtResource("3_rekso")
@@ -112,7 +112,7 @@ spawn_limit = 4
 position = Vector2(232, 254)
 
 [node name="Jumpad2" parent="." instance=ExtResource("8_jpcxs")]
-position = Vector2(248, 254)
+position = Vector2(252, 254)
 
 [node name="Physicsball" parent="." instance=ExtResource("9_awik7")]
 position = Vector2(135, 73)
