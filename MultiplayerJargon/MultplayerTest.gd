@@ -96,7 +96,7 @@ func send_player_info(id): #starts global data
 	index += 1
 	if !Director.players.has(id):
 		Director.players[id] = {
-			'stocks': 1,
+			'stocks': 1,  #asd
 			'choice': 1,
 			'name': index,
 			'points': 0

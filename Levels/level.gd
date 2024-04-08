@@ -11,6 +11,7 @@ extends Node2D
 func _ready():
 	multiplayer.peer_disconnected.connect(remove_player)
 	var index = 0
+	
 	for i in Director.players:
 		#return
 		var choice = 2

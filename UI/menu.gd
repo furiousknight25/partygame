@@ -18,6 +18,7 @@ func _process(delta):
 	match cur_state:
 		STATES.START:
 			#$Start.position = Vector2.ZERO
+			Input.is_action_just_released('input')
 			if Input.is_anything_pressed():
 				set_menu()
 				var tween = get_tree().create_tween()
